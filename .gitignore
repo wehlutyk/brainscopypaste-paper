@@ -1,6 +1,7 @@
 # Temporary and compilation files
 *~
 *.bbl
+*.blg
 *.aux
 *.log
 *.synctex.gz
