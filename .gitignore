@@ -3,6 +3,7 @@
 *.bbl
 *.aux
 *.log
+*.synctex.gz
 
 # R files
 .RData
