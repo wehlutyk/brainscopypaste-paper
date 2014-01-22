@@ -1,0 +1,25 @@
+library(package="ellipse")
+setwd("/Users/camille/Shared/Dropbox/BrainCopyPaste/algorithms")
+mydata=read.csv("features.csv")
+mydata=read.csv("common_features.csv")
+
+source('my.plotcorr.R')
+mydata$Word <- NULL
+corr.mydata <- cor(mydata)
+
+my.plotcorr(corr.mydata)
+
+
+colsc=c(rgb(241, 54, 23, maxColorValue=255), 'white', rgb(0, 61, 104, maxColorValue=255))
+
+colramp = colorRampPalette(colsc, space='Lab')
+colors = colramp(length(corr.mydata[1,]))
+
+
+
+my.plotcorr(corr.mydata, col=colors[((corr.mydata + 1)/2) * 100], diag='ellipse', lower.panel="number", main='Predictor correlations')
+
+
+
+
+colors = colramp(100)
