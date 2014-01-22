@@ -1,0 +1,11 @@
+# Temporary and compilation files
+*~
+*.bbl
+*.aux
+*.log
+
+# R files
+.RData
+.Rapp.history
+.Rhistory
+
