@@ -1,7 +1,8 @@
 <map version="0.9.0">
 <!-- To view this file, download free mind mapping software FreeMind from http://freemind.sourceforge.net -->
 <node CREATED="1390403697886" ID="ID_772922142" MODIFIED="1390403716827" TEXT="Brains Copy-Paste">
-<node CREATED="1390406562998" ID="ID_652699747" MODIFIED="1390406575880" POSITION="right" TEXT="Introduction">
+<node CREATED="1390406562998" ID="ID_652699747" MODIFIED="1390582411289" POSITION="right" TEXT="Introduction">
+<icon BUILTIN="button_ok"/>
 <node CREATED="1390408633683" ID="ID_1323544757" MODIFIED="1390570285674" TEXT="Cultural similarity and diversity"/>
 <node CREATED="1390408702834" ID="ID_1921419470" MODIFIED="1390408728389" TEXT="Several approaches: memetic, norms, sperber"/>
 <node CREATED="1390408729059" ID="ID_213257435" MODIFIED="1390408754103" TEXT="Sperber explanation. Untested"/>
@@ -135,6 +136,9 @@
 </node>
 <node CREATED="1390414400871" ID="ID_222729132" MODIFIED="1390414422618" POSITION="left" TEXT="To be done. Is mentionned in the text, but needs to be done.">
 <icon BUILTIN="forward"/>
+</node>
+<node CREATED="1390582425451" ID="ID_1463639848" MODIFIED="1390582448628" POSITION="left" TEXT="Has been reviewed, looks good in its current state.">
+<icon BUILTIN="button_ok"/>
 </node>
 </node>
 </map>
