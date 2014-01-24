@@ -3,48 +3,44 @@
 \section{Introduction} % =====
 % ============================
 
+The understanding of the mechanisms behind cultural similarity and diversity has led to a sizeable literature in the recent past, spanning over a vast area of research fields ranging from cultural anthropology to social network analysis and complex systems modelling, all diversely labelled as studies on ``opinion dynamics'', ``cultural evolution'', or ``information diffusion'', for the most part.
+Broadly, this type of research program investigates phenomena pertaining to both cognitive science and social science, and aims to understand the processing, transmission, and evolution of information both at the individual and social levels.
 
-%On assiste aujourd'hui à une convergence progressive entre des disciplines étudiant la cognition humaine, d'un côté, et des disciplines étudiant la culture et les \emph{choses sociales}, de l'autre. Ces deux familles de disciplines ont en effet bien des frontières en commun ; celles-ci se rendent visibles par l'intermédiaire des thèmes pour lesquels il devient incontournable de s'intéresser à l'humain à la fois dans sa globalité et dans ses fonctionnements particuliers. 
+Several theories have been proposed and debated within these research fields, mixing social and individual cognition, notably from the side of cultural anthropology.
+First, the debate around the ``memetic'' program initiated by \citet{Dawkins76}, for which the collection of works by \citet{Aunger00} provides a solid overview.
+A second field has focused on the development of evolutionary models of norms (see for instance \citealp{Ehrlich05}), following the seminal work of \citet{Boyd85}. 
 
-The understanding of the origin of cultural similarity has triggered a sizable literature in the recent past, spanning over a vast area of research fields ranging from cultural anthropology to social network analysis and complex system modeling --- and diversely labeled as studies on ``opinion dynamics'', ``cultural evolution'', or ``information diffusion'', for the most part.  Broadly, this type of research program relies on the understanding of phenomena pertaining to both cognitive science and social science, in order to jointly appraise the processing and transmission of information at the individual and social levels. % information propagation phenomena -- and where we witness the development of studies relying on both individual and social cognition.
+A third approach, ``cultural epidemiology'', initiated by \citet{sper:expl} recently attracted significant attention.
+Works such as \citet{Atran03} argue that this approach is anthropologically better suited than memetics, and the main issues in this debate are further detailed by \citet{Kuper00} and \citet{Bloch00}.
+The cultural epidemiology program focuses on the notion of \emph{representation}, linking the cognitive science concept of \emph{mental representation} to the concept of \emph{public representation}, the latter being the former's counterpart outside the brain (i.e. in cultural artefacts: texts, utterances, etc.).\footnote{\citet{sper:expl} emphasizes this distinction in his seminal work:
+\begin{quotation}
+A representation may exist inside its user: it is then a \emph{mental representation}, such as a memory, a belief, or an intention.
+The producer and the user of a mental representation are one and the same person.
+A representation may also exist in the environment of its user, as is the case, for instance, of the text you are presently reading: it is then a \emph{public representation}.
+\end{quotation}}
+The key point here is that representations are not being replicated through a high-fidelity copy process, but are being interpreted and produced anew, and are thus greatly subject to change.
+Cultural epidemiology postulates this type of conceptual evolution and suggests that it can be appraised through the notion of ``cultural attractor'', seen as the attraction domain of an underlying socio-semantic dynamical system.
+Despite some recent modelling attempts (for instance \citet{Claidiere07}), the development of quantitative measurements focused on the key notion of cultural attractor has remained a relatively hard task and, to our knowledge, this hypothesis has not yet been empirically analysed.
 
-Several theories have been proposed and debated within these research fields, mixing social and individual cognition --- notably from the side of cultural anthropology.  There is, first, the debate around the ``memetic'' program initiated by \citet{Dawkins76}, for which the collection of works by \citet{Aunger00} provides a solid overview. A second field relates to the development of evolutionary models of norms (see for instance \citealp{Ehrlich05}), following the seminal work of  \citet{Boyd85}. 
+However, the last decade has witnessed an avalanche of observable \emph{in vivo} data in the form of online interactions.
+While they are not records of ``physical'' inter-individual interactions (in the sense of ``real life'' interactions), these productions and information trails still constitute a wealth of observations on the dynamics of public --~albeit online~-- representations.
+Given the already significant --~and rapidly growing~-- importance of our online interactions, these records can dramatically improve the prospects of empirical study of the individual-level processes of cultural evolution.
 
-A third approach, ``cultural epidemiology'' initiated by \citet{sper:expl} recently attracted significant attention. Works such as \citet{Atran03} suggest that this program is anthropologically more accurate than memetics; see \citet{Kuper00}, and \citet{Bloch00}, for further details on the main issues in this debate.
-It focuses on the notion of \emph{representation}, linking the cognitive science concept of \emph{mental representation} to the concept of \emph{public representation}, the latter being the equivalent of the former outside of the brain (\hbox{i.e.} in cultural artefacts: texts, utterances, etc.).\footnote{\citet{sper:expl} emphasizes this distinction in his seminal work:
-%\begin{quotation}
-{%Une représentation peut exister à l'intérieur même de l'utilisateur : il s'agit alors d'une \emph{représentation mentale}. Un souvenir, une hypothèse, une intention sont des exemples de représentations mentales. L'utilisateur et le producteur d'une représentation mentale ne font qu'un. Une représentation peut aussi exister dans l'environnement de l'utilisateur comme par exemple le texte qui est sous vos yeux. Il s'agit alors d'une \emph{représentation publique}. Une représentation publique est généralement un moyen de communication entre un producteur et un utilisateur distincts l'un de l'autre.
-``%
-A representation may exist inside its user: it is then a \emph{mental representation}, such as a memory, a belief, or an intention. The producer and the user of a mental representation are one and the same person.  A representation may also exist in the environment of its user, as is the case, for instance, of the text you are presently reading: it is then a \emph{public representation}.}%~(\citealp[p.~49]{sper:expl}.)
-''
-%\end{quotation}
-}
-The key point here is that representations are not being replicated through a hi-fidelity copying process, but are being reformulated through an interpretation process, and thus evolve. Cultural epidemiology postulates this type of conceptual mutation and suggests that it can be appraised through the notion of ``cultural attractor'', seen as the attraction domains of an underlying semantic dynamical system.
-Despite some recent modeling attempts (for instance \citet{Claidiere07}), the development of quantitative measurements focused on the key notion of cultural attractor has remained a relatively hard task and, to our knowledge, this hypothesis has not been empirically validated.
+We aim to empirically describe the transformation of a specific type of public representation, by focusing on the possible alterations introduced by individuals when newly producing a representation.
+To deal with robust and simple cultural representations, we paid attention to the evolution of quotations.
+While these verbatim public representations should in theory not suffer any alterations as they are produced anew (as opposed to more elaborate expressions and opinions, not identified as quoted utterances), empirical observation shows that they are in fact quite often transformed.
+We will in particular exhibit a non-trivial process by which individual words in quotations are replaced.
+We will uncover some of the semantic and structural characteristics of these words and the substitutions they undergo.
+More generally, we contend that using this type of data is equivalent to a large-scale psycholinguistic experiment and at the same time constitutes the first step towards building empirically realistic models of cultural evolution. 
 
-%Bien qu'ayant connu des développements récents en modélisation (par exemple \citealp{Claidiere07}, pour la notion d'attracteur culturel), la difficulté à effectuer des mesures quantitatives sur les notions clés du domaine a fait que les hypothèses à la base de l'édifice théorique développé n'ont pas encore pu être testées empiriquement.
+The next section (Sec~\ref{sec:related}) describes the state-of-the-art on this matter.
+In Sec.~\ref{sec:protocol}, we detail the empirical protocol and the various assumptions that were made in order to deal with the available empirical material.
+Section~\ref{sec:results} describes the significant psycholinguistic cues and biases observed during \emph{in vivo} quotation reformulation, followed by a discussion and general guidelines for further work in Sec.~\ref{sec:conclusion}.
 
-The last decade has however witnessed an avalanche of observable \emph{in vivo} data stemming from online interactions. While they are not records of strictly ``physical'' inter-individual interactions (in the sense of ``real life'' interactions), these information trails and productions actually constitute a wealth of observations on the dynamics of public representations. As such, they are prone to radically improve the prospects of empirical validation of the individual-level processes of cultural evolution. 
-
-We aim to empirically describe the transformation of a specific type of public representations by focusing on the possible cognitive alterations performed by individuals during reformulation.  % On s'est proposé d'étudier de façon \emph{empirique} la transformation des représentations publiques, en se focalisant sur la mise en évidence d'un biais cognitif dans le traitement  par le cerveau de certaines représentations culturelles. 
-To deal with robust and simple cultural representations, we paid attention to the evolution of quotations. Although these verbatim public representations should not suffer any alterations as they are repeated (as opposed to more elaborate expressions and opinions), in practice they are oftentimes transformed.  We will in particular exhibit a non-trivial cognitive alteration by which some portions of the quotation, namely individual words, may be modified; and will wonder which are generally the semantic and structural characteristics of these words and their substitutions. 
-%On verra que par cette analyse de la reproduction des citations par les auteurs on observe un biais cognitif non trivial ; on observera ainsi un lien entre l'attractivité de certains mots (en termes d'épidémiologie culturelle) et les propriétés sémantiques de ces mêmes mots, calculées sur la base du réseau formé par ces mots.
-%On s'est proposé d'étudier de façon \emph{empirique} la transformation des représentations publiques, c'est-à-dire d'explorer à l'aide de données obtenues in vivo l'effet du cerveau sur l'évolution des représentations ; une telle étude permettrait d'observer empiriquement l'effet d'un attracteur culturel tel que défini par Sperber. La question est donc la suivante : peut-on observer un biais cognitif dans le traitement de certaines représentations culturelles par le cerveau, et si oui quel est-il ?On verra que par cette analyse de la reproduction des citations par les auteurs on observe un biais cognitif non trivial ; on observera ainsi un lien entre l'attractivité de certains mots (en termes d'épidémiologie culturelle) et les propriétés sémantiques de ces mêmes mots, calculées sur la base du réseau formé par ces mots.
-Broadly, we contend that using this type of data is both equivalent to a large-scale psycholinguistic experiment and at the same time constitutes the first step towards the design of empirically realistic models of cultural evolution. 
-
-% --------------------------------
-%\subsection*{Problématique} % -----
-% --------------------------------
-\label{subsec:problematique}
-
-%\paragraph*{Plan}
-
-The next section (Sec~\ref{sec:related}) describes the relevant recent state-of-the-art on this matter. In Sec.~\ref{sec:protocol}, we detail the empirical protocol and the various assumptions that were made in order to deal with the available empirical material. Section~\ref{sec:results} describes the significant psycholinguistic cues and biases observed during \emph{in vivo} quotation reformulation, followed by a discussion and general guidelines for further work in Sec.~\ref{sec:conclusion}.
-%Le travail de recherche effectué étant essentiellement empirique, on le présente en deux grandes étapes : en premier lieu, on détaille le protocole d'expérimentation utilisé ainsi que les différentes tentatives et pistes explorées pendant son élaboration. Pour cela, on commencera par analyser la question ci-dessus plus à fond afin d'en distiller une question opérationnelle, puis on expliquera en détail la façon dont on a construit le protocole expérimental permettant de faire les mesures pour répondre à cette question%\footnote{Le terme "protocole expérimental", utilisé ici, est bien le terme approprié pour ce dont il s'agit : on verra qu'on part d'un corpus de données pour lequel on construit une façon de faire les mesures qu'on considère pertinentes, et cette démarche correspond à la construction d'un protocole expérimental comme on peut le faire pour une expérience de psychologie cognitive ; c'est à ce moment qu'on définit ce qu'on va mesurer et comment cette mesure est faite.}
-%. La deuxième grande partie concerne les résultats : on montre tout d'abord la façon dont les mesures sont utilisées pour construire les observables qu'on cherche, ce qui permettra ensuite d'interpréter les résultats obtenus au regard de la question posée.
-%Une dernière partie concernera les perspectives que ce travail ouvre, et les façons dont il pourrait être poursuivi et étendu.
-
-\section{Related work}\label{sec:related}
+% ============================
+\section{Related work} % =====
+% ============================
+\label{sec:related}
 
 The relevant literature on \emph{public representation dynamics} features two main streams. On one hand, we find studies aiming at understanding the macroscopic phenomena of \emph{social diffusion} of public representations, describing for instance the propagation of cultural items across social networks such as blogspace \citep{Gruhl04}, the characteristic times and diffusion cycles both within these social networks and with respect to the topical dynamics of news media \citep{Leskovec09}, or the reciprocal influence between the social network topology and the distribution of issues \citep{Cointet09}.     
 %L'état de l'art en ce qui concerne l'épidémiologie culturelle peut être résumé ainsi : d'un côté, des études %s'intégrant au deuxième groupe de disciplines

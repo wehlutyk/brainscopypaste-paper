@@ -2,9 +2,7 @@
 <!-- To view this file, download free mind mapping software FreeMind from http://freemind.sourceforge.net -->
 <node CREATED="1390403697886" ID="ID_772922142" MODIFIED="1390403716827" TEXT="Brains Copy-Paste">
 <node CREATED="1390406562998" ID="ID_652699747" MODIFIED="1390406575880" POSITION="right" TEXT="Introduction">
-<node CREATED="1390408633683" ID="ID_1323544757" MODIFIED="1390408701658" TEXT="Cultural similarity">
-<icon BUILTIN="flag"/>
-</node>
+<node CREATED="1390408633683" ID="ID_1323544757" MODIFIED="1390570285674" TEXT="Cultural similarity and diversity"/>
 <node CREATED="1390408702834" ID="ID_1921419470" MODIFIED="1390408728389" TEXT="Several approaches: memetic, norms, sperber"/>
 <node CREATED="1390408729059" ID="ID_213257435" MODIFIED="1390408754103" TEXT="Sperber explanation. Untested"/>
 <node CREATED="1390408754995" ID="ID_22607560" MODIFIED="1390408765033" TEXT="Big data"/>
