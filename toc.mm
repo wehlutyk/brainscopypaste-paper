@@ -15,6 +15,9 @@
 <node CREATED="1390409152233" ID="ID_1288837524" MODIFIED="1390409204253" TEXT="Transformations: small sperber stuff, cognitively poor large-scale stuff"/>
 <node CREATED="1390409232799" ID="ID_289344291" MODIFIED="1390409264964" TEXT="Psycholinguistics for the influence of word features on recall"/>
 <node CREATED="1390409305179" ID="ID_299410782" MODIFIED="1390409318647" TEXT="Haven&apos;t really touched network-based features"/>
+<node CREATED="1390582491340" ID="ID_1509117388" MODIFIED="1390582506504" TEXT="Add the three papers to that picture">
+<icon BUILTIN="forward"/>
+</node>
 <node CREATED="1390409319466" ID="ID_881452070" MODIFIED="1390409382095" TEXT="And two side-hypotheses: awkwardness leads to forget vs pop-out">
 <icon BUILTIN="flag"/>
 </node>
