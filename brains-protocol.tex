@@ -43,7 +43,7 @@ The results were however extremely similar across the various categories, exhibi
 \subsubsection{Network-based indices}
 
 Additional to classical psycholinguistic measures, we also considered more recently studied variables based on semantic network properties.
-We relied on two types of network-based data: curated synonym associations provided by WordNet~\citep{WordNet10}, and ``free association'' norms collected by~\citet{Nelson04}.  
+We relied on two types of network-based data: curated synonym associations provided by WordNet~\citep{WordNet10}, and ``free association'' norms collected by~\citet{Nelson04}.
 
 The WordNet (WN) database gathers more than \num{117000} concepts and about \num{147000} words attached to these concepts.
 WordNet entries are disambiguated words, called ``lemmas'', which are grouped into concepts called ``synsets'': all the lemmas in a synset are synonyms for the same single meaning.
@@ -51,7 +51,7 @@ Note that synsets also encode grammatical category, so the choice of a synset fo
 Non-disambiguated words make the nodes of the semantic network we build (i.e. homograph lemmas are aggregated into a single node), and a node's neighbours are synonymous lemmas belonging to the same synset(s) as the lemma(s) represented by that node.
 In other words, synsets induce cliques in the semantic network, and a word with several meanings belongs to as many cliques as it has meanings.
 \TB{Links connecting two synonymous lemmas are assigned a weight corresponding to the number of times these lemmas are mentioned by WordNet as synonyms, i.e. in the same synset.}
-\rk{Didn't we decide to drop that last point, the weighing in the graph?}
+\rk{We might spare ourselves that last sentence since we drop that aspect further down.}
 
 Free Association (FA) norms record the words that come to mind when people are presented with a given cue (that is the ``free association'' task).
 As \citeauthor{Nelson04} explain,
@@ -66,12 +66,23 @@ In  order to work in a unified framework, we shall consider links as an informat
 \rk{Check that's the case in the analysis}
 
 \bigskip
-We introduce three standard network-based features, which may also be relevant psycholinguistically:
+We introduce three standard network-based features to be used on both the WN and FA networks:
+
 \begin{itemize}
-    \item \textbf{Distance}, a classical dyadic network measure corresponding to the shortest path length between two nodes. This measure may be used as a proxy of the remoteness between two given lemmas, which is likely to have an influence on the likelihood of being a relevant substitution candidate.
-    \item \textbf{Centrality} $k$, measured by the number of neighbors of a given node, and interpretable as a proxy for the polysemy of words. For the directed network FA we also define the incoming centrality $k'$ (number of neighbors pointing \emph{to} that node).  Note that in the present case, there is a quasi-perfect correlation between node degree and node \emph{PageRank} \cite{Page99}, which had already been used in \cite{Griffiths07} and may be interpreted as a generalized and recursive measure of lemma polysemy --- central nodes in the PageRank sense are those which are linked to many nodes themselves linked to many nodes, and so on, recursively.\footnote{\TB{{Betweenness coefficient}, another measure of node centrality describing the extent to which a node tends to connect otherwise remote areas of the network \cite{free:set}. More technically, it corresponds to the normalized number of shortest paths connecting dyads which pass through that node; the higher, the more important is that node in ensuring the connectedness of the rest of the network. Correlation between FA-BC and FA-PR is $0.74$; between WN-BC and WN-PR it is $0.83$.}}
-    \item \textbf{Clustering coefficient} $c$, which measures the extent to which a node belongs to a local aggregate of tightly connected nodes, and defined as the ratio between the number of actual vs. possible links between a node's neighbors \cite{watt-coll}. A lemma is likely to have a higher clustering coefficient whenever the synsets to which it belongs are themselves semantically linked. This measure had been used by \citet{Chan10}.
+    \item \textbf{Distance}, a classical dyadic network measure corresponding to the shortest path length between two nodes.
+    This measure may be used as a proxy of the remoteness between two given words, which is likely to influence the likelihood of a word being a relevant substitution candidate for another word.
+    \item \textbf{Centrality} $k$, measured by the number of neighbours of a given node, which can be interpreted as a proxy for the polysemy of words.
+    \TB{For the directed network FA we also define the incoming centrality $k'$ (number of neighbours pointing \emph{to} that node)}.
+    \rk{Remove that, since we restrict ourselves to undirected networks}
+    Note that in the present case, there is a quasi-perfect correlation between node degree and node \emph{PageRank}~\citep{Page99}, which had already been used in~\citet{Griffiths07} and may be interpreted as a generalized and recursive measure of word polysemy: central nodes in the PageRank sense are those which are linked to many nodes themselves linked to many nodes, and so on recursively.
+    \item \textbf{Clustering coefficient} $c$, which measures the extent to which a node belongs to a local aggregate of tightly connected nodes, and defined as the ratio between the number of actual v. possible edges between a node's neighbours \cite{watt-coll}. In the WN network, a word is likely to have a higher clustering coefficient whenever the synsets to which it belongs are themselves semantically linked.
+    This measure had been used by \citet{Chan10}.
 \end{itemize}
+
+\TB{Betweenness coefficient, another measure of node centrality describing the extent to which a node tends to connect otherwise remote areas of the network~\citep{free:set}.
+More technically, it corresponds to the normalized number of shortest paths connecting dyads which pass through that node; the higher the coefficient, the more important that node is in ensuring the connectedness of the rest of the network.
+Correlation between FA-BC and FA-PR is $0.74$; between WN-BC and WN-PR it is $0.83$.}
+\rk{We dropped this, right?}
 
 \subsubsection{Variable correlations}
 
