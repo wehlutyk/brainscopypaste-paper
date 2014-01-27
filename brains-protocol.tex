@@ -40,7 +40,7 @@ We first introduce some of the most classical psycholinguistic measures on words
 We also considered grammatical types within quotations by detection of \emph{Part-of-Speech} (POS) categories, using the Penn TreeBank Project typology~\citep{Santorini90} and thereby distinguishing verbs, nouns, adjectives and adverbs.
 The results were however extremely similar across the various categories, exhibiting no specific effect of words belonging to different POS categories.
 
-\subsubsection{Network-based indices}
+\subsubsection{Network-based measures}
 
 Additional to classical psycholinguistic measures, we also considered more recently studied variables based on semantic network properties.
 We relied on two types of network-based data: curated synonym associations provided by WordNet~\citep{WordNet10}, and ``free association'' norms collected by~\citet{Nelson04}.
@@ -75,7 +75,8 @@ We introduce three standard network-based measures to be used on both the WN and
     \TB{For the directed network FA we also define the incoming centrality $k'$ (number of neighbours pointing \emph{to} that node)}.
     \rk{Remove that, since we restrict ourselves to undirected networks}
     Note that in the present case, there is a quasi-perfect correlation between node degree and node \emph{PageRank}~\citep{Page99}, which had already been used in~\citet{Griffiths07} and may be interpreted as a generalized and recursive measure of word polysemy: central nodes in the PageRank sense are those which are linked to many nodes themselves linked to many nodes, and so on recursively.
-    \item \textbf{Clustering coefficient} $c$, which measures the extent to which a node belongs to a local aggregate of tightly connected nodes, and defined as the ratio between the number of actual v. possible edges between a node's neighbours \cite{watt-coll}. In the WN network, a word is likely to have a higher clustering coefficient whenever the synsets to which it belongs are themselves semantically linked.
+    \item \textbf{Clustering coefficient} $c$, which measures the extent to which a node belongs to a local aggregate of tightly connected nodes, and defined as the ratio between the number of actual v. possible edges between a node's neighbours \cite{watt-coll}.
+    In the WN network, a word is likely to have a higher clustering coefficient whenever the synsets to which it belongs are themselves semantically linked.
     This measure had been used by \citet{Chan10}.
 \end{itemize}
 
@@ -106,6 +107,7 @@ We chose to focus the results on FA as this network presents a direct psychologi
 
 \begin{figure}[!th]
     \includegraphics[width=\linewidth]{algorithms/Rplot.pdf}
+    \caption{Variable correlations \rk{rebuild with the variables we talk about and keep}}
 \end{figure}
 
 \subsection{Detection of substitutions}
@@ -124,7 +126,8 @@ Should we consider them to be substitutions based on $q_a$ (i.e. re-creations of
 
 To settle this question we model the process as follows: we assume that when a quotation $q$ appears at time $t$, if it is not original (i.e. if not stemming from a source external to the dataset, e.g. initiating a new set of quotations), then it is based solely on the most frequent quotation $q_{max}$ in the preceding period of time $[t - \Delta t ; t]$.
 The length $\Delta t$ of that period of time is fixed as a fraction of the total duration of the set of quotations; we took one fifth in the implementation (i.e. one month for a set of quotations spanning five months, or one day for a set spanning only five days; this takes the dynamism of the set of quotations into account).
-If $q$ differs from $q_{max}$ by only a word, it is counted as a substitution from $q_{max}$ to $q$. In any other case, i.e. if $q$ and $q_{max}$ are the same or if $q$ and $q_{max}$ are different in other ways, the occurrence of $q$ is not considered to be an instance of substitution and is discarded.
+If $q$ differs from $q_{max}$ by only a word, it is counted as a substitution from $q_{max}$ to $q$.
+In any other case, i.e. if $q$ and $q_{max}$ are the same or if $q$ and $q_{max}$ are different in other ways, the occurrence of $q$ is not considered to be an instance of substitution and is discarded.
 
 An example of this detection in a situation akin to the one described above can be seen on figure \ref{fig:model-slidetimebags}: $q_a$ and $q_b$ differ by only a word, and $q_a$ appears first and stays the most frequent in the beginning.
 This is why the occurrences of $q_b$ at $t_1$ and $t_2$ are detected as substitutions stemming from $q_a$.
@@ -148,46 +151,48 @@ The source quotation of a potential substitution can be chosen among those time-
 
 \subsection{Characterization of substitutions}
 
-We then measure the cognitive alteration of human copy-pasting by comparing the relative properties of substituted and substituting words in quotations.  We only consider altered quotations, \hbox{i.e.} quotations where at least one word has been modified; in other words, we measure the properties of alteration \emph{knowing that} there has been a variation (which indicates a certain reformulation) while we do not take invariant quotations into account, as it is impossible to know, in that case, whether there has been perfect individual reformulation, or just digital copy-pasting of a source (``{\sf Ctrl-C}/{\sf Ctrl-V}'').
+We then measure the alterations introduced when authors reproduce quotations by comparing the relative features of substituted and substituting words.
+Note that since we only consider substitutions, we measure the features of an alteration \emph{knowing that there has been a alteration}, and we do not take invariant quotations into account.
+Indeed, in the first case we know there has been a human reformulation, whereas in the second case it is impossible to know whether there has been perfect human reformulation or simply digital copy-pasting of a source (``{\sc Ctrl-C}/{\sc Ctrl-V}'').
 
-We build two main observables for each word property. First, we measure the variation of word features over a substitution, looking at the difference of the value of a given feature between arrival and start words. %This address the question ``how do word features vary over a subs  \tb{la variation de caractéristique sémantique lors du passage du mot remplacé au mot remplaçant dans une substitution. Ceci répond à la question "comment fait-on varier la caractéristique sémantique lorsqu'on substitue un mot ?".} 
-Second, we measure the susceptibility for words to be the target of a substitution, knowing that there has been a variation, in order to show which semantic features are the most likely to be the target of a substitution. % Second, \tb{la susceptibilité que les mots ont à être remplacés, en fonction de leur caractéristique sémantique. Cette mesure répond à la question "quelles caractéristiques sémantiques a-t-on plus tendance à substituer ?"%\footnote{Attention, cette mesure ne suffit pas en elle-même pour parler d'\emph{influence} de la caractéristique sémantique d'un mot sur le fait qu'il soit substitué ou non, parce qu'on n'a pas fait d'analyse des causes impliquées dans le fait qu'un mot soit substitué ; en effet, d'autres facteurs pourraient être plus importants que ces caractéristiques sémantiques dans les causes d'une substitution. On ne répond donc \emph{pas} à la question "quelle est l'influence de la caractéristique sémantique d'un mot sur sa propension à être substitué ?".}.
+We build two main observables for each word feature.
+First, we measure the variation of word feature over a substitution, looking at the variation of a given feature between arrival and start words.
+Second, we measure the susceptibility for words to be the source of a substitution, knowing that there has been a variation, in order to show which semantic features are the most likely to attract a substitution.
 
 \subsubsection{Alteration}
-%The above protocol enables us to observe in detail how word features vary upon substitution. 
-For a given feature $\mathfrak{F}$, we measure how a word $\wstart$'s feature varies as $\wstart$ is substituted by $\warrival$. Let us denote this quantity:
+
+For a given feature $\mathfrak{F}$, we measure how a word $\wstart$'s feature varies as $\wstart$ is substituted by $\warrival$.
+Let us denote this quantity:
 $$\Delta (\wstart,\warrival) \defeq \mathfrak{F}(\warrival) - \mathfrak{F}(\wstart)$$
 
-Averaging this value over all start words with a given feature value $f$ yields the mean variation for that feature value $f$.\footnote{To avoid any auto-correlation effect due to the number of substitutions in a cluster, we first average substitutions over each cluster, by considering the average of arrival word features for a given starting word. Indeed, substitutions occurring in the same cluster are likely not statistically independent.} This 
-quantity can be written:
+Averaging this value over all start words with a given feature value $f$ yields the mean variation for that feature value $f$.
+\footnote{To avoid any auto-correlation effect due to the number of substitutions in a cluster (possibly leading to an overly optimistic estimation of confidence intervals), we first average substitutions over each cluster, by considering the average of arrival word features for a given start word.
+Indeed, substitutions occurring in the same cluster are likely not statistically independent.}
+This quantity can be written:
 $$\left< \Delta(\wstart,\warrival) \right>_f = \left< \mathfrak{F}(\warrival) - \mathfrak{F}(\wstart) \right>_{\left\lbrace (\wstart,\warrival) | \mathfrak{F}(\wstart) = f \right\rbrace}$$
 
-We introduce a null hypothesis $\mathcal{H}_0$ to compare the actual variation of a word's feature to its expected variation assuming the arrival word $\warrival_{\mathcal{H}_0}$ had been chosen randomly from % , let us denote the corresponding quantity This value is to be compared to the variation the word's feature would have undergone had the arrival word been chosen randomly in 
-the pool of \TB{WN/FA} words. The corresponding average quantity over all start words may be written as:\footnote{Note that $\warrival_{\mathcal{H}_0}$ is in fact constant in this averaging, since by definition it does not depend on $\wstart$.}
-%$$\Delta_{\mathcal{H}_0} (\wstart,\warrival) \defeq f\left(\warrival_{\mathcal{H}_0}\right) - f\left(\wstart\right)$$
-%and, similarly, we compute the average over all start words 
-$$\left< \Delta(\wstart,\warrival_{\mathcal{H}_0}) \right>_f
-= \left< \mathfrak{F}({\warrival_{\mathcal{H}_0}}) - \mathfrak{F}(\wstart) \right>_{\left\lbrace (\wstart,\warrival_{\mathcal{H}_0}) | \mathfrak{F}(\wstart) = f \right\rbrace}$$
-%Averaging over all start words with a given feature value $f$, we get $$\left< \Delta_{\mathcal{H}_0} \right>_f = \left< \mathfrak{F}({\warrival_{\mathcal{H}_0}}) - \mathfrak{F}(\wstart) \right>_{\left\lbrace \wstart | \mathfrak{F}(\wstart) = f \right\rbrace}$$
+We introduce a null hypothesis $\mathcal{H}_0$ to compare the actual variation of a word's feature to its expected variation, assuming the arrival word $\warrival_{\mathcal{H}_0}$ had been chosen randomly from the pool of free association words.
+\rk{Check that's true in the code}
+The corresponding average quantity over all start words may be written:
+\footnote{Note that $\warrival_{\mathcal{H}_0}$ is in fact constant in this averaging, since by definition it does not depend on $\wstart$.}
+$$\left< \Delta(\wstart,\warrival_{\mathcal{H}_0}) \right>_f = \left< \mathfrak{F}({\warrival_{\mathcal{H}_0}}) - \mathfrak{F}(\wstart) \right>_{\left\lbrace (\wstart,\warrival_{\mathcal{H}_0}) | \mathfrak{F}(\wstart) = f \right\rbrace}$$
 
-We also considered an alternative null hypothesis, denoted $\mathcal{H}_{00}$, where the arrival word is chosen randomly \emph{among immediate synonyms of the start word} (neighbors), i.e. an arrival word chosen among semantically plausible though still random words (in this case $\warrival_{\mathcal{H}_{00}}$ does depend on $\wstart$). %The values for $d$ were decided upon according to the distribution of distances travelled on the synonym graph upon substitution, normalized by the number of synonyms at that distance. 
-%  brought all variation curves shown below nearer to the origin, but did not change the results qualitatively.
-%The variation of feature compared to $\mathcal{H}_0$ is then $\left< \Delta \right>_f - \left< \Delta_{\mathcal{H}_0} \right>_f$.
+We also considered an alternative null hypothesis, denoted $\mathcal{H}_{00}$, where the arrival word is chosen randomly \emph{among immediate synonyms of the start word} (neighbours in the WN network \rk{We could also do that with neighbours in directed or undirected FA}), i.e. an arrival word chosen among semantically plausible though still random words.
+\footnote{In this case $\warrival_{\mathcal{H}_{00}}$ does depend on $\wstart$.}
 
-Using this method we obtain the mean variation of feature for each start feature value, and can compare the variations to a situation where arrival words are chosen randomly. This gives us a fine-grained view of how word features evolve upon substitution.
-
+Using this method we obtain the mean variation of feature for each start feature value, and can compare the variations to a situation where arrival words are chosen randomly.
+This gives us a fine-grained view of how word features evolve upon substitution.
 
 \subsubsection{Susceptibility}
 
-
-Furthermore, the protocol lets us compute substitution \emph{susceptibilities} for each feature value $f$. 
-We say that a word is \emph{substitutable} if it appears in a quote which undergoes a substitution, whether that substitution operates on the considered word or on another. 
-Word substitution susceptibility (denoted $\mathfrak{S}_{\mathfrak{F}}(w)$) is computed as the ratio of the number of times $n_s(w)$ a word is substituted to the number of times $n_p(w)$ that word appears in a substitutable position.  We have:
+Furthermore, the protocol lets us compute substitution \emph{susceptibilities} for each feature value $f$.
+We say that a word is \emph{substitutable} if it appears in a quote which undergoes a substitution, whether that substitution operates on the considered word or on another.
+Word substitution susceptibility (denoted $\mathfrak{S}_{\mathfrak{F}}(w)$) is computed as the ratio of the number of times $n_s(w)$ a word is substituted to the number of times $n_p(w)$ that word appears in a substitutable position.
+We have:
 $$\mathfrak{S}_{\mathfrak{F}}(w) \defeq \frac{n_s(w)}{n_p(w)}$$
 
 Now averaging over all words having a given feature value $f$, we obtain the mean susceptibility for the feature value $f$:
 $$\left< \mathfrak{S}_{\mathfrak{F}} \right>_f = \left< \frac{n_s(w)}{n_p(w)} \right>_{\left\lbrace w | \mathfrak{F}(w) = f \right\rbrace}$$
 
-This measure focuses on the selection of start word instead of the selection of the arrival word. Indeed, the features have an effect not only on the choice of a new word when a substitution takes place, but also at the preceding moment when it is not yet known which word in the quote --~if any~-- will be substituted. 
-
-
+This measure focuses on the selection of start word instead of the selection of the arrival word.
+Indeed, the features have an effect not only on the choice of a new word when a substitution takes place, but also at the preceding moment when it is not yet known which word in the quotation -- if any -- will be substituted.
