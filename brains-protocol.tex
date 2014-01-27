@@ -18,7 +18,7 @@ This dataset consists of the daily crawling of news stories and blog posts from 
 Quotations were then automatically extracted from this corpus: each quotation is a more or less faithful excerpt of an utterance (oral or written) by the quoted person.
 Quotations were then gathered in a graph and connected according to their similarity: either because they differ by very few words (in that case, no more than one word) or because they share a certain sequence of words (in that case, at least ten consecutive words).
 A community detection algorithm was applied to that quotation graph to detect aggregates of tightly connected, i.e. sufficiently similar, groups of quotations (see \citet{Leskovec09} for more detail).
-This analysis yielded the final data we had access to, with a total of about $70,000$ sets of quotations; each of these sets allegedly contains all variations of a same parent utterance, along with their respective publication URLs and timestamps.
+This analysis yielded the final data we had access to, with a total of about \num{70000} sets of quotations; each of these sets allegedly contains all variations of a same parent utterance, along with their respective publication URLs and timestamps.
 
 \subsection{Word-level measures}
 
@@ -40,15 +40,22 @@ We first introduced some of the most classical psycholinguistic measures on word
 We also considered grammatical types within quotations by detection of \emph{Part-of-Speech} (POS) categories, using the Penn TreeBank Project typology~\citep{Santorini90} and thereby distinguishing verbs, nouns, adjectives and adverbs.
 The results were however extremely similar across the various categories, exhibiting no specific effect of words belonging to different POS categories.
 
-\subsubsection{Network-based definitions}
+\subsubsection{Network-based indices}
 
-We rely on two types of network-based data: curated synonym associations provided by WordNet~\citep{WordNet10}, and ``free association'' relationships collected by~\citet{Nelson04}.  
+Additional to classical psycholinguistic measures, we also considered more recently studied variables based on semantic network properties.
+We relied on two types of network-based data: curated synonym associations provided by WordNet~\citep{WordNet10}, and ``free association'' relationships collected by~\citet{Nelson04}.  
 
-The WordNet (WN) database gathers more than 117~000 concepts and about 147~000 words attached to these concepts. WordNet entries are disambiguated words, or ``\emph{lemmas}'', which are attached to concepts called ``synsets'', each of them gathering the set of lemmas corresponding to the same single meaning. Note that the choice of a synset for a lemma immediately determines the grammatical category of that lemma. Lemmas make the nodes of the semantic network (homonyms are aggregated into a single node), whose neighbors are synonymous lemmas belonging to the same synset(s) as the lemma(s) represented by that node.  In other words, synsets induce cliques in the semantic network. Links connecting two synonymous lemmas are being assigned a weight corresponding to the number of times these lemmas are mentioned by WordNet as synonyms, i.e. in the same synset. 
+The WordNet (WN) database gathers more than \num{117000} concepts and about \num{147000} words attached to these concepts.
+WordNet entries are disambiguated words, called ``lemmas'', which are grouped into concepts called ``synsets'': all the lemmas in a synset are synonyms for the same single meaning.
+Note that synsets also encode grammatical category, so the choice of a synset for a word (thus creating a lemma) immediately determines the grammatical category of that word.
+Non-disambiguated words make the nodes of the semantic network we build (i.e. homograph lemmas are aggregated into a single node), and a node's neighbours are synonymous lemmas belonging to the same synset(s) as the lemma(s) represented by that node.
+In other words, synsets induce cliques in the semantic network, and a word with several meanings belongs to as many cliques as it has meanings.
+\TB{Links connecting two synonymous lemmas are assigned a weight corresponding to the number of times these lemmas are mentioned by WordNet as synonyms, i.e. in the same synset.}
+\rk{Didn't we decide to drop that last point, the weighing in the graph?}
 
 \rk{Explain Free Association}
 
-\TB{The original WN network is a weighted, undirected network; the FA network is a directed network where weights have a different meaning. Both semantic networks describe synonymy relationships corresponding to qualitatively distinct forms of association: either from a linguistic viewpoint (WN) or from the perspective of actual information retrieval by humans (FA).  In  order to work in a unified framework, we consider links as an information on the existence of some sort of association between two words and transform both networks into undirected, unweighted networks.}
+\TB{The original WN network is a weighted, undirected network; the FA network is a directed network where weights have a different meaning. Both semantic networks describe synonymy relationships corresponding to qualitatively distinct forms of association: either from a linguistic viewpoint (WN) or from the perspective of actual information retrieval by humans (FA).  In  order to work in a unified framework, we consider links as an information on the existence of some sort of association between two words and transform both networks into undirected, unweighed networks.} \rk{Check that's the case in the analysis}
 
 \bigskip
 We introduce three standard network-based features, which may also be relevant psycholinguistically:
