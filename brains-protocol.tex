@@ -28,13 +28,13 @@ The following sections detail the features we used.
 
 \subsubsection{Standard psycholinguistic indices}
 
-We first introduced some of the most classical psycholinguistic measures on words:
+We first introduce some of the most classical psycholinguistic measures on words:
 
 \begin{itemize}
     \item \textbf{Age of Acquisition}: the average age at which words are learned, obtained from~\citet{kuperman12},
     \item The average \textbf{Number of Phonemes} for all pronunciations of a word, obtained from the Carnegie Mellon University Pronouncing Dictionary~\citep{Weide98},\footnote{The CMU Pronouncing Dictionary is included in the NTLK package~\citep{Bird09}, the natural language processing toolkit we used for the analysis.}
     \item The average \textbf{Number of Syllables} for all pronunciations of a word, also obtained from the CMU Pronouncing Dictionary.
-    \item \rk{Why exactly don't we include word frequencies as a measure?}
+    \item \rk{Why exactly don't we include word frequencies as a measure? The alleged self-correlation loop doesn't determine at which end of a substitution a given high-frequency word would be, so it doesn't really force correlation}
 \end{itemize}
 
 We also considered grammatical types within quotations by detection of \emph{Part-of-Speech} (POS) categories, using the Penn TreeBank Project typology~\citep{Santorini90} and thereby distinguishing verbs, nouns, adjectives and adverbs.
@@ -66,10 +66,10 @@ In  order to work in a unified framework, we shall consider links as an informat
 \rk{Check that's the case in the analysis}
 
 \bigskip
-We introduce three standard network-based features to be used on both the WN and FA networks:
+We introduce three standard network-based measures to be used on both the WN and FA networks:
 
 \begin{itemize}
-    \item \textbf{Distance}, a classical dyadic network measure corresponding to the shortest path length between two nodes.
+    \item \textbf{Distance} between two words, a classical dyadic network measure corresponding to the shortest path length between two nodes.
     This measure may be used as a proxy of the remoteness between two given words, which is likely to influence the likelihood of a word being a relevant substitution candidate for another word.
     \item \textbf{Centrality} $k$, measured by the number of neighbours of a given node, which can be interpreted as a proxy for the polysemy of words.
     \TB{For the directed network FA we also define the incoming centrality $k'$ (number of neighbours pointing \emph{to} that node)}.
@@ -86,15 +86,23 @@ Correlation between FA-BC and FA-PR is $0.74$; between WN-BC and WN-PR it is $0.
 
 \subsubsection{Variable correlations}
 
-\TB{It would be difficult to discuss possible correlations between distance ($d$), on one side, and centrality ($k$ or $k'$) or clustering coefficient ($c$) on the other side, as the former is a dyadic measure while the latter are monadic measures.  We may however note that centrality and clustering are relatively weakly (and negatively) correlated, with a Pearson coefficient of $-0.26$.} \rk{remove, redundant with below}
+An important question here relates to the various possible correlations between all the variables we consider.
 
-An important question here relates to the various possible correlations between all the variables we consider.  The age of acquisition is a key variable, primarily as a usual suspect in psycholinguistic studies, and also appears to be generally correlated to all the other variables.  This coincides with an ongoing debate suggesting that age of acquisition encodes a variety of phenomena which are difficult to disentangle from more specific phenomena, which could be captured by more independent variables such as \CN.
-\TB{Indeed, the minimal linear correlation of $aoa$ ($-0.31$) with other variables has a higher magnitude than the maximal linear correlation of other variables with each other ($-0.26$).} \rk{how do we get to that conclusion?}
+The age of acquisition is a key variable, primarily as a usual suspect in psycholinguistic studies, and also appears to be generally correlated to many of the other variables.
+This relates to an ongoing debate suggesting that age of acquisition encodes a variety of phenomena which are difficult to disentangle from more specific phenomena, which could be captured by more independent variables such as \CN.
+\rk{What do we conclude of that? Nuance results with AoA?}
+\TB{Indeed, the minimal linear correlation of $aoa$ ($-0.31$) with other variables has a higher magnitude than the maximal linear correlation of other variables with each other ($-0.26$).}
+\rk{how do we get to that conclusion?}
 
-Additionally, phonemes and syllables exhibit a strong linear correlation ($0.85$).  We see a better prediction effect of phonemes over syllables, which is consistent with \cite{nick-diss}, and choose to focus on phonemes only. \rk{check that!}
+Additionally, number of phonemes and number of syllables exhibit a strong linear correlation ($0.85$).
+The analysis showed a better prediction effect of number of phonemes over number of syllables, which is consistent with~\citet{nick-diss}, and we therefore chose to focus the presented results on the former only.
+\rk{Check that!}
 
 \bigskip
-Network properties, finally, appear to be relatively weakly correlated with each other, across one network or between both networks (i.e. nodes with high index values are generally distinct between FA and WN), and may be used . We rely on FA as there is a direct possible psychological interpretation (that human copy-pasting may or may not show the same type of trend as human free association), noting that prediction results will be matched against WN as well. \rk{comment peut-on dire que les nœuds importants dans FA ne sont pas nécessairement importants dans WN mais que, pourtant, la forme de la prédiction est la même? cela me semble illogique en première lecture}
+Network properties, finally, appear to be relatively weakly correlated with each other, across one network or between both networks (i.e. nodes with high index values are generally distinct between FA and WN).
+We chose to focus the results on FA as this network presents a direct psychological interpretation (that human copy-pasting may or may not show the same type of trend as human free association), noting that prediction results are matched against WN as well.
+\rk{comment peut-on dire que les nœuds importants dans FA ne sont pas nécessairement importants dans WN mais que, pourtant, la forme de la prédiction est la même? cela me semble illogique en première lecture}
+\rk{Check those assertions}
 
 \begin{figure}[!th]
 \includegraphics[width=\linewidth]{algorithms/Rplot.pdf}

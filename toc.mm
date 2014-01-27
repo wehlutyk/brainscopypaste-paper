@@ -40,22 +40,20 @@
 <node CREATED="1390412068374" ID="ID_1219552417" MODIFIED="1390412094740" TEXT="POS"/>
 </node>
 <node CREATED="1390406657131" ID="ID_1287399659" MODIFIED="1390406663906" TEXT="Network-based indices">
+<node CREATED="1390848862329" ID="ID_1540884178" MODIFIED="1390848869631" TEXT="We also use more recent network-based indices"/>
 <node CREATED="1390412098931" ID="ID_1463022930" MODIFIED="1390412130148" TEXT="WordNet explanation"/>
 <node CREATED="1390412130585" ID="ID_1110665733" MODIFIED="1390412134211" TEXT="FreeAssociation explanation"/>
-<node CREATED="1390412137456" ID="ID_910054072" MODIFIED="1390412139620" TEXT="Features on each">
-<node CREATED="1390412142619" ID="ID_1097987483" MODIFIED="1390414309819" TEXT="Distance (not a feature on words, but on couples)">
-<icon BUILTIN="flag-orange"/>
-</node>
+<node CREATED="1390412137456" ID="ID_910054072" MODIFIED="1390848958842" TEXT="Measures on each">
+<node CREATED="1390412142619" ID="ID_1097987483" MODIFIED="1390848950019" TEXT="Distance"/>
 <node CREATED="1390412145720" ID="ID_246341845" MODIFIED="1390412148289" TEXT="Centrality"/>
 <node CREATED="1390412152043" ID="ID_1254287045" MODIFIED="1390412157392" TEXT="Clustering coefficient"/>
 <node CREATED="1390412161528" ID="ID_505632701" MODIFIED="1390412167021" TEXT="Betwenness centrality?"/>
 </node>
 </node>
 <node CREATED="1390406664335" ID="ID_958313616" MODIFIED="1390406675720" TEXT="Index correlations">
-<node CREATED="1390412193403" ID="ID_521360280" MODIFIED="1390414277787" TEXT="Difficult to compare dyadic and monadic features">
-<icon BUILTIN="flag"/>
+<node CREATED="1390412258299" ID="ID_615610131" MODIFIED="1390848693156" TEXT="Age of acquisition is debated as it correlates to many things. Example numbers. So what do we decide from that?">
+<icon BUILTIN="messagebox_warning"/>
 </node>
-<node CREATED="1390412258299" ID="ID_615610131" MODIFIED="1390412323766" TEXT="Age of acquisition is debated as is correlates to many things. Example numbers."/>
 <node CREATED="1390412324307" ID="ID_1492343529" MODIFIED="1390412344296" TEXT="Number of phonemes and number of syllables are redundant, restrict to the former"/>
 <node CREATED="1390412364352" ID="ID_1283089405" MODIFIED="1390412528925" TEXT="Network properties: weakly correlated, and we rely on FA for its interpretability. Quid: would the results with WN coincide? Why if they&apos;re not correlated?">
 <icon BUILTIN="messagebox_warning"/>
