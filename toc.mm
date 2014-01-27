@@ -10,7 +10,9 @@
 <node CREATED="1390408765543" ID="ID_1784082026" MODIFIED="1390409216661" TEXT="Our example: quotes"/>
 <node CREATED="1390409061512" ID="ID_1775528240" MODIFIED="1390409062700" TEXT="TOC"/>
 </node>
-<node CREATED="1390406577432" ID="ID_1523278321" MODIFIED="1390406582482" POSITION="right" TEXT="Related work">
+<node CREATED="1390406577432" ID="ID_1523278321" MODIFIED="1390831499312" POSITION="right" TEXT="Related work">
+<icon BUILTIN="button_ok"/>
+<icon BUILTIN="forward"/>
 <node CREATED="1390409099661" ID="ID_1119269684" MODIFIED="1390409114535" TEXT="Social diffusion, network analyses"/>
 <node CREATED="1390409152233" ID="ID_1288837524" MODIFIED="1390409204253" TEXT="Transformations: small sperber stuff, cognitively poor large-scale stuff"/>
 <node CREATED="1390409232799" ID="ID_289344291" MODIFIED="1390409264964" TEXT="Psycholinguistics for the influence of word features on recall"/>
