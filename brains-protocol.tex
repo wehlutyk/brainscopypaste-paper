@@ -22,15 +22,26 @@ This analysis yielded the final data we had access to, with a total of about $70
 
 \subsection{Word-level measures}
 
+To keep the analysis palatable, we restricted the analysis to quotation transformations which consisted in the \emph{substitution} of a word by another word (and only those cases).
+To quantify those substitutions, we decided to associate a number of features to each word, the variation of which we can statistically study.
+The following sections detail the features we used.
+
 \subsubsection{Standard psycholinguistic indices}
 
-\RK{introduce the classical psycholinguistic measures -- kind of like ``demographic'' usual suspects}
+We first introduced some of the most classical psycholinguistic measures on words:
 
-We also considered grammatical types within quotations by detection of \emph{Part-of-Speech} (POS) categories, using the Penn TreeBank Project typology \citep{Santorini90} and thereby distinguishing verbs, nouns, adjectives and 
-adverbs.  The results were however extremely similar across the various categories, exhibiting no specific behavior of words belonging to different POS categories. %. \tb{Enfin, on ajoute à ces mesures la catégorie grammaticale, dans les citations, des mots échangés lors des substitutions. On s'est restreint à quatre des catégories les plus fréquentes, en utilisant la catégorisation et la notation des \emph{Part-of-Speech} (abrégé POS)\footnote{Le terme \emph{Part-of-Speech}, ou "partie du discours" en français, désigne les catégories grammaticales des mots (ou même des parties de mots) utilisées en linguistique.} du Penn TreeBank Project\footnote{Le Penn TreeBank Project définit une typologie très complète des POS, ainsi qu'une façon de les noter : à chaque POS correspond un code de deux ou trois lettres majuscules. Par exemple, tous les POS tenant du verbe commencent par la lettre $V$ (e.g. $VBN$ pour participe passé, $VBG$ pour participe présent, etc.).}~\citep{Santorini90} : verbes (POS dont le code commence par $V$), noms (POS dont le code commence par $N$), adjectifs (POS dont le code commence par $J$), et adverbes (POS dont le code commence par $R$). Cette mesure supplémentaire affine les observables définies ci-dessus, et permet d'observer un éventuel effet des catégories grammaticales sur les résultats.}
+\begin{itemize}
+    \item \textbf{Age of Acquisition}: the average age at which words are learned, obtained from~\citet{kuperman12},
+    \item The average \textbf{Number of Phonemes} for all pronunciations of a word, obtained from the Carnegie Mellon University Pronouncing Dictionary~\citep{Weide98},\footnote{The CMU Pronouncing Dictionary is included in the NTLK package~\citep{Bird09}, the natural language processing toolkit we used for the analysis.}
+    \item The average \textbf{Number of Syllables} for all pronunciations of a word, also obtained from the CMU Pronouncing Dictionary.
+    \item \rk{Why exactly don't we include word frequencies as a measure?}
+\end{itemize}
 
+We also considered grammatical types within quotations by detection of \emph{Part-of-Speech} (POS) categories, using the Penn TreeBank Project typology~\citep{Santorini90} and thereby distinguishing verbs, nouns, adjectives and adverbs.
+The results were however extremely similar across the various categories, exhibiting no specific effect of words belonging to different POS categories.
 
 \subsubsection{Network-based definitions}
+
 We rely on two types of network-based data: curated synonym associations provided by WordNet~\citep{WordNet10}, and ``free association'' relationships collected by~\citet{Nelson04}.  
 
 The WordNet (WN) database gathers more than 117~000 concepts and about 147~000 words attached to these concepts. WordNet entries are disambiguated words, or ``\emph{lemmas}'', which are attached to concepts called ``synsets'', each of them gathering the set of lemmas corresponding to the same single meaning. Note that the choice of a synset for a lemma immediately determines the grammatical category of that lemma. Lemmas make the nodes of the semantic network (homonyms are aggregated into a single node), whose neighbors are synonymous lemmas belonging to the same synset(s) as the lemma(s) represented by that node.  In other words, synsets induce cliques in the semantic network. Links connecting two synonymous lemmas are being assigned a weight corresponding to the number of times these lemmas are mentioned by WordNet as synonyms, i.e. in the same synset. 
@@ -42,9 +53,9 @@ The WordNet (WN) database gathers more than 117~000 concepts and about 147~000 w
 \bigskip
 We introduce three standard network-based features, which may also be relevant psycholinguistically:
 \begin{itemize}
-	\item \textbf{Distance}, a classical dyadic network measure corresponding to the shortest path length between two nodes. This measure may be used as a proxy of the remoteness between two given lemmas, which is likely to have an influence on the likelihood of being a relevant substitution candidate.
-	\item \textbf{Centrality} $k$, measured by the number of neighbors of a given node, and interpretable as a proxy for the polysemy of words. For the directed network FA we also define the incoming centrality $k'$ (number of neighbors pointing \emph{to} that node).  Note that in the present case, there is a quasi-perfect correlation between node degree and node \emph{PageRank} \cite{Page99}, which had already been used in \cite{Griffiths07} and may be interpreted as a generalized and recursive measure of lemma polysemy --- central nodes in the PageRank sense are those which are linked to many nodes themselves linked to many nodes, and so on, recursively.\footnote{\TB{{Betweenness coefficient}, another measure of node centrality describing the extent to which a node tends to connect otherwise remote areas of the network \cite{free:set}. More technically, it corresponds to the normalized number of shortest paths connecting dyads which pass through that node; the higher, the more important is that node in ensuring the connectedness of the rest of the network. Correlation between FA-BC and FA-PR is $0.74$; between WN-BC and WN-PR it is $0.83$.}}
-	\item \textbf{Clustering coefficient} $c$, which measures the extent to which a node belongs to a local aggregate of tightly connected nodes, and defined as the ratio between the number of actual vs. possible links between a node's neighbors \cite{watt-coll}. A lemma is likely to have a higher clustering coefficient whenever the synsets to which it belongs are themselves semantically linked. This measure had been used by \citet{Chan10}.
+    \item \textbf{Distance}, a classical dyadic network measure corresponding to the shortest path length between two nodes. This measure may be used as a proxy of the remoteness between two given lemmas, which is likely to have an influence on the likelihood of being a relevant substitution candidate.
+    \item \textbf{Centrality} $k$, measured by the number of neighbors of a given node, and interpretable as a proxy for the polysemy of words. For the directed network FA we also define the incoming centrality $k'$ (number of neighbors pointing \emph{to} that node).  Note that in the present case, there is a quasi-perfect correlation between node degree and node \emph{PageRank} \cite{Page99}, which had already been used in \cite{Griffiths07} and may be interpreted as a generalized and recursive measure of lemma polysemy --- central nodes in the PageRank sense are those which are linked to many nodes themselves linked to many nodes, and so on, recursively.\footnote{\TB{{Betweenness coefficient}, another measure of node centrality describing the extent to which a node tends to connect otherwise remote areas of the network \cite{free:set}. More technically, it corresponds to the normalized number of shortest paths connecting dyads which pass through that node; the higher, the more important is that node in ensuring the connectedness of the rest of the network. Correlation between FA-BC and FA-PR is $0.74$; between WN-BC and WN-PR it is $0.83$.}}
+    \item \textbf{Clustering coefficient} $c$, which measures the extent to which a node belongs to a local aggregate of tightly connected nodes, and defined as the ratio between the number of actual vs. possible links between a node's neighbors \cite{watt-coll}. A lemma is likely to have a higher clustering coefficient whenever the synsets to which it belongs are themselves semantically linked. This measure had been used by \citet{Chan10}.
 \end{itemize}
 
 \subsubsection{Variable correlations}
@@ -77,12 +88,12 @@ To settle this question we model the process as follows: we assume that when a q
 An example of this detection in a situation akin to the one described above can be seen on figure \ref{fig:model-slidetimebags}: $q_a$ and $q_b$ differ by only a word, and $q_a$ appears first and stays the most frequent in the beginning. This is why the occurrences of $q_b$ at $t_1$ and $t_2$ are detected as substitutions stemming from $q_a$. After a time the situation is reversed: $q_b$ becomes more frequent than $q_a$. This entails that occurrences of $q_b$ are seen as reproductions of itself ($t_3$), and that occurrences of $q_a$ are detected as substitutions stemming from $q_b$ ($t_4$), i.e. \emph{re-creations} of $q_a$.
 
 \begin{figure*}[h]
-	\centering
-	\def\svgwidth{\textwidth}
-	\small
-	\input{images/model-slidetimebags-b.pdf_tex}
-	\caption{Detection of substitutions according to model \rk{update text in figure}}
-	\label{fig:model-slidetimebags}
+    \centering
+    \def\svgwidth{\textwidth}
+    \small
+    \input{images/model-slidetimebags-b.pdf_tex}
+    \caption{Detection of substitutions according to model \rk{update text in figure}}
+    \label{fig:model-slidetimebags}
 \end{figure*}
 
 The assumptions embedded in this model are only a subset of a wider set of possibilities, all leading to alternative models. We identified and implemented five other such possible models, which all yielded essentially the same results. These models differ in the definition of the source quote from which new occurrences stem, essentially modifying the balance between reproduction of previous occurrences of a quote and re-creation of itself by a new substitution instance. For example, the time-windows considered can have different lengths, can include all occurrences from the beginning of the set of quotations, or can have fixed positions. The source quote of a potential substitution can be chosen among those time-windows, or otherwise (e.g. among \emph{all} quotes having appeared before $t$ and differing by a word from the considered arrival quote; this detection process would include all possible substitutions detected by other models, but would also include many false-positives).
