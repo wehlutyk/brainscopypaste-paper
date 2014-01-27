@@ -43,7 +43,7 @@ The results were however extremely similar across the various categories, exhibi
 \subsubsection{Network-based indices}
 
 Additional to classical psycholinguistic measures, we also considered more recently studied variables based on semantic network properties.
-We relied on two types of network-based data: curated synonym associations provided by WordNet~\citep{WordNet10}, and ``free association'' relationships collected by~\citet{Nelson04}.  
+We relied on two types of network-based data: curated synonym associations provided by WordNet~\citep{WordNet10}, and ``free association'' norms collected by~\citet{Nelson04}.  
 
 The WordNet (WN) database gathers more than \num{117000} concepts and about \num{147000} words attached to these concepts.
 WordNet entries are disambiguated words, called ``lemmas'', which are grouped into concepts called ``synsets'': all the lemmas in a synset are synonyms for the same single meaning.
@@ -53,9 +53,16 @@ In other words, synsets induce cliques in the semantic network, and a word with 
 \TB{Links connecting two synonymous lemmas are assigned a weight corresponding to the number of times these lemmas are mentioned by WordNet as synonyms, i.e. in the same synset.}
 \rk{Didn't we decide to drop that last point, the weighing in the graph?}
 
-\rk{Explain Free Association}
+Free Association (FA) norms record the words that come to mind when people are presented with a given cue (that is the ``free association'' task). As \citeauthor{Nelson04} explain,
+\begin{quote}
+free association response probabilities index the likelihood that one word can cue another word to come to mind with minimal contextual constraints in effect.~\citep{Nelson04}
+\end{quote}
+Following \citet{Griffiths07}, we consider the directed weighed network formed by the association norms, that is the network where words are nodes and edges are directed from cue to associated word, with a weight equal to the probability of that target word being produced when this particular cue was presented.
 
-\TB{The original WN network is a weighted, undirected network; the FA network is a directed network where weights have a different meaning. Both semantic networks describe synonymy relationships corresponding to qualitatively distinct forms of association: either from a linguistic viewpoint (WN) or from the perspective of actual information retrieval by humans (FA).  In  order to work in a unified framework, we consider links as an information on the existence of some sort of association between two words and transform both networks into undirected, unweighed networks.} \rk{Check that's the case in the analysis}
+While the original WN network is a weighted, undirected network, the FA network is a directed network where weights have a different meaning.
+Both semantic networks describe synonymy relationships corresponding to qualitatively distinct forms of association: either from a linguistic viewpoint (WN) or from the perspective of actual information retrieval by humans (FA).
+In  order to work in a unified framework, we shall consider links as an information on the existence of some sort of association between two words and transform both networks into undirected, unweighed networks.
+\rk{Check that's the case in the analysis}
 
 \bigskip
 We introduce three standard network-based features, which may also be relevant psycholinguistically:
