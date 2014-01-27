@@ -25,7 +25,9 @@
 </node>
 <node CREATED="1390409364340" ID="ID_282280579" MODIFIED="1390409374077" TEXT="Gap between social macro, and psycho micro"/>
 </node>
-<node CREATED="1390406583278" ID="ID_1801606106" MODIFIED="1390406588497" POSITION="right" TEXT="Protocol">
+<node CREATED="1390406583278" ID="ID_1801606106" MODIFIED="1390852304819" POSITION="right" TEXT="Protocol">
+<icon BUILTIN="button_ok"/>
+<icon BUILTIN="forward"/>
 <node CREATED="1390406625206" ID="ID_247612094" MODIFIED="1390835152801" TEXT="Foreword: we took quotes, they shouldn&apos;t change and they do"/>
 <node CREATED="1390406619400" ID="ID_1924202431" MODIFIED="1390411968035" TEXT="Dataset: MemeTracker: sources, clustering"/>
 <node CREATED="1390406631104" ID="ID_494615520" MODIFIED="1390406635005" TEXT="Word-level measures">
