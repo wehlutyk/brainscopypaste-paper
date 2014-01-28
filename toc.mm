@@ -116,6 +116,9 @@
 </node>
 <node CREATED="1390414096468" ID="ID_1157384202" MODIFIED="1390414112557" TEXT="Susceptibility is like mutation probability"/>
 <node CREATED="1390414116215" ID="ID_1000561064" MODIFIED="1390414127515" TEXT="So we&apos;re starting the empirical analysis of cultural epidemiology"/>
+<node CREATED="1390926476529" ID="ID_24364638" MODIFIED="1390926596169" TEXT="A big question to be addressed is the &apos;why&apos;: what underlying aspect of words with these features make them words to be substituted or not, and why does the brain do that? How was that selected for in evolution?">
+<icon BUILTIN="forward"/>
+</node>
 </node>
 </node>
 <node CREATED="1390406596224" ID="ID_950488587" MODIFIED="1390414147060" POSITION="right" TEXT="Processual model">
