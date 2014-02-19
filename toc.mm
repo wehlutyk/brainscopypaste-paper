@@ -20,8 +20,8 @@
 <node CREATED="1390582491340" ID="ID_1509117388" MODIFIED="1390582506504" TEXT="Add the three papers to that picture">
 <icon BUILTIN="forward"/>
 </node>
-<node CREATED="1390409319466" ID="ID_881452070" MODIFIED="1390409382095" TEXT="And two side-hypotheses: awkwardness leads to forget vs pop-out">
-<icon BUILTIN="flag"/>
+<node CREATED="1390409319466" ID="ID_881452070" MODIFIED="1392828867340" TEXT="And two side-hypotheses: awkwardness leads to forget vs pop-out [show the link with epidemiology, and fitness: oddness is a kind of fitness]">
+<icon BUILTIN="flag-orange"/>
 </node>
 <node CREATED="1390409364340" ID="ID_282280579" MODIFIED="1390409374077" TEXT="Gap between social macro, and psycho micro"/>
 </node>
@@ -37,15 +37,17 @@
 <node CREATED="1390411992386" ID="ID_1277653028" MODIFIED="1390411997174" TEXT="Age of Acquisition"/>
 <node CREATED="1390411997707" ID="ID_1446871611" MODIFIED="1390412004022" TEXT="Number of phonemes"/>
 <node CREATED="1390412004444" ID="ID_41677805" MODIFIED="1390412007604" TEXT="Number of syllables"/>
-<node CREATED="1390841990272" ID="ID_1938578940" MODIFIED="1390842003473" TEXT="Word frequencies?">
-<icon BUILTIN="messagebox_warning"/>
+<node CREATED="1390841990272" ID="ID_1938578940" MODIFIED="1392829079154" TEXT="Word frequencies [and get the analogy with Kolmogorov&apos;s 5/3 law in turbulences]">
+<icon BUILTIN="forward"/>
 </node>
 <node CREATED="1390412068374" ID="ID_1219552417" MODIFIED="1390412094740" TEXT="POS"/>
 </node>
 <node CREATED="1390406657131" ID="ID_1287399659" MODIFIED="1390406663906" TEXT="Network-based indices">
 <node CREATED="1390848862329" ID="ID_1540884178" MODIFIED="1390848869631" TEXT="We also use more recent network-based indices"/>
 <node CREATED="1390412098931" ID="ID_1463022930" MODIFIED="1390412130148" TEXT="WordNet explanation"/>
-<node CREATED="1390412130585" ID="ID_1110665733" MODIFIED="1390412134211" TEXT="FreeAssociation explanation"/>
+<node CREATED="1390412130585" ID="ID_1110665733" MODIFIED="1392830331106" TEXT="FreeAssociation explanation [roll back to directed FA]">
+<icon BUILTIN="forward"/>
+</node>
 <node CREATED="1390412137456" ID="ID_910054072" MODIFIED="1390848958842" TEXT="Measures on each">
 <node CREATED="1390412142619" ID="ID_1097987483" MODIFIED="1390848950019" TEXT="Distance"/>
 <node CREATED="1390412145720" ID="ID_246341845" MODIFIED="1390412148289" TEXT="Centrality"/>
@@ -58,7 +60,7 @@
 <icon BUILTIN="messagebox_warning"/>
 </node>
 <node CREATED="1390412324307" ID="ID_1492343529" MODIFIED="1390412344296" TEXT="Number of phonemes and number of syllables are redundant, restrict to the former"/>
-<node CREATED="1390412364352" ID="ID_1283089405" MODIFIED="1390412528925" TEXT="Network properties: weakly correlated, and we rely on FA for its interpretability. Quid: would the results with WN coincide? Why if they&apos;re not correlated?">
+<node CREATED="1390412364352" ID="ID_1283089405" MODIFIED="1392830354380" TEXT="Network properties: weakly correlated, and we rely on FA for its interpretability. Quid: would the results with WN coincide? Why if they&apos;re not correlated? [rebuild this once we&apos;ve looked at the updated results]">
 <icon BUILTIN="messagebox_warning"/>
 </node>
 </node>
@@ -93,8 +95,8 @@
 <icon BUILTIN="flag-orange"/>
 </node>
 <node CREATED="1390413365557" ID="ID_1916249531" MODIFIED="1390413394026" TEXT="Lower AoA, lower NPhonemes -&gt; more substituted"/>
-<node CREATED="1390413517149" ID="ID_1297046722" MODIFIED="1390413526792" TEXT="Supports hyp X">
-<icon BUILTIN="flag"/>
+<node CREATED="1390413517149" ID="ID_1297046722" MODIFIED="1392828996107" TEXT="Supports hyp X">
+<icon BUILTIN="flag-orange"/>
 </node>
 <node CREATED="1390413551243" ID="ID_78397115" MODIFIED="1390413619608" TEXT="Low AoA and low NPhonemes go to same feature value"/>
 <node CREATED="1390413596132" ID="ID_1904733098" MODIFIED="1390413613068" TEXT="High AoA and high NPhonemes go to H0 values"/>

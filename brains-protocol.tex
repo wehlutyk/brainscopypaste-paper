@@ -33,10 +33,10 @@ We first introduce some of the most classical psycholinguistic measures on words
 \rk{Add some bibliography about those features' known effects}
 
 \begin{itemize}
+    \item \rk{Add word frequency as a feature, and maybe link it to Kolmogorov's 5/3 law in turbulences}
     \item \textbf{Age of Acquisition}: the average age at which words are learned, obtained from~\citet{kuperman12},
     \item The average \textbf{Number of Phonemes} for all pronunciations of a word, obtained from the Carnegie Mellon University Pronouncing Dictionary~\citep{Weide98},\footnote{The CMU Pronouncing Dictionary is included in the NTLK package~\citep{Bird09}, the natural language processing toolkit we used for the analysis.}
     \item The average \textbf{Number of Syllables} for all pronunciations of a word, also obtained from the CMU Pronouncing Dictionary.
-    \item \rk{Why exactly don't we include word frequencies as a measure? The alleged self-correlation loop doesn't determine at which end of a substitution a given high-frequency word would be, so it doesn't really force correlation}
 \end{itemize}
 
 We also considered grammatical types within quotations by detection of \emph{Part-of-Speech} (POS) categories, using the Penn TreeBank Project typology~\citep{Santorini90} and thereby distinguishing verbs, nouns, adjectives and adverbs.
@@ -65,8 +65,8 @@ Following \citet{Griffiths07}, we consider the directed weighed network formed b
 While the original WN network is a weighted, undirected network, the FA network is a directed network where weights have a different meaning.
 Both semantic networks describe synonymy relationships corresponding to qualitatively distinct forms of association: either from a linguistic viewpoint (WN) or from the perspective of actual information retrieval by humans (FA).
 In  order to work in a unified framework, we shall consider links as an information on the existence of some sort of association between two words and transform both networks into undirected, unweighed networks.
-\rk{Check that's the case in the analysis}
-\rk{In fact, the graphs are much less interesting for undirected unweighed FA.}
+\rk{Roll back to directed FA, and explain that it's a link between in-vivo spontaneous substitution and in-vitro forced substitution.
+We could even add a more precise analysis using FA data directly (instead of features on the FA network), or keep that for the processual model.}
 
 \bigskip
 We introduce three standard network-based measures to be used on both the WN and FA networks:
@@ -76,7 +76,7 @@ We introduce three standard network-based measures to be used on both the WN and
     This measure may be used as a proxy of the remoteness between two given words, which is likely to influence the likelihood of a word being a relevant substitution candidate for another word.
     \item \textbf{Centrality} $k$, measured by the number of neighbours of a given node, which can be interpreted as a proxy for the polysemy of words.
     \TB{For the directed network FA we also define the incoming centrality $k'$ (number of neighbours pointing \emph{to} that node)}.
-    \rk{Remove that, since we restrict ourselves to undirected networks}
+    \rk{Rephrase once we rolled back FA to directed}
     Note that in the present case, there is a quasi-perfect correlation between node degree and node \emph{PageRank}~\citep{Page99}, which had already been used in~\citet{Griffiths07} and may be interpreted as a generalized and recursive measure of word polysemy: central nodes in the PageRank sense are those which are linked to many nodes themselves linked to many nodes, and so on recursively.
     \item \textbf{Clustering coefficient} $c$, which measures the extent to which a node belongs to a local aggregate of tightly connected nodes, and defined as the ratio between the number of actual v. possible edges between a node's neighbours \cite{watt-coll}.
     In the WN network, a word is likely to have a higher clustering coefficient whenever the synsets to which it belongs are themselves semantically linked.
@@ -175,7 +175,6 @@ This quantity can be written:
 $$\left< \Delta(\wstart,\warrival) \right>_f = \left< \mathfrak{F}(\warrival) - \mathfrak{F}(\wstart) \right>_{\left\lbrace (\wstart,\warrival) | \mathfrak{F}(\wstart) = f \right\rbrace}$$
 
 We introduce a null hypothesis $\mathcal{H}_0$ to compare the actual variation of a word's feature to its expected variation, assuming the arrival word $\warrival_{\mathcal{H}_0}$ had been chosen randomly from the pool of free association words.
-\rk{Check that's true in the code -- yes, it's ok}
 The corresponding average quantity over all start words may be written:
 \footnote{Note that $\warrival_{\mathcal{H}_0}$ is in fact constant in this averaging, since by definition it does not depend on $\wstart$.}
 $$\left< \Delta(\wstart,\warrival_{\mathcal{H}_0}) \right>_f = \left< \mathfrak{F}({\warrival_{\mathcal{H}_0}}) - \mathfrak{F}(\wstart) \right>_{\left\lbrace (\wstart,\warrival_{\mathcal{H}_0}) | \mathfrak{F}(\wstart) = f \right\rbrace}$$
