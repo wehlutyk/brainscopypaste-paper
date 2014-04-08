@@ -1,11 +1,10 @@
 % General document style ------------------------------------------------------------------
-\documentclass%[a4paper,11pt]
-{acmtog}
+\documentclass{acmtog}
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
+
 % Colors
 \usepackage[usenames,dvipsnames]{color}
-
 
 \acmVolume{VV}
 \acmNumber{N}
@@ -30,14 +29,10 @@
 \usepackage{amsmath}
 \usepackage{amsfonts}
 \usepackage[group-separator={,}]{siunitx}
-%\usepackage{amsthm}
 \usepackage{stmaryrd}
 \usepackage{xfrac}
 \usepackage{mathtools}
 \newcommand{\defeq}{\overset{\underset{\mathrm{def}}{}}{=}}
-%\theoremstyle{definition}
-\newtheorem{mdef}{Definition}
-\newtheorem{model}{Model}
 
 \usepackage{listings}
 \lstset{
@@ -63,47 +58,27 @@
 \newcommand{\smallremark}[1]{\noindent\fbox{{\TB{#1}}}}
 \newcommand{\marginnote}[1]{\marginpar{{\parbox{1.\linewidth}{\hrulefill\\\TB{\scriptsize \sf #1}}}}}
 \newcommand{\cam}[1]{\textcolor{blue}{\small{[}#1{]}}}
-%\newcommand{\needed}{\textcolor{blue}{$^\text{\footnotesize{[}Citation needed{]}}$}}
 
-
+% shortcuts
 \newcommand{\arrival}{\text{arrival}}
 \newcommand{\start}{\text{start}}
 
 \newcommand{\warrival}{w^\star}
 \newcommand{\wstart}{w}
 
-
 % If citations or references are missing, make it visible
 \newcommand{\CN}{\textsuperscript{\TB{[Citation needed]}}}
 \newcommand{\CNs}{\textsuperscript{\TB{[Multiple citations needed]}}}
 \newcommand{\RN}{\textsuperscript{\TB{[Internal reference needed]}}}
-\newcommand{\RK}[1]{\smallskip\ ~\,\\\rk{#1}\smallskip}
-
-% Enable links, make a linked table of contents
-%\usepackage{hyperref}%[pagebackref=true]
-%\hypersetup{
-%    colorlinks = true,
-%    linkcolor = black,
-%    citecolor = RedViolet,
-%    filecolor = magenta,
-%    urlcolor = blue
-%}
-
-% Underline external links
-%\let\oldhref\href
-%\renewcommand{\href}[2]{\oldhref{#1}{\underline{#2}}}
 
 % Start with the real content -------------------------------------------------------------
 
 \title{{How do we copy and paste?\\The semantic drift of quotations in blogspace}}
 \date{}
-%\author{Sébastien Lerique (\href{mailto:sebastien.lerique@ens.fr}{sebastien.lerique@ens.fr}) and Camille Roth (\href{mailto:roth@ehess.fr}{roth@ehess.fr})}
-\author{S\'EBASTIEN LERIQUE {\upshape and} CAMILLE ROTH
-}
+\author{S\'EBASTIEN LERIQUE {\upshape and} CAMILLE ROTH}
+
 \begin{document}
 \maketitle
-
-%\tableofcontents
 
 \input{brains-introduction}
 
@@ -115,21 +90,11 @@
 
 \input{brains-conclusion}
 
-%\input{2-demarche-methode-u8}
-
-%\input{3-resultats-u8}
-
-%\input{4-perspectives-conclusion-u8}
-
-%\include{5-annexes-u8}
-
 \subsection*{Acknowledgements}
-We are warmly grateful to Ana Sofia Morais for her precious feedback and advice on this research.
-\bibliographystyle{plainnat}
-%\phantomsection
-%\addcontentsline{toc}{section}{References}
-\bibliography{brainscopypaste.bib}
 
-\input{brains-feature-cards}
+We are warmly grateful to Ana Sofia Morais for her precious feedback and advice on this research.
+
+\bibliographystyle{plainnat}
+\bibliography{brainscopypaste.bib}
 
 \end{document}
