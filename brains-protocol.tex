@@ -33,60 +33,43 @@ We first introduce some of the most classical psycholinguistic measures on words
 \rk{Add some bibliography about those features' known effects}
 
 \begin{itemize}
-    \item \rk{Add word frequency as a feature, and maybe link it to Kolmogorov's 5/3 law in turbulences}
+    \item \textbf{Word frequency}: the frequency at which words appear in our dataset, \rk{add ref saying it's important}
     \item \textbf{Age of Acquisition}: the average age at which words are learned, obtained from~\citet{kuperman12},
     \item The average \textbf{Number of Phonemes} for all pronunciations of a word, obtained from the Carnegie Mellon University Pronouncing Dictionary~\citep{Weide98},\footnote{The CMU Pronouncing Dictionary is included in the NTLK package~\citep{Bird09}, the natural language processing toolkit we used for the analysis.}
-    \item The average \textbf{Number of Syllables} for all pronunciations of a word, also obtained from the CMU Pronouncing Dictionary.
+    \item The average \textbf{Number of Syllables} for all pronunciations of a word, also obtained from the CMU Pronouncing Dictionary,
+    \item The \textbf{Number of Meanings} for a word, obtained from WordNet~\citep{WordNet10}. \rk{add ref on why it's important}
 \end{itemize}
 
 We also considered grammatical types within quotations by detection of \emph{Part-of-Speech} (POS) categories, using the Penn TreeBank Project typology~\citep{Santorini90} and thereby distinguishing verbs, nouns, adjectives and adverbs.
 The results were however extremely similar across the various categories, exhibiting no specific effect of words belonging to different POS categories.
+\rk{See \#8 for this fact-check}
 
 \subsubsection{Network-based measures}
 
 Additional to classical psycholinguistic measures, we also considered more recently studied variables based on semantic network properties.
-We relied on two types of network-based data: curated synonym associations provided by WordNet~\citep{WordNet10}, and ``free association'' norms collected by~\citet{Nelson04}.
-
-The WordNet (WN) database gathers more than \num{117000} concepts and about \num{147000} words attached to these concepts.
-WordNet entries are disambiguated words, called ``lemmas'', which are grouped into concepts called ``synsets'': all the lemmas in a synset are synonyms for the same single meaning.
-Note that synsets also encode grammatical category, so the choice of a synset for a word (thus creating a lemma) immediately determines the grammatical category of that word.
-Non-disambiguated words make the nodes of the semantic network we build (i.e. homograph lemmas are aggregated into a single node), and a node's neighbours are synonymous lemmas belonging to the same synset(s) as the lemma(s) represented by that node.
-In other words, synsets induce cliques in the semantic network, and a word with several meanings belongs to as many cliques as it has meanings.
-\TB{Links connecting two synonymous lemmas are assigned a weight corresponding to the number of times these lemmas are mentioned by WordNet as synonyms, i.e. in the same synset.}
-\rk{We might spare ourselves that last sentence since we drop that aspect further down.}
+We relied on the ``free association'' norms collected by~\citet{Nelson04} which naturally embed information on the idea association process underlying transformation of quotations.
 
 Free Association (FA) norms record the words that come to mind when people are presented with a given cue (that is the ``free association'' task).
 As \citeauthor{Nelson04} explain,
 \begin{quote}
 free association response probabilities index the likelihood that one word can cue another word to come to mind with minimal contextual constraints in effect.~\citep{Nelson04}
 \end{quote}
-Following \citet{Griffiths07}, we consider the directed weighed network formed by the association norms, that is the network where words are nodes and edges are directed from cue to associated word, with a weight equal to the probability of that target word being produced when this particular cue was presented.
-
-While the original WN network is a weighted, undirected network, the FA network is a directed network where weights have a different meaning.
-Both semantic networks describe synonymy relationships corresponding to qualitatively distinct forms of association: either from a linguistic viewpoint (WN) or from the perspective of actual information retrieval by humans (FA).
-In  order to work in a unified framework, we shall consider links as an information on the existence of some sort of association between two words and transform both networks into undirected, unweighed networks.
-\rk{Roll back to directed FA, and explain that it's a link between in-vivo spontaneous substitution and in-vitro forced substitution.
-We could even add a more precise analysis using FA data directly (instead of features on the FA network), or keep that for the processual model.}
+Following \citet{Griffiths07}, we first consider the directed weighed network formed by the association norms, that is the network where words are nodes and edges are directed from cue to associated word, with a weight equal to the probability of that target word being produced when this particular cue was presented.
+\rk{we're in fact using the unweighed version of the network. Why?}
+This network is of particular interest since it measures the \emph{in-vitro forced-choice} version of a substitution whereas the data we analyse is the \emph{in-vivo spontaneous} version of what we otherwise hypothesize to be the same process.
 
 \bigskip
-We introduce three standard network-based measures to be used on both the WN and FA networks:
+We introduce three standard network-based measures to be used on both the FA network \rk{adapt once the weighing question (\#8) is settled}:
 
 \begin{itemize}
-    \item \textbf{Distance} between two words, a classical dyadic network measure corresponding to the shortest path length between two nodes.
-    This measure may be used as a proxy of the remoteness between two given words, which is likely to influence the likelihood of a word being a relevant substitution candidate for another word.
-    \item \textbf{Centrality} $k$, measured by the number of neighbours of a given node, which can be interpreted as a proxy for the polysemy of words.
-    \TB{For the directed network FA we also define the incoming centrality $k'$ (number of neighbours pointing \emph{to} that node)}.
-    \rk{Rephrase once we rolled back FA to directed}
-    Note that in the present case, there is a quasi-perfect correlation between node degree and node \emph{PageRank}~\citep{Page99}, which had already been used in~\citet{Griffiths07} and may be interpreted as a generalized and recursive measure of word polysemy: central nodes in the PageRank sense are those which are linked to many nodes themselves linked to many nodes, and so on recursively.
+    \item \textbf{Centrality} $k$, measured by the number of incoming edges to a given node, i.e. the number of cues for which a given word is triggered as an association, which strongly relates to word polysemy.
+    Note that in the present case, there is a quasi-perfect correlation between node incoming degree and node \emph{pagerank}~\citep{Page99}, a measure which had already been used by~\citet{Griffiths07} and which may be interpreted as a generalized and recursive measure of word polysemy: central nodes in the pagerank sense are words often selected as targets when presented with cues themselves often selected as targets, and so on recursively.
     \item \textbf{Clustering coefficient} $c$, which measures the extent to which a node belongs to a local aggregate of tightly connected nodes, and defined as the ratio between the number of actual v. possible edges between a node's neighbours \cite{watt-coll}.
-    In the WN network, a word is likely to have a higher clustering coefficient whenever the synsets to which it belongs are themselves semantically linked.
-    This measure had been used by \citet{Chan10}.
+    We compute the clustering coefficient on the undirected version of the FA network; we thus measure if a word belongs more or less to a local aggregate of equivalent words (from a ``free association'' point of view).
+    \item \textbf{Betweenness coefficient} $b$, another measure of node centrality describing the extent to which a node tends to connect otherwise remote areas of the network~\citep{free:set}.
+    More technically, it corresponds to the normalized number of shortest paths connecting dyads which pass through that node; the higher the coefficient, the more important that node is in ensuring the connectedness of the rest of the network.
+    This quantity tells us if some words behave like unavoidable waypoints on the path associating one word to another.
 \end{itemize}
-
-\TB{Betweenness coefficient, another measure of node centrality describing the extent to which a node tends to connect otherwise remote areas of the network~\citep{free:set}.
-More technically, it corresponds to the normalized number of shortest paths connecting dyads which pass through that node; the higher the coefficient, the more important that node is in ensuring the connectedness of the rest of the network.
-Correlation between FA-BC and FA-PR is $0.74$; between WN-BC and WN-PR it is $0.83$.}
-\rk{We dropped this, right?}
 
 \subsubsection{Variable correlations}
 
