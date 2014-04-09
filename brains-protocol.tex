@@ -140,25 +140,42 @@ These models differ in the definition of the source quote from which new occurre
 For example, the time-windows considered can have different lengths, can include all occurrences from the beginning of the set of quotations, or can have fixed positions.
 The source quotation of a potential substitution can be chosen among those time-windows, or otherwise (e.g. among \emph{all} quotations having appeared before $t$ and differing by a word from the arrival quotation; this detection process would include all possible substitutions detected by other models, but would also include many false positives).}
 
-\subsection{Characterization of substitutions}
+\subsection{Global evolution of quotation families}
 
-We then measure the alterations introduced when authors reproduce quotations by comparing the relative features of substituted and substituting words.
-Note that since we only consider substitutions, we measure the features of an alteration \emph{knowing that there has been an alteration}, and we do not take invariant quotations into account.
+
+
+\subsection{Transformation process}
+
+We then focus on the transformation process at work when authors reproduce quotations, by examining the features of substituted and substituting words in each substitution.
+Note that since we only consider substitutions and not faithful copies, we measure the features of an alteration \emph{knowing that there has been an alteration}, and we do not take invariant quotations into account.
 Indeed, in the first case we know there has been a human reformulation, whereas in the second case it is impossible to know whether there has been perfect human reformulation or simply digital copy-pasting of a source (``{\sc Ctrl-C}/{\sc Ctrl-V}'').
 
 We build two main observables for each word feature.
-First, we measure the variation of word feature over a substitution, looking at the variation of a given feature between arrival and start words.
-Second, we measure the susceptibility for words to be the source of a substitution, knowing that there has been a variation, in order to show which semantic features are the most likely to attract a substitution.
+First, we measure the susceptibility for words to be the source of a substitution, knowing that there has been a variation, in order to show which semantic features are the most likely to attract a substitution.
+Second, we measure the variation of word feature over a substitution, looking at the variation of a given feature between start and arrival words.
+
+\subsubsection{Susceptibility}
+
+For a given feature $\mathfrak{F}$, the protocol lets us compute substitution \emph{susceptibilities} for each feature value $f$.
+We say that a word is \emph{substitutable} if it appears in a quote which undergoes a substitution, whether that substitution operates on the considered word or on another.
+Word substitution susceptibility (denoted $\mathfrak{S}_{\mathfrak{F}}(w)$) is computed as the ratio of the number of times $n_s(w)$ a word is substituted to the number of times $n_p(w)$ that word appears in a substitutable position.
+We have:
+$$\mathfrak{S}_{\mathfrak{F}}(w) \defeq \frac{n_s(w)}{n_p(w)}$$
+
+Now averaging over all words having a given feature value $f$, we obtain the mean susceptibility for the feature value $f$:
+\footnote{To avoid any auto-correlation effect due to the number of substitutions in a cluster (possibly leading to an overly optimistic estimation of confidence intervals), we first average substitutions over each cluster, by considering the average of arrival word features for a given start word.
+Indeed, substitutions occurring in the same cluster are likely not statistically independent.}
+$$\left< \mathfrak{S}_{\mathfrak{F}} \right>_f = \left< \frac{n_s(w)}{n_p(w)} \right>_{\left\lbrace w | \mathfrak{F}(w) = f \right\rbrace}$$
+
+This measure focuses on the selection of start words involved in substitutions, measuring the effect of features at the moment preceding the substitution when it is not yet known which word in the quotation -- if any -- will be substituted.
 
 \subsubsection{Alteration}
 
-For a given feature $\mathfrak{F}$, we measure how a word $\wstart$'s feature varies as $\wstart$ is substituted by $\warrival$.
+Next, we measure how a word $\wstart$'s feature varies as $\wstart$ is substituted by $\warrival$.
 Let us denote this quantity:
 $$\Delta (\wstart,\warrival) \defeq \mathfrak{F}(\warrival) - \mathfrak{F}(\wstart)$$
 
 Averaging this value over all start words with a given feature value $f$ yields the mean variation for that feature value $f$.
-\footnote{To avoid any auto-correlation effect due to the number of substitutions in a cluster (possibly leading to an overly optimistic estimation of confidence intervals), we first average substitutions over each cluster, by considering the average of arrival word features for a given start word.
-Indeed, substitutions occurring in the same cluster are likely not statistically independent.}
 This quantity can be written:
 $$\left< \Delta(\wstart,\warrival) \right>_f = \left< \mathfrak{F}(\warrival) - \mathfrak{F}(\wstart) \right>_{\left\lbrace (\wstart,\warrival) | \mathfrak{F}(\wstart) = f \right\rbrace}$$
 
@@ -167,22 +184,8 @@ The corresponding average quantity over all start words may be written:
 \footnote{Note that $\warrival_{\mathcal{H}_0}$ is in fact constant in this averaging, since by definition it does not depend on $\wstart$.}
 $$\left< \Delta(\wstart,\warrival_{\mathcal{H}_0}) \right>_f = \left< \mathfrak{F}({\warrival_{\mathcal{H}_0}}) - \mathfrak{F}(\wstart) \right>_{\left\lbrace (\wstart,\warrival_{\mathcal{H}_0}) | \mathfrak{F}(\wstart) = f \right\rbrace}$$
 
-We also considered an alternative null hypothesis, denoted $\mathcal{H}_{00}$, where the arrival word is chosen randomly \emph{among immediate synonyms of the start word} (neighbours in the WN network \rk{We could also do that with neighbours in directed or undirected FA}), i.e. an arrival word chosen among semantically plausible though still random words.
-\footnote{In this case $\warrival_{\mathcal{H}_{00}}$ does depend on $\wstart$.}
+We also considered an alternative null hypothesis, denoted $\mathcal{H}_{00}$, where the arrival word is chosen randomly \emph{among immediate synonyms of the start word}, i.e. an arrival word chosen among semantically plausible though still random words.
+\footnote{In this case $\warrival_{\mathcal{H}_{00}}$ does depend on $\wstart$.} \rk{Do we present these results?}
 
 Using this method we obtain the mean variation of feature for each start feature value, and can compare the variations to a situation where arrival words are chosen randomly.
 This gives us a fine-grained view of how word features evolve upon substitution.
-
-\subsubsection{Susceptibility}
-
-Furthermore, the protocol lets us compute substitution \emph{susceptibilities} for each feature value $f$.
-We say that a word is \emph{substitutable} if it appears in a quote which undergoes a substitution, whether that substitution operates on the considered word or on another.
-Word substitution susceptibility (denoted $\mathfrak{S}_{\mathfrak{F}}(w)$) is computed as the ratio of the number of times $n_s(w)$ a word is substituted to the number of times $n_p(w)$ that word appears in a substitutable position.
-We have:
-$$\mathfrak{S}_{\mathfrak{F}}(w) \defeq \frac{n_s(w)}{n_p(w)}$$
-
-Now averaging over all words having a given feature value $f$, we obtain the mean susceptibility for the feature value $f$:
-$$\left< \mathfrak{S}_{\mathfrak{F}} \right>_f = \left< \frac{n_s(w)}{n_p(w)} \right>_{\left\lbrace w | \mathfrak{F}(w) = f \right\rbrace}$$
-
-This measure focuses on the selection of start word instead of the selection of the arrival word.
-Indeed, the features have an effect not only on the choice of a new word when a substitution takes place, but also at the preceding moment when it is not yet known which word in the quotation -- if any -- will be substituted.
