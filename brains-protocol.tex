@@ -106,42 +106,44 @@ The final set of variables we consider, as well as their cross-correlations, can
 \end{figure}
 
 
-\subsection{Detection of substitutions}
+\subsection{Detection of transformations}
 
 The data we use presents an additional challenge: each set of quotations bears no explicit information either about the authoritative original quotation, or about the source quotation(s) each author inspired himself from when creating a new post and reproducing (possibly altering) those sources.
-Substitutions are therefore not explicitly encoded in the dataset.
+Quote-to-quote transformations, and much less substitutions, are therefore not explicitly encoded in the dataset.
 
-We face a reverse engineering problem where, given all quotations and their occurrence timestamps, we must estimate which was the originating quotation for each instance of each quotation.
-We therefore model the underlying quotation selection process by making a few additional assumptions which let us define substitutions from the available data.
+We face an inference problem where, given all quotations and their occurrence timestamps, we must estimate which was the originating quotation for each instance of each quotation.
+We therefore model the underlying quotation selection process by making a few additional assumptions which let us define quote-to-quote transformations and substitutions from the available data.
 
-The main question in this problem concerns the way we consider later occurrences of a quotation which, when it first appeared, was identified to be an alteration from an original quotation.
+\rk{Rework all this with model classification}
+
+\TB{The main question in this problem concerns the way we consider later occurrences of a quotation which, when it first appeared, was identified to be an alteration from an original quotation.
 Let us give an example: say the quotation ``These accusations are false and absurd'' ($q_a$) appears in a blog on January 18, and the slightly different quotation ``These accusations are false and incoherent'' ($q_b$) appears in another blog on the 19th, the 20th, and the 21st of January.
 If $q_a$ was sufficiently prominent when $q_b$ first appeared, we can safely assume that the author of $q_b$ on the 19th based himself on $q_a$.
 But what about the following occurrences of $q_b$?
-Should we consider them to be substitutions based on $q_a$ (i.e. re-creations of $q_b$ by a new instance of the substitution process that brought from $q_a$ to $q_b$ in the first place) or reproductions of the first occurrence of $q_b$?
+Should we consider them to be substitutions based on $q_a$ (i.e. re-creations of $q_b$ by a new instance of the substitution process that brought from $q_a$ to $q_b$ in the first place) or reproductions of the first occurrence of $q_b$?}
 
-To settle this question we model the process as follows: we assume that when a quotation $q$ appears at time $t$, if it is not original (i.e. if not stemming from a source external to the dataset, e.g. initiating a new set of quotations), then it is based solely on the most frequent quotation $q_{max}$ in the preceding period of time $[t - \Delta t ; t]$.
+\TB{To settle this question we model the process as follows: we assume that when a quotation $q$ appears at time $t$, if it is not original (i.e. if not stemming from a source external to the dataset, e.g. initiating a new set of quotations), then it is based solely on the most frequent quotation $q_{max}$ in the preceding period of time $[t - \Delta t ; t]$.
 The length $\Delta t$ of that period of time is fixed as a fraction of the total duration of the set of quotations; we took one fifth in the implementation (i.e. one month for a set of quotations spanning five months, or one day for a set spanning only five days; this takes the dynamism of the set of quotations into account).
 If $q$ differs from $q_{max}$ by only a word, it is counted as a substitution from $q_{max}$ to $q$.
-In any other case, i.e. if $q$ and $q_{max}$ are the same or if $q$ and $q_{max}$ are different in other ways, the occurrence of $q$ is not considered to be an instance of substitution and is discarded.
+In any other case, i.e. if $q$ and $q_{max}$ are the same or if $q$ and $q_{max}$ are different in other ways, the occurrence of $q$ is not considered to be an instance of substitution and is discarded.}
 
-An example of this detection in a situation akin to the one described above can be seen on figure \ref{fig:model-slidetimebags}: $q_a$ and $q_b$ differ by only a word, and $q_a$ appears first and stays the most frequent in the beginning.
+\TB{An example of this detection in a situation akin to the one described above can be seen on figure \ref{fig:model-slidetimebags}: $q_a$ and $q_b$ differ by only a word, and $q_a$ appears first and stays the most frequent in the beginning.
 This is why the occurrences of $q_b$ at $t_1$ and $t_2$ are detected as substitutions stemming from $q_a$.
 After a time the situation is reversed: $q_b$ becomes more frequent than $q_a$.
-This entails that occurrences of $q_b$ are seen as reproductions of itself ($t_3$), and that occurrences of $q_a$ are detected as substitutions stemming from $q_b$ ($t_4$), i.e. \emph{re-creations} of $q_a$.
+This entails that occurrences of $q_b$ are seen as reproductions of itself ($t_3$), and that occurrences of $q_a$ are detected as substitutions stemming from $q_b$ ($t_4$), i.e. \emph{re-creations} of $q_a$.}
 
 \rk{Add figure describing the chosen model}
 
-The assumptions embedded in this model are only a subset of a wider set of possibilities, each leading to alternative models.
+\TB{The assumptions embedded in this model are only a subset of a wider set of possibilities, each leading to alternative models.
 We identified and implemented five other such models, and they all yielded essentially the same results.
 These models differ in the definition of the source quote from which new occurrences stem, essentially modifying the balance between reproduction of previous occurrences of a quote and re-creation of itself by a new substitution instance.
 For example, the time-windows considered can have different lengths, can include all occurrences from the beginning of the set of quotations, or can have fixed positions.
-The source quotation of a potential substitution can be chosen among those time-windows, or otherwise (e.g. among \emph{all} quotations having appeared before $t$ and differing by a word from the arrival quotation; this detection process would include all possible substitutions detected by other models, but would also include many false positives).
+The source quotation of a potential substitution can be chosen among those time-windows, or otherwise (e.g. among \emph{all} quotations having appeared before $t$ and differing by a word from the arrival quotation; this detection process would include all possible substitutions detected by other models, but would also include many false positives).}
 
 \subsection{Characterization of substitutions}
 
 We then measure the alterations introduced when authors reproduce quotations by comparing the relative features of substituted and substituting words.
-Note that since we only consider substitutions, we measure the features of an alteration \emph{knowing that there has been a alteration}, and we do not take invariant quotations into account.
+Note that since we only consider substitutions, we measure the features of an alteration \emph{knowing that there has been an alteration}, and we do not take invariant quotations into account.
 Indeed, in the first case we know there has been a human reformulation, whereas in the second case it is impossible to know whether there has been perfect human reformulation or simply digital copy-pasting of a source (``{\sc Ctrl-C}/{\sc Ctrl-V}'').
 
 We build two main observables for each word feature.
