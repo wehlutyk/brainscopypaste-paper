@@ -114,31 +114,43 @@ Quote-to-quote transformations, and much less substitutions, are therefore not e
 We face an inference problem where, given all quotations and their occurrence timestamps, we must estimate which was the originating quotation for each instance of each quotation.
 We therefore model the underlying quotation selection process by making a few additional assumptions which let us define quote-to-quote substitutions from the available data.
 
-\rk{Rework all this with model classification}
-
-\TB{The main question in this problem concerns the way we consider later occurrences of a quotation which, when it first appeared, was identified to be an alteration from an original quotation.
+The main question in this problem concerns the way we consider later occurrences of a quotation which, when it first appeared, was identified to be an alteration from an original quotation.
 Let us give an example: say the quotation ``These accusations are false and absurd'' ($q_a$) appears in a blog on January 18, and the slightly different quotation ``These accusations are false and incoherent'' ($q_b$) appears in another blog on the 19th, the 20th, and the 21st of January.
 If $q_a$ was sufficiently prominent when $q_b$ first appeared, we can safely assume that the author of $q_b$ on the 19th based himself on $q_a$.
 But what about the following occurrences of $q_b$?
-Should we consider them to be substitutions based on $q_a$ (i.e. re-creations of $q_b$ by a new instance of the substitution process that brought from $q_a$ to $q_b$ in the first place) or reproductions of the first occurrence of $q_b$?}
+Should we consider them to be substitutions based on $q_a$ (i.e. re-creations of $q_b$ by a new instance of the substitution process that brought from $q_a$ to $q_b$ in the first place) or reproductions of the first occurrence of $q_b$?
 
-\TB{To settle this question we model the process as follows: we assume that when a quotation $q$ appears at time $t$, if it is not original (i.e. if not stemming from a source external to the dataset, e.g. initiating a new set of quotations), then it is based solely on the most frequent quotation $q_{max}$ in the preceding period of time $[t - \Delta t ; t]$.
-The length $\Delta t$ of that period of time is fixed as a fraction of the total duration of the set of quotations; we took one fifth in the implementation (i.e. one month for a set of quotations spanning five months, or one day for a set spanning only five days; this takes the dynamism of the set of quotations into account).
+To settle this question we can model the process as follows: we assume that when a quotation $q$ appears at time $t$, if it is not original (i.e. if not stemming from a source external to the dataset, e.g. initiating a new set of quotations), then it is based solely on the most frequent quotation $q_{max}$ in the preceding period of time $[t - \Delta t ; t]$.
+The length $\Delta t$ of that period of time is chosen as a fixed number of days (2 days in the implementation).
 If $q$ differs from $q_{max}$ by only a word, it is counted as a substitution from $q_{max}$ to $q$.
-In any other case, i.e. if $q$ and $q_{max}$ are the same or if $q$ and $q_{max}$ are different in other ways, the occurrence of $q$ is not considered to be an instance of substitution and is discarded.}
+In any other case, i.e. if $q$ and $q_{max}$ are the same or if $q$ and $q_{max}$ are different in other ways, the occurrence of $q$ is not considered to be an instance of substitution and is discarded.
 
-\TB{An example of this detection in a situation akin to the one described above can be seen on figure \ref{fig:model-slidetimebags}: $q_a$ and $q_b$ differ by only a word, and $q_a$ appears first and stays the most frequent in the beginning.
-This is why the occurrences of $q_b$ at $t_1$ and $t_2$ are detected as substitutions stemming from $q_a$.
+An example of this detection in a situation akin to the one described above can be seen in Figure \ref{fig:substitution-detection-example}: $q_a$ and $q_b$ differ by only a word, and $q_a$ appears first, once, and so is the most frequent in the beginning.
+The first two occurrences of $q_b$ are therefore detected as substitutions stemming from $q_a$.
 After a time the situation is reversed: $q_b$ becomes more frequent than $q_a$.
-This entails that occurrences of $q_b$ are seen as reproductions of itself ($t_3$), and that occurrences of $q_a$ are detected as substitutions stemming from $q_b$ ($t_4$), i.e. \emph{re-creations} of $q_a$.}
+This entails that occurrences of $q_b$ are seen as reproductions of itself, and that occurrences of $q_a$ are detected as substitutions stemming from $q_b$, i.e. \emph{re-creations} of $q_a$.
 
-\rk{Add figure describing the chosen model}
+\begin{figure}[h]
+    \centering
+    \def\svgwidth{\linewidth}
+    \small
+    \input{images/substitution-detection-example.pdf_tex}
+    \caption{Example substitution detection model}
+    \label{fig:substitution-detection-example}
+\end{figure}
 
-\TB{The assumptions embedded in this model are only a subset of a wider set of possibilities, each leading to alternative models.
-We identified and implemented five other such models, and they all yielded essentially the same results.
-These models differ in the definition of the source quote from which new occurrences stem, essentially modifying the balance between reproduction of previous occurrences of a quote and re-creation of itself by a new substitution instance.
-For example, the time-windows considered can have different lengths, can include all occurrences from the beginning of the set of quotations, or can have fixed positions.
-The source quotation of a potential substitution can be chosen among those time-windows, or otherwise (e.g. among \emph{all} quotations having appeared before $t$ and differing by a word from the arrival quotation; this detection process would include all possible substitutions detected by other models, but would also include many false positives).}
+The assumptions embedded in this model are only a subset of a wider set of possibilities, each leading to alternative models.
+We identified and implemented eleven other such models, and they all yielded essentially the same results.
+These models differ on four fundamental principles or constraints:
+
+\begin{itemize}
+    \item \textbf{Time} can be kept continuous or made discreet (the model described above has continuous time),
+    \item The \textbf{source time interval} from which a source quote is selected can span a fixed number of days, or can go back to the beginning of the quotation family,
+    \item \textbf{Source quotes} in the source interval for substitutions can be further restricted, e.g. to only the most frequent quote in the interval as in the model described above,
+    \item \textbf{Destination quotes} for substitutions can be further restricted, e.g. to only quotes that did not appear in the source time interval (ensuring it is the first occurrence of the destination quote).
+\end{itemize}
+
+These variations essentially modify the balance between reproduction of previous occurrences of a quote and re-creation of itself by a new substitution instance.
 
 \subsection{Long-term evolution of quotation families}
 
@@ -149,7 +161,7 @@ Our goal in this step is to identify the long-term effect of cognitive bias over
 c'est pas le but ici, et ça serait une toute autre recherche, et un autre public.
 Oder?}
 
-A discreet time (as explained in the discreet-time models in the previous section) is best suited to observe this: we first slice each quotation family into a number of time bags, each bag $\mathcal{B}_n$ containing all the quotations that appear in its corresponding time interval $\left[ t_n, t_{n + 1} = t_n + \Delta t \right[$ (where $\Delta t$ is a number of days, 1 to 5 in practice).
+A discreet time is best suited to observe this: we first slice each quotation family into a number of time bags, each bag $\mathcal{B}_n$ containing all the quotations that appear in its corresponding time interval $\left[ t_n, t_{n + 1} = t_n + \Delta t \right[$ (where $\Delta t$ is a number of days, 2 in practice).
 Each quote in a time bag is counted as many times as it occurs in the corresponding time interval.
 
 We then compute the distribution of word features for each time bag $\mathcal{B}_n$ of each quotation family, and sum those distributions over all quotation families.
