@@ -64,7 +64,7 @@ We introduce three standard network-based measures to be used on the FA network 
 \begin{itemize}
     \item \textbf{Centrality} $k$, initially measured by the number of incoming edges to a given node, i.e. the number of cues for which a given word is triggered as an association, which strongly relates to word polysemy.
     However in the present case there is a quasi-perfect correlation between node incoming degree and node \emph{pagerank}~\citep{Page99}, which will lead us to favour the latter later on. Word pagerank on the FA network had already been used by~\citet{Griffiths07}; it may be interpreted as a generalized and recursive measure of word polysemy: central nodes in the pagerank sense are words often selected as targets when presented with cues themselves often selected as targets, and so on recursively.
-    \item \textbf{Clustering coefficient} $c$, which measures the extent to which a node belongs to a local aggregate of tightly connected nodes, and defined as the ratio between the number of actual v. possible edges between a node's neighbours \cite{watt-coll}.
+    \item \textbf{Clustering coefficient} $c$, which measures the extent to which a node belongs to a local aggregate of tightly connected nodes, and defined as the ratio between the number of actual \emph{v.} possible edges between a node's neighbours \cite{watt-coll}.
     We compute the clustering coefficient on the undirected version of the FA network; we thus measure if a word belongs more or less to a local aggregate of equivalent words (from a ``free association'' point of view).
     \item \textbf{Betweenness coefficient} $b$, another measure of node centrality describing the extent to which a node tends to connect otherwise remote areas of the network~\citep{free:set}.
     More technically, it corresponds to the normalized number of shortest paths connecting dyads which pass through that node; the higher the coefficient, the more important that node is in ensuring the connectedness of the rest of the network.
@@ -92,7 +92,7 @@ The analysis showed a better prediction effect of number of phonemes over number
 Frequency and number of meanings both have relatively low levels of correlation to the other variables; we therefore also keep them in the rest of the analysis.
 
 \bigskip
-Network properties, on the other hand, are strongly dependant on one another.
+Network properties, on the other hand, are strongly dependent on one another.
 As mentioned earlier, word degree and word pagerank have a very strong correlation ($0.89$) and, degree being generally more correlated to other variables, we chose to remove this variable from the results presented.
 Finally betweenness centrality also exhibits strong correlation levels to the other network properties ($0.62$, $0.64$, and $0.72$ in absolute value), leading us to drop this final feature due to its redundancy.
 
