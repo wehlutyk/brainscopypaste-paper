@@ -33,7 +33,7 @@ We first introduce some of the most classical psycholinguistic measures on words
 \rk{Add some bibliography about those features' known effects}
 
 \begin{itemize}
-    \item \textbf{Word frequency}: the frequency at which words appear in our dataset, \rk{add ref saying it's important}
+    \item \textbf{Word frequency}: the frequency at which words appear in our dataset, \rk{add ref on why it's important}
     \item \textbf{Age of Acquisition}: the average age at which words are learned, obtained from~\citet{kuperman12},
     \item The average \textbf{Number of Phonemes} for all pronunciations of a word, obtained from the Carnegie Mellon University Pronouncing Dictionary~\citep{Weide98},\footnote{The CMU Pronouncing Dictionary is included in the NTLK package~\citep{Bird09}, the natural language processing toolkit we used for the analysis.}
     \item The average \textbf{Number of Syllables} for all pronunciations of a word, also obtained from the CMU Pronouncing Dictionary,
@@ -78,12 +78,12 @@ An important question arises concerning the possible correlations between all th
 \begin{figure}[!th]
     \centering
     \includegraphics[width=\linewidth]{images/computed-figures/feature_correlations-filter1.png}
-    \caption{Correlations in the initial set of features \rk{show non log version?}}
+    \caption{Correlations in the initial set of features \rk{show non-log version?}}
     \label{fig:feature-corrs-initial}
 \end{figure}
 
 Age of acquisition is a key variable which appears as a usual suspect in psycholinguistic studies and is also usually correlated to many of the other variables.
-This relates to an ongoing debate suggesting that age of acquisition encodes a variety of phenomena, difficult to disentangle from more specific phenomena which could be captured by more independent variables such as~\CN{}.
+This relates to an ongoing debate suggesting that age of acquisition encodes a variety of phenomena, difficult to disentangle from more specific phenomena which could be captured by more independent variables~\CN{}.
 Here however, as can be seen in Figure~\ref{fig:feature-corrs-initial}, age of acquisition has a relatively low correlation to the other variables (absolute value not above $0.42$ if we exclude the centrality measures), leading us to keep the variable in the rest of the analysis.
 
 Number of phonemes and number of syllables naturally exhibit a strong linear correlation ($0.83$).
@@ -101,7 +101,7 @@ The final set of variables we consider, as well as their cross-correlations, can
 \begin{figure}[!th]
     \centering
     \includegraphics[width=0.788\linewidth]{images/computed-figures/feature_correlations-filter2.png}
-    \caption{Correlations in the filtered set of features \rk{show non log version?}}
+    \caption{Correlations in the filtered set of features \rk{show non-log version?}}
     \label{fig:feature-corrs-filtered}
 \end{figure}
 
@@ -156,10 +156,6 @@ These variations essentially modify the balance between reproduction of previous
 
 We first examine the evolution of quotation families under the repeated action of substitutions.
 Our goal in this step is to identify the long-term effect of cognitive bias over the lifetimes of quotation families and thus over the framing of public information.
-
-\rk{on pourrait en fait modéliser et formaliser ça de façon bien poussée en allant chercher du côté de l'analyse des séries temporelles et des processus stochastiques en général, mais bon...
-c'est pas le but ici, et ça serait une toute autre recherche, et un autre public.
-Oder?}
 
 A discreet time is best suited to observe this: we first slice each quotation family into a number of time bags, each bag $\mathcal{B}_n$ containing all the quotations that appear in its corresponding time interval $\left[ t_n, t_{n + 1} = t_n + \Delta t \right[$ (where $\Delta t$ is a number of days, 2 in practice).
 Each quote in a time bag is counted as many times as it occurs in the corresponding time interval.
