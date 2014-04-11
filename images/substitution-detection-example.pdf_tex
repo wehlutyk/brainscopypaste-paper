@@ -48,12 +48,14 @@
   \global\let\svgwidth\undefined%
   \global\let\svgscale\undefined%
   \makeatother%
-  \begin{picture}(1,0.42903596)%
+  \begin{picture}(1,0.52014408)%
     \put(0,0){\includegraphics[width=\unitlength]{substitution-detection-example.pdf}}%
-    \put(0.93968691,0.01140335){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{$t$}}}%
-    \put(0.02744278,0.36410041){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{$q_b$}}}%
-    \put(0.02805948,0.295859){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{$q_a$}}}%
-    \put(0.02744277,0.13032253){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{$q_b$}}}%
-    \put(0.02805948,0.06208098){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{$q_a$}}}%
+    \put(0.93968691,0.01140328){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{$t$}}}%
+    \put(0.02744278,0.36410034){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{$q_b$}}}%
+    \put(0.02805948,0.29585893){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{$q_a$}}}%
+    \put(0.02744277,0.13032246){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{$q_b$}}}%
+    \put(0.02805948,0.06208091){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{$q_a$}}}%
+    \put(0.1695025,0.46771778){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{Quote occurrences}}}%
+    \put(0.93968691,0.24253644){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{$t$}}}%
   \end{picture}%
 \endgroup%
