@@ -15,7 +15,7 @@ Quotation evolution is therefore a perfect environment to measure cognition-indu
 
 We used a reliable quotation dataset collected by \citet{Leskovec09}, large enough to lend itself to statistical analysis.
 This dataset consists of the daily crawling of news stories and blog posts from around a million online sources, with an approximate publication rate of 900k texts per day, over a nine-month period of time (from August 2008 to April 2009) \cite{Leskovec09-url}.\footnote{Unfortunately, the original article~\citep{Leskovec09} does not provide additional details on the source selection methodology.}
-Quotations were then automatically extracted from this corpus: each quotation is a more or less faithful excerpt of an utterance (oral or written) by the quoted person.
+Quotations were then automatically extracted from this corpus: each quotation is a more or less faithful excerpt of an utterance (oral or written) by the quoted person. \cam{btw do we have an excerpt of quotations here, could we even feature a few prototypical examples?}
 Quotations were then gathered in a graph and connected according to their similarity: either because they differ by very few words (in that case, no more than one word) or because they share a certain sequence of words (in that case, at least ten consecutive words).
 A community detection algorithm was applied to that quotation graph to detect aggregates of tightly connected, i.e. sufficiently similar, groups of quotations (see \citet{Leskovec09} for more detail).
 This analysis yielded the final data we had access to, with a total of about \num{70000} sets of quotations; each of these sets allegedly contains all variations of a same parent utterance, along with their respective publication URLs and timestamps.
@@ -78,7 +78,7 @@ An important question arises concerning the possible correlations between all th
 \begin{figure}[!th]
     \centering
     \includegraphics[width=\linewidth]{images/computed-figures/feature_correlations-filter1.png}
-    \caption{Correlations in the initial set of features \rk{show non-log version?}}
+    \caption{Correlations in the initial set of features \rk{show non-log version?} \cam{if we use log variables I guess we should show correlations on log variables -- I'm surprised by the level of correlation b/n (aoa) and (log PR), though}}
     \label{fig:feature-corrs-initial}
 \end{figure}
 
@@ -182,7 +182,7 @@ Note that since we only consider substitutions and not faithful copies, we measu
 Indeed, in the first case we know there has been a human reformulation, whereas in the second case it is impossible to know whether there has been perfect human reformulation or simply digital copy-pasting of a source (``{\sc Ctrl-C}/{\sc Ctrl-V}'').
 
 We build two main observables for each word feature.
-First, we measure the susceptibility for words to be the source of a substitution, knowing that there has been a variation, in order to show which semantic features are the most likely to attract a substitution.
+First, we measure the susceptibility for words to be the source of a substitution, knowing that there has been a variation, in order to show which semantic features are the most likely to attract a substitution \new{under this condition}.
 Second, we measure the variation of word feature over a substitution, looking at the variation of a given feature between start and arrival words.
 
 \subsubsection{Susceptibility}
@@ -216,7 +216,7 @@ The corresponding average quantity over all start words may be written:
 $$\left< \Delta(\wstart,\warrival_{\mathcal{H}_0}) \right>_f = \left< \mathfrak{F}({\warrival_{\mathcal{H}_0}}) - \mathfrak{F}(\wstart) \right>_{\left\lbrace (\wstart,\warrival_{\mathcal{H}_0}) | \mathfrak{F}(\wstart) = f \right\rbrace}$$
 
 We also considered an alternative null hypothesis, denoted $\mathcal{H}_{00}$, where the arrival word is chosen randomly \emph{among immediate synonyms of the start word}, i.e. an arrival word chosen among semantically plausible though still random words.
-\footnote{In this case $\warrival_{\mathcal{H}_{00}}$ does depend on $\wstart$.} \rk{Do we present these results?}
+\footnote{In this case $\warrival_{\mathcal{H}_{00}}$ does depend on $\wstart$.} \rk{Do we present these results?}\cam{nope}
 
 Using this method we obtain the mean variation of feature for each start feature value, and can compare the variations to a situation where arrival words are chosen randomly.
 This gives us a fine-grained view of how word features evolve upon substitution.
