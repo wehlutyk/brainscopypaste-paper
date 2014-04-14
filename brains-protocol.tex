@@ -22,7 +22,7 @@ This analysis yielded the final data we had access to, with a total of about \nu
 
 \subsection{Word-level measures}
 
-To keep the analysis palatable, we restricted the analysis to quotation transformations which consisted in the \emph{substitution} of a word by another word (and only those cases).
+To keep the analysis palatable, we restricted the analysis to quotation transformations which consisted in the \emph{substitution} of a word by another word (and only those cases) in order to unambiguously discuss single word replacements. 
 To quantify those substitutions, we decided to associate a number of features to each word, the variation of which we can statistically study.
 The following sections detail the features we used.
 
@@ -54,12 +54,14 @@ As \citeauthor{Nelson04} explain,
 \begin{quote}
 free association response probabilities index the likelihood that one word can cue another word to come to mind with minimal contextual constraints in effect.~\citep{Nelson04}
 \end{quote}
-Following \citet{Griffiths07}, we first consider the directed weighed network formed by the association norms, that is the network where words are nodes and edges are directed from cue to associated word, with a weight equal to the probability of that target word being produced when this particular cue was presented.
-\rk{we're in fact using the unweighed version of the network. Why?}
+%Following \citet{Griffiths07}, we first consider the directed weighted network formed by the association norms, that is the network where words are nodes and edges are directed from cue to associated word, with a weight equal to the probability of that target word being produced when this particular cue was presented.
+% \rk{we're in fact using the unweighed version of the network. Why?}
+\new{Following \citet{Griffiths07}, we first build a directed unweighted network based on association norms, where words are nodes and edges are directed from cue to target word whenever a target word is being produced when this particular cue word was presented.}
 This network is of particular interest since it measures the \emph{in-vitro forced-choice} version of a substitution whereas the data we analyse is the \emph{in-vivo spontaneous} version of what we otherwise hypothesize to be the same process.
 
 \bigskip
-We introduce three standard network-based measures to be used on the FA network \rk{adapt once the weighing question (\#8) is settled}:
+We introduce three standard network-based measures to be used on the FA network% \rk{adapt once the weighing question (\#8) is settled}
+:
 
 \begin{itemize}
     \item \textbf{Centrality} $k$, initially measured by the number of incoming edges to a given node, i.e. the number of cues for which a given word is triggered as an association, which strongly relates to word polysemy.
@@ -122,13 +124,13 @@ Should we consider them to be substitutions based on $q_a$ (i.e. re-creations of
 
 To settle this question we can model the process as follows: we assume that when a quotation $q$ appears at time $t$, if it is not original (i.e. if not stemming from a source external to the dataset, e.g. initiating a new set of quotations), then it is based solely on the most frequent quotation $q_{max}$ in the preceding period of time $[t - \Delta t ; t]$.
 The length $\Delta t$ of that period of time is chosen as a fixed number of days (2 days in the implementation).
-If $q$ differs from $q_{max}$ by only a word, it is counted as a substitution from $q_{max}$ to $q$.
+If $q$ differs from $q_{max}$ by only one word, as noted above, it is counted as a substitution from $q_{max}$ to $q$.
 In any other case, i.e. if $q$ and $q_{max}$ are the same or if $q$ and $q_{max}$ are different in other ways, the occurrence of $q$ is not considered to be an instance of substitution and is discarded.
 
 An example of this detection in a situation akin to the one described above can be seen in Figure \ref{fig:substitution-detection-example}: $q_a$ and $q_b$ differ by only a word, and $q_a$ appears first, once, and so is the most frequent in the beginning.
 The first two occurrences of $q_b$ are therefore detected as substitutions stemming from $q_a$.
-After a time the situation is reversed: $q_b$ becomes more frequent than $q_a$.
-This entails that occurrences of $q_b$ are seen as reproductions of itself, and that occurrences of $q_a$ are detected as substitutions stemming from $q_b$, i.e. \emph{re-creations} of $q_a$.
+After a time the situation is reversed and $q_b$ becomes more frequent than $q_a$: in this time frame $q_b$ is thus inaccurately considered as the original quote.
+This entails that occurrences of $q_b$ are seen as identical occurrences of the original quote, while occurrences of $q_a$ are detected as substitutions stemming from $q_b$.
 
 \begin{figure}[h]
     \centering
@@ -150,9 +152,20 @@ These models differ on four fundamental principles or constraints:
     \item \textbf{Destination quotes} for substitutions can be further restricted, e.g. to only quotes that did not appear in the source time interval (ensuring it is the first occurrence of the destination quote).
 \end{itemize}
 
-These variations essentially modify the balance between reproduction of previous occurrences of a quote and re-creation of itself by a new substitution instance.
+These various flavors of an ideal substitution detection model %not only
+ have an impact on whether occurrences are considered as substitutions or repetition of the original quote. %, but also essentially modify how many times a given 
 
-\subsection{Long-term evolution of quotation families}
+%variations essentially modify the balance between 
+
+%considering the second blue quote as a reproduction of the first blue because the time window is too short 
+
+%quote or as a mutation 
+
+%taking into account the possibility of a 
+
+%reproduction of previous occurrences of a quote and re-creation of itself by a new substitution instance.
+
+\section{Long-term evolution of quotation families}
 
 We first examine the evolution of quotation families under the repeated action of substitutions.
 Our goal in this step is to identify the long-term effect of cognitive bias over the lifetimes of quotation families and thus over the framing of public information.
@@ -171,11 +184,20 @@ ou le garder comme ça, mentionné en passant pour justifier la suite ?}
 That is, the substitutions on quotations over time have no global effect on quotation families, either because external quotations are continuously fed into the family and compensate for the effect of substitutions, or because substitutions operate on a marginal portion of the quotation families, or both.
 
 \bigskip
-To narrow this view to the specific effects of cognitive bias we consider substitution \emph{chains}: after selecting one of the discreet-time substitution detection models (see previous section), we filter time bags to include only new quotes produced by substitutions themselves based on quotes produced by substitutions, and so on recursively.
-The first time bag is therefore untouched, the second contains the quotations produced by substitutions from the first, the third by substitutions from the second, and so on.
-We thus observe only the repeatedly-affected portion of the quotation families, and obtain a simple view of the action of repeated cognitive bias.
+To narrow this view to the specific effects of cognitive bias we consider substitution \emph{chains}: using the above-mentioned discrete-time substitution detection model, we filter time bags to include only new quotes produced by substitutions themselves based on quotes produced by substitutions, and so on recursively.
+The first time bag is therefore untouched, the second contains the quotations produced by substitutions from the first, the third by substitutions from the second, and so on. \new{As a result, the size of observed words/quotes drastically decreases across time, yet it assuredly focuses on successive mutations.} \cam{ajouter graphique pédagogique?}
+We thus observe only the repeatedly-affected portion of the quotation families, and obtain a simple view of the longitudinal effect of cognitive bias, \hbox{i.e.} how quote features are evolving in the long term and, perhaps, converging towards specific attractors.
 
-\subsection{Substitution process}
+\begin{figure*}[!th]
+    \centering
+    \includegraphics[width=\textwidth]{images/computed-figures/timebags_evolution.png}
+    \caption{\textbf{Feature distribution evolution:} evolution of the distribution of feature values in substitution chains over successive 2-day time bags (bags 0 to 18, i.e. days 0 to 39).
+    The legends indicate the number of words left in each time bag; these decrease exponentially since only a fraction of the quotes undergo substitution at each step.
+    After a period of time, each feature becomes concentrated in a specific range of its own.}
+    \label{fig:timebags-evolution}
+\end{figure*}
+
+\section{Substitution process}
 
 We then focus on the individual substitution process at work when authors transform quotations, by examining the features of the substituted and substituting words in each substitution.
 Note that since we only consider substitutions and not faithful copies, we measure the features of an alteration \emph{knowing that there has been an alteration}, and we do not take invariant quotations into account.
@@ -185,7 +207,7 @@ We build two main observables for each word feature.
 First, we measure the susceptibility for words to be the source of a substitution, knowing that there has been a variation, in order to show which semantic features are the most likely to attract a substitution \new{under this condition}.
 Second, we measure the variation of word feature over a substitution, looking at the variation of a given feature between start and arrival words.
 
-\subsubsection{Susceptibility}
+\subsection{Susceptibility}
 
 For a given feature $\mathfrak{F}$, the protocol lets us compute substitution \emph{susceptibilities} for each feature value $f$.
 We say that a word is \emph{substitutable} if it appears in a quote which undergoes a substitution, whether that substitution operates on the considered word or on another.
@@ -200,7 +222,16 @@ $$\left< \mathfrak{S}_{\mathfrak{F}} \right>_f = \left< \frac{n_s(w)}{n_p(w)} \r
 
 This measure focuses on the selection of start words involved in substitutions, measuring the effect of features at the moment preceding the substitution when it is not yet known which word in the quotation -- if any -- will be substituted.
 
-\subsubsection{Alteration}
+\begin{figure*}[!th]
+    \centering
+    \includegraphics[width=\textwidth]{images/computed-figures/feature_susceptibilities.png}
+    \caption{\textbf{Substitution susceptibility:} average susceptibility to substitution \emph{v.} average feature value of a candidate word for substitution, with 95\% asymptotic confidence intervals.
+    Each feature exhibits a specific and significant pattern favouring either high- or low-valued words for substitution.}
+    \label{fig:feature-susceptibilities}
+\end{figure*}
+
+
+\subsection{Alteration}
 
 Next, we measure how a word $\wstart$'s feature varies as $\wstart$ is substituted by $\warrival$.
 Let us denote this quantity:
@@ -220,3 +251,15 @@ We also considered an alternative null hypothesis, denoted $\mathcal{H}_{00}$, w
 
 Using this method we obtain the mean variation of feature for each start feature value, and can compare the variations to a situation where arrival words are chosen randomly.
 This gives us a fine-grained view of how word features evolve upon substitution.
+
+
+\begin{figure*}[!th]
+    \centering
+    \includegraphics[width=\textwidth]{images/computed-figures/feature_variations-binned.png}
+    \caption{\textbf{Feature variation upon substitution:} average feature of the appearing word minus $\mathcal{H}_0$ \emph{v.} average feature of the disappearing word in a substitution, with 95\% asymptotic confidence intervals.
+    The overall position of the curve with respect to $y = 0$ indicates the direction of the cognitive bias.
+    The fact that all the curves have positive slopes shows the influence of the disappearing word on the appearing word (indeed, the contraposition is that selection of the appearing word independently from the disappearing word would produce horizontal curves).
+    Finally, the fact that all the curves also have slopes smaller than 1 means that the substitution operation is contractile on average: each feature will converge towards its own specific asymptotic range, which is consistent with the evolution observed in Figure~\ref{fig:timebags-evolution}.}
+    \label{fig:feature-variations}
+\end{figure*}
+
