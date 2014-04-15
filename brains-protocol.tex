@@ -146,31 +146,20 @@ We identified and implemented eleven other such models, and they all yielded ess
 These models differ on four fundamental principles or constraints:
 
 \begin{itemize}
-    \item \textbf{Time} can be kept continuous or made discreet (the model described above has continuous time),
+    \item \textbf{Time} can be sliced into bins to build time bags (as in the model described above) or kept fine-grained by using sliding time bags,
     \item The \textbf{source time interval} from which a source quote is selected can span a fixed number of days, or can go back to the beginning of the quotation family,
     \item \textbf{Source quotes} in the source interval for substitutions can be further restricted, e.g. to only the most frequent quote in the interval as in the model described above,
     \item \textbf{Destination quotes} for substitutions can be further restricted, e.g. to only quotes that did not appear in the source time interval (ensuring it is the first occurrence of the destination quote).
 \end{itemize}
 
-These various flavors of an ideal substitution detection model %not only
- have an impact on whether occurrences are considered as substitutions or repetition of the original quote. %, but also essentially modify how many times a given 
-
-%variations essentially modify the balance between 
-
-%considering the second blue quote as a reproduction of the first blue because the time window is too short 
-
-%quote or as a mutation 
-
-%taking into account the possibility of a 
-
-%reproduction of previous occurrences of a quote and re-creation of itself by a new substitution instance.
+These various flavours of an ideal substitution detection model essentially change whether occurrences are considered as substitutions from another quote or repetitions of the original quote.
 
 \section{Long-term evolution of quotation families}
 
 We first examine the evolution of quotation families under the repeated action of substitutions.
 Our goal in this step is to identify the long-term effect of cognitive bias over the lifetimes of quotation families and thus over the framing of public information.
 
-A discreet time is best suited to observe this: we first slice each quotation family into a number of time bags, each bag $\mathcal{B}_n$ containing all the quotations that appear in its corresponding time interval $\left[ t_n, t_{n + 1} = t_n + \Delta t \right[$ (where $\Delta t$ is a number of days, 2 in practice).
+A discrete time is best suited to observe this: we first slice each quotation family into a number of time bags, each bag $\mathcal{B}_n$ containing all the quotations that appear in its corresponding time interval $\left[ t_n, t_{n + 1} = t_n + \Delta t \right[$ (where $\Delta t$ is a number of days, 2 in practice).
 Each quote in a time bag is counted as many times as it occurs in the corresponding time interval.
 
 We then compute the distribution of word features for each time bag $\mathcal{B}_n$ of each quotation family, and sum those distributions over all quotation families.
