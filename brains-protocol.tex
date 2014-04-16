@@ -118,12 +118,21 @@ Quote-to-quote transformations, and much less substitutions, are therefore not e
 We face an inference problem where, given all quotations and their occurrence timestamps, we must estimate which was the originating quotation for each instance of each quotation.
 We therefore model the underlying quotation selection process by making a few additional assumptions which let us define quote-to-quote substitutions from the available data.
 
-The main question in this problem concerns the way we consider later occurrences of a quotation which, when it first appeared, was identified to be an alteration from an original quotation.
-\rk{it's a balance between repetition, substitution, or injection from outside/other process from inside}
-Let us give an example: say the quotation ``These accusations are false and absurd'' ($q_a$) appears in a blog on January 18, and the slightly different quotation ``These accusations are false and incoherent'' ($q_b$) appears in another blog on the 19th, the 20th, and the 21st of January.
-If $q_a$ was sufficiently prominent when $q_b$ first appeared, we can safely assume that the author of $q_b$ on the 19th based himself on $q_a$.
-But what about the following occurrences of $q_b$?
+The main question in this problem concerns the way we consider later occurrences of a quotation that has already occurred earlier: the author of the later occurrences could have sourced an earlier occurrence and accurately copied it, they could have transformed an earlier occurrence of \emph{another} quote into this one, or they could have relied on information or other quotes from outside the dataset, i.e. from an external source we do not measure.
+
+Let us give an example: say the quotation ``These accusations are false and \textbf{absurd}'' ($q_a$) appears in a blog on January 18, and the slightly different quotation ``These accusations are false and \textbf{incoherent}'' ($q_b$) appears in other blogs twice on the 19th and once on the 20th of January.
+If $q_a$ was sufficiently prominent when $q_b$ first appeared, we can safely assume that the first author of $q_b$ on the 19th based himself on $q_a$.
+But what about the second occurrence of $q_b$ on the 19th, and the one on the 20th?
 Should we consider them to be substitutions based on $q_a$ (i.e. re-creations of $q_b$ by a new instance of the substitution process that brought from $q_a$ to $q_b$ in the first place) or reproductions of the first occurrence of $q_b$?
+
+\begin{figure}[h]
+    \centering
+    \def\svgwidth{\linewidth}
+    \small
+    \input{images/substitution-detection-example1.pdf_tex}
+    \caption{XXXXX}
+    \label{fig:substitution-detection-example1}
+\end{figure}
 
 To settle this question we can model the process as follows: we assume that when a quotation $q$ appears at time $t$, if it is not original (i.e. if not stemming from a source external to the dataset, e.g. initiating a new set of quotations), then it is based solely on the most frequent quotation $q_{max}$ in the preceding period of time $[t - \Delta t ; t]$.
 The length $\Delta t$ of that period of time is chosen as a fixed number of days (2 days in the implementation).
@@ -134,15 +143,6 @@ An example of this detection in a situation akin to the one described above can 
 The first two occurrences of $q_b$ are therefore detected as substitutions stemming from $q_a$.
 After a time the situation is reversed and $q_b$ becomes more frequent than $q_a$: in this time frame $q_b$ is thus inaccurately considered as the original quote.
 This entails that occurrences of $q_b$ are seen as identical occurrences of the original quote, while occurrences of $q_a$ are detected as substitutions stemming from $q_b$.
-
-\begin{figure}[h]
-    \centering
-    \def\svgwidth{\linewidth}
-    \small
-    \input{images/substitution-detection-example.pdf_tex}
-    \caption{Example substitution detection model}
-    \label{fig:substitution-detection-example}
-\end{figure}
 
 The assumptions embedded in this model are only a subset of a wider set of possibilities, each leading to alternative models.
 We identified and implemented eleven other such models, and they all yielded essentially the same results.
@@ -155,7 +155,7 @@ These models differ on four fundamental principles or constraints:
     \item \textbf{Destination quotes} for substitutions can be further restricted, e.g. to only quotes that did not appear in the source time interval (ensuring it is the first occurrence of the destination quote).
 \end{itemize}
 
-These various flavours of an ideal substitution detection model essentially change whether occurrences are considered as substitutions from another quote or repetitions of the original quote.
+These various flavours of an ideal substitution detection model essentially change whether occurrences are considered as substitutions from another quote, repetitions of the original quote, or introduction of information external to the dataset.
 
 \section{Long-term evolution of quotation families}
 
@@ -203,6 +203,7 @@ Second, we measure the variation of word feature over a substitution, looking at
 
 For a given feature $\phi$, the protocol lets us compute substitution \emph{susceptibilities} for each feature value $f$.
 We say that a word is \emph{substitutable} if it appears in a quote which undergoes a substitution, whether that substitution operates on the considered word or on another.
+\rk{We also restrict to words substituted at least once.}
 Word substitution susceptibility is computed as the ratio of the number $s_w$ of times a word is substituted to the number $p_w$ of times that word appears in a substitutable position, i.e. $\sfrac{s_w}{p_w}$.
 
 Now averaging over all words such that $\phi(w) = f$, we obtain the mean susceptibility for the feature value $f$:
