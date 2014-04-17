@@ -199,31 +199,21 @@ Note that since we only consider substitutions and not faithful copies, we measu
 Indeed, in the first case we know there has been a human reformulation, whereas in the second case it is impossible to know whether there has been perfect human reformulation or simply digital copy-pasting of a source (``{\sc Ctrl-C}/{\sc Ctrl-V}'').
 
 We build two main observables for each word feature.
-First, we measure the susceptibility for words to be the source of a substitution, knowing that there has been a variation, in order to show which semantic features are the most likely to attract a substitution \new{under this condition}.
+First, we measure the susceptibility for words to be the source of a substitution, knowing that there has been a variation, in order to show which semantic features are the most likely to attract a substitution under this condition.
 Second, we measure the variation of word feature over a substitution, looking at the variation of a given feature between start and arrival words.
 
 \subsection{Susceptibility}
 
 For a given feature $\phi$, the protocol lets us compute substitution \emph{susceptibilities} for each feature value $f$.
 We say that a word is \emph{substitutable} if it appears in a quote which undergoes a substitution, whether that substitution operates on the considered word or on another.
-\rk{We also restrict to words substituted at least once.}
 Word substitution susceptibility is computed as the ratio of the number $s_w$ of times a word is substituted to the number $p_w$ of times that word appears in a substitutable position, i.e. $\sfrac{s_w}{p_w}$.
 
-Now averaging over all words such that $\phi(w) = f$, we obtain the mean susceptibility for the feature value $f$:
+Now averaging over all words such that $\phi(w) = f$ (only taking into account words that are substituted at least once), we obtain the mean susceptibility for the feature value $f$:
 \footnote{To avoid any auto-correlation effect due to the number of substitutions in a cluster (possibly leading to an overly optimistic estimation of confidence intervals), we first average substitutions over each cluster, by considering the average of arrival word features for a given start word.
 Indeed, substitutions occurring in the same cluster are likely not statistically independent.}
 $$\sigma_{\phi}(f) \defeq \left< \frac{s_w}{p_w} \right>_{\left\lbrace w | \phi(w) = f \right\rbrace}$$
 
 This measure focuses on the selection of start words involved in substitutions, measuring the effect of features at the moment preceding the substitution when it is not yet known which word in the quotation -- if any -- will be substituted.
-
-\begin{figure*}[!th]
-    \centering
-    \includegraphics[width=\textwidth]{images/computed-figures/feature_susceptibilities.png}
-    \caption{\textbf{Substitution susceptibility:} average susceptibility to substitution \emph{v.} average feature value of a candidate word for substitution, with 95\% asymptotic confidence intervals.
-    Each feature exhibits a specific and significant pattern favouring either high- or low-valued words for substitution.}
-    \label{fig:feature-susceptibilities}
-\end{figure*}
-
 
 \subsection{Alteration}
 
@@ -242,6 +232,17 @@ We also considered an alternative null hypothesis, denoted $\mathcal{H}_{00}$, w
 Using this method we obtain the mean variation of feature for each start feature value, and can compare the variations to a situation where arrival words are chosen randomly.
 This gives us a fine-grained view of how word features evolve upon substitution.
 
+\subsection{Results}
+
+\rk{Comment results}
+
+\begin{figure*}[!th]
+    \centering
+    \includegraphics[width=\textwidth]{images/computed-figures/feature_susceptibilities.png}
+    \caption{\textbf{Substitution susceptibility:} average susceptibility to substitution \emph{v.} average feature value of a candidate word for substitution, with 95\% asymptotic confidence intervals.
+    Each feature exhibits a specific and significant pattern favouring either high- or low-valued words for substitution.}
+    \label{fig:feature-susceptibilities}
+\end{figure*}
 
 \begin{figure*}[!th]
     \centering
@@ -252,4 +253,3 @@ This gives us a fine-grained view of how word features evolve upon substitution.
     Finally, the fact that all the curves also have slopes smaller than 1 means that the substitution operation is contractile on average: each feature will converge towards its own specific asymptotic range, which is consistent with the evolution observed in Figure~\ref{fig:timebags-evolution}.}
     \label{fig:feature-variations}
 \end{figure*}
-
