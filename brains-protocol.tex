@@ -135,7 +135,7 @@ Should we consider them to be substitutions based on $q_a$ (i.e. re-creations of
 \end{figure}
 
 To settle this question we bin the quote occurrences into fixed \emph{time bags} spanning $\Delta t$ days (2 days in the implementation), each one representing a unit of time evolution
-We further assume that when a quotation $q$ appears in time bag $i$, if it is not original (i.e. if not stemming from a source external to the dataset, e.g. initiating a new set of quotations), then it is based solely on the most frequent quotation $q_{max}$ in the preceding time bag ($i - 1$).
+We further assume that when a quotation $q$ appears in time bag $n$, if it is not original (i.e. if not stemming from a source external to the dataset, e.g. initiating a new set of quotations), then it is based solely on the most frequent quotation $q_{max}$ in the preceding time bag ($n - 1$).
 If $q$ differs from $q_{max}$ by only one word it is counted as a substitution from $q_{max}$ to~$q$.
 In any other case, i.e. if $q$ and $q_{max}$ are the same or if $q$ and $q_{max}$ are different in other ways, the occurrence of $q$ is not considered to be an instance of substitution and is discarded.
 
@@ -156,28 +156,28 @@ These models differ on four fundamental principles or constraints:
 
 These various flavours of an ideal substitution detection model essentially change whether occurrences are considered as substitutions from another quote, repetitions of the original quote, or introduction of information external to the dataset.
 
-\section{Long-term evolution of quotation families}
+\section{Macroscopic evolution of quotation families}
 
 We first examine the evolution of quotation families under the repeated action of substitutions.
 Our goal in this step is to identify the long-term effect of cognitive bias over the lifetimes of quotation families and thus over the framing of public information.
 
-A discrete time is best suited to observe this: we first slice each quotation family into a number of time bags, each bag $\mathcal{B}_n$ containing all the quotations that appear in its corresponding time interval $\left[ t_n, t_{n + 1} = t_n + \Delta t \right[$ (where $\Delta t$ is a number of days, 2 in practice).
-Each quote in a time bag is counted as many times as it occurs in the corresponding time interval.
+To do so we use a variation of the model presented in the previous section: quote occurrences are binned into 2-day time bags, substitutions can stem from any quote in the time bag preceding the current one, but destination quotes must be absent from that preceding time bag. The last two points constitute a variation from the ``majority'' rule which let us detect substitution chains later on.
 
 We then compute the distribution of word features for each time bag $\mathcal{B}_n$ of each quotation family, and sum those distributions over all quotation families.
 This yields a distribution of feature values for each $n$, which is the simplest possible view of the state of an average quotation family in its $n$-th time bag, i.e. after $n \times \Delta t$ days.\footnote{For consistency, if we do this for $n$ going up to $N$, we only include quotation families that span long enough to have at least $N$ time bags.}
 Such a computation makes no assumptions on the way quotations undergo substitutions over time.
 
 The raw distributions built with this computation are stationary.
-\rk{figure/stats à l'appui ?
-bouger ça dans les résultats ?
-ou le garder comme ça, mentionné en passant pour justifier la suite ?}
 That is, the substitutions on quotations over time have no global effect on quotation families, either because external quotations are continuously fed into the family and compensate for the effect of substitutions, or because substitutions operate on a marginal portion of the quotation families, or both.
 
 \bigskip
-To narrow this view to the specific effects of cognitive bias we consider substitution \emph{chains}: using the above-mentioned discrete-time substitution detection model, we filter time bags to include only new quotes produced by substitutions themselves based on quotes produced by substitutions, and so on recursively.
-The first time bag is therefore untouched, the second contains the quotations produced by substitutions from the first, the third by substitutions from the second, and so on. \new{As a result, the size of observed words/quotes drastically decreases across time, yet it assuredly focuses on successive mutations.} \cam{ajouter graphique pédagogique?}
+To narrow this view to the specific effects of cognitive bias we consider substitution \emph{chains}: using the above-mentioned substitution detection model, we filter time bags to include only new quotes produced by substitutions themselves based on quotes produced by substitutions, and so on recursively.
+The first time bag is therefore untouched, the second contains the quotations produced by substitutions from the first, the third by substitutions from the second, and so on.
+As a result, the size of observed words drastically decreases across time, yet it unambiguously focuses on successive mutations.
+\rk{add pedagogical figure}
 We thus observe only the repeatedly-affected portion of the quotation families, and obtain a simple view of the longitudinal effect of cognitive bias, \hbox{i.e.} how quote features are evolving in the long term and, perhaps, converging towards specific attractors.
+
+\rk{comment results, transition to micro process}
 
 \begin{figure*}[!th]
     \centering
@@ -188,7 +188,7 @@ We thus observe only the repeatedly-affected portion of the quotation families, 
     \label{fig:timebags-evolution}
 \end{figure*}
 
-\section{Substitution process}
+\section{Microscopic evolution: the substitution process}
 
 We then focus on the individual substitution process at work when authors transform quotations, by examining the features of the substituted and substituting words in each substitution.
 Note that since we only consider substitutions and not faithful copies, we measure the features of an alteration \emph{knowing that there has been an alteration}, and we do not take invariant quotations into account.
