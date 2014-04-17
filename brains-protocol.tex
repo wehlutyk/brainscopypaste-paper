@@ -120,10 +120,10 @@ We therefore model the underlying quotation selection process by making a few ad
 
 The main question in this problem concerns the way we consider later occurrences of a quotation that has already occurred earlier: the author of the later occurrences could have sourced an earlier occurrence and accurately copied it, they could have transformed an earlier occurrence of \emph{another} quote into this one, or they could have relied on information or other quotes from outside the dataset, i.e. from an external source we do not measure.
 
-Let us give an example: say the quotation ``These accusations are false and \textbf{absurd}'' ($q_a$) appears in a blog on January 18, and the slightly different quotation ``These accusations are false and \textbf{incoherent}'' ($q_b$) appears in other blogs twice on the 19th and once on the 20th of January.
-If $q_a$ was sufficiently prominent when $q_b$ first appeared, we can safely assume that the first author of $q_b$ on the 19th based himself on $q_a$.
-But what about the second occurrence of $q_b$ on the 19th, and the one on the 20th?
-Should we consider them to be substitutions based on $q_a$ (i.e. re-creations of $q_b$ by a new instance of the substitution process that brought from $q_a$ to $q_b$ in the first place) or reproductions of the first occurrence of $q_b$?
+Let us give an example: say the quotation ``These accusations are false and \textbf{absurd}'' ($q_a$) appears in a blog on January 19, and the slightly different quotation ``These accusations are false and \textbf{incoherent}'' ($q_b$) appears in other blogs on the 21st, 22nd and 23rd of January.
+If $q_a$ was sufficiently prominent when $q_b$ first appeared, we can safely assume that the first author of $q_b$ on the 21st based himself on $q_a$ as is shown in the top drawing of Figure~\ref{fig:substitution-detection-example1}.
+But what about the second and third occurrences of $q_b$, on the 22nd and 23rd?
+Should we consider them to be substitutions based on $q_a$ (i.e. re-creations of $q_b$ by a new instance of the substitution process that brought from $q_a$ to $q_b$ in the first place) or accuratee reproductions of the earlier occurrences of $q_b$ (options shown in Figure~\ref{fig:substitution-detection-example1})?
 
 \begin{figure}[h]
     \centering
@@ -134,15 +134,14 @@ Should we consider them to be substitutions based on $q_a$ (i.e. re-creations of
     \label{fig:substitution-detection-example1}
 \end{figure}
 
-To settle this question we can model the process as follows: we assume that when a quotation $q$ appears at time $t$, if it is not original (i.e. if not stemming from a source external to the dataset, e.g. initiating a new set of quotations), then it is based solely on the most frequent quotation $q_{max}$ in the preceding period of time $[t - \Delta t ; t]$.
-The length $\Delta t$ of that period of time is chosen as a fixed number of days (2 days in the implementation).
-If $q$ differs from $q_{max}$ by only one word, as noted above, it is counted as a substitution from $q_{max}$ to $q$.
+To settle this question we bin the quote occurrences into fixed \emph{time bags} spanning $\Delta t$ days (2 days in the implementation), each one representing a unit of time evolution
+We further assume that when a quotation $q$ appears in time bag $i$, if it is not original (i.e. if not stemming from a source external to the dataset, e.g. initiating a new set of quotations), then it is based solely on the most frequent quotation $q_{max}$ in the preceding time bag ($i - 1$).
+If $q$ differs from $q_{max}$ by only one word it is counted as a substitution from $q_{max}$ to~$q$.
 In any other case, i.e. if $q$ and $q_{max}$ are the same or if $q$ and $q_{max}$ are different in other ways, the occurrence of $q$ is not considered to be an instance of substitution and is discarded.
 
-An example of this detection in a situation akin to the one described above can be seen in Figure \ref{fig:substitution-detection-example}: $q_a$ and $q_b$ differ by only a word, and $q_a$ appears first, once, and so is the most frequent in the beginning.
-The first two occurrences of $q_b$ are therefore detected as substitutions stemming from $q_a$.
-After a time the situation is reversed and $q_b$ becomes more frequent than $q_a$: in this time frame $q_b$ is thus inaccurately considered as the original quote.
-This entails that occurrences of $q_b$ are seen as identical occurrences of the original quote, while occurrences of $q_a$ are detected as substitutions stemming from $q_b$.
+This model has two main effects.
+First, the binning influences how many times quote occurrences can be counted as substitutions: in the second drawing on Figure~\ref{fig:substitution-detection-example1}, occurrences of $q_b$ on the 21st and 22nd are counted as substitutions, whereas the occurrence on the 23rd is not.
+Second, the ``majority'' rule defines how quotes are sourced in substitutions: in the third drawing on Figure~\ref{fig:substitution-detection-example1}, $q_b$ holds the majority and is the considered the basis for the last occurrence of $q_a$, in spite of $q_a$ having appeared earlier at the very beginning (indeed in the situation shown in Figure~\ref{fig:substitution-detection-example1}, this seems the most likely scenario).
 
 The assumptions embedded in this model are only a subset of a wider set of possibilities, each leading to alternative models.
 We identified and implemented eleven other such models, and they all yielded essentially the same results.
