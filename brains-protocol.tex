@@ -213,7 +213,7 @@ Word substitution susceptibility is computed as the ratio of the number $s_w$ of
 Now averaging over all words such that $\phi(w) = f$ (only taking into account words that are substituted at least once), we obtain the mean susceptibility for the feature value $f$:
 \footnote{To avoid any auto-correlation effect due to the number of substitutions in a cluster (possibly leading to an overly optimistic estimation of confidence intervals), we first average substitutions over each cluster, by considering the average of arrival word features for a given start word.
 Indeed, substitutions occurring in the same cluster are likely not statistically independent.}
-$$\sigma_{\phi}(f) \defeq \left< \frac{s_w}{p_w} \right>_{\left\lbrace w | \phi(w) = f \right\rbrace}$$
+$$\sigma_{\phi}(f) = \left< \frac{s_w}{p_w} \right>_{\left\lbrace w | \phi(w) = f \right\rbrace}$$
 
 This measure focuses on the selection of start words involved in substitutions, measuring the effect of features at the moment preceding the substitution when it is not yet known which word in the quotation -- if any -- will be substituted.
 
@@ -221,15 +221,15 @@ This measure focuses on the selection of start words involved in substitutions, 
 
 Next, we measure how a word $\wstart$'s feature varies as $\wstart$ is substituted by $\warrival$, i.e. $\phi(\warrival) - \phi(\wstart)$.
 Averaging this value over all start words such that $\phi(w) = f$ yields the mean variation for that feature value~$f$:
-$$\Delta_{\phi}(f) \defeq \left< \phi(\warrival) - \phi(\wstart) \right>_{\left\lbrace (\wstart,\warrival) | \phi(\wstart) = f \right\rbrace}$$
+$$\Delta_{\phi}(f) = \left< \phi(\warrival) - \phi(\wstart) \right>_{\left\lbrace (\wstart,\warrival) | \phi(\wstart) = f \right\rbrace}$$
 
-We introduce a null hypothesis $\mathcal{H}_0$ to compare the actual variation of a word's feature to its expected variation, assuming the arrival word $\warrival_{\mathcal{H}_0}$ had been chosen randomly from the pool of free association words.
+We introduce a null hypothesis $\mathcal{H}_0$ to compare the actual variation of a word's feature to its expected variation, assuming the arrival word $\warrival_0$ had been chosen randomly from the pool of free association words.
 The new quantity under $\mathcal{H}_0$ is:
-\footnote{Note that $\phi(\warrival_{\mathcal{H}_0})$ is in fact a constant in this averaging, since by definition $\warrival_{\mathcal{H}_0}$ does not depend on $\wstart$.}
-$$\Delta_{\phi, \mathcal{H}_0}(f) \defeq \left< \phi({\warrival_{\mathcal{H}_0}}) - \phi(\wstart) \right>_{\left\lbrace (\wstart,\warrival_{\mathcal{H}_0}) | \phi(\wstart) = f \right\rbrace}$$
+\footnote{Note that $\phi(\warrival_0)$ is in fact a constant in this averaging, since by definition $\warrival_0$ does not depend on $\wstart$.}
+$$\Delta_{\phi}^0 (f) = \left< \phi({\warrival_0}) - \phi(\wstart) \right>_{\left\lbrace (\wstart,\warrival_0) | \phi(\wstart) = f \right\rbrace}$$
 
 We also considered an alternative null hypothesis, denoted $\mathcal{H}_{00}$, where the arrival word is chosen randomly \emph{among immediate synonyms of the start word}, i.e. an arrival word chosen among semantically plausible though still random words.
-\footnote{In this case $\warrival_{\mathcal{H}_{00}}$ does depend on $\wstart$.} \rk{Do we present these results?}\cam{nope}\rk{S: Then we must say the results are the same.}
+\footnote{In this case $\warrival_{00}$ does depend on $\wstart$.} \rk{Do we present these results?}\cam{nope}\rk{S: Then we must say the results are the same.}
 
 Using this method we obtain the mean variation of feature for each start feature value, and can compare the variations to a situation where arrival words are chosen randomly.
 This gives us a fine-grained view of how word features evolve upon substitution.
