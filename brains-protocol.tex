@@ -115,15 +115,17 @@ The final set of variables we consider, as well as their cross-correlations, can
 The data we use presents an additional challenge: each set of quotations bears no explicit information either about the authoritative original quotation, or about the source quotation(s) each author inspired himself from when creating a new post and reproducing (possibly altering) those sources.
 Quote-to-quote transformations, and much less substitutions, are therefore not explicitly encoded in the dataset.
 
-We face an inference problem where, given all quotations and their occurrence timestamps, we must estimate which was the originating quotation for each instance of each quotation.
+We face an inference problem where, given all quotations and their occurrence timestamps, we should estimate which was the originating quotation for each instance of each quotation.
 We therefore model the underlying quotation selection process by making a few additional assumptions which let us define quote-to-quote substitutions from the available data.
 
-The main question in this problem concerns the way we consider later occurrences of a quotation that has already occurred earlier: the author of the later occurrences could have sourced an earlier occurrence and accurately copied it, they could have transformed an earlier occurrence of \emph{another} quote into this one, or they could have relied on information or other quotes from outside the dataset, i.e. from an external source we do not measure.
+The main question in this problem concerns the manner in which we decide whether a later occurrence is a strict copy of an earlier occurrence, or a substitution of an even earlier occurrence, or perhaps even a substitution or copy from quotes appearing outside the dataset, \hbox{i.e.} from a source external to the data collection perimeter.
+%consider later occurrences of a quotation that has already occurred earlier: the author of the later occurrences could have sourced an earlier occurrence and accurately copied it, they could have transformed an earlier occurrence of \emph{another} quote into this one, or they could have relied on information or other quotes from outside the dataset, i.e. from an external source we do not measure.
 
 Let us give an example: say the quotation ``These accusations are false and \textbf{absurd}'' ($q_a$) appears in a blog on January 19, and the slightly different quotation ``These accusations are false and \textbf{incoherent}'' ($q_b$) appears in other blogs on the 21st, 22nd and 23rd of January.
 If $q_a$ was sufficiently prominent when $q_b$ first appeared, we can safely assume that the first author of $q_b$ on the 21st based himself on $q_a$ as is shown in the top drawing of Figure~\ref{fig:substitution-detection-example1}.
 But what about the second and third occurrences of $q_b$, on the 22nd and 23rd?
-Should we consider them to be substitutions based on $q_a$ (i.e. re-creations of $q_b$ by a new instance of the substitution process that brought from $q_a$ to $q_b$ in the first place) or accuratee reproductions of the earlier occurrences of $q_b$ (options shown in Figure~\ref{fig:substitution-detection-example1})?
+Should we consider them to be substitutions based on $q_a$ %(i.e. re-creations of $q_b$ by a new instance of the substitution process that brought from $q_a$ to $q_b$ in the first place) 
+or accurate reproductions of the previous occurrences of $q_b$? \cam{là je distinguerais 3a [top] de 3b [middle \& bottom]} (options shown in Figure~\ref{fig:substitution-detection-example1})?
 
 \begin{figure}[h]
     \centering
