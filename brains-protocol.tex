@@ -110,7 +110,7 @@ The final set of variables we consider, as well as their cross-correlations, can
 \end{figure}
 
 
-\subsection{Detection of substitutions}
+\subsection{Temporal binning}
 
 The data we use presents an additional challenge: each set of quotations bears no explicit information either about the authoritative original quotation, or about the source quotation(s) each author inspired himself from when creating a new post and reproducing (possibly altering) those sources.
 Quote-to-quote transformations, and much less substitutions, are therefore not explicitly encoded in the dataset.
@@ -125,15 +125,15 @@ Let us give an example: say the quotation ``These accusations are false and \tex
 If $q_a$ was sufficiently prominent when $q_b$ first appeared, we can safely assume that the first author of $q_b$ on the 21st based himself on $q_a$ as is shown in the top drawing of Figure~\ref{fig:substitution-detection-example1}.
 But what about the second and third occurrences of $q_b$, on the 22nd and 23rd?
 Should we consider them to be substitutions based on $q_a$ %(i.e. re-creations of $q_b$ by a new instance of the substitution process that brought from $q_a$ to $q_b$ in the first place) 
-or accurate reproductions of the previous occurrences of $q_b$? \cam{là je distinguerais 3a [top] de 3b [middle \& bottom]} (options shown in Figure~\ref{fig:substitution-detection-example1})?
+or accurate reproductions of the previous occurrences of $q_b$? \cam{là je distinguerais 3a [top] de 3b [middle \& bottom]} (options shown in Figure~\ref{fig:substitution-temporal-binning})?
 
 \begin{figure}[h]
     \centering
     \def\svgwidth{\linewidth}
     \small
-    \input{images/substitution-detection-example1.pdf_tex}
+    \input{images/substitution-temporal-binning.pdf_tex}
     \caption{XXXXX}
-    \label{fig:substitution-detection-example1}
+    \label{fig:substitution-temporal-binning}
 \end{figure}
 
 To settle this question we bin the quote occurrences into fixed \emph{time bags} spanning $\Delta t$ days (2 days in the implementation), each one representing a unit of time evolution
@@ -142,8 +142,8 @@ If $q$ differs from $q_{max}$ by only one word it is counted as a substitution f
 In any other case, i.e. if $q$ and $q_{max}$ are the same or if $q$ and $q_{max}$ are different in other ways, the occurrence of $q$ is not considered to be an instance of substitution and is discarded.
 
 This model has two main effects.
-First, the binning influences how many times quote occurrences can be counted as substitutions: in the second drawing on Figure~\ref{fig:substitution-detection-example1}, occurrences of $q_b$ on the 21st and 22nd are counted as substitutions, whereas the occurrence on the 23rd is not.
-Second, the ``majority'' rule defines how quotes are sourced in substitutions: in the third drawing on Figure~\ref{fig:substitution-detection-example1}, $q_b$ holds the majority and is the considered the basis for the last occurrence of $q_a$, in spite of $q_a$ having appeared earlier at the very beginning (indeed in the situation shown in Figure~\ref{fig:substitution-detection-example1}, this seems the most likely scenario).
+First, the binning influences how many times quote occurrences can be counted as substitutions: in the second drawing on Figure~\ref{fig:substitution-temporal-binning}, occurrences of $q_b$ on the 21st and 22nd are counted as substitutions, whereas the occurrence on the 23rd is not.
+Second, the ``majority'' rule defines how quotes are sourced in substitutions: in the third drawing on Figure~\ref{fig:substitution-temporal-binning}, $q_b$ holds the majority and is the considered the basis for the last occurrence of $q_a$, in spite of $q_a$ having appeared earlier at the very beginning (indeed in the situation shown in Figure~\ref{fig:substitution-temporal-binning}, this seems the most likely scenario).
 
 The assumptions embedded in this model are only a subset of a wider set of possibilities, each leading to alternative models.
 We identified and implemented eleven other such models, and they all yielded essentially the same results.
@@ -197,6 +197,15 @@ We thus observe only the repeatedly-affected portion of the quotation families, 
 We then focus on the individual substitution process at work when authors transform quotations, by examining the features of the substituted and substituting words in each substitution.
 Note that since we only consider substitutions and not faithful copies, we measure the features of an alteration \emph{knowing that there has been an alteration}, and we do not take invariant quotations into account.
 Indeed, in the first case we know there has been a human reformulation, whereas in the second case it is impossible to know whether there has been perfect human reformulation or simply digital copy-pasting of a source (``{\sc Ctrl-C}/{\sc Ctrl-V}'').
+
+\begin{figure}[h]
+    \centering
+    \def\svgwidth{\linewidth}
+    \small
+    \input{images/substitution-q_max.pdf_tex}
+    \caption{XXXXX}
+    \label{fig:substitution-q_max}
+\end{figure}
 
 We build two main observables for each word feature.
 First, we measure the susceptibility for words to be the source of a substitution, knowing that there has been a variation, in order to show which semantic features are the most likely to attract a substitution under this condition.
