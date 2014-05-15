@@ -167,9 +167,18 @@ That is, the substitutions on quotations over time have no global effect on quot
 
 \bigskip
 To narrow this view to the specific effects of cognitive bias we consider substitution \emph{chains}: using the substitution detection model described in the previous section, we filter time bags to include only new quotes produced by substitutions themselves based on quotes produced by substitutions, and so on recursively.
-The first time bag is therefore untouched, the second contains the quotations produced by substitutions from the first, the third by substitutions from the second, and so on.
+The first time bag is therefore untouched, the second contains the quotations produced by substitutions from the first, the third by substitutions from the second, and so on (see Figure~\ref{fig:substitution-chains} for an illustration of this process).
 As a result, the number of observed words drastically decreases across time, yet it unambiguously focuses on successive mutations.
-\rk{add pedagogical figure}
+
+\begin{figure}[h]
+    \centering
+    \def\svgwidth{\linewidth}
+    \tiny
+    \input{images/substitution-chains.pdf_tex}
+    \caption{XXXXX}
+    \label{fig:substitution-chains}
+\end{figure}
+
 We thus observe only the repeatedly-affected portion of the quotation families, and obtain a simple view of the longitudinal effect of cognitive bias, \hbox{i.e.} how quote features are evolving in the long term and, perhaps, converging towards specific attractors.
 
 \rk{Comment results and transition to micro process}
