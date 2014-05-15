@@ -1,6 +1,6 @@
 %% Creator: Inkscape inkscape 0.48.4, www.inkscape.org
 %% PDF/EPS/PS + LaTeX output extension by Johan Engelen, 2010
-%% Accompanies image file 'substitution-temporal-binning.pdf' (pdf, eps, ps)
+%% Accompanies image file 'substitution-temporal-binning-b.pdf' (pdf, eps, ps)
 %%
 %% To include the image in your LaTeX document, write
 %%   \input{<filename>.pdf_tex}
@@ -36,7 +36,7 @@
   }%
   \providecommand\rotatebox[2]{#2}%
   \ifx\svgwidth\undefined%
-    \setlength{\unitlength}{354.75134277bp}%
+    \setlength{\unitlength}{354.7949707bp}%
     \ifx\svgscale\undefined%
       \relax%
     \else%
@@ -48,22 +48,12 @@
   \global\let\svgwidth\undefined%
   \global\let\svgscale\undefined%
   \makeatother%
-  \begin{picture}(1,0.720417)%
-    \put(0,0){\includegraphics[width=\unitlength]{substitution-temporal-binning.pdf}}%
-    \put(0.14466981,0.67115229){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{Quote occurrences}}}%
-    \put(0.02513861,0.54499321){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{$q_b$}}}%
-    \put(0.02575526,0.47675783){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{$q_a$}}}%
-    \put(0.7472177,0.40636222){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{$t$}}}%
-    \put(0.56471448,0.51785692){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{?}}}%
-    \put(0.16922042,0.37528253){\color[rgb]{0,0,0}\makebox(0,0)[b]{\smash{{\tiny 19/01}}}}%
-    \put(0.29195101,0.37528253){\color[rgb]{0,0,0}\makebox(0,0)[b]{\smash{{\tiny 20/01}}}}%
-    \put(0.41426868,0.37528253){\color[rgb]{0,0,0}\makebox(0,0)[b]{\smash{{\tiny 21/01}}}}%
-    \put(0.53658636,0.37528253){\color[rgb]{0,0,0}\makebox(0,0)[b]{\smash{{\tiny 22/01}}}}%
-    \put(0.65890403,0.37528253){\color[rgb]{0,0,0}\makebox(0,0)[b]{\smash{{\tiny 23/01}}}}%
-    \put(0.02513861,0.2215472){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{$q_b$}}}%
-    \put(0.02575526,0.15331182){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{$q_a$}}}%
-    \put(0.7472177,0.07039771){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{$t$}}}%
-    \put(0.23050864,0.04538074){\color[rgb]{0,0,0}\makebox(0,0)[b]{\smash{{\tiny 2 days}}}}%
-    \put(0.47500631,0.04538074){\color[rgb]{0,0,0}\makebox(0,0)[b]{\smash{{\tiny 2 days}}}}%
+  \begin{picture}(1,0.31458502)%
+    \put(0,0){\includegraphics[width=\unitlength]{substitution-temporal-binning-b.pdf}}%
+    \put(0.02519701,0.20386593){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{$q_b$}}}%
+    \put(0.02581358,0.13563894){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{$q_a$}}}%
+    \put(0.74718731,0.05273503){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{$t$}}}%
+    \put(0.23054178,0.02772113){\color[rgb]{0,0,0}\makebox(0,0)[b]{\smash{{\tiny 2 days}}}}%
+    \put(0.47500939,0.02772113){\color[rgb]{0,0,0}\makebox(0,0)[b]{\smash{{\tiny 2 days}}}}%
   \end{picture}%
 \endgroup%
