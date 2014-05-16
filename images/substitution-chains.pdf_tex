@@ -36,7 +36,7 @@
   }%
   \providecommand\rotatebox[2]{#2}%
   \ifx\svgwidth\undefined%
-    \setlength{\unitlength}{430.35541992bp}%
+    \setlength{\unitlength}{484.64458008bp}%
     \ifx\svgscale\undefined%
       \relax%
     \else%
@@ -48,10 +48,10 @@
   \global\let\svgwidth\undefined%
   \global\let\svgscale\undefined%
   \makeatother%
-  \begin{picture}(1,0.30385087)%
+  \begin{picture}(1,0.26596047)%
     \put(0,0){\includegraphics[width=\unitlength]{substitution-chains.pdf}}%
-    \put(0.14166303,0.11231019){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{$\mathcal{B}_0$}}}%
-    \put(0.51335654,0.24200677){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{$\mathcal{B}_1$}}}%
-    \put(0.93063319,0.17545772){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{$\mathcal{B}_2$}}}%
+    \put(0.12577704,0.08453836){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{$\mathcal{B}_0$}}}%
+    \put(0.45583402,0.19970652){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{$\mathcal{B}_1$}}}%
+    \put(0.82389188,0.18022885){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{$\mathcal{B}_2$}}}%
   \end{picture}%
 \endgroup%
