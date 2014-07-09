@@ -1,6 +1,6 @@
 % !TEX root = brainscopypaste.tex
 % ============================
-\section{Protocol} % =========
+\section{Data} % =========
 % ============================
 \label{sec:protocol}
 
@@ -11,7 +11,7 @@ Second, they stem from a unique ``original'' version, and could ideally be trace
 Third, and most importantly, their duplication should \emph{a priori} be highly faithful, apart from cases of cropping: not only should transformations be of moderate magnitude, but when specific words are not perfectly duplicated, it is safe to assume that the variation is due to involuntary cognitive bias --- as writers may expect any casual reader to easily verify, and thus criticize, the fidelity to the original quotation.
 Quotation evolution is therefore a perfect environment to measure cognition-induced transformations and relate those findings to macroscopic social dynamics.
 
-\subsection{Dataset}
+\subsection{In vivo utterances}
 
 We used a reliable quotation dataset collected by \citet{Leskovec09}, large enough to lend itself to statistical analysis.
 This dataset consists of the daily crawling of news stories and blog posts from around a million online sources, with an approximate publication rate of 900k texts per day, over a nine-month period of time (from August 2008 to April 2009) \cite{Leskovec09-url}.\footnote{Unfortunately, the original article~\citep{Leskovec09} does not provide additional details on the source selection methodology.}
@@ -110,10 +110,16 @@ The final set of variables we consider, as well as their cross-correlations, can
 \end{figure}
 
 
+\section{Observing the substitution process}
+
+We then focus on the individual substitution process at work when authors transform quotations, by examining the features of the substituted and substituting words in each substitution. 
+
 \subsection{Temporal binning}
 \label{sec:temporal-binning}
 
-The data we use presents an additional challenge: each set of quotations bears no explicit information either about the authoritative original quotation, or about the source quotation(s) each author inspired himself from when creating a new post and reproducing (possibly altering) those sources.
+To do so we first propose a substitution detection model. 
+
+The utterance data we use presents a challenge: each set of quotations bears no explicit information either about the authoritative original quotation, or about the source quotation(s) each author inspired himself from when creating a new post and reproducing (possibly altering) those sources.
 Quote-to-quote transformations, and much less substitutions, are therefore not explicitly encoded in the dataset.
 
 We face an inference problem where, given all quotations and their occurrence timestamps, we should estimate which was the originating quotation for each instance of each quotation.
@@ -154,42 +160,8 @@ The assumptions embedded in this model are only a subset of a wider set of possi
 These various flavours of an ideal substitution detection model essentially change whether occurrences are considered as substitutions from another quote, repetitions of the original quote, or introduction of information external to the dataset.
 We identified and implemented eleven other such models, and they all yielded essentially the same results.
 
-\section{Macroscopic evolution of quotation families}
-
-We first examine the evolution of quotation families under the repeated action of substitutions.
-Our goal in this step is to identify the long-term effect of cognitive bias over the lifetimes of quotation families and thus over the framing of public information.
-
-To do so we compute the distribution of word features for each time bag $\mathcal{B}_n$ of each quotation family, and sum those distributions over all quotation families.
-This yields a distribution of feature values for each $n$, which is the simplest possible view of the state of an average quotation family in its $n$-th time bag, i.e. after $n \times \Delta t$ days.\footnote{For consistency, if we do this for $n$ going up to $N$, we only include quotation families that span long enough to have at least $N$ time bags.}
-Such a computation, based solely on the binning of quotation families, makes no assumptions on the way quotations undergo substitutions over time.
-
-The raw distributions built with this computation are stationary.
-That is, the substitutions on quotations over time have no global effect on quotation families, either because external quotations are continuously fed into the family and compensate for the effect of substitutions, or because substitutions operate on a marginal portion of the quotation families, or both.
-
-\bigskip
-To narrow this view to the specific effects of cognitive bias we consider substitution \emph{chains}: using the substitution detection model described in the previous section, we filter time bags to include only new quotes produced by substitutions themselves based on quotes produced by substitutions, and so on recursively.
-The first time bag is therefore untouched, the second contains the quotations produced by substitutions from the first, the third by substitutions from the second, and so on (see Figure~\ref{fig:substitution-chains} for an illustration of this process).
-As a result, the number of observed words drastically decreases across time, yet it unambiguously focuses on successive mutations.
-
-\begin{figure}[h]
-    \centering
-    \def\svgwidth{\linewidth}
-    \tiny
-    \input{images/substitution-chains.pdf_tex}
-    \caption{XXXXX}
-    \label{fig:substitution-chains}
-\end{figure}
-
-We thus observe only the repeatedly-affected portion of the quotation families, and obtain a simple view of the longitudinal effect of cognitive bias, \hbox{i.e.} how quote features are evolving in the long term and, perhaps, converging towards specific attractors.
-
-\rk{Comment results and transition to micro process}
-
-\section{Microscopic evolution: the substitution process}
-
-We then focus on the individual substitution process at work when authors transform quotations, by examining the features of the substituted and substituting words in each substitution. 
-
-To do so we first extend the substitution detection model used in the previous section to reduce possible false positives.
-Indeed, when in the previous section we were forced to detect substitutions with a very permissive model to make sure chains of substitutions could be extracted (at the expense of possible false positives, the only effect of this being additional noise in the results, making our conclusions more conservative), here we can afford to detect substitutions more precisely.
+We now need to reduce possible false positives.
+Indeed, so far we have been forced to detect substitutions with a very permissive model to make sure chains of substitutions could be extracted (at the expense of possible false positives, the only effect of this being additional noise in the results, making our conclusions more conservative), here we can afford to detect substitutions more precisely.
 We thus add the constraint that substitutions can only stem from the most frequent quote in the preceding time bag.
 Since it is fairly certain that authors will have come upon the most frequent quote in any given time bag (\emph{v.} all the other quotes in that time bag), restricting substitutions to the most frequent quote makes sure we only detect substitutions that really occurred, greatly reducing the number of false positives.
 
@@ -244,7 +216,7 @@ The results were not qualitatively changed with this second null hypothesis, so 
 Using this method we obtain the mean variation of feature for each start feature value, and can compare the variations to a situation where arrival words are chosen randomly.
 This gives us a fine-grained view of how word features evolve upon substitution.
 
-\subsection{Results}
+\section{Results}
 
 \rk{Comment results}
 
