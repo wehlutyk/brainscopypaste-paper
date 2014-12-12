@@ -189,16 +189,15 @@ Note that since we only consider substitutions and not faithful copies, we measu
 
 \subsection{Susceptibility}
 
-For a given feature $\phi$, the protocol lets us compute substitution \emph{susceptibilities} for each feature value $f$.
 We say that a word is \emph{substitutable} if it appears in a quote which undergoes a substitution, whether that substitution operates on the considered word or on another.
-Word substitution susceptibility is computed as the ratio of the number $s_w$ of times a word is substituted to the number $p_w$ of times that word appears in a substitutable position, i.e. $\sfrac{s_w}{p_w}$.
+Word substitution susceptibility is computed as the ratio of the number $s_w$ of times a word is substituted to the number $p_w$ of times that word appears in a substitutable position, i.e. $\sfrac{s_w}{p_w}$. In other words, it measures how often a subtitutable word $w$ gets actually substituted.
 
-Now averaging over all words such that $\phi(w) = f$ (only taking into account words that are substituted at least once), we obtain the mean susceptibility for the feature value $f$:
+Now, for a given feature $\phi$, we obtain the mean susceptibility $\sigma_{\phi}(f)$ for the feature value $f$ by averaging this ratio over all words such that $\phi(w) = f$ (only taking into account words that are substituted at least once):
 \footnote{To avoid any auto-correlation effect due to the number of substitutions in a cluster (possibly leading to an overly optimistic estimation of confidence intervals), we first average substitutions over each cluster, by considering the average of arrival word features for a given start word.
 Indeed, substitutions occurring in the same cluster are likely not statistically independent.}
 $$\sigma_{\phi}(f) = \left< \frac{s_w}{p_w} \right>_{\left\lbrace w | \phi(w) = f \right\rbrace}$$
 
-This measure focuses on the selection of start words involved in substitutions, measuring the effect of features at the moment preceding the substitution when it is not yet known which word in the quotation -- if any -- will be substituted.
+This measure focuses on the selection of start words involved in substitutions, measuring the effect of features at the moment preceding the substitution when it is not yet known which word in the quotation will be substituted.
 
 \subsection{Alteration}
 
