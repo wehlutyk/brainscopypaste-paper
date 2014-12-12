@@ -1,58 +1,74 @@
-% !TEX root = brainscopypaste.tex
+% !TEX root = brainscopycut.tex
 % ============================
 \section{Introduction} % =====
 % ============================
 
-The understanding of the mechanisms behind cultural similarity and diversity has led to a sizeable literature in the recent past, spanning over a vast area of research fields ranging from cultural anthropology to social network analysis and complex systems modelling, all diversely labelled as studies on ``opinion dynamics'', ``cultural evolution'', or ``information diffusion'', for the most part.
-Broadly, this type of research program investigates phenomena pertaining to both cognitive science and social science, and aims to understand the processing, transmission, and evolution of information both at the individual and social levels.
+The understanding of knowledge transmission mechanisms has led to a sizeable literature in the recent past, spanning over numerous research fields ranging from cultural anthropology to social network analysis and complex systems modeling, from social cognition to data mining. These works are diversely labeled as studies on ``opinion dynamics'', ``cultural evolution'', or ``information diffusion'' and, for the most part, 
+%Broadly speaking, this type of research program is bound to
+ investigating phenomena pertaining to both cognitive science and social science, %and aims to understand the processing, transmission, and evolution of information 
+ both at the individual and social levels.  Broadly speaking, we may distinguish two main research streams, depending on whether the focus lies on cognitive processes or on social dynamics.
 
-Several theories have been proposed and debated within these research fields, mixing social and individual cognition, notably from the side of cultural anthropology.
-First, the debate around the ``memetic'' program initiated by \citet{Dawkins76}, for which the collection of works by \citet{Aunger00} provides a solid overview.
-A second field has focused on the development of evolutionary models of norms (see for instance \citealp{Ehrlich05}), following the seminal work of \citet{Boyd85}.
+%Broadly speaking, this type of research program is bound to investigate phenomena pertaining to both cognitive science and social science, and aims to understand the processing, transmission, and evolution of information both at the individual and social levels.  The relevant literature features two main streams, depending on whether the focus lies on social dynamics or cognitive processes.
 
-A third approach, ``cultural epidemiology'', initiated by \citet{sper:expl} recently attracted significant attention.
-Works such as \citet{Atran03} argue that this approach is anthropologically better suited than memetics, and the main issues in this debate are further detailed by \citet{Kuper00} and \citet{Bloch00}.
-The cultural epidemiology program focuses on the notion of \emph{representation}, linking the cognitive science concept of \emph{mental representation} to the concept of \emph{public representation}, the latter being the former's counterpart outside the brain (i.e. in cultural artefacts: texts, utterances, etc.).\footnote{\citet{sper:expl} emphasizes this distinction in his seminal work:
+A first stream of research is largely structured around cultural anthropology and essentially addresses cultural similarity, diversity and its evolution. It features several theories mixing social and individual cognition including, to cite a few, the debate around the ``memetic'' program initiated by \citet{Dawkins76} (for which the collection of works by \citet{Aunger00} provides a solid overview) the development of evolutionary models of norms (see for instance \citet{Ehrlich05}, following the seminal work of \citet{Boyd85}); or the program of ``cultural epidemiology'', initiated by \citet{sper:expl}, which %recently attracted significant attention, and
+% focuses on the notion of \emph{representation}, 
+links %the cognitive science 
+concept of \emph{mental representation} to the concept of \emph{public representation} (the latter being the former's counterpart outside the brain, i.e. in cultural artifacts: texts, utterances, etc.).\footnote{\citet{sper:expl} emphasizes this distinction in his seminal work:
 \begin{quotation}
 A representation may exist inside its user: it is then a \emph{mental representation}, such as a memory, a belief, or an intention.
 The producer and the user of a mental representation are one and the same person.
 A representation may also exist in the environment of its user, as is the case, for instance, of the text you are presently reading: it is then a \emph{public representation}.
 \end{quotation}}
-The key point here is that representations are not being replicated through a high-fidelity copy process, but are being interpreted and produced anew, and are thus greatly subject to change.
-Cultural epidemiology postulates this type of conceptual evolution and suggests that it can be appraised through the notion of ``cultural attractor'', seen as the attraction domain of an underlying socio-semantic dynamical system.
-Despite some recent modelling attempts (for instance \citet{Claidiere07}), the development of quantitative measurements focused on the key notion of cultural attractor has remained a relatively hard task and, to our knowledge, this hypothesis has not yet been empirically analysed.
 
-However, the last decade has witnessed an avalanche of observable \emph{in vivo} data in the form of online interactions.
-While they are not records of ``physical'' inter-individual interactions (in the sense of ``real life'' interactions), these productions and information trails still constitute a wealth of observations on the dynamics of public --~albeit online~-- representations.
-Given the already significant --~and rapidly growing~-- importance of our online interactions, these records can dramatically improve the prospects of empirical study of the individual-level processes of cultural evolution.
+Here, one of the core claim consists in observing that not all knowledge is equally fit for being reproduced, although the various approaches have a different take on how exactly this notion of fitness should be operationalized. Sperber's cultural epidemiology opposes Dawkins' memetics by insisting that representations are not being replicated through a high-fidelity copy process, but are being interpreted and produced anew, and are thus greatly subject to change.
+Cultural epidemiology postulates this type of conceptual evolution and suggests that it can be appraised through the notion of ``cultural attractor'', seen as the attraction domain of an underlying socio-semantic dynamical system.\footnote{Works such as \citet{Atran03} argue that this approach is anthropologically better suited than memetics, and the main issues in this debate are further detailed by \citet{Kuper00} and \citet{Bloch00}.}
+Despite some recent modelling attempts (for instance \citet{Claidiere07}), the development of quantitative measurements focused on the key notion of cultural attractor has remained a relatively hard task and, to our knowledge, this hypothesis has not yet been extensively empirically analyzed.
 
-We aim to empirically describe the transformation of a specific type of public representation, by focusing on the possible alterations introduced by individuals when newly producing a representation.
+
+Another research stream deals with rather macroscopic studies of knowledge diffusion. Here, one of the focal points is that not all knowledge gets propagated identically along the same routes, within the same communities, at the same pace. The various approaches usually feature a minimalistic description of cognitive processes, strongly reminiscent of biological epidemiology (a single, atomic piece of information may or may not be adopted by individuals).  
+This research program nonetheless exhibits a significant empirical track record --- largely owing to a recent avalanche of observable \emph{in vivo} data which, for a good decade now, has mainly come from a variety of online interaction contexts.
+While these information trails are not records of ``physical'' inter-individual interactions (in the sense of ``real life'' interactions), they still constitute a wealth of observations on the dynamics of public --~albeit online~-- representations.
+Some could describe for instance the propagation of cultural artifacts across social networks such as blogspace \citep{Gruhl04}, the characteristic times and diffusion cycles both within these social networks and with respect to the topical dynamics of news media \citep{Leskovec09}, or the reciprocal influence between the social network topology and the distribution of issues \citep{Cointet09}.
+
+These studies are relatively remote from anthropology and cognition, and, for a significant part, rely only marginally on specific social science theories; they are rather are at the interface between data mining, complex systems and quantitative sociology (first and foremost social network analysis). They nonetheless show us the interest of using these records --~given the already significant and rapidly growing importance of our online interactions~--
+%and, %more broadly, large textual corpora \cam{google n-grams??} 
+to dramatically improve the empirical understanding of individual-level processes of cultural evolution.
+
+
+\bigskip
+Stepping back, we observe a gap between, on one side, empirical studies of the diffusion dynamics in a social system and, on the other side, more theoretical works  focused on knowledge transformation processes. %--- these latter studies being either strongly normative, or with results difficult to articulate with realistic cultural epidemiology models.
+Our research lies at the intersection of these two programs, aiming to shed light on microscopic information transformation processes by leveraging the empirical wealth of (in vivo) social diffusion phenomena.   We hope to describe some reformulation processes within a large distributed social system such as blogspace. More precisely, we aim to empirically describe how some specific type of public representation may possibly be altered by bloggers when they try to reproduce that representation. 
+
+We focus on simple linguistic modifications, thereby connecting our research to the broader psycholinguistic literature.
 To deal with robust and simple cultural representations, we paid attention to the evolution of quotations.
 While these verbatim public representations should in theory not suffer any alterations as they are produced anew (as opposed to more elaborate expressions and opinions, not identified as quoted utterances), empirical observation shows that they are in fact quite often transformed.
 We will in particular exhibit a non-trivial process by which individual words in quotations are replaced.
 We will uncover some of the semantic and structural characteristics of these words and the substitutions they undergo.
 More generally, we contend that using this type of data is equivalent to a large-scale psycholinguistic experiment and at the same time constitutes the first step towards building empirically realistic models of cultural evolution.
 
-The next section (Sec.~\ref{sec:related}) describes the state-of-the-art on this matter.
+The next section (Sec.~\ref{sec:related}) describes our hypotheses along with the relevant state-of-the-art on this \cam{psycholinguistic} matter.
 In Sec.~\ref{sec:protocol}, we detail the empirical protocol and the various assumptions that were made in order to deal with the available empirical material.
 Sec.~\ref{sec:results} describes the significant psycholinguistic biases observed during \emph{in vivo} quotation reformulation as well as their epidemiological setting, followed by a discussion and general guidelines for further work in Sec.~\ref{sec:conclusion}.
 
 % ============================
-\section{Related work} % =====
+\section{Hypotheses} % =====
 % ============================
 \label{sec:related}
 
-The relevant literature on \emph{public representation dynamics} features two main streams.
-On one hand, we find studies of the macroscopic \emph{social diffusion} of public representations, describing for instance the propagation of cultural artefacts across social networks such as blogspace \citep{Gruhl04}, the characteristic times and diffusion cycles both within these social networks and with respect to the topical dynamics of news media \citep{Leskovec09}, or the reciprocal influence between the social network topology and the distribution of issues \citep{Cointet09}.
-These studies are relatively independent from anthropology and cognition and are at the interface between data mining, complex systems and quantitative sociology (first and foremost social network analysis).
-Without necessarily relying on specific social science theories, this research stream is of interest for its use of large social media corpora in studying cultural dynamics.
+%The relevant literature on \emph{public representation dynamics} features two main streams.
+%On one hand, we find studies of the macroscopic \emph{social diffusion} of public representations, describing for instance the propagation of cultural artifacts across social networks such as blogspace \citep{Gruhl04}, the characteristic times and diffusion cycles both within these social networks and with respect to the topical dynamics of news media \citep{Leskovec09}, or the reciprocal influence between the social network topology and the distribution of issues \citep{Cointet09}.
+%These studies are relatively independent from anthropology and cognition and are at the interface between data mining, complex systems and quantitative sociology (first and foremost social network analysis).
+%Without necessarily relying on specific social science theories, this research stream is of interest for its use of large textual corpora in studying cultural dynamics.
  
-On the other hand, the study of the \emph{transformation} of public representations has emerged only recently.
+The practical study of the \emph{transformation} of public representations has emerged only recently.
 For one, models involving evolution and representations to study the notion of ``cultural attractor'' have appeared only a few years ago \citep{Claidiere07}.
+ 
 Among the empirical approaches on the mutation of representations, some of the most relevant studies to date consist in a series of papers investigating \emph{quotation} transformations in a large corpus of US blog posts, initially collected and studied by \citet{Leskovec09} and further analyzed by \citet{Simmons11} and \citet{omod-mult}.
 They show several types of regularities and propose diffusion-transformation models of the evolution of quotations, which may nonetheless appear to be relatively simplistic from a cognitive viewpoint.
 One of the main conclusions of these works is that even for quotations, a type of public representation that should be among the most stable, it is still possible to observe and measure significant transformations.
-However, these studies address transformations by focusing on the properties of the source of the quotation (e.g. news outlet \emph{v.} blog), or the surrounding public space (e.g. quotation frequency in the corpus), rather than the very cognitive-level features which may determine or, at least, influence these transformations.
+However, these studies address transformations by focusing on the properties of the source of the quotation (\hbox{e.g.} news outlet {vs.} blog), or the surrounding public space (\hbox{e.g.} quotation frequency in the corpus), rather than the very cognitive-level features which may determine or, at least, influence these transformations.
+
+
 
 At this level, we have to turn to the broader psycholinguistic literature which provides one of the main cognitive foundations for public representation evolution by studying the influence of word features on the ease of recall.
 This field is well developed and details the impact that classical psycholinguistic variables such as word frequency (see \citet{Yonelinas02} for a review), age-of-acquisition \citep{Zevin02}, number of phonemes or number of syllables (see for instance \citet{Rey98} and \citet{nick-diss}), have in this type of task.
@@ -74,4 +90,3 @@ Our paper additionally sheds light on this debate.}
 \rk{Show the link with epidemiology, and fitness: oddness is a kind of fitness}
 
 \smallskip
-Stepping back, we observe a gap between, on one side, macro-level empirical studies of the diffusion dynamics in a social system and, on the other side, studies focused on micro-level transformations of representations --- these latter studies being either strongly normative, or with results difficult to articulate with realistic cultural epidemiology models.
