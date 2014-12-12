@@ -11,3 +11,5 @@
 .Rapp.history
 .Rhistory
 
+# Latexmk files
+*.fdb_latexmk

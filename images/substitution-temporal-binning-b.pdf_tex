@@ -1,4 +1,4 @@
-%% Creator: Inkscape inkscape 0.48.4, www.inkscape.org
+%% Creator: Inkscape inkscape 0.48.5, www.inkscape.org
 %% PDF/EPS/PS + LaTeX output extension by Johan Engelen, 2010
 %% Accompanies image file 'substitution-temporal-binning-b.pdf' (pdf, eps, ps)
 %%
@@ -50,10 +50,10 @@
   \makeatother%
   \begin{picture}(1,0.31458502)%
     \put(0,0){\includegraphics[width=\unitlength]{substitution-temporal-binning-b.pdf}}%
-    \put(0.02519701,0.20386593){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{$q_b$}}}%
-    \put(0.02581358,0.13563894){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{$q_a$}}}%
-    \put(0.74718731,0.05273503){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{$t$}}}%
-    \put(0.23054178,0.02772113){\color[rgb]{0,0,0}\makebox(0,0)[b]{\smash{{\tiny 2 days}}}}%
-    \put(0.47500939,0.02772113){\color[rgb]{0,0,0}\makebox(0,0)[b]{\smash{{\tiny 2 days}}}}%
+    \put(0.025197,0.20386595){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{$q'$}}}%
+    \put(0.02581359,0.13563897){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{$q$}}}%
+    \put(0.74718729,0.05273498){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{$t$}}}%
+    \put(0.23054179,0.02772109){\color[rgb]{0,0,0}\makebox(0,0)[b]{\smash{{\tiny 2 days}}}}%
+    \put(0.47500936,0.02772109){\color[rgb]{0,0,0}\makebox(0,0)[b]{\smash{{\tiny 2 days}}}}%
   \end{picture}%
 \endgroup%
