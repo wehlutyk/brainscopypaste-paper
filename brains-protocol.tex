@@ -133,9 +133,9 @@ We thus face an inference problem where, given all quotations and their occurren
 We therefore model the underlying quotation selection process by making a few additional assumptions.% which let us define quote-to-quote substitutions from the available data.
 The main issue is deciding whether a later occurrence is a strict copy of an earlier occurrence, or a substitution of an even earlier occurrence, or perhaps even a substitution or copy from quotes appearing outside the dataset, \hbox{i.e.} from a source external to the data collection perimeter.
 
-Let us give an example: say the quotation ``These accusations are false and \textbf{absurd}'' ($q$) appears in a blog on January 19, and the slightly different quotation ``These accusations are false and \textbf{incoherent}'' ($q'$) appears in other blogs on the 21st, 22nd and 23rd of January.
-If $q$ was sufficiently prominent when $q'$ first appeared, we can safely assume that the first author of $q'$ on the 21st based himself on $q$ as is shown in Figure~\ref{fig:substitution-temporal-binning-a}.
-But what about the second and third occurrences of $q'$, on the 22nd and 23rd?
+Let us give an example: say the quotation ``These accusations are false and \textbf{absurd}'' ($q$) appears in a blog on January 19, and the slightly different quotation ``These accusations are false and \textbf{incoherent}'' ($q'$) appears in other blogs on Jan 21, 22 and 23.
+If $q$ was sufficiently prominent when $q'$ first appeared, we can reasonably assume that the first author of $q'$ on the 21st based himself on $q$ as is shown in Figure~\ref{fig:substitution-temporal-binning-a}.
+But what about the second and third occurrences of $q'$, on Jan 22 and 23?
 Should we consider them to be substitutions based on $q$ %(i.e. re-creations of $q'$ by a new instance of the substitution process that brought from $q$ to $q'$ in the first place) 
 or accurate reproductions of the previous occurrences of $q'$? (Options shown in Figure~\ref{fig:substitution-temporal-binning-a}.)
 
@@ -165,9 +165,9 @@ or accurate reproductions of the previous occurrences of $q'$? (Options shown in
     \label{fig:substitution-temporal-binning}
 \end{figure}
 
-To settle this question we bin the quote occurrences into fixed \emph{bins} spanning $\Delta t$ days (2 days in the implementation), each one representing a unit of time evolution.
-Then when a quotation $q$ appears in bin $n$, it is counted as a substitution from each quote $q^*$ in the preceding bin ($n - 1$) from which it differs by only one word.
-If no quote in the preceding bin can qualify as a source in a substitution (i.e. $q$ differs from all the quotes in the preceding bin by more than one word), the occurrence of $q$ is not considered to be an instance of substitution.
+To settle this question we group quote occurrences into fixed bins spanning $\Delta t$ days (2 days in the implementation), each one representing a unit of time evolution.
+When a quotation $q'$ appears in bin $t+1$, it is counted as a substitution from each quote $q$ in the preceding bin $t$ from which it differs by only one word.
+If no quote in the preceding bin can qualify as a source in a substitution (i.e. $q'$ differs from all the quotes in the preceding bin by more than one word), the occurrence of $q'$ is not considered to be an instance of substitution.
 Such a model defines how many times quote occurrences can be counted as substitutions: in Figure~\ref{fig:substitution-temporal-binning-b}, occurrences of $q'$ on the 21st and 22nd are counted as substitutions, whereas the occurrence on the 23rd is not.
 
 The assumptions embedded in this model are only a subset of a wider set of possibilities, each leading to alternative substitution inferences.\footnote{In particular, time can be sliced into fixed bins as is done here, or kept fine-grained by using sliding bins.}
