@@ -1,35 +1,42 @@
-% !TEX root = brainscopypaste.tex
+% !TEX root = brainscopycut.tex
 % ============================
-\section{Data} % =========
+\section{Methods} % =========
 % ============================
 \label{sec:protocol}
 
-In order to start bridging this gap, we set out to \emph{empirically} study public representation transformations at the microscopic level, aiming to stay compatible with macroscopic-level studies of these public representations.
-Quotations appeared to be a perfect candidate as public representations.
-First, they are usually cleanly delimited by quotation marks (and often with HTML markup in web pages), which greatly facilitates their detection in text corpora.
+%In order to start bridging this gap, we set out to \emph{empirically} study public representation transformations at the microscopic level; 
+%aiming to stay compatible with macroscopic-level studies of these public representations.
+Quotations appeared to be a perfect candidate to propose a first \emph{in vivo} measure of low-level cognitive bias in a reformulation task. % as public representations.
+First, they are usually cleanly delimited by quotation marks %(and often with HTML markup in web pages), 
+which greatly facilitates their detection in text corpora.
 Second, they stem from a unique ``original'' version, and could ideally be traceable back to that version.
 Third, and most importantly, their duplication should \emph{a priori} be highly faithful, apart from cases of cropping: not only should transformations be of moderate magnitude, but when specific words are not perfectly duplicated, it is safe to assume that the variation is due to involuntary cognitive bias --- as writers may expect any casual reader to easily verify, and thus criticize, the fidelity to the original quotation.
-Quotation evolution is therefore a perfect environment to measure cognition-induced transformations and relate those findings to macroscopic social dynamics.
+
+
+We could therefore examine the individual substitution process at work when authors transform quotations, by examining the features of the substituted and substituting words in each substitution. To keep the analysis palatable, we focused on quotation transformations consisting in the \emph{substitution} of a word by another word (and only those cases) in order to unambiguously discuss single word replacements. 
+To quantify those substitutions, we decided to associate a number of features to each word, the variation of which we can statistically study.
+
+The next subsections describe the dataset and measures we used to assess this cognitive bias.
+%Quotation evolution is therefore a perfect environment to measure cognition-induced transformations.%and relate those findings to macroscopic social dynamics.
 
 \subsection{In vivo utterances}
 
-We used a reliable quotation dataset collected by \citet{Leskovec09}, large enough to lend itself to statistical analysis.
+We used a quotation dataset collected by \citet{Leskovec09}, large enough to lend itself to statistical analysis.
 This dataset consists of the daily crawling of news stories and blog posts from around a million online sources, with an approximate publication rate of 900k texts per day, over a nine-month period of time (from August 2008 to April 2009) \cite{Leskovec09-url}.\footnote{Unfortunately, the original article~\citep{Leskovec09} does not provide additional details on the source selection methodology.}
-Quotations were then automatically extracted from this corpus: each quotation is a more or less faithful excerpt of an utterance (oral or written) by the quoted person. \cam{btw do we have an excerpt of quotations here, could we even feature a few prototypical examples?}
-Quotations were then gathered in a graph and connected according to their similarity: either because they differ by very few words (in that case, no more than one word) or because they share a certain sequence of words (in that case, at least ten consecutive words).
+Quotations were then automatically extracted from this corpus: each quotation is a more or less faithful excerpt of an utterance (oral or written) by the quoted person. For instance,
+\begin{quote}
+\cam{do we have an excerpt of quotations here, could we even feature a few prototypical examples? Obama said that ``...'' }
+\end{quote}
+Quotations were then gathered in a graph and connected according to their similarity: either because they differ by very few words (in that case, no more than one word) or because they share a certain sequence of words (in that case, at least ten consecutive words): \cam{``...''\ra``...' ''}
 A community detection algorithm was applied to that quotation graph to detect aggregates of tightly connected, i.e. sufficiently similar, groups of quotations (see \citet{Leskovec09} for more detail).
 This analysis yielded the final data we had access to, with a total of about \num{70000} sets of quotations; each of these sets allegedly contains all variations of a same parent utterance, along with their respective publication URLs and timestamps.
 
 \subsection{Word-level measures}
 
-To keep the analysis palatable, we restricted the analysis to quotation transformations which consisted in the \emph{substitution} of a word by another word (and only those cases) in order to unambiguously discuss single word replacements. 
-To quantify those substitutions, we decided to associate a number of features to each word, the variation of which we can statistically study.
-The following sections detail the features we used.
 
 \subsubsection{Standard psycholinguistic indices}
 
-We first introduce some of the most classical psycholinguistic measures on words:
-
+We now introduce some of the most classical psycholinguistic measures on words.
 \rk{Add some bibliography about those features' known effects}
 
 \begin{itemize}
@@ -66,7 +73,7 @@ We introduce three standard network-based measures to be used on the FA network%
 \begin{itemize}
     \item \textbf{Centrality} $k$, initially measured by the number of incoming edges to a given node, i.e. the number of cues for which a given word is triggered as an association, which strongly relates to word polysemy.
     However in the present case there is a quasi-perfect correlation between node incoming degree and node \emph{pagerank}~\citep{Page99}, which will lead us to favour the latter later on. Word pagerank on the FA network had already been used by~\citet{Griffiths07}; it may be interpreted as a generalized and recursive measure of word polysemy: central nodes in the pagerank sense are words often selected as targets when presented with cues themselves often selected as targets, and so on recursively.
-    \item \textbf{Clustering coefficient} $c$, which measures the extent to which a node belongs to a local aggregate of tightly connected nodes, and defined as the ratio between the number of actual \emph{v.} possible edges between a node's neighbours \cite{watt-coll}.
+    \item \textbf{Clustering coefficient} $c$, which measures the extent to which a node belongs to a local aggregate of tightly connected nodes, and defined as the ratio between the number of actual vs. possible edges between a node's neighbours \cite{watt-coll}.
     We compute the clustering coefficient on the undirected version of the FA network; we thus measure if a word belongs more or less to a local aggregate of equivalent words (from a ``free association'' point of view).
     \item \textbf{Betweenness coefficient} $b$, another measure of node centrality describing the extent to which a node tends to connect otherwise remote areas of the network~\citep{free:set}.
     More technically, it corresponds to the normalized number of shortest paths connecting dyads which pass through that node; the higher the coefficient, the more important that node is in ensuring the connectedness of the rest of the network.
@@ -110,27 +117,23 @@ The final set of variables we consider, as well as their cross-correlations, can
 \end{figure}
 
 
-\section{Observing the substitution process}
+\subsection{Substitution model}
 
-We then focus on the individual substitution process at work when authors transform quotations, by examining the features of the substituted and substituting words in each substitution. 
 
-\subsection{Temporal binning}
+%\subsubsection{Temporal binning}
 \label{sec:temporal-binning}
 
-To do so we first propose a substitution detection model. 
+We finally need a substitution detection model, for the utterance data we use presents a challenge: quote-to-quote transformations, and much less substitutions, are not explicitly encoded in the dataset. More precisely, each set of quotations bears no explicit information about either the authoritative original quotation, or the source quotation(s) each author relied on when creating a new post and reproducing (and possibly altering) that source.
+We thus face an inference problem where, given all quotations and their occurrence timestamps, we should estimate which was the originating quotation for each instance of each quotation.
 
-The utterance data we use presents a challenge: each set of quotations bears no explicit information either about the authoritative original quotation, or about the source quotation(s) each author inspired himself from when creating a new post and reproducing (possibly altering) those sources.
-Quote-to-quote transformations, and much less substitutions, are therefore not explicitly encoded in the dataset.
+We therefore model the underlying quotation selection process by making a few additional assumptions.% which let us define quote-to-quote substitutions from the available data.
+The main issue is deciding whether a later occurrence is a strict copy of an earlier occurrence, or a substitution of an even earlier occurrence, or perhaps even a substitution or copy from quotes appearing outside the dataset, \hbox{i.e.} from a source external to the data collection perimeter.
 
-We face an inference problem where, given all quotations and their occurrence timestamps, we should estimate which was the originating quotation for each instance of each quotation.
-We therefore model the underlying quotation selection process by making a few additional assumptions which let us define quote-to-quote substitutions from the available data.
-The main issue at hand is deciding whether a later occurrence is a strict copy of an earlier occurrence, or a substitution of an even earlier occurrence, or perhaps even a substitution or copy from quotes appearing outside the dataset, \hbox{i.e.} from a source external to the data collection perimeter.
-
-Let us give an example: say the quotation ``These accusations are false and \textbf{absurd}'' ($q_a$) appears in a blog on January 19, and the slightly different quotation ``These accusations are false and \textbf{incoherent}'' ($q_b$) appears in other blogs on the 21st, 22nd and 23rd of January.
-If $q_a$ was sufficiently prominent when $q_b$ first appeared, we can safely assume that the first author of $q_b$ on the 21st based himself on $q_a$ as is shown in Figure~\ref{fig:substitution-temporal-binning-a}.
-But what about the second and third occurrences of $q_b$, on the 22nd and 23rd?
-Should we consider them to be substitutions based on $q_a$ %(i.e. re-creations of $q_b$ by a new instance of the substitution process that brought from $q_a$ to $q_b$ in the first place) 
-or accurate reproductions of the previous occurrences of $q_b$? (Options shown in Figure~\ref{fig:substitution-temporal-binning-a}.)
+Let us give an example: say the quotation ``These accusations are false and \textbf{absurd}'' ($q$) appears in a blog on January 19, and the slightly different quotation ``These accusations are false and \textbf{incoherent}'' ($q'$) appears in other blogs on the 21st, 22nd and 23rd of January.
+If $q$ was sufficiently prominent when $q'$ first appeared, we can safely assume that the first author of $q'$ on the 21st based himself on $q$ as is shown in Figure~\ref{fig:substitution-temporal-binning-a}.
+But what about the second and third occurrences of $q'$, on the 22nd and 23rd?
+Should we consider them to be substitutions based on $q$ %(i.e. re-creations of $q'$ by a new instance of the substitution process that brought from $q$ to $q'$ in the first place) 
+or accurate reproductions of the previous occurrences of $q'$? (Options shown in Figure~\ref{fig:substitution-temporal-binning-a}.)
 
 \begin{figure}[h]
     \centering
@@ -147,6 +150,13 @@ or accurate reproductions of the previous occurrences of $q_b$? (Options shown i
 	    \input{images/substitution-temporal-binning-b.pdf_tex}
 	    \label{fig:substitution-temporal-binning-b}
 	}
+	\hfill \\
+	\subfloat[XXXX]{
+	    \def\svgwidth{\linewidth}
+	    \small
+		\input{images/substitution-q_max.pdf_tex}
+	    \label{fig:substitution-q_max}
+	}
 	\caption{Temporal binning of quotation families}
     \label{fig:substitution-temporal-binning}
 \end{figure}
@@ -154,7 +164,7 @@ or accurate reproductions of the previous occurrences of $q_b$? (Options shown i
 To settle this question we bin the quote occurrences into fixed \emph{time bags} spanning $\Delta t$ days (2 days in the implementation), each one representing a unit of time evolution.
 Then when a quotation $q$ appears in time bag $n$, it is counted as a substitution from each quote $q^*$ in the preceding time bag ($n - 1$) from which it differs by only one word.
 If no quote in the preceding time bag can qualify as a source in a substitution (i.e. $q$ differs from all the quotes in the preceding time bag by more than one word), the occurrence of $q$ is not considered to be an instance of substitution.
-Such a model defines how many times quote occurrences can be counted as substitutions: in Figure~\ref{fig:substitution-temporal-binning-b}, occurrences of $q_b$ on the 21st and 22nd are counted as substitutions, whereas the occurrence on the 23rd is not.
+Such a model defines how many times quote occurrences can be counted as substitutions: in Figure~\ref{fig:substitution-temporal-binning-b}, occurrences of $q'$ on the 21st and 22nd are counted as substitutions, whereas the occurrence on the 23rd is not.
 
 The assumptions embedded in this model are only a subset of a wider set of possibilities, each leading to alternative substitution inferences.\footnote{In particular, time can be sliced into bins to build fixed time bags as is done here, or kept fine-grained by using sliding time bags.}
 These various flavours of an ideal substitution detection model essentially change whether occurrences are considered as substitutions from another quote, repetitions of the original quote, or introduction of information external to the dataset.
@@ -163,21 +173,13 @@ We identified and implemented eleven other such models, and they all yielded ess
 We now need to reduce possible false positives.
 Indeed, so far we have been forced to detect substitutions with a very permissive model to make sure chains of substitutions could be extracted (at the expense of possible false positives, the only effect of this being additional noise in the results, making our conclusions more conservative), here we can afford to detect substitutions more precisely.
 We thus add the constraint that substitutions can only stem from the most frequent quote in the preceding time bag.
-Since it is fairly certain that authors will have come upon the most frequent quote in any given time bag (\emph{v.} all the other quotes in that time bag), restricting substitutions to the most frequent quote makes sure we only detect substitutions that really occurred, greatly reducing the number of false positives.
+We assume that authors will have encountered the most frequent quote in a given time bag (\hbox{vs.} all the other quotes in that time bag). Thus, restricting substitutions to the most frequent quote ensures that we only detect substitutions that really occurred, greatly reducing the number of false positives.
 
 Let us illustrate this ``majority'' rule by going back to the example described in Section~\ref{sec:temporal-binning} and extending it, in Figure~\ref{fig:substitution-q_max}.
-In time bag~3, $q_b$ now holds the majority and is considered the unique basis for the last occurrence of $q_a$ (in time bag~4).
-This is despite the fact that $q_a$ also appears in time bag~3 alongside $q_b$, and despite it having appeared earlier at the very beginning of the quotation family (indeed in the situation shown in Figure~\ref{fig:substitution-q_max}, this seems to be the most likely scenario).
-Conversely, if $q_a$ had been the most frequent quote in time bag 3, the last occurrence of $q_a$ in time bag~4 would have been considered a faithful copy of the occurrence in time bag~3.
+In time bag~3, $q'$ now holds the majority and is considered the unique basis for the last occurrence of $q$ (in time bag~4).
+This is despite the fact that $q$ also appears in time bag~3 alongside $q'$, and despite it having appeared earlier at the very beginning of the quotation family (indeed in the situation shown in Figure~\ref{fig:substitution-q_max}, this seems to be the most likely scenario).
+Conversely, if $q$ had been the most frequent quote in time bag 3, the last occurrence of $q$ in time bag~4 would have been considered a faithful copy of the occurrence in time bag~3.
 
-\begin{figure}[h]
-    \centering
-    \def\svgwidth{\linewidth}
-    \small
-    \input{images/substitution-q_max.pdf_tex}
-    \caption{XXXXX}
-    \label{fig:substitution-q_max}
-\end{figure}
 
 With the substitution detection model thus refined, we build two main observables for each word feature.
 First, we measure the susceptibility for words to be the source of a substitution, knowing that there has been a variation, in order to show which semantic features are the most likely to attract a substitution under this condition.
@@ -185,6 +187,8 @@ Second, we measure the variation of word feature over a substitution, looking at
 
 Note that since we only consider substitutions and not faithful copies, we measure the features of an alteration \emph{knowing that there has been an alteration}, and we do not take invariant quotations into account.
 Indeed, in the first case we know there has been a human reformulation, whereas in the second case it is impossible to know whether there has been perfect human reformulation or simply digital copy-pasting of a source (``{\sc Ctrl-C}/{\sc Ctrl-V}'').
+
+\section{Results}\label{sec:results}
 
 \subsection{Susceptibility}
 
@@ -216,14 +220,13 @@ The results were not qualitatively changed with this second null hypothesis, so 
 Using this method we obtain the mean variation of feature for each start feature value, and can compare the variations to a situation where arrival words are chosen randomly.
 This gives us a fine-grained view of how word features evolve upon substitution.
 
-\section{Results}
 
 \rk{Comment results}
 
 \begin{figure*}[!th]
     \centering
     \includegraphics[width=\textwidth]{images/computed-figures/feature_susceptibilities.png}
-    \caption{\textbf{Substitution susceptibility:} average susceptibility to substitution \emph{v.} average feature value of a candidate word for substitution, with 95\% asymptotic confidence intervals.
+    \caption{\textbf{Substitution susceptibility:} average susceptibility to substitution vs. average feature value of a candidate word for substitution, with 95\% asymptotic confidence intervals.
     Each feature exhibits a specific and significant pattern favouring either high- or low-valued words for substitution.}
     \label{fig:feature-susceptibilities}
 \end{figure*}
@@ -231,7 +234,7 @@ This gives us a fine-grained view of how word features evolve upon substitution.
 \begin{figure*}[!th]
     \centering
     \includegraphics[width=\textwidth]{images/computed-figures/feature_variations-binned.png}
-    \caption{\textbf{Feature variation upon substitution:} average feature of the appearing word minus $\mathcal{H}_0$ \emph{v.} average feature of the disappearing word in a substitution, with 95\% asymptotic confidence intervals.
+    \caption{\textbf{Feature variation upon substitution:} average feature of the appearing word minus $\mathcal{H}_0$ vs. average feature of the disappearing word in a substitution, with 95\% asymptotic confidence intervals.
     The overall position of the curve with respect to $y = 0$ indicates the direction of the cognitive bias.
     The fact that all the curves have slopes smaller than 1 means that the substitution operation is contractile on average: each feature will converge towards its own specific asymptotic range, which is consistent with the evolution observed in Figure~\ref{fig:timebags-evolution}.}
     \label{fig:feature-variations}
