@@ -25,9 +25,9 @@ We used a quotation dataset collected by \citet{Leskovec09}, large enough to len
 This dataset consists of the daily crawling of news stories and blog posts from around a million online sources, with an approximate publication rate of 900k texts per day, over a nine-month period of time (from August 2008 to April 2009) \cite{Leskovec09-url}.\footnote{Unfortunately, the original article~\citep{Leskovec09} does not provide additional details on the source selection methodology.}
 Quotations were then automatically extracted from this corpus: each quotation is a more or less faithful excerpt of an utterance (oral or written) by the quoted person. For instance,
 \begin{quote}
-\cam{do we have an excerpt of quotations here, could we even feature a few prototypical examples? Obama said that ``...'' }
+The Bank of England said, ``these operations are designed to address funding pressures over quarter-end.''
 \end{quote}
-Quotations were then gathered in a graph and connected according to their similarity: either because they differ by very few words (in that case, no more than one word) or because they share a certain sequence of words (in that case, at least ten consecutive words): \cam{``...''\ra``...' ''}
+Quotations were then gathered in a graph and connected according to their similarity: either because they differ by very few words (in that case, no more than one word) or because they share a certain sequence of words (in that case, at least ten consecutive words). We find for example the following variation of the above quote: \begin{quote}``these operations are \textbf{designed} to address funding pressures over quarter-end.''\end{quote}
 A community detection algorithm was applied to that quotation graph to detect aggregates of tightly connected, i.e. sufficiently similar, groups of quotations (see \citet{Leskovec09} for more detail).
 This analysis yielded the final data we had access to, with a total of about \num{70000} sets of quotations; each of these sets allegedly contains all variations of a same parent utterance, along with their respective publication URLs and timestamps.
 
