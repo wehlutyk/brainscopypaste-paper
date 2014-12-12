@@ -43,14 +43,12 @@ The significantly larger loss in occurrences indicates that, on average, the clu
 \subsubsection{Standard psycholinguistic indices}
 
 We now introduce some of the most classical psycholinguistic measures on words.
-\rk{Add some bibliography about those features' known effects}
 
 \begin{itemize}
-    \item \textbf{Word frequency}: the frequency at which words appear in our dataset, \rk{add ref on why it's important}
-    \item \textbf{Age of Acquisition}: the average age at which words are learned, obtained from~\citet{kuperman12},
-    \item The average \textbf{Number of Phonemes} for all pronunciations of a word, obtained from the Carnegie Mellon University Pronouncing Dictionary~\citep{Weide98},\footnote{The CMU Pronouncing Dictionary is included in the NTLK package~\citep{Bird09}, the natural language processing toolkit we used for the analysis.}
-    \item The average \textbf{Number of Syllables} for all pronunciations of a word, also obtained from the CMU Pronouncing Dictionary,
-    \item The average \textbf{Number of Synonyms} for all meanings of a word, obtained from WordNet~\citep{WordNet10}. \rk{add ref on why it's important}
+    \item \textbf{Word frequency}: the frequency at which words appear in our dataset, known to be relevant for both recognition and recall~\citep{gregg1976word},
+    \item \textbf{Age of Acquisition}: the average age at which words are learned (obtained from~\citet{kuperman12}), known to have different effects than word frequency~\citep{morrison1995roles,dewhurst1998separate},
+    \item The average \textbf{Number of Phonemes} and \textbf{Number of Syllables} for all pronunciations of a word (obtained from the Carnegie Mellon University Pronouncing Dictionary~\citep{Weide98})\footnote{The CMU Pronouncing Dictionary is included in the NTLK package~\citep{Bird09}, the natural language processing toolkit we used for the analysis.} as a proxy to word production cost,
+    \item The average \textbf{Number of Synonyms} for all meanings of a word (obtained from WordNet~\citep{WordNet10}) as a proxy to word polysemy.
 \end{itemize}
 
 We also considered grammatical types within quotations by detection of \emph{Part-of-Speech} (POS) categories, using the Penn TreeBank Project typology~\citep{Santorini90} and thereby distinguishing verbs, nouns, adjectives and adverbs.
