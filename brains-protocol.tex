@@ -197,7 +197,20 @@ Now, for a given feature $\phi$, we obtain the mean susceptibility $\sigma_{\phi
 Indeed, substitutions occurring in the same cluster are likely not statistically independent.}
 $$\sigma_{\phi}(f) = \left< \frac{s_w}{p_w} \right>_{\left\lbrace w | \phi(w) = f \right\rbrace}$$
 
-This measure focuses on the selection of start words involved in substitutions, measuring the effect of features at the moment preceding the substitution when it is not yet known which word in the quotation will be substituted.
+Put shortly, susceptibility focuses on the selection of start words involved in substitutions, measuring the effect of features at the moment preceding the substitution when it is not yet known which word in the quotation will be substituted.
+
+\medskip
+Results are gathered on Fig.~\ref{fig:feature-susceptibilities}.
+
+\rk{Comment results}
+
+\begin{figure*}[!th]
+    \centering
+    \includegraphics[width=\textwidth]{images/computed-figures/feature_susceptibilities.png}
+    \caption{\textbf{Substitution susceptibility:} average susceptibility to substitution vs. average feature value of a candidate word for substitution, with 95\% asymptotic confidence intervals.
+    Each feature exhibits a specific and significant pattern favouring either high- or low-valued words for substitution.}
+    \label{fig:feature-susceptibilities}
+\end{figure*}
 
 \subsection{Alteration}
 
@@ -217,15 +230,10 @@ Using this method we obtain the mean variation of feature for each start feature
 This gives us a fine-grained view of how word features evolve upon substitution.
 
 
-\rk{Comment results}
+\medskip
+Results are gathered on Fig.~\ref{fig:feature-variations}.
 
-\begin{figure*}[!th]
-    \centering
-    \includegraphics[width=\textwidth]{images/computed-figures/feature_susceptibilities.png}
-    \caption{\textbf{Substitution susceptibility:} average susceptibility to substitution vs. average feature value of a candidate word for substitution, with 95\% asymptotic confidence intervals.
-    Each feature exhibits a specific and significant pattern favouring either high- or low-valued words for substitution.}
-    \label{fig:feature-susceptibilities}
-\end{figure*}
+\rk{Comment results}
 
 \begin{figure*}[!th]
     \centering
