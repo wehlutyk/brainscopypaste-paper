@@ -157,7 +157,7 @@ or accurate reproductions of the previous occurrences of $q'$? (Options shown in
 	\subfloat[XXXX]{
 	    \def\svgwidth{\linewidth}
 	    \small
-		\input{images/substitution-q_max.pdf_tex}
+	    \input{images/substitution-q_max.pdf_tex}
 	    \label{fig:substitution-q_max}
 	}
 	\caption{Temporal binning of quotation families}
@@ -165,7 +165,8 @@ or accurate reproductions of the previous occurrences of $q'$? (Options shown in
 \end{figure}
 
 To settle this question we group quote occurrences into fixed bins spanning $\Delta t$ days (2 days in the implementation), each one representing a unit of time evolution.
-When a quotation $q'$ appears in bin $t+1$, it is counted as a substitution if it differs from the most frequent quote $q$ of the preceding bin $t$ (or a substring thereof) by only one word. If not, $q'$ is not considered to be an instance of substitution.  We assume here that quotes are based on the most frequent quote of the preceding bin (\hbox{vs.} all the other quotes in that bin).  These assumptions are only a subset of a wider set of possibilities, each leading to alternative substitution inferences.\footnote{In particular, the criterion of the most frequent quote in the preceding bin may be replaced with the most frequent quote overall, or the oldest quote; time can be sliced into fixed bins as is done here, or kept fine-grained by using sliding bins.}
+When a quotation $q'$ appears in bin $t+1$, it is counted as a substitution if it differs from the most frequent quote $q$ of the preceding bin $t$ (or a substring thereof) by only one word. If not, $q'$ is not considered to be an instance of substitution.  %We assume here that quotes are based on the most frequent quote of the preceding bin (\hbox{vs.} all the other quotes in that bin).  
+These assumptions are only a subset of a wider set of possibilities, each leading to alternative substitution inferences.\footnote{In particular, the criterion of the most frequent quote in the preceding bin may be replaced with the most frequent quote overall, or the oldest quote; time can be sliced into fixed bins as is done here, or kept fine-grained by using sliding bins.}
 These various flavours of an ideal substitution detection model essentially change whether occurrences are considered as substitutions from another quote, repetitions of the original quote, or introduction of information external to the dataset.
 We identified and implemented eleven other such models, and they all yielded essentially the same results.
 
