@@ -45,7 +45,7 @@ We now introduce some of the most classical psycholinguistic measures on words.
 
 \begin{itemize}
     \item \textbf{Word frequency}: the frequency at which words appear in our dataset, known to be relevant for both recognition and recall~\citep{gregg1976word},
-    \item \textbf{Age of Acquisition}: the average age at which words are learned (obtained from~\citet{kuperman12}), known to have different effects than word frequency~\citep{morrison1995roles,dewhurst1998separate},
+    \item \textbf{Age of Acquisition}: the average age at which words are learned (obtained from~\citet{Kuperman12}), known to have different effects than word frequency~\citep{morrison1995roles,dewhurst1998separate},
     \item The average \textbf{Number of Phonemes} and \textbf{Number of Syllables} for all pronunciations of a word (obtained from the Carnegie Mellon University Pronouncing Dictionary~\citep{Weide98})\footnote{The CMU Pronouncing Dictionary is included in the NTLK package~\citep{Bird09}, the natural language processing toolkit we used for the analysis.} as a proxy to word production cost,
     \item The average \textbf{Number of Synonyms} for all meanings of a word (obtained from WordNet~\citep{WordNet10}) as a proxy to word polysemy.
 \end{itemize}
@@ -165,7 +165,7 @@ or accurate reproductions of the previous occurrences of $q'$? (Options shown in
 \end{figure}
 
 To settle this question we group quote occurrences into fixed bins spanning $\Delta t$ days (2 days in the implementation), each one representing a unit of time evolution.
-When a quotation $q'$ appears in bin $t+1$, it is counted as a substitution if it differs from the most frequent quote $q$ of the preceding bin $t$ by only one word. If not, $q'$ is not considered to be an instance of substitution.  We assume here that quotes are based on the most frequent quote of the preceding bin (\hbox{vs.} all the other quotes in that bin).  These assumptions are only a subset of a wider set of possibilities, each leading to alternative substitution inferences.\footnote{In particular, the criterion of the most frequent quote in the preceding bin may be replaced with the most frequent quote overall, or the oldest quote; time can be sliced into fixed bins as is done here, or kept fine-grained by using sliding bins.}
+When a quotation $q'$ appears in bin $t+1$, it is counted as a substitution if it differs from the most frequent quote $q$ of the preceding bin $t$ (or a substring thereof) by only one word. If not, $q'$ is not considered to be an instance of substitution.  We assume here that quotes are based on the most frequent quote of the preceding bin (\hbox{vs.} all the other quotes in that bin).  These assumptions are only a subset of a wider set of possibilities, each leading to alternative substitution inferences.\footnote{In particular, the criterion of the most frequent quote in the preceding bin may be replaced with the most frequent quote overall, or the oldest quote; time can be sliced into fixed bins as is done here, or kept fine-grained by using sliding bins.}
 These various flavours of an ideal substitution detection model essentially change whether occurrences are considered as substitutions from another quote, repetitions of the original quote, or introduction of information external to the dataset.
 We identified and implemented eleven other such models, and they all yielded essentially the same results.
 
@@ -193,7 +193,8 @@ Note that since we only consider substitutions and not faithful copies, we measu
 We say that a word is \emph{substitutable} if it appears in a quote which undergoes a substitution, whether that substitution operates on the considered word or on another.
 Word substitution susceptibility is computed as the ratio of the number $s_w$ of times a word is substituted to the number $p_w$ of times that word appears in a substitutable position, i.e. $\sfrac{s_w}{p_w}$. In other words, it measures how often a subtitutable word $w$ gets actually substituted.
 
-Now, for a given feature $\phi$, we obtain the mean susceptibility $\sigma_{\phi}(f)$ for the feature value $f$ by averaging this ratio over all words such that $\phi(w) = f$ (only taking into account words that are substituted at least once):
+Now, for a given feature $\phi$, we obtain the mean susceptibility $\sigma_{\phi}(f)$ for the feature value $f$ by averaging this ratio over all words such that $\phi(w) = f$% (only taking into account words that are substituted at least once)
+:
 \footnote{To avoid any auto-correlation effect due to the number of substitutions in a cluster (possibly leading to an overly optimistic estimation of confidence intervals), we first average substitutions over each cluster, by considering the average of arrival word features for a given start word.
 Indeed, substitutions occurring in the same cluster are likely not statistically independent.}
 $$\sigma_{\phi}(f) = \left< \frac{s_w}{p_w} \right>_{\left\lbrace w | \phi(w) = f \right\rbrace}$$
