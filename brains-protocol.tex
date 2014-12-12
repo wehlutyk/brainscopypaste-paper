@@ -163,24 +163,24 @@ or accurate reproductions of the previous occurrences of $q'$? (Options shown in
     \label{fig:substitution-temporal-binning}
 \end{figure}
 
-To settle this question we bin the quote occurrences into fixed \emph{time bags} spanning $\Delta t$ days (2 days in the implementation), each one representing a unit of time evolution.
-Then when a quotation $q$ appears in time bag $n$, it is counted as a substitution from each quote $q^*$ in the preceding time bag ($n - 1$) from which it differs by only one word.
-If no quote in the preceding time bag can qualify as a source in a substitution (i.e. $q$ differs from all the quotes in the preceding time bag by more than one word), the occurrence of $q$ is not considered to be an instance of substitution.
+To settle this question we bin the quote occurrences into fixed \emph{bins} spanning $\Delta t$ days (2 days in the implementation), each one representing a unit of time evolution.
+Then when a quotation $q$ appears in bin $n$, it is counted as a substitution from each quote $q^*$ in the preceding bin ($n - 1$) from which it differs by only one word.
+If no quote in the preceding bin can qualify as a source in a substitution (i.e. $q$ differs from all the quotes in the preceding bin by more than one word), the occurrence of $q$ is not considered to be an instance of substitution.
 Such a model defines how many times quote occurrences can be counted as substitutions: in Figure~\ref{fig:substitution-temporal-binning-b}, occurrences of $q'$ on the 21st and 22nd are counted as substitutions, whereas the occurrence on the 23rd is not.
 
-The assumptions embedded in this model are only a subset of a wider set of possibilities, each leading to alternative substitution inferences.\footnote{In particular, time can be sliced into bins to build fixed time bags as is done here, or kept fine-grained by using sliding time bags.}
+The assumptions embedded in this model are only a subset of a wider set of possibilities, each leading to alternative substitution inferences.\footnote{In particular, time can be sliced into fixed bins as is done here, or kept fine-grained by using sliding bins.}
 These various flavours of an ideal substitution detection model essentially change whether occurrences are considered as substitutions from another quote, repetitions of the original quote, or introduction of information external to the dataset.
 We identified and implemented eleven other such models, and they all yielded essentially the same results.
 
 We now need to reduce possible false positives.
 Indeed, so far we have been forced to detect substitutions with a very permissive model to make sure chains of substitutions could be extracted (at the expense of possible false positives, the only effect of this being additional noise in the results, making our conclusions more conservative), here we can afford to detect substitutions more precisely.
-We thus add the constraint that substitutions can only stem from the most frequent quote in the preceding time bag.
-We assume that authors will have encountered the most frequent quote in a given time bag (\hbox{vs.} all the other quotes in that time bag). Thus, restricting substitutions to the most frequent quote ensures that we only detect substitutions that really occurred, greatly reducing the number of false positives.
+We thus add the constraint that substitutions can only stem from the most frequent quote in the preceding bin.
+We assume that authors will have encountered the most frequent quote in a given bin (\hbox{vs.} all the other quotes in that bin). Thus, restricting substitutions to the most frequent quote ensures that we only detect substitutions that really occurred, greatly reducing the number of false positives.
 
 Let us illustrate this ``majority'' rule by going back to the example described in Section~\ref{sec:temporal-binning} and extending it, in Figure~\ref{fig:substitution-q_max}.
-In time bag~3, $q'$ now holds the majority and is considered the unique basis for the last occurrence of $q$ (in time bag~4).
-This is despite the fact that $q$ also appears in time bag~3 alongside $q'$, and despite it having appeared earlier at the very beginning of the quotation family (indeed in the situation shown in Figure~\ref{fig:substitution-q_max}, this seems to be the most likely scenario).
-Conversely, if $q$ had been the most frequent quote in time bag 3, the last occurrence of $q$ in time bag~4 would have been considered a faithful copy of the occurrence in time bag~3.
+In bin~3, $q'$ now holds the majority and is considered the unique basis for the last occurrence of $q$ (in bin~4).
+This is despite the fact that $q$ also appears in bin~3 alongside $q'$, and despite it having appeared earlier at the very beginning of the quotation family (indeed in the situation shown in Figure~\ref{fig:substitution-q_max}, this seems to be the most likely scenario).
+Conversely, if $q$ had been the most frequent quote in bin~3, the last occurrence of $q$ in bin~4 would have been considered a faithful copy of the occurrence in bin~3.
 
 
 With the substitution detection model thus refined, we build two main observables for each word feature.
