@@ -4,6 +4,7 @@
 *.blg
 *.aux
 *.log
+*.pdf
 *.synctex.gz
 
 # R files
@@ -13,3 +14,4 @@
 
 # Latexmk files
 *.fdb_latexmk
+.gitignore
