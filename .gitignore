@@ -5,6 +5,7 @@
 *.aux
 *.log
 *.synctex.gz
+*.pdf
 
 # R files
 .RData
