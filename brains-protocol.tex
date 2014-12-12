@@ -34,7 +34,7 @@ Their presence is largely due to random variations around a casual expression, w
 We thus filter out all clusters lasting more than 80 days, and all quotes less than 5 words long %\seb{it is asymmetrical...}
  (as well as quotes not written in English).
 We eventually keep 19,621 clusters (out of 71,568; i.e. 27.4\%), containing a total of 60,246 unique quotes (out of 310,457; i.e. 19.4\%) making up $\sim$838k occurrences (out of 8.12m, i.e. 10.3\%).
-The significantly larger loss in occurrences indicates that, on average, the clusters we lose feature more occurrences than those we keep, which is expected for everyday language utterances.\footnote{While we lose real event-related utterances such as ``the terrorists have used automatic weapons and in some places grenades have been lobbed the encounters are still going on and we are trying to overpower them'', we contend that the use of the unfiltered dataset would strongly jeopardize results related to linguistic evolution or information diffusion. We could manually check on a subsample of clusters that a large proportion of remaining quotes seem to be relevant, while filtered quotes are essentially irrelevant.}
+The significantly larger loss in occurrences indicates that, on average, the clusters we lose contain more occurrences than those we keep, which is expected for everyday language utterances.\footnote{While we lose real event-related utterances such as ``the terrorists have used automatic weapons and in some places grenades have been lobbed the encounters are still going on and we are trying to overpower them'', we contend that the use of the unfiltered dataset would strongly jeopardize results related to linguistic evolution or information diffusion. We could manually check on a subsample of clusters that a large proportion of remaining quotes seem to be relevant, while filtered quotes are essentially irrelevant.}
 
 \subsection{Word-level measures}
 
@@ -50,9 +50,7 @@ We now introduce some of the most classical psycholinguistic measures on words.
     \item The average \textbf{Number of Synonyms} for all meanings of a word (obtained from WordNet~\citep{WordNet10}) as a proxy to word polysemy.
 \end{itemize}
 
-We also considered grammatical types within quotations by detection of \emph{Part-of-Speech} (POS) categories, using the Penn TreeBank Project typology~\citep{Santorini90} and thereby distinguishing verbs, nouns, adjectives and adverbs.
-The results were however extremely similar across the various categories, exhibiting no specific effect of words belonging to different POS categories.
-\rk{See \#8 for this fact-check}
+%We also considered grammatical types within quotations by detection of \emph{Part-of-Speech} (POS) categories, using the Penn TreeBank Project typology~\citep{Santorini90} and thereby distinguishing verbs, nouns, adjectives and adverbs. The results were however extremely similar across the various categories, exhibiting no specific effect of words belonging to different POS categories. \rk{See \#8 for this fact-check}
 
 \subsubsection{Network-based measures}
 
@@ -160,7 +158,7 @@ or accurate reproductions of the previous occurrences of $q'$? (Options shown in
 	    \input{images/substitution-q_max.pdf_tex}
 	    \label{fig:substitution-q_max}
 	}
-	\caption{Temporal binning of quotation families}
+	\caption{{\bf Temporal binning of quotation families.} In bin~3, $q'$ now holds the majority and is considered the unique basis for the last occurrence of $q$ (in bin~4). This is despite the fact that $q$ also appears in bin~3 alongside $q'$, and despite it having appeared earlier at the very beginning of the quotation family (indeed in the situation shown in Figure~\ref{fig:substitution-q_max}, this seems to be the most likely scenario). Conversely, if $q$ had been the most frequent quote in bin~3, the last occurrence of $q$ in bin~4 would have been considered a faithful copy of the occurrence in bin~3.}
     \label{fig:substitution-temporal-binning}
 \end{figure}
 
@@ -170,7 +168,7 @@ These assumptions are only a subset of a wider set of possibilities, each leadin
 These various flavours of an ideal substitution detection model essentially change whether occurrences are considered as substitutions from another quote, repetitions of the original quote, or introduction of information external to the dataset.
 We identified and implemented eleven other such models, and they all yielded essentially the same results.
 
-Put shortly, such a model defines how many times quote occurrences can be counted as substitutions: in Figure~\ref{fig:substitution-temporal-binning-b}, occurrences of $q'$ on the 21st and 22nd are counted as substitutions, whereas the occurrence on the 23rd is not.
+Put shortly, such a model defines how many times quote occurrences can be counted as substitutions: in Figure~\ref{fig:substitution-temporal-binning-b}, occurrences of $q'$ on the 21st and 22nd are counted as substitutions, whereas the occurrence on the 23rd is not.  In practice, from the 838k initial occurrences spread into 19,621 classes of quotes, with significant redundancy (many quotes are indeed simple duplicates), we manage to mine 2,873 real substitutions obeying to this model. From these substitutions we remove those featuring stop words, minor spelling changes (e.g. center/centre, November/Nov, Senator/Sen), abbreviations, spelled out numbers; this eventually yields 476 valid substitutions. 
 
 %We now need to reduce possible false positives.
 %Indeed, so far we have been forced to detect substitutions with a very permissive model to make sure chains of substitutions could be extracted (at the expense of possible false positives, the only effect of this being additional noise in the results, making our conclusions more conservative), here we can afford to detect substitutions more precisely.
@@ -178,12 +176,10 @@ Put shortly, such a model defines how many times quote occurrences can be counte
 %We assume that authors will have encountered the most frequent quote in a given bin (\hbox{vs.} all the other quotes in that bin). Thus, Restricting substitutions to the most frequent quote ensures that we only detect substitutions that really occurred, greatly reducing the number of false positives.
 
 %Let us illustrate this ``majority'' rule by going back to the example described in Section~\ref{sec:temporal-binning} and extending it, in Figure~\ref{fig:substitution-q_max}.
-In bin~3, $q'$ now holds the majority and is considered the unique basis for the last occurrence of $q$ (in bin~4). This is despite the fact that $q$ also appears in bin~3 alongside $q'$, and despite it having appeared earlier at the very beginning of the quotation family (indeed in the situation shown in Figure~\ref{fig:substitution-q_max}, this seems to be the most likely scenario). Conversely, if $q$ had been the most frequent quote in bin~3, the last occurrence of $q$ in bin~4 would have been considered a faithful copy of the occurrence in bin~3.\marginnote{C: on peut mettre ce paragraphe dans la légende de la figure d'ailleurs}
 
 \section{Results}\label{sec:results}
 
-
-With the substitution detection model thus defined, we may now define a family of psycholinguistic hypotheses describing the role of each feature in the accuracy of the reformulation.  To this end, we build two main observables for each word feature.  
+With the substitution detection model thus defined, we may now formulate a family of psycholinguistic hypotheses describing the role of each feature in the accuracy of the reformulation.  To this end, we build two main observables for each word feature.  
 First, we measure the susceptibility for words to be the source of a substitution, knowing that there has been a variation, in order to show which semantic features are the most likely to attract a substitution under this condition. Second, we measure the variation of word feature over a substitution, looking at the variation of a given feature between start and arrival words.
 
 Note that since we only consider substitutions and not faithful copies, we measure the features of an alteration \emph{knowing that there has been an alteration}, and we do not take invariant quotations into account.  Indeed, in the first case we know there has been a human reformulation, whereas in the second case it is impossible to know whether there has been perfect human reformulation or simply digital copy-pasting of a source (``{\sc Ctrl-C}/{\sc Ctrl-V}'').
