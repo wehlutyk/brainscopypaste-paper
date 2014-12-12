@@ -1,4 +1,4 @@
-%% Creator: Inkscape inkscape 0.48.4, www.inkscape.org
+%% Creator: Inkscape inkscape 0.48.5, www.inkscape.org
 %% PDF/EPS/PS + LaTeX output extension by Johan Engelen, 2010
 %% Accompanies image file 'substitution-temporal-binning-a.pdf' (pdf, eps, ps)
 %%
@@ -51,8 +51,8 @@
   \begin{picture}(1,0.38094868)%
     \put(0,0){\includegraphics[width=\unitlength]{substitution-temporal-binning-a.pdf}}%
     \put(0.14470494,0.3316394){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{Quote occurrences}}}%
-    \put(0.02518557,0.2054928){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{$q_b$}}}%
-    \put(0.02580215,0.13726417){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{$q_a$}}}%
+    \put(0.02518557,0.2054928){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{$q'$}}}%
+    \put(0.02580215,0.13726417){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{$q$}}}%
     \put(0.74719326,0.06687552){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{$t$}}}%
     \put(0.56470808,0.17835919){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{?}}}%
     \put(0.16925313,0.0357989){\color[rgb]{0,0,0}\makebox(0,0)[b]{\smash{{\tiny 19/01}}}}%

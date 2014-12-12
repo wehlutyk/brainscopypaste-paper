@@ -1,4 +1,4 @@
-%% Creator: Inkscape inkscape 0.48.4, www.inkscape.org
+%% Creator: Inkscape inkscape 0.48.5, www.inkscape.org
 %% PDF/EPS/PS + LaTeX output extension by Johan Engelen, 2010
 %% Accompanies image file 'substitution-q_max.pdf' (pdf, eps, ps)
 %%
@@ -50,8 +50,8 @@
   \makeatother%
   \begin{picture}(1,0.43213268)%
     \put(0,0){\includegraphics[width=\unitlength]{substitution-q_max.pdf}}%
-    \put(0.02127926,0.21585229){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{$q_b$}}}%
-    \put(0.02189584,0.14762249){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{$q_a$}}}%
+    \put(0.02127926,0.21585229){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{$q'$}}}%
+    \put(0.02189584,0.14762249){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{$q$}}}%
     \put(0.94116453,0.03036863){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{$t$}}}%
     \put(0.22663248,0.03970017){\color[rgb]{0,0,0}\makebox(0,0)[b]{\smash{{\color[gray]{0.85}{\tiny 2 days}}}}}%
     \put(0.47111019,0.03970017){\color[rgb]{0,0,0}\makebox(0,0)[b]{\smash{{\color[gray]{0.85}{\tiny 2 days}}}}}%
