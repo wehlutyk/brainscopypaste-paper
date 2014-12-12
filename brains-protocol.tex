@@ -6,16 +6,14 @@
 
 %In order to start bridging this gap, we set out to \emph{empirically} study public representation transformations at the microscopic level; 
 %aiming to stay compatible with macroscopic-level studies of these public representations.
-Quotations appeared to be a perfect candidate to propose a first \emph{in vivo} measure of low-level cognitive bias in a reformulation task. % as public representations.
+In practice, quotations appeared indeed to be a perfect candidate for designing a first \emph{in vivo} measure of low-level cognitive bias in a reformulation task. % as public representations.
 First, they are usually cleanly delimited by quotation marks %(and often with HTML markup in web pages), 
 which greatly facilitates their detection in text corpora.
 Second, they stem from a unique ``original'' version, and could ideally be traceable back to that version.
 Third, and most importantly, their duplication should \emph{a priori} be highly faithful, apart from cases of cropping: not only should transformations be of moderate magnitude, but when specific words are not perfectly duplicated, it is safe to assume that the variation is due to involuntary cognitive bias --- as writers may expect any casual reader to easily verify, and thus criticize, the fidelity to the original quotation.
 
-
-We could therefore examine the individual substitution process at work when authors transform quotations, by examining the features of the substituted and substituting words in each substitution. To keep the analysis palatable, we focused on quotation transformations consisting in the \emph{substitution} of a word by another word (and only those cases) in order to unambiguously discuss single word replacements. 
+We therefore examine transformation processes by comparing the substituted and substituting words. To keep the analysis palatable, we focused on quotation transformations consisting of the \emph{substitution} of a word by another word (and only those cases) in order to unambiguously discuss single word replacements. 
 To quantify those substitutions, we decided to associate a number of features to each word, the variation of which we can statistically study.
-
 The next subsections describe the dataset and measures we used to assess this cognitive bias.
 %Quotation evolution is therefore a perfect environment to measure cognition-induced transformations.%and relate those findings to macroscopic social dynamics.
 
@@ -133,9 +131,9 @@ We thus face an inference problem where, given all quotations and their occurren
 We therefore model the underlying quotation selection process by making a few additional assumptions.% which let us define quote-to-quote substitutions from the available data.
 The main issue is deciding whether a later occurrence is a strict copy of an earlier occurrence, or a substitution of an even earlier occurrence, or perhaps even a substitution or copy from quotes appearing outside the dataset, \hbox{i.e.} from a source external to the data collection perimeter.
 
-Let us give an example: say the quotation ``These accusations are false and \textbf{absurd}'' ($q$) appears in a blog on January 19, and the slightly different quotation ``These accusations are false and \textbf{incoherent}'' ($q'$) appears in other blogs on the 21st, 22nd and 23rd of January.
-If $q$ was sufficiently prominent when $q'$ first appeared, we can safely assume that the first author of $q'$ on the 21st based himself on $q$ as is shown in Figure~\ref{fig:substitution-temporal-binning-a}.
-But what about the second and third occurrences of $q'$, on the 22nd and 23rd?
+Let us give an example: say the quotation ``These accusations are false and \textbf{absurd}'' ($q$) appears in a blog on January 19, and the slightly different quotation ``These accusations are false and \textbf{incoherent}'' ($q'$) appears in other blogs on Jan 21, 22 and 23.
+If $q$ was sufficiently prominent when $q'$ first appeared, we can reasonably assume that the first author of $q'$ on the 21st based himself on $q$ as is shown in Figure~\ref{fig:substitution-temporal-binning-a}.
+But what about the second and third occurrences of $q'$, on Jan 22 and 23?
 Should we consider them to be substitutions based on $q$ %(i.e. re-creations of $q'$ by a new instance of the substitution process that brought from $q$ to $q'$ in the first place) 
 or accurate reproductions of the previous occurrences of $q'$? (Options shown in Figure~\ref{fig:substitution-temporal-binning-a}.)
 
@@ -165,34 +163,29 @@ or accurate reproductions of the previous occurrences of $q'$? (Options shown in
     \label{fig:substitution-temporal-binning}
 \end{figure}
 
-To settle this question we bin the quote occurrences into fixed \emph{bins} spanning $\Delta t$ days (2 days in the implementation), each one representing a unit of time evolution.
-Then when a quotation $q$ appears in bin $n$, it is counted as a substitution from each quote $q^*$ in the preceding bin ($n - 1$) from which it differs by only one word.
-If no quote in the preceding bin can qualify as a source in a substitution (i.e. $q$ differs from all the quotes in the preceding bin by more than one word), the occurrence of $q$ is not considered to be an instance of substitution.
-Such a model defines how many times quote occurrences can be counted as substitutions: in Figure~\ref{fig:substitution-temporal-binning-b}, occurrences of $q'$ on the 21st and 22nd are counted as substitutions, whereas the occurrence on the 23rd is not.
-
-The assumptions embedded in this model are only a subset of a wider set of possibilities, each leading to alternative substitution inferences.\footnote{In particular, time can be sliced into fixed bins as is done here, or kept fine-grained by using sliding bins.}
+To settle this question we group quote occurrences into fixed bins spanning $\Delta t$ days (2 days in the implementation), each one representing a unit of time evolution.
+When a quotation $q'$ appears in bin $t+1$, it is counted as a substitution if it differs from the most frequent quote $q$ of the preceding bin $t$ by only one word. If not, $q'$ is not considered to be an instance of substitution.  We assume here that quotes are based on the most frequent quote of the preceding bin (\hbox{vs.} all the other quotes in that bin).  These assumptions are only a subset of a wider set of possibilities, each leading to alternative substitution inferences.\footnote{In particular, the criterion of the most frequent quote in the preceding bin may be replaced with the most frequent quote overall, or the oldest quote; time can be sliced into fixed bins as is done here, or kept fine-grained by using sliding bins.}
 These various flavours of an ideal substitution detection model essentially change whether occurrences are considered as substitutions from another quote, repetitions of the original quote, or introduction of information external to the dataset.
 We identified and implemented eleven other such models, and they all yielded essentially the same results.
 
-We now need to reduce possible false positives.
-Indeed, so far we have been forced to detect substitutions with a very permissive model to make sure chains of substitutions could be extracted (at the expense of possible false positives, the only effect of this being additional noise in the results, making our conclusions more conservative), here we can afford to detect substitutions more precisely.
-We thus add the constraint that substitutions can only stem from the most frequent quote in the preceding bin.
-We assume that authors will have encountered the most frequent quote in a given bin (\hbox{vs.} all the other quotes in that bin). Thus, restricting substitutions to the most frequent quote ensures that we only detect substitutions that really occurred, greatly reducing the number of false positives.
+Put shortly, such a model defines how many times quote occurrences can be counted as substitutions: in Figure~\ref{fig:substitution-temporal-binning-b}, occurrences of $q'$ on the 21st and 22nd are counted as substitutions, whereas the occurrence on the 23rd is not.
 
-Let us illustrate this ``majority'' rule by going back to the example described in Section~\ref{sec:temporal-binning} and extending it, in Figure~\ref{fig:substitution-q_max}.
-In bin~3, $q'$ now holds the majority and is considered the unique basis for the last occurrence of $q$ (in bin~4).
-This is despite the fact that $q$ also appears in bin~3 alongside $q'$, and despite it having appeared earlier at the very beginning of the quotation family (indeed in the situation shown in Figure~\ref{fig:substitution-q_max}, this seems to be the most likely scenario).
-Conversely, if $q$ had been the most frequent quote in bin~3, the last occurrence of $q$ in bin~4 would have been considered a faithful copy of the occurrence in bin~3.
+%We now need to reduce possible false positives.
+%Indeed, so far we have been forced to detect substitutions with a very permissive model to make sure chains of substitutions could be extracted (at the expense of possible false positives, the only effect of this being additional noise in the results, making our conclusions more conservative), here we can afford to detect substitutions more precisely.
+%We thus add the constraint that substitutions can only stem from the most frequent quote in the preceding bin.
+%We assume that authors will have encountered the most frequent quote in a given bin (\hbox{vs.} all the other quotes in that bin). Thus, Restricting substitutions to the most frequent quote ensures that we only detect substitutions that really occurred, greatly reducing the number of false positives.
 
-
-With the substitution detection model thus refined, we build two main observables for each word feature.
-First, we measure the susceptibility for words to be the source of a substitution, knowing that there has been a variation, in order to show which semantic features are the most likely to attract a substitution under this condition.
-Second, we measure the variation of word feature over a substitution, looking at the variation of a given feature between start and arrival words.
-
-Note that since we only consider substitutions and not faithful copies, we measure the features of an alteration \emph{knowing that there has been an alteration}, and we do not take invariant quotations into account.
-Indeed, in the first case we know there has been a human reformulation, whereas in the second case it is impossible to know whether there has been perfect human reformulation or simply digital copy-pasting of a source (``{\sc Ctrl-C}/{\sc Ctrl-V}'').
+%Let us illustrate this ``majority'' rule by going back to the example described in Section~\ref{sec:temporal-binning} and extending it, in Figure~\ref{fig:substitution-q_max}.
+In bin~3, $q'$ now holds the majority and is considered the unique basis for the last occurrence of $q$ (in bin~4). This is despite the fact that $q$ also appears in bin~3 alongside $q'$, and despite it having appeared earlier at the very beginning of the quotation family (indeed in the situation shown in Figure~\ref{fig:substitution-q_max}, this seems to be the most likely scenario). Conversely, if $q$ had been the most frequent quote in bin~3, the last occurrence of $q$ in bin~4 would have been considered a faithful copy of the occurrence in bin~3.\marginnote{C: on peut mettre ce paragraphe dans la légende de la figure d'ailleurs}
 
 \section{Results}\label{sec:results}
+
+
+With the substitution detection model thus defined, we may now define a family of psycholinguistic hypotheses describing the role of each feature in the accuracy of the reformulation.  To this end, we build two main observables for each word feature.  
+First, we measure the susceptibility for words to be the source of a substitution, knowing that there has been a variation, in order to show which semantic features are the most likely to attract a substitution under this condition. Second, we measure the variation of word feature over a substitution, looking at the variation of a given feature between start and arrival words.
+
+Note that since we only consider substitutions and not faithful copies, we measure the features of an alteration \emph{knowing that there has been an alteration}, and we do not take invariant quotations into account.  Indeed, in the first case we know there has been a human reformulation, whereas in the second case it is impossible to know whether there has been perfect human reformulation or simply digital copy-pasting of a source (``{\sc Ctrl-C}/{\sc Ctrl-V}'').
+
 
 \subsection{Susceptibility}
 
