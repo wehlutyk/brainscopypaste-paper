@@ -6,14 +6,16 @@
 
 %In order to start bridging this gap, we set out to \emph{empirically} study public representation transformations at the microscopic level; 
 %aiming to stay compatible with macroscopic-level studies of these public representations.
-In practice, quotations appeared indeed to be a perfect candidate for designing a first \emph{in vivo} measure of low-level cognitive bias in a reformulation task. % as public representations.
+Quotations appeared to be a perfect candidate to propose a first \emph{in vivo} measure of low-level cognitive bias in a reformulation task. % as public representations.
 First, they are usually cleanly delimited by quotation marks %(and often with HTML markup in web pages), 
 which greatly facilitates their detection in text corpora.
 Second, they stem from a unique ``original'' version, and could ideally be traceable back to that version.
 Third, and most importantly, their duplication should \emph{a priori} be highly faithful, apart from cases of cropping: not only should transformations be of moderate magnitude, but when specific words are not perfectly duplicated, it is safe to assume that the variation is due to involuntary cognitive bias --- as writers may expect any casual reader to easily verify, and thus criticize, the fidelity to the original quotation.
 
-We therefore examine transformation processes by comparing the substituted and substituting words. To keep the analysis palatable, we focused on quotation transformations consisting of the \emph{substitution} of a word by another word (and only those cases) in order to unambiguously discuss single word replacements. 
+
+We could therefore examine the individual substitution process at work when authors transform quotations, by examining the features of the substituted and substituting words in each substitution. To keep the analysis palatable, we focused on quotation transformations consisting in the \emph{substitution} of a word by another word (and only those cases) in order to unambiguously discuss single word replacements. 
 To quantify those substitutions, we decided to associate a number of features to each word, the variation of which we can statistically study.
+
 The next subsections describe the dataset and measures we used to assess this cognitive bias.
 %Quotation evolution is therefore a perfect environment to measure cognition-induced transformations.%and relate those findings to macroscopic social dynamics.
 
@@ -64,7 +66,7 @@ free association response probabilities index the likelihood that one word can c
 \end{quote}
 %Following \citet{Griffiths07}, we first consider the directed weighted network formed by the association norms, that is the network where words are nodes and edges are directed from cue to associated word, with a weight equal to the probability of that target word being produced when this particular cue was presented.
 % \rk{we're in fact using the unweighed version of the network. Why?}
-\new{Following \citet{Griffiths07}, we first build a directed unweighted network based on association norms, where words are nodes and edges are directed from cue to target word whenever a target word is being produced when this particular cue word was presented.}
+Following \citet{Griffiths07}, we first build a directed unweighted network based on association norms, where words are nodes and edges are directed from cue to target word whenever a target word is being produced when this particular cue word was presented.
 This network is of particular interest since it measures the \emph{in-vitro forced-choice} version of a substitution whereas the data we analyse is the \emph{in-vivo spontaneous} version of what we otherwise hypothesize to be the same process.
 
 \bigskip
@@ -72,13 +74,14 @@ We introduce three standard network-based measures to be used on the FA network%
 :
 
 \begin{itemize}
-    \item \textbf{Centrality} $k$, initially measured by the number of incoming edges to a given node, i.e. the number of cues for which a given word is triggered as an association, which strongly relates to word polysemy.
-    However in the present case there is a quasi-perfect correlation between node incoming degree and node \emph{pagerank}~\citep{Page99}, which will lead us to favour the latter later on. Word pagerank on the FA network had already been used by~\citet{Griffiths07}; it may be interpreted as a generalized and recursive measure of word polysemy: central nodes in the pagerank sense are words often selected as targets when presented with cues themselves often selected as targets, and so on recursively.
-    \item \textbf{Clustering coefficient} $c$, which measures the extent to which a node belongs to a local aggregate of tightly connected nodes, and defined as the ratio between the number of actual vs. possible edges between a node's neighbours \cite{watt-coll}.
-    We compute the clustering coefficient on the undirected version of the FA network; we thus measure if a word belongs more or less to a local aggregate of equivalent words (from a ``free association'' point of view).
-    \item \textbf{Betweenness coefficient} $b$, another measure of node centrality describing the extent to which a node tends to connect otherwise remote areas of the network~\citep{free:set}.
-    More technically, it corresponds to the normalized number of shortest paths connecting dyads which pass through that node; the higher the coefficient, the more important that node is in ensuring the connectedness of the rest of the network.
+    \item \textbf{Degree centrality}, measured by the number of incoming edges to a given node, i.e. the number of cues for which a given word is triggered as an association, which strongly relates to word polysemy.
+    An additional measure for centrality is node \emph{pagerank}~\citep{Page99}, which has already been used on the FA network by~\citet{Griffiths07}.
+    Both measures have 
+    %However in the present case there is a quasi-perfect correlation between node incoming degree and node \emph{pagerank}~\citep{Page99}, which will lead us to favour the latter later on. Word pagerank on the FA network had already been used by~\citet{Griffiths07}; it may be interpreted as a generalized and recursive measure of word polysemy: central nodes in the pagerank sense are words often selected as targets when presented with cues themselves often selected as targets, and so on recursively.
+    \item \textbf{Betweenness centrality}, another measure of node centrality describing the extent to which a node tends to connect otherwise remote areas of the network~\citep{free:set}.
     This quantity tells us if some words behave like unavoidable waypoints on the path associating one word to another.
+    \item \textbf{Clustering coefficient}, which measures the extent to which a node belongs to a local aggregate of tightly connected nodes, and defined as the ratio between the number of actual vs. possible edges between a node's neighbours \cite{watt-coll}.
+    We compute the clustering coefficient on the undirected version of the FA network; we thus measure if a word belongs more or less to a local aggregate of equivalent words (from a ``free association'' point of view).
 \end{itemize}
 
 \subsubsection{Variable correlations}
@@ -130,9 +133,9 @@ We thus face an inference problem where, given all quotations and their occurren
 We therefore model the underlying quotation selection process by making a few additional assumptions.% which let us define quote-to-quote substitutions from the available data.
 The main issue is deciding whether a later occurrence is a strict copy of an earlier occurrence, or a substitution of an even earlier occurrence, or perhaps even a substitution or copy from quotes appearing outside the dataset, \hbox{i.e.} from a source external to the data collection perimeter.
 
-Let us give an example: say the quotation ``These accusations are false and \textbf{absurd}'' ($q$) appears in a blog on January 19, and the slightly different quotation ``These accusations are false and \textbf{incoherent}'' ($q'$) appears in other blogs on Jan 21, 22 and 23.
-If $q$ was sufficiently prominent when $q'$ first appeared, we can reasonably assume that the first author of $q'$ on the 21st based himself on $q$ as is shown in Figure~\ref{fig:substitution-temporal-binning-a}.
-But what about the second and third occurrences of $q'$, on Jan 22 and 23?
+Let us give an example: say the quotation ``These accusations are false and \textbf{absurd}'' ($q$) appears in a blog on January 19, and the slightly different quotation ``These accusations are false and \textbf{incoherent}'' ($q'$) appears in other blogs on the 21st, 22nd and 23rd of January.
+If $q$ was sufficiently prominent when $q'$ first appeared, we can safely assume that the first author of $q'$ on the 21st based himself on $q$ as is shown in Figure~\ref{fig:substitution-temporal-binning-a}.
+But what about the second and third occurrences of $q'$, on the 22nd and 23rd?
 Should we consider them to be substitutions based on $q$ %(i.e. re-creations of $q'$ by a new instance of the substitution process that brought from $q$ to $q'$ in the first place) 
 or accurate reproductions of the previous occurrences of $q'$? (Options shown in Figure~\ref{fig:substitution-temporal-binning-a}.)
 
@@ -170,11 +173,6 @@ We identified and implemented eleven other such models, and they all yielded ess
 
 Put shortly, such a model defines how many times quote occurrences can be counted as substitutions: in Figure~\ref{fig:substitution-temporal-binning-b}, occurrences of $q'$ on the 21st and 22nd are counted as substitutions, whereas the occurrence on the 23rd is not.  In practice, from the 838k initial occurrences spread into 19,621 classes of quotes, with significant redundancy (many quotes are indeed simple duplicates), we manage to mine 2,873 real substitutions obeying to this model. From these substitutions we remove those featuring stop words, minor spelling changes (e.g. center/centre, November/Nov, Senator/Sen), abbreviations, spelled out numbers; this eventually yields 476 valid substitutions. 
 
-%We now need to reduce possible false positives.
-%Indeed, so far we have been forced to detect substitutions with a very permissive model to make sure chains of substitutions could be extracted (at the expense of possible false positives, the only effect of this being additional noise in the results, making our conclusions more conservative), here we can afford to detect substitutions more precisely.
-%We thus add the constraint that substitutions can only stem from the most frequent quote in the preceding bin.
-%We assume that authors will have encountered the most frequent quote in a given bin (\hbox{vs.} all the other quotes in that bin). Thus, Restricting substitutions to the most frequent quote ensures that we only detect substitutions that really occurred, greatly reducing the number of false positives.
-
 %Let us illustrate this ``majority'' rule by going back to the example described in Section~\ref{sec:temporal-binning} and extending it, in Figure~\ref{fig:substitution-q_max}.
 
 \section{Results}\label{sec:results}
@@ -184,6 +182,8 @@ First, we measure the susceptibility for words to be the source of a substitutio
 
 Note that since we only consider substitutions and not faithful copies, we measure the features of an alteration \emph{knowing that there has been an alteration}, and we do not take invariant quotations into account.  Indeed, in the first case we know there has been a human reformulation, whereas in the second case it is impossible to know whether there has been perfect human reformulation or simply digital copy-pasting of a source (``{\sc Ctrl-C}/{\sc Ctrl-V}'').
 
+
+\section{Results}\label{sec:results}
 
 \subsection{Susceptibility}
 
