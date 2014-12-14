@@ -217,9 +217,8 @@ Next, we measure how a word $\wstart$'s feature varies as $\wstart$ is substitut
 Averaging this value over all start words such that $\phi(w) = f$ yields the mean variation for that feature value~$f$:
 $$\Delta_{\phi}(f) = \left< \phi(\warrival) - \phi(\wstart) \right>_{\left\lbrace \wstart\rightarrow\warrival | \phi(\wstart) = f \right\rbrace}$$
 
-We introduce a null hypothesis $\mathcal{H}_0$ to compare the actual variation of a word's feature to its expected variation, assuming the arrival word $\warrival_0$ had been chosen randomly from the pool of free association words.
-Since $\phi(\warrival_0)$ is in fact a constant in the above averaging (by definition $\warrival_0$ does not depend on $\wstart$) and $\phi(\wstart)=f$, 
-the baseline variation under $\mathcal{H}_0$ may be rewritten:
+We introduce a null hypothesis $\mathcal{H}_0$ to compare the actual variation of a word's feature to its expected variation, assuming the arrival word $\warrival$ has been chosen randomly from the pool of free association words.
+In this case, since $\phi(\warrival)$ becomes a constant value in the above averaging (by definition $\warrival$ does not depend on $\wstart$ anymore) and $\phi(\wstart)=f$,  the baseline variation under $\mathcal{H}_0$ may be rewritten as:
 $$\Delta_{\phi}^0 (f) = \left<\phi\right>-f$$
 
 We also considered an alternative null hypothesis, denoted $\mathcal{H}_{00}$, where the arrival word is randomly chosen \emph{among immediate synonyms of the start word}, \hbox{i.e.} an arrival word chosen among semantically plausible though still random words.\footnote{In this case $\warrival_{00}$ does depend on $\wstart$.}
