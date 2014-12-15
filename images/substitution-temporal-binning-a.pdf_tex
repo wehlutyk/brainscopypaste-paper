@@ -55,10 +55,10 @@
     \put(0.02580215,0.13726417){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{$q$}}}%
     \put(0.74719326,0.06687552){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{$t$}}}%
     \put(0.56470808,0.17835919){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{?}}}%
-    \put(0.16925313,0.0357989){\color[rgb]{0,0,0}\makebox(0,0)[b]{\smash{{\tiny 19/01}}}}%
-    \put(0.29197158,0.0357989){\color[rgb]{0,0,0}\makebox(0,0)[b]{\smash{{\tiny 20/01}}}}%
-    \put(0.41427716,0.0357989){\color[rgb]{0,0,0}\makebox(0,0)[b]{\smash{{\tiny 21/01}}}}%
-    \put(0.53658274,0.0357989){\color[rgb]{0,0,0}\makebox(0,0)[b]{\smash{{\tiny 22/01}}}}%
-    \put(0.65888831,0.0357989){\color[rgb]{0,0,0}\makebox(0,0)[b]{\smash{{\tiny 23/01}}}}%
+    \put(0.16925313,0.0357989){\color[rgb]{0,0,0}\makebox(0,0)[b]{\smash{{\tiny Jan 19}}}}%
+    \put(0.29197158,0.0357989){\color[rgb]{0,0,0}\makebox(0,0)[b]{\smash{{\tiny Jan 20}}}}%
+    \put(0.41427716,0.0357989){\color[rgb]{0,0,0}\makebox(0,0)[b]{\smash{{\tiny Jan 21}}}}%
+    \put(0.53658274,0.0357989){\color[rgb]{0,0,0}\makebox(0,0)[b]{\smash{{\tiny Jan 22}}}}%
+    \put(0.65888831,0.0357989){\color[rgb]{0,0,0}\makebox(0,0)[b]{\smash{{\tiny Jan 23}}}}%
   \end{picture}%
 \endgroup%
