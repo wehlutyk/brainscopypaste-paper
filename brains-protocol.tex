@@ -74,14 +74,13 @@ We introduce three standard network-based measures to be used on the FA network%
 :
 
 \begin{itemize}
-    \item \textbf{Degree centrality}, measured by the number of incoming edges to a given node, i.e. the number of cues for which a given word is triggered as an association, which strongly relates to word polysemy.
-    An additional measure for centrality is node \emph{pagerank}~\citep{Page99}, which has already been used on the FA network by~\citet{Griffiths07}.
-    Both measures have 
+    \item \textbf{Degree centrality}, measured by the number of cues for which a given word is triggered as an association, and a corresponding generalized measure, node \emph{pagerank}~\citep{Page99}, which has already been used on the FA network by~\citet{Griffiths07}.
+    In the present case the two measures are quasi-perfectly correlated, and measure polysemy by taking into account the structure of the entire network.
     %However in the present case there is a quasi-perfect correlation between node incoming degree and node \emph{pagerank}~\citep{Page99}, which will lead us to favour the latter later on. Word pagerank on the FA network had already been used by~\citet{Griffiths07}; it may be interpreted as a generalized and recursive measure of word polysemy: central nodes in the pagerank sense are words often selected as targets when presented with cues themselves often selected as targets, and so on recursively.
     \item \textbf{Betweenness centrality}, another measure of node centrality describing the extent to which a node tends to connect otherwise remote areas of the network~\citep{free:set}.
     This quantity tells us if some words behave like unavoidable waypoints on the path associating one word to another.
-    \item \textbf{Clustering coefficient}, which measures the extent to which a node belongs to a local aggregate of tightly connected nodes, and defined as the ratio between the number of actual vs. possible edges between a node's neighbours \cite{watt-coll}.
-    We compute the clustering coefficient on the undirected version of the FA network; we thus measure if a word belongs more or less to a local aggregate of equivalent words (from a ``free association'' point of view).
+    \item \textbf{Clustering coefficient}, which measures the extent to which a node belongs to a local aggregate of tightly connected nodes~\cite{watt-coll}, computed on the undirected version of the FA network.\footnote{The Clustering coefficient is formally defined as the ratio between the number of actual vs. possible edges between a node's neighbors.}
+    This tells us if a word belongs more or less to a local aggregate of equivalent words (from a ``free association'' point of view).
 \end{itemize}
 
 \subsubsection{Variable correlations}
