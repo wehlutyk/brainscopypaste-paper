@@ -95,11 +95,11 @@ An important question arises concerning the possible correlations between all th
     \label{fig:feature-corrs-initial}
 \end{figure}
 
-Number of phonemes and number of syllables naturally exhibit a strong linear correlation ($0.8$).
-The analysis showed a better prediction effect of number of phonemes over number of syllables, which is consistent with~\citet{nick-diss}, and we therefore chose to focus the presented results on the former only.
+The number of phonemes and the number of syllables naturally exhibit a strong linear correlation ($0.8$).
+The analysis showed a better prediction effect of the number of phonemes over the number of syllables, which is consistent with~\citet{nick-diss}, and we therefore chose to only present results for the former.
 
 Age of acquisition is a key variable which appears as a usual suspect in psycholinguistic studies.
-Despite it being usually difficult to disentangle from many of the other variables, it is known to have independent effects, which is consistent with what we see in Figure~\ref{fig:feature-corrs-initial}: age of acquisition has a limited correlation to the other variables (absolute value not above $0.39$ if we exclude the number of syllables and the network properties), leading us to keep the variable in the rest of the analysis.
+Despite it being usually difficult to disentangle from many of the other variables, it is known to have independent effects, which is consistent with what we see on Figure~\ref{fig:feature-corrs-initial}: age of acquisition has a limited correlation to the other variables (absolute value not above $0.39$ if we exclude the number of syllables and the network properties), leading us to keep the variable in the rest of the analysis.
 
 Frequency and number of synonyms both have relatively low levels of correlation to the other variables (excluding again the network properties); we therefore also keep them in the rest of the analysis.
 
@@ -123,6 +123,7 @@ The final set of variables we consider, as well as their cross-correlations, can
 \subsection{Substitution model}
 
 \seb{Les figures des résultats sont en fait pour $\Delta t = 1$ jour, pas 2. Sauf contre-indication, je corrige les figures et le texte}
+\cam{Oui très bien, n'hésite pas. Super pour les figures, je sais pas si l'inversion graphique q en haut q' en bas est facile à réaliser?}
 
 %\subsubsection{Temporal binning}
 \label{sec:temporal-binning}
@@ -197,19 +198,19 @@ Results are gathered on Fig.~\ref{fig:feature-susceptibilities}.
     \centering
     \includegraphics[width=\textwidth]{images/computed-figures/feature_susceptibilities.png}
     \caption{\textbf{Substitution susceptibility:} average susceptibility to substitution vs. average feature value of a candidate word for substitution, with 95\% asymptotic confidence intervals.
-    Each feature exhibits a specific and significant pattern favouring either high- or low-valued words for substitution.}
+    Each feature exhibits a specific and significant pattern favoring either high- or low-valued words for substitution.}
     \label{fig:feature-susceptibilities}
 \end{figure*}
 
 \subsection{Variation}
 
-Next, we measure how a word $\wstart$'s feature varies as $\wstart$ is substituted by $\warrival$, i.e. $\phi(\warrival) - \phi(\wstart)$.
+Next, we measure how a word $\wstart$'s feature varies as $\wstart$ is substituted by $\warrival$, i.e. $\phi(\warrival)$ as a function of $\phi(\wstart)$.
 Averaging this value over all start words such that $\phi(w) = f$ yields the mean variation for that feature value~$f$:
-$$\Delta_{\phi}(f) = \left< \phi(\warrival) - \phi(\wstart) \right>_{\left\lbrace \wstart\rightarrow\warrival | \phi(\wstart) = f \right\rbrace}$$
+$$\nu_{\phi}(f) = \left<\phi(\warrival)\right>_{\left\lbrace \wstart\rightarrow\warrival | \phi(\wstart) = f \right\rbrace}$$
 
 We introduce a null hypothesis $\mathcal{H}_0$ to compare the actual variation of a word's feature to its expected variation, assuming the arrival word $\warrival$ has been chosen randomly from the pool of free association words.
-In this case, since $\phi(\warrival)$ becomes a constant value in the above averaging (by definition $\warrival$ does not depend on $\wstart$ anymore) and $\phi(\wstart)=f$,  the baseline variation under $\mathcal{H}_0$ may be rewritten as:
-$$\Delta_{\phi}^0 (f) = \left<\phi\right>-f$$
+In this case, since $\phi(\warrival)$ becomes a constant value in the above averaging (by definition $\warrival$ does not depend on $\wstart$ anymore),  the baseline variation under $\mathcal{H}_0$ may be rewritten as:
+$$\nu_{\phi}^0 (f) = \left<\phi\right>$$
 
 We also considered an alternative null hypothesis, denoted $\mathcal{H}_{00}$, where the arrival word is randomly chosen \emph{among immediate synonyms of the start word}, \hbox{i.e.} an arrival word chosen among semantically plausible though still random words.\footnote{In this case $\warrival_{00}$ does depend on $\wstart$.}
 The results were not qualitatively different under this second null hypothesis, so for the sake of clarity we chose to keep the simpler~$\mathcal{H}_0$.
@@ -225,8 +226,9 @@ Results are gathered on Fig.~\ref{fig:feature-variations}.
 \begin{figure*}[!th]
     \centering
     \includegraphics[width=\textwidth]{images/computed-figures/feature_variations-binned.png}
-    \caption{\textbf{Feature variation upon substitution:} average feature of the appearing word minus $\mathcal{H}_0$ vs. average feature of the disappearing word in a substitution, with 95\% asymptotic confidence intervals.
-    The overall position of the curve with respect to $y = 0$ indicates the direction of the cognitive bias.
-    The fact that all the curves have slopes smaller than 1 means that the substitution operation is contractile on average: each feature will converge towards its own specific asymptotic range.}
+    \caption{\textbf{Feature variation upon substitution:} average feature value of the appearing word as a function of the feature value of the disappearing word in a substitution, with 95\% asymptotic confidence intervals.
+    The overall position of the curve with respect to the dashed line representing $\mathcal{H}_0$ (constant $\nu_{\phi}^0$) indicates the direction of the cognitive bias.
+    %The fact that all curves have slopes smaller than 1 means that the substitution operation is contractile on average: each feature will converge towards its own specific asymptotic range.    
+    }
     \label{fig:feature-variations}
 \end{figure*}
