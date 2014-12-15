@@ -48,14 +48,13 @@
   \global\let\svgwidth\undefined%
   \global\let\svgscale\undefined%
   \makeatother%
-  \begin{picture}(1,0.43213268)%
+  \begin{picture}(1,0.32520386)%
     \put(0,0){\includegraphics[width=\unitlength]{substitution-q_max.pdf}}%
-    \put(0.02127926,0.21585229){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{$q'$}}}%
-    \put(0.02189584,0.14762249){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{$q$}}}%
-    \put(0.94116453,0.03036863){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{$t$}}}%
-    \put(0.22663248,0.03970017){\color[rgb]{0,0,0}\makebox(0,0)[b]{\smash{{\color[gray]{0.85}{\tiny 2 days}}}}}%
-    \put(0.47111019,0.03970017){\color[rgb]{0,0,0}\makebox(0,0)[b]{\smash{{\color[gray]{0.85}{\tiny 2 days}}}}}%
-    \put(0.71586317,0.03970017){\color[rgb]{0,0,0}\makebox(0,0)[b]{\smash{{\tiny 2 days}}}}%
-    \put(0.14080066,0.39097784){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{Quote occurrences}}}%
+    \put(0.02127926,0.21585226){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{$q'$}}}%
+    \put(0.02189584,0.14762246){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{$q$}}}%
+    \put(0.94116453,0.0303686){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{$t$}}}%
+    \put(0.22663248,0.03970013){\color[rgb]{0,0,0}\makebox(0,0)[b]{\smash{{\tiny 2 days}}}}%
+    \put(0.47111019,0.03970013){\color[rgb]{0,0,0}\makebox(0,0)[b]{\smash{{\tiny 2 days}}}}%
+    \put(0.71586317,0.03970013){\color[rgb]{0,0,0}\makebox(0,0)[b]{\smash{{\tiny 2 days}}}}%
   \end{picture}%
 \endgroup%

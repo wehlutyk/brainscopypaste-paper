@@ -147,14 +147,7 @@ or accurate reproductions of the previous occurrences of $q'$? (Options shown in
 	    \label{fig:substitution-temporal-binning-a}
 	}
 	\hfill \\
-    \subfloat[Binned quotation family]{
-	    \def\svgwidth{\linewidth}
-	    \small
-	    \input{images/substitution-temporal-binning-b.pdf_tex}
-	    \label{fig:substitution-temporal-binning-b}
-	}
-	\hfill \\
-	\subfloat[XXXX]{
+	\subfloat[Binned quotation family with majority rule]{
 	    \def\svgwidth{\linewidth}
 	    \small
 	    \input{images/substitution-q_max.pdf_tex}
@@ -170,7 +163,7 @@ These assumptions are only a subset of a wider set of possibilities, each leadin
 These various flavours of an ideal substitution detection model essentially change whether occurrences are considered as substitutions from another quote, repetitions of the original quote, or introduction of information external to the dataset.
 We identified and implemented eleven other such models, and they all yielded essentially the same results.
 
-Put shortly, such a model defines how many times quote occurrences can be counted as substitutions: in Figure~\ref{fig:substitution-temporal-binning-b}, occurrences of $q'$ on the 21st and 22nd are counted as substitutions, whereas the occurrence on the 23rd is not.  In practice, from the 838k initial occurrences spread into 19,621 classes of quotes, with significant redundancy (many quotes are indeed simple duplicates), we manage to mine 2,873 real substitutions obeying to this model. From these substitutions we remove those featuring stop words, minor spelling changes (e.g. center/centre, November/Nov, Senator/Sen), abbreviations, spelled out numbers; this eventually yields 476 valid substitutions. 
+Put shortly, such a model defines how many times quote occurrences can be counted as substitutions: in Figure~\ref{fig:substitution-q_max}, occurrences of $q'$ on the 21st and 22nd are counted as substitutions, whereas the occurrence on the 23rd is not.  In practice, from the 838k initial occurrences spread into 19,621 classes of quotes, with significant redundancy (many quotes are indeed simple duplicates), we manage to mine 2,873 real substitutions obeying to this model. From these substitutions we remove those featuring stop words, minor spelling changes (e.g. center/centre, November/Nov, Senator/Sen), abbreviations, spelled out numbers; this eventually yields 476 valid substitutions. 
 
 %Let us illustrate this ``majority'' rule by going back to the example described in Section~\ref{sec:temporal-binning} and extending it, in Figure~\ref{fig:substitution-q_max}.
 
@@ -233,6 +226,6 @@ Results are gathered on Fig.~\ref{fig:feature-variations}.
     \includegraphics[width=\textwidth]{images/computed-figures/feature_variations-binned.png}
     \caption{\textbf{Feature variation upon substitution:} average feature of the appearing word minus $\mathcal{H}_0$ vs. average feature of the disappearing word in a substitution, with 95\% asymptotic confidence intervals.
     The overall position of the curve with respect to $y = 0$ indicates the direction of the cognitive bias.
-    The fact that all the curves have slopes smaller than 1 means that the substitution operation is contractile on average: each feature will converge towards its own specific asymptotic range, which is consistent with the evolution observed in Figure~\ref{fig:timebags-evolution}.}
+    The fact that all the curves have slopes smaller than 1 means that the substitution operation is contractile on average: each feature will converge towards its own specific asymptotic range.}
     \label{fig:feature-variations}
 \end{figure*}
