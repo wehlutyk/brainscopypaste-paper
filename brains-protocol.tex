@@ -95,21 +95,20 @@ An important question arises concerning the possible correlations between all th
     \label{fig:feature-corrs-initial}
 \end{figure}
 
-\rk{Correlation talk needs to be redone for new set of features}
-
-Age of acquisition is a key variable which appears as a usual suspect in psycholinguistic studies and is also usually correlated to many of the other variables.
-This relates to an ongoing debate suggesting that age of acquisition encodes a variety of phenomena, difficult to disentangle from more specific phenomena which could be captured by more independent variables~\CN{}.
-Here however, as can be seen in Figure~\ref{fig:feature-corrs-initial}, age of acquisition has a relatively low correlation to the other variables (absolute value not above $0.42$ if we exclude the centrality measures), leading us to keep the variable in the rest of the analysis.
-
-Number of phonemes and number of syllables naturally exhibit a strong linear correlation ($0.83$).
+Number of phonemes and number of syllables naturally exhibit a strong linear correlation ($0.8$).
 The analysis showed a better prediction effect of number of phonemes over number of syllables, which is consistent with~\citet{nick-diss}, and we therefore chose to focus the presented results on the former only.
 
-Frequency and number of meanings both have relatively low levels of correlation to the other variables; we therefore also keep them in the rest of the analysis.
+Age of acquisition is a key variable which appears as a usual suspect in psycholinguistic studies.
+Despite it being usually difficult to disentangle from many of the other variables, it is known to have independent effects, which is consistent with what we see in Figure~\ref{fig:feature-corrs-initial}: age of acquisition has a limited correlation to the other variables (absolute value not above $0.39$ if we exclude the number of syllables and the network properties), leading us to keep the variable in the rest of the analysis.
+
+Frequency and number of synonyms both have relatively low levels of correlation to the other variables (excluding again the network properties); we therefore also keep them in the rest of the analysis.
 
 \bigskip
-Network properties, on the other hand, are strongly dependent on one another.
-As mentioned earlier, word degree and word pagerank have a very strong correlation ($0.89$) and, degree being generally more correlated to other variables, we chose to remove this variable from the results presented.
-Finally betweenness centrality also exhibits strong correlation levels to the other network properties ($0.62$, $0.64$, and $0.72$ in absolute value), leading us to drop this final feature due to its redundancy.
+Network centrality properties, on the other hand, are strongly dependent on one another.
+As mentioned earlier, degree centrality and pagerank have a very strong correlation ($0.85$), and are also redundant with betweenness centrality (with correlation levels at $0.75$ and $0.68$ respectively).
+Furthermore, the three variables are also strongly related to age of acquisition, which leads us to keep the latter as the sole indicator for centrality.
+
+Conversely, clustering coefficient exhibits low correlation levels with all the variables we kept (maximum absolute value $0.38$), leading us to include it in the rest of the analysis.
 
 The final set of variables we consider, as well as their cross-correlations, can be seen in Figure~\ref{fig:feature-corrs-filtered}.
 
