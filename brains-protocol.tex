@@ -49,7 +49,7 @@ We now introduce some of the most classical psycholinguistic measures on words.
     \item \textbf{Word frequency}: the frequency at which words appear in our dataset, known to be relevant for both recognition and recall~\citep{gregg1976word},
     \item \textbf{Age of Acquisition}: the average age at which words are learned (obtained from~\citet{Kuperman12}), known to have different effects than word frequency~\citep{morrison1995roles,dewhurst1998separate},
     \item The average \textbf{Number of Phonemes} and \textbf{Number of Syllables} for all pronunciations of a word (obtained from the Carnegie Mellon University Pronouncing Dictionary~\citep{Weide98})\footnote{The CMU Pronouncing Dictionary is included in the NTLK package~\citep{Bird09}, the natural language processing toolkit we used for the analysis.} as a proxy to word production cost,
-    \item The average \textbf{Number of Synonyms} for all meanings of a word (obtained from WordNet~\citep{WordNet10}) as a proxy to word polysemy.
+    \item The average \textbf{Number of Synonyms} for all meanings of a word (obtained from WordNet~\citep{WordNet10}) as an \emph{a priori} indicator of how easy it would be to replace a word.
 \end{itemize}
 
 %We also considered grammatical types within quotations by detection of \emph{Part-of-Speech} (POS) categories, using the Penn TreeBank Project typology~\citep{Santorini90} and thereby distinguishing verbs, nouns, adjectives and adverbs. The results were however extremely similar across the various categories, exhibiting no specific effect of words belonging to different POS categories. \rk{See \#8 for this fact-check}
@@ -66,7 +66,8 @@ free association response probabilities index the likelihood that one word can c
 \end{quote}
 %Following \citet{Griffiths07}, we first consider the directed weighted network formed by the association norms, that is the network where words are nodes and edges are directed from cue to associated word, with a weight equal to the probability of that target word being produced when this particular cue was presented.
 % \rk{we're in fact using the unweighed version of the network. Why?}
-Following \citet{Griffiths07}, we first build a directed unweighted network based on association norms, where words are nodes and edges are directed from cue to target word whenever a target word is being produced when this particular cue word was presented.
+%Following \citet{Griffiths07}, we first build a directed unweighted network based on association norms, where words are nodes and edges are directed from cue to target word whenever a target word is being produced when this particular cue word was presented.
+Following \citet{Griffiths07}, we first build a directed unweighted network based on association norms, where nodes are words and edges are directed from cue to target word whenever the considered target word was produced in response to the considered cue word.
 This network is of particular interest since it measures the \emph{in-vitro forced-choice} version of a substitution whereas the data we analyse is the \emph{in-vivo spontaneous} version of what we otherwise hypothesize to be the same process.
 
 \bigskip
@@ -74,10 +75,10 @@ We introduce three standard network-based measures to be used on the FA network%
 :
 
 \begin{itemize}
-    \item \textbf{Degree centrality}, measured by the number of cues for which a given word is triggered as an association, and a corresponding generalized measure, node \emph{pagerank}~\citep{Page99}, which has already been used on the FA network by~\citet{Griffiths07}.
+    \item \textbf{Degree centrality}, measured by the number of cues for which a given word is triggered as a target, and a corresponding generalized measure, node \emph{pagerank}~\citep{Page99}, which has already been used on the FA network by~\citet{Griffiths07}.
     In the present case the two measures are quasi-perfectly correlated, and measure polysemy by taking into account the structure of the entire network.
     %However in the present case there is a quasi-perfect correlation between node incoming degree and node \emph{pagerank}~\citep{Page99}, which will lead us to favour the latter later on. Word pagerank on the FA network had already been used by~\citet{Griffiths07}; it may be interpreted as a generalized and recursive measure of word polysemy: central nodes in the pagerank sense are words often selected as targets when presented with cues themselves often selected as targets, and so on recursively.
-    \item \textbf{Betweenness centrality}, another measure of node centrality describing the extent to which a node tends to connect otherwise remote areas of the network~\citep{free:set}.
+    \item \textbf{Betweenness centrality}, another measure of node centrality describing the extent to which a node connects otherwise remote areas of the network~\citep{free:set}.
     This quantity tells us if some words behave like unavoidable waypoints on the path associating one word to another.
     \item \textbf{Clustering coefficient}, which measures the extent to which a node belongs to a local aggregate of tightly connected nodes~\cite{watt-coll}, computed on the undirected version of the FA network.\footnote{The Clustering coefficient is formally defined as the ratio between the number of actual vs. possible edges between a node's neighbors.}
     This tells us if a word belongs more or less to a local aggregate of equivalent words (from a ``free association'' point of view).
