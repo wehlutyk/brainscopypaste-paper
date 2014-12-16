@@ -50,8 +50,8 @@
   \makeatother%
   \begin{picture}(1,0.32520386)%
     \put(0,0){\includegraphics[width=\unitlength]{substitution-q_max.pdf}}%
-    \put(0.02127926,0.21585226){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{$q'$}}}%
-    \put(0.02189584,0.14762246){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{$q$}}}%
+    \put(0.04833826,0.14726889){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{$q'$}}}%
+    \put(0.04895483,0.21549869){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{$q$}}}%
     \put(0.94116453,0.0303686){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{$t$}}}%
     \put(0.22663248,0.03970013){\color[rgb]{0,0,0}\makebox(0,0)[b]{\smash{{\tiny 1 day}}}}%
     \put(0.47111019,0.03970013){\color[rgb]{0,0,0}\makebox(0,0)[b]{\smash{{\tiny 1 day}}}}%

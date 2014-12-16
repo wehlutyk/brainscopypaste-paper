@@ -29,8 +29,8 @@
      id="namedview210"
      showgrid="false"
      inkscape:zoom="1.7940592"
-     inkscape:cx="310.03635"
-     inkscape:cy="830.70382"
+     inkscape:cx="315.95053"
+     inkscape:cy="843.75395"
      inkscape:window-x="0"
      inkscape:window-y="18"
      inkscape:window-maximized="0"
@@ -601,59 +601,59 @@
          d="m 330.68614,174.23671 0,14.56955" />
     </g>
     <path
-       d="m 140.97621,218.29383 271.08019,0"
+       d="m 140.97621,210.29383 271.08019,0"
        id="path4092-2"
        style="fill:none;stroke:#a3a3a3;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker-end:none;display:inline"
        inkscape:connector-curvature="0" />
     <path
-       d="m 412.0564,218.29383 113.90132,0"
+       d="m 412.0564,210.29383 113.90132,0"
        id="path2985-73-4-6"
        style="fill:none;stroke:#a3a3a3;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:3, 3;stroke-dashoffset:0;marker-end:url(#Arrow2Lend);display:inline"
        inkscape:connector-curvature="0" />
     <path
-       d="m 140.97621,248.55211 271.08019,0"
+       d="m 140.97621,240.55211 271.08019,0"
        id="path4092-2-0"
        style="fill:none;stroke:#a3a3a3;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker-end:none;display:inline"
        inkscape:connector-curvature="0" />
     <path
-       d="m 391.79552,218.29383 a 6.859355,6.859355 0 0 1 -13.71871,0 6.859355,6.859355 0 1 1 13.71871,0 z"
+       d="m 391.79552,240.54098 a 6.859355,6.859355 0 0 0 -13.71871,0 6.859355,6.859355 0 1 0 13.71871,0 z"
        id="path4199-24-449-6-5"
        style="fill:#4c8cff;fill-opacity:1;stroke:none;display:inline"
        inkscape:connector-curvature="0" />
     <path
-       d="m 330.69575,218.29383 c 16.03339,-21.46515 37.66975,-22.13987 54.24041,0"
+       d="m 330.69575,240.54098 c 16.03339,21.46515 37.66975,22.13987 54.24041,0"
        id="path3219-7-7"
        style="fill:none;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:4, 4;stroke-dashoffset:0;marker-end:url(#marker3130-0);display:inline"
        inkscape:connector-curvature="0" />
     <path
-       d="m 337.55511,218.29383 a 6.859355,6.859355 0 0 1 -13.71871,0 6.859355,6.859355 0 1 1 13.71871,0 z"
+       d="m 337.55511,240.54098 a 6.859355,6.859355 0 0 0 -13.71871,0 6.859355,6.859355 0 1 0 13.71871,0 z"
        id="path4199-24-449-6-5-8"
        style="fill:#4c8cff;fill-opacity:1;stroke:none;display:inline"
        inkscape:connector-curvature="0" />
     <path
-       d="m 275.85842,218.29383 c 16.03339,-21.46515 38.26667,-22.13987 54.83733,0"
+       d="m 275.85842,240.54098 c 16.03339,21.46515 38.26667,22.13987 54.83733,0"
        id="path3219-7"
        style="fill:none;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:4, 4;stroke-dashoffset:0;marker-end:url(#marker3130-0);display:inline"
        inkscape:connector-curvature="0" />
     <text
-       x="103.9974"
-       y="220.89586"
+       x="115.9974"
+       y="243.3109"
        id="text4753-2-0"
        xml:space="preserve"
        style="font-size:10px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;display:inline;font-family:Norasi;-inkscape-font-specification:Norasi"
        sodipodi:linespacing="125%"><tspan
-         x="103.9974"
-         y="220.89586"
+         x="115.9974"
+         y="243.3109"
          id="tspan4755-7-3">$q'$</tspan></text>
     <text
-       x="104.27084"
-       y="251.1541"
+       x="116.27084"
+       y="213.05261"
        id="text4757-5-8"
        xml:space="preserve"
        style="font-size:10px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;display:inline;font-family:Norasi;-inkscape-font-specification:Norasi"
        sodipodi:linespacing="125%"><tspan
-         x="104.27084"
-         y="251.1541"
+         x="116.27084"
+         y="213.05261"
          id="tspan4759-4-7">$q$</tspan></text>
     <text
        x="424.19556"
@@ -666,43 +666,43 @@
          y="282.37027"
          id="tspan5777-9-4">$t$</tspan></text>
     <path
-       d="m 283.31463,218.29383 a 6.859355,6.859355 0 0 1 -13.71871,0 6.859355,6.859355 0 1 1 13.71871,0 z"
+       d="m 283.31463,240.54098 a 6.859355,6.859355 0 0 0 -13.71871,0 6.859355,6.859355 0 1 0 13.71871,0 z"
        id="path4199-24-26-9-4"
        style="fill:#4c8cff;fill-opacity:1;stroke:none;display:inline"
        inkscape:connector-curvature="0" />
     <path
-       d="m 167.97437,248.53449 c 26.78526,-5.31293 79.73177,-12.97247 108.4809,-30.24066"
+       d="m 167.97437,210.30032 c 26.78526,5.31293 79.73177,12.97247 108.4809,30.24066"
        id="path4985-8"
        style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker-end:url(#marker3130);display:inline"
        inkscape:connector-curvature="0" />
     <path
-       d="m 167.97437,248.53449 c 41.68592,-1.67054 141.09115,-10.93056 162.72138,-30.24066"
+       d="m 167.97437,210.30032 c 41.68592,1.67054 141.09115,10.93056 162.72138,30.24066"
        id="path4985-8-3"
        style="fill:none;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:4, 4;stroke-dashoffset:0;marker-end:url(#marker3130);display:inline"
        inkscape:connector-curvature="0" />
     <text
-       x="343.26648"
-       y="232.92915"
+       x="339.26648"
+       y="236.92915"
        id="text4385"
        xml:space="preserve"
        style="font-size:10px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
        sodipodi:linespacing="125%"><tspan
-         x="343.26648"
-         y="232.92915"
+         x="339.26648"
+         y="236.92915"
          id="tspan4387"
          style="text-align:center;text-anchor:middle">?</tspan></text>
     <path
-       d="m 412.0564,248.55211 113.90132,0"
+       d="m 412.0564,240.55211 113.90132,0"
        id="path2985-73-4-6-0"
        style="fill:none;stroke:#a3a3a3;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:3, 3;stroke-dashoffset:0;marker-end:url(#Arrow2Lend);display:inline"
        inkscape:connector-curvature="0" />
     <path
-       d="m 167.97437,248.53449 c 41.68592,-1.67054 179.40995,4.05449 216.96179,-30.24066"
+       d="m 167.97437,210.30032 c 41.68592,1.67054 179.40995,-4.05449 216.96179,30.24066"
        id="path4985-8-3-7"
        style="fill:none;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:4, 4;stroke-dashoffset:0;marker-end:url(#marker3130);display:inline"
        inkscape:connector-curvature="0" />
     <path
-       d="m 174.83373,248.53449 a 6.859355,6.859355 0 0 1 -13.71871,0 6.859355,6.859355 0 1 1 13.71871,0 z"
+       d="m 174.83373,210.30032 a 6.859355,6.859355 0 0 0 -13.71871,0 6.859355,6.859355 0 1 0 13.71871,0 z"
        id="path4199-1-4-5"
        style="fill:#ff0a0a;fill-opacity:1;stroke:none;display:inline"
        inkscape:connector-curvature="0" />

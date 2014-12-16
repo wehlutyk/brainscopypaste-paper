@@ -51,10 +51,10 @@
   \begin{picture}(1,0.38094868)%
     \put(0,0){\includegraphics[width=\unitlength]{substitution-temporal-binning-a.pdf}}%
     \put(0.14470494,0.3316394){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{Quote occurrences}}}%
-    \put(0.02518557,0.2054928){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{$q'$}}}%
-    \put(0.02580215,0.13726417){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{$q$}}}%
+    \put(0.0522441,0.15494962){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{$q'$}}}%
+    \put(0.05286069,0.22317836){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{$q$}}}%
     \put(0.74719326,0.06687552){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{$t$}}}%
-    \put(0.56470808,0.17835919){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{?}}}%
+    \put(0.55568857,0.16933968){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{?}}}%
     \put(0.23081054,0.0357989){\color[rgb]{0,0,0}\makebox(0,0)[b]{\smash{{\tiny Jan 19}}}}%
     \put(0.47528403,0.0357989){\color[rgb]{0,0,0}\makebox(0,0)[b]{\smash{{\tiny Jan 20}}}}%
     \put(0.65910597,0.0357989){\color[rgb]{0,0,0}\makebox(0,0)[b]{\smash{{\tiny Jan 21}}}}%
