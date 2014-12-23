@@ -187,9 +187,13 @@ $$\sigma_{\phi}(f) = \left< \frac{s_w}{p_w} \right>_{\left\lbrace w | \phi(w) = 
 Put shortly, susceptibility focuses on the selection of start words involved in substitutions, measuring the effect of features at the moment preceding the substitution when it is not yet known which word in the quotation will be substituted.
 
 \medskip
-Results are gathered on Fig.~\ref{fig:feature-susceptibilities}.
+The results for this observable, gathered on Fig.~\ref{fig:feature-susceptibilities}, first show an obvious strong effect of Word frequency: the more frequent a word, the less likely it is to attract substitutions. Indeed, susceptibility goes from nearly 0.4 for low-frequency words down to 0 for very high-frequency words.
 
-\rk{Comment results}
+Age of acquisition and Number of phonemes delineate two categories of words: both features have little to no effect on susceptibility for low- to mid-valued words, but very high-valued words behave differently and tend to be more substituted (clearly for high Number of phonemes, and only as a tendency for high Age of acquisition).
+These high-valued words also have low occurrence frequencies, which corresponds to the slope change in the frequency curve between extreme low frequency words and mid- to high-frequency words. \rk{check this with a plot of freq vs. clustering and freq vs. AoA, or simply plot of frequency for the high-valued words for AoA and CC.}
+This class of words corresponds to \TB{highly specialized words? domain-specific? a hard limit on too complicated words?}
+
+Finally the results for Clustering coefficient and Number of synonyms, despite some tendencies, do not allow us to conclude either to an effect or no effect of those features on substitution susceptibility.
 
 \begin{figure*}[!th]
     \centering
