@@ -173,13 +173,13 @@ First, we measure the susceptibility for words to be the source of a substitutio
 
 Note that since we only consider substitutions and not faithful copies, we measure the features of an alteration \emph{knowing that there has been an alteration}, and we do not take invariant quotations into account.
 Indeed, in the first case we know there has been a human reformulation, whereas in the second case it is impossible to know whether there has been perfect human reformulation or simply digital copy-pasting of a source (``{\sc Ctrl-C}/{\sc Ctrl-V}'').
-Furthermore, perfect human reformulation possibly involves different practices than those involved in alteration --e.g. drafting before publishing, double-checking sources, proof-reading--, and may not be representative of the cognitive processes at work during alteration.
+Furthermore, perfect human reformulation possibly involves different practices than those involved in alteration ---~e.g. drafting before publishing, double-checking sources, proof-reading~---, and may not be representative of the cognitive processes at work during alteration.
 The two situations are different enough to be studied separately, and we focus here on the latter.
 
 \subsection{Susceptibility}
 
 We say that a word is \emph{substitutable} if it appears in a quote which undergoes a substitution, whether that substitution operates on that word or on another one.
-Word substitution susceptibility is computed as the ratio of the number of times $s_w$ a word is substituted to the number of times $p_w$ that word appears in a substitutable position, \hbox{i.e.} $\sfrac{s_w}{p_w}$. In other words, it measures how often a subtitutable word $w$ gets actually substituted.
+Word substitution susceptibility is computed as the ratio of the number of times $s_w$ a word is substituted to the number of times $p_w$ that word appears in a substitutable position, \hbox{i.e.} $\sfrac{s_w}{p_w}$. In other words, it measures how often a substitutable word $w$ actually gets substituted.
 
 Now, for a given feature $\phi$, we obtain the mean susceptibility $\sigma_{\phi}(f)$ for the feature value $f$ by averaging this ratio over all words such that $\phi(w) = f$% (only taking into account words that are substituted at least once)
 :
@@ -190,16 +190,29 @@ $$\sigma_{\phi}(f) = \left< \frac{s_w}{p_w} \right>_{\left\lbrace w | \phi(w) = 
 Put shortly, susceptibility focuses on the selection of start words involved in substitutions, measuring the effect of features at the moment preceding the substitution when it is not yet known which word in the quotation will be substituted.
 
 \medskip
-Results are gathered on Fig.~\ref{fig:feature-susceptibilities}. They first show an obvious strong effect of Word frequency: the more frequent a word, the less likely it is to attract substitutions. Indeed, susceptibility goes from nearly 0.4 for low-frequency words down to 0 for very high-frequency words. As a reminder, this value of 0.4 means that, this kind of low-frequency words, when present in a quote undergoing a substitution, are indeed the one being substituted 40\% of the time on average.
+Results for this measure are gathered on Fig.~\ref{fig:feature-susceptibilities}. They first show an obvious strong effect of Word frequency: the more frequent a word, the less likely it is to attract substitutions.
+Indeed, susceptibility goes from nearly 0.4 for low-frequency words down to 0 for very high-frequency words.
+To make things clear, this value of 0.4 means that low-frequency words, when present in a quote undergoing a substitution, are the ones being substituted 40\% of the time on average.
 
 The other features --- Age of acquisition, Number of phonemes, Clustering coefficient and Number of synonyms --- do not seem to exhibit any particularly significant effect on susceptibility.
-For each of these features, it is indeed possible to draw a constant line which always remains within the respective confidence intervals.  If these variables have an effect, it is by no means as strong as it is for Word frequency.  This is remarkably clear for Clustering coefficient and Number of synonyms, where susceptibility values remain within quite small intervals (respectively [0.09-0.13] and [0.11-0.15]).  We may notice a somewhat marked effect for the highest values of Age of acquisition and Number of phonemes, where the mean susceptibility is almost twice higher than for the rest (respectively 0.19 vs 0.13, and 0.21 vs 0.12).  Keeping in mind the poor statistical significance of this effect, we could still suggest that the longest and late-learned words are more susceptible.  To examine further this phenomenon, we plotted the two-dimensional map of joint susceptibility values for these two features (heatmap at the bottom right of Fig.~\ref{fig:feature-susceptibilities}).
-\TB{We see that outlier values (the two darkest cells) are both due to cells where the number of items is only slightly above the significance threshold (11 items, while we decided to cut at 10). If we focus on cells based on at least several dozens of words, values range from 0.11 to 0.22 with little obvious regularity, making it hard to draw any conclusion as regards the direction of an effect and confirming the fact that the slight late increases observed for Age of acquisition and Number of phonemes were rather non-significant.}
+For each of these features, it is indeed possible to draw a constant line which always remains within the respective confidence intervals.
+If these variables have an effect, it is by no means as strong as it is for Word frequency.
+This is remarkably clear for Clustering coefficient and Number of synonyms, where susceptibility values remain within quite small intervals (respectively [0.09-0.13] and [0.11-0.15]).
+We may notice a somewhat marked effect for the highest values of Age of acquisition and Number of phonemes, where the mean susceptibility is almost twice as high as in the rest (respectively 0.19 vs 0.13, and 0.21 vs 0.12).
+Keeping in mind the poor statistical significance of this effect, we could still suggest that the longest words and words learned late are more susceptible to substitution.
+To further examine this phenomenon, we plotted the two-dimensional map of susceptibility values for these two features (see heatmap at the bottom right of Fig.~\ref{fig:feature-susceptibilities}).
+We see that outlier values (the two darkest cells) are both due to cells where the number of items is only slightly above the significance threshold (11 items, while we decided to cut at 10).
+If we focus on cells based on at least several dozens of words, values range from 0.11 to 0.22 with little obvious regularity, making it hard to draw any conclusion as regards the direction of an effect.
+This confirms the fact that the slight late increases observed for Age of acquisition and Number of phonemes are rather non-significant.
+
+\rk{Add number of words to cells in heatmap}
+
 %\TB{This class of words corresponds to \todo{} [\TB{highly specialized words? domain-specific? a hard limit on too complicated words?}]}
 %Age of acquisition and Number of phonemes delineate two categories of words: both features have little to no significant effect on susceptibility for low- to mid-valued words, but very high-valued words behave differently and tend to be more substituted (clearly for high Number of phonemes, and only as a tendency for high Age of acquisition).
 %These high-valued words also have low occurrence frequencies, which corresponds to the slope change in the frequency curve between extreme low frequency words and mid- to high-frequency words. \rk{check this with a plot of freq vs. clustering and freq vs. AoA, or simply plot of frequency for the high-valued words for AoA and CC.}
 
-All in all, apart for Word frequency and despite some tendencies these results do not allow us to conclude either to an effect or no effect of the selected psycholinguistic features on substitution susceptibility. We may therefore globally assume that substitution targets are more or less chosen in a uniform way with respect to these features.  
+All in all, apart for Word frequency and despite some tendencies these results do not allow us to conclude either to an effect or no effect of the selected psycholinguistic features on substitution susceptibility.
+We may therefore globally assume that substitution targets are chosen in a more or less uniform way with respect to these features.
 
 % plus ou moins choisies uniformément (modulo les réserves exhibées en 4.1), on peut montrer en quoi elles sont modifiées Finally the results for Clustering coefficient and Number of synonyms, despite some tendencies, do not allow us to conclude either to an effect or no effect of those features on substitution susceptibility.
 
