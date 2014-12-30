@@ -226,12 +226,13 @@ We may therefore globally assume that substitution targets are chosen in a more 
 
 \subsection{Variation}
 
-Next, we can thus show how words are modified once we know they are substituted, \hbox{i.e.} how their features are modified by the said substitution.
-We therefore measure how a word $\wstart$'s feature varies as $\wstart$ is substituted by $\warrival$, i.e. $\phi(\warrival)$ as a function of $\phi(\wstart)$.
+We can thus show how words are modified once we know they are substituted, \hbox{i.e.} how their features are modified by said substitution.
+We therefore measure how a word $\wstart$'s feature varies as $\wstart$ is substituted for $\warrival$, i.e. $\phi(\warrival)$ as a function of $\phi(\wstart)$.
 Averaging this value over all start words such that $\phi(w) = f$ yields the mean variation for that feature value~$f$:
 $$\nu_{\phi}(f) = \left<\phi(\warrival)\right>_{\left\lbrace \wstart\rightarrow\warrival | \phi(\wstart) = f \right\rbrace}$$
 
-Of prime interest is the comparison of the value of $\nu_{\phi}(f)$ with respect to $f$, as it shows whether there is an attraction (or repulsion) effect towards some values of each feature.  In other words, plotting the $y=x$ line, we can see if substitutions tend to converge towards some typical value of a word feature or not --- as is classically done in the study of dynamic systems.
+Of prime interest is the comparison of the value of $\nu_{\phi}(f)$ with respect to $f$, as it shows whether there is an attraction (or a repulsion) effect towards (resp. from) some values of each feature.
+In other words, plotting the $y=x$ line, we can see if substitutions tend to converge towards some typical value of a word feature or not --- as is classically done in the study of dynamical systems.
 
 We also introduce a null hypothesis $\mathcal{H}_0$ to compare the actual variation of a word's feature to its expected variation, assuming the arrival word $\warrival$ has been chosen randomly from the pool of free association words.
 In this case, since $\phi(\warrival)$ becomes a constant value in the above averaging (by definition $\warrival$ does not depend on $\wstart$ anymore),  the baseline variation under $\mathcal{H}_0$ may be rewritten as:\footnote{We additionally considered an alternative null hypothesis, denoted $\mathcal{H}_{00}$, where the arrival word is randomly chosen \emph{among immediate synonyms of the start word}, \hbox{i.e.} an arrival word chosen among semantically plausible though still random words. In this case $\warrival_{00}$ does depend on $\wstart$. The results were not qualitatively different under this second null hypothesis, so for the sake of clarity we chose to keep the simpler~$\mathcal{H}_0$.}
@@ -240,9 +241,11 @@ $$\nu_{\phi}^0 (f) = \left<\phi\right>$$
 
 This approach yields a fine-grained view of how word features evolve upon substitution, on average, with respect to (i) the original feature (\hbox{vs.} $y=x$) and (ii) a random arrival (\hbox{vs.} $\mathcal{H}_0$).
 
-\medskip Results are gathered on Fig.~\ref{fig:feature-variations}.
- We can do a first striking observation: all graphs show the existence of a unique intersection of $\nu_{\phi}$ with $y=x$, while the slope of $\nu_{\phi}$ is smaller than 1.  In other words, there exists a unique attractor for all features.  
-Second, the comparison with $\mathcal{H}_0$ shows that we have two classes of attractors, depending on whether (i) there is a triple intersection (of $y=x$, $\nu_{\phi}^0$ and $\nu_{\phi}$) or (ii) $\nu_{\phi}$ remains always above or below $\nu_{\phi}^0$.
+\medskip
+Results are gathered on Fig.~\ref{fig:feature-variations}.
+We can do a first striking observation: all graphs show the existence of a unique intersection of $\nu_{\phi}$ with $y=x$, while the slope of $\nu_{\phi}$ is smaller than 1.
+In other words, each feature exhibits a unique attractor.  
+Second, the comparison with $\mathcal{H}_0$ shows that there are two classes of attractors, depending on whether (i) there is a triple intersection (of $y=x$, $\nu_{\phi}^0$ and $\nu_{\phi}$) or (ii) $\nu_{\phi}$ remains always above or below $\nu_{\phi}^0$.
 
 \rk{Comment these results} \todo{}
 
