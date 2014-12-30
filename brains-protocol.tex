@@ -193,7 +193,7 @@ Put shortly, susceptibility focuses on the selection of start words involved in 
 Results are gathered on Fig.~\ref{fig:feature-susceptibilities}. They first show an obvious strong effect of Word frequency: the more frequent a word, the less likely it is to attract substitutions. Indeed, susceptibility goes from nearly 0.4 for low-frequency words down to 0 for very high-frequency words. As a reminder, this value of 0.4 means that, this kind of low-frequency words, when present in a quote undergoing a substitution, are indeed the one being substituted 40\% of the time on average.
 
 The other features --- Age of acquisition, Number of phonemes, Clustering coefficient and Number of synonyms --- do not seem to exhibit any particularly significant effect on susceptibility.
-For each of these features, it is indeed possible to draw a constant line which always remains within the respective confidence intervals.  If these variables have an effect, it is by no means as strong as it is for Word frequency.  This is remarkably clear for Clustering coefficient and Number of synonyms, where susceptibility values remain within quite small intervals (respectively [0.09-0.13] and [0.11-0.15]).  We may notice a somewhat marked effect for the highest values of Age of acquisition and Number of phonemes, where the mean susceptibility is almost twice higher than for the rest (respectively 0.19 vs 0.13, and 0.21 vs 0.12).  Keeping in mind the poor statistical significance of this effect, we could still suggest that the longest and late-learnt words are more susceptible.  To examine further this phenomenon, we plotted the two-dimensional map of joint susceptibility values for these two features (heatmap at the bottom right of Fig.~\ref{fig:feature-susceptibilities}).
+For each of these features, it is indeed possible to draw a constant line which always remains within the respective confidence intervals.  If these variables have an effect, it is by no means as strong as it is for Word frequency.  This is remarkably clear for Clustering coefficient and Number of synonyms, where susceptibility values remain within quite small intervals (respectively [0.09-0.13] and [0.11-0.15]).  We may notice a somewhat marked effect for the highest values of Age of acquisition and Number of phonemes, where the mean susceptibility is almost twice higher than for the rest (respectively 0.19 vs 0.13, and 0.21 vs 0.12).  Keeping in mind the poor statistical significance of this effect, we could still suggest that the longest and late-learned words are more susceptible.  To examine further this phenomenon, we plotted the two-dimensional map of joint susceptibility values for these two features (heatmap at the bottom right of Fig.~\ref{fig:feature-susceptibilities}).
 \TB{We see that \todo{}}.
 \TB{This class of words corresponds to \todo{} [\TB{highly specialized words? domain-specific? a hard limit on too complicated words?}]}
 %Age of acquisition and Number of phonemes delineate two categories of words: both features have little to no significant effect on susceptibility for low- to mid-valued words, but very high-valued words behave differently and tend to be more substituted (clearly for high Number of phonemes, and only as a tendency for high Age of acquisition).
@@ -218,29 +218,29 @@ We therefore measure how a word $\wstart$'s feature varies as $\wstart$ is subst
 Averaging this value over all start words such that $\phi(w) = f$ yields the mean variation for that feature value~$f$:
 $$\nu_{\phi}(f) = \left<\phi(\warrival)\right>_{\left\lbrace \wstart\rightarrow\warrival | \phi(\wstart) = f \right\rbrace}$$
 
-We introduce a null hypothesis $\mathcal{H}_0$ to compare the actual variation of a word's feature to its expected variation, assuming the arrival word $\warrival$ has been chosen randomly from the pool of free association words.
+Of prime interest is the comparison of the value of $\nu_{\phi}(f)$ with respect to $f$, as it shows whether there is an attraction (or repulsion) effect towards some values of each feature.  In other words, plotting the $y=x$ line, we can see if substitutions tend to converge towards some typical value of a word feature or not --- as is classically done in the study of dynamic systems.
+
+We also introduce a null hypothesis $\mathcal{H}_0$ to compare the actual variation of a word's feature to its expected variation, assuming the arrival word $\warrival$ has been chosen randomly from the pool of free association words.
 In this case, since $\phi(\warrival)$ becomes a constant value in the above averaging (by definition $\warrival$ does not depend on $\wstart$ anymore),  the baseline variation under $\mathcal{H}_0$ may be rewritten as:
 $$\nu_{\phi}^0 (f) = \left<\phi\right>$$
-
-We also considered an alternative null hypothesis, denoted $\mathcal{H}_{00}$, where the arrival word is randomly chosen \emph{among immediate synonyms of the start word}, \hbox{i.e.} an arrival word chosen among semantically plausible though still random words.\footnote{In this case $\warrival_{00}$ does depend on $\wstart$.}
-The results were not qualitatively different under this second null hypothesis, so for the sake of clarity we chose to keep the simpler~$\mathcal{H}_0$.
-
-Using this method we obtain the mean variation of feature for each start feature value, comparing the variations to a situation where arrival words are chosen randomly.  This gives us a fine-grained view of how word features evolve upon substitution.
+We thereby obtain the mean variation of feature for each start feature value, comparing the variations to a situation where arrival words are chosen randomly.\footnote{We additionally considered an alternative null hypothesis, denoted $\mathcal{H}_{00}$, where the arrival word is randomly chosen \emph{among immediate synonyms of the start word}, \hbox{i.e.} an arrival word chosen among semantically plausible though still random words. In this case $\warrival_{00}$ does depend on $\wstart$. The results were not qualitatively different under this second null hypothesis, so for the sake of clarity we chose to keep the simpler~$\mathcal{H}_0$.}
 
 
 \medskip
+On the whole, this method gives us a fine-grained view of how word features evolve upon substitution with respect to (i) the original feature (\hbox{vs.} $y=x$) and (ii) a random arrival (\hbox{vs.} $\mathcal{H}_0$).
 Results are gathered on Fig.~\ref{fig:feature-variations}.
 
-\rk{Comment results}
+We can do a first striking observation: all graphs show the existence of a unique intersection of $\nu_{\phi}$ with $y=x$, while the slope of $\nu_{\phi}$ is smaller than 1.  In other words, there exists a unique attractor for all features.  
+Second, the comparison with $\mathcal{H}_0$ shows that we have two classes of attractors, depending on whether (i) there is a triple intersection (of $y=x$, $\mathcal{H}_0$ and $\nu_{\phi}$) or (ii) $\mathcal{H}_0$ remains always above or below $\nu_{\phi}$.
 
-\rk{Might want to globally add $y = x$? Defines areas above/below $y = x$ and areas above/below $H_0$}
+\rk{Comment these results} \todo{}
 
-\begin{itemize}
+\tb{\begin{itemize}
     \item Clustering: flat, no dependency. But negative bias, which corresponds to literature on word production.
     \item AoA: global negative bias, also consistent with literature. Question: on one side, effect w.r.t. $H_0$ is weaker for higher AoA, but if you compare to $y = x$, it's not that clear.
     \item Frequency: very strong positive bias, ok. Now extreme high-frequency words have a different pattern (maybe a third category at the opposite of the very low-frequency words?): even if above $H_0$, they're brought quite lower than their original value (complexified?)
     \item Number of phonemes and Number of synonyms: expanding behavior (but check with $y = x$): lower goes to lower, higher goes to higher.
-\end{itemize}
+\end{itemize}}
 
 \begin{figure*}[!th]
     \centering
