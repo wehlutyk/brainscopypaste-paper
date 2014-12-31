@@ -245,17 +245,23 @@ This approach yields a fine-grained view of how word features evolve upon substi
 \medskip
 Results are gathered on Fig.~\ref{fig:feature-variations}.
 We can do a first striking observation: all graphs show the existence of a unique intersection of $\nu_{\phi}$ with $y=x$, while the slope of $\nu_{\phi}$ is smaller than 1, independently of the feature considered.
-In other words, each feature exhibits a unique attractor beyond its own particular variation patterns.
+In other words, beyond individual variation patterns, the substitution process is contractile for all the features, and each of them therefore exhibit a unique attractor.
 Second, the comparison with $\mathcal{H}_0$ shows that there are two classes of attractors, depending on whether (i) there is a triple intersection (of $y=x$, $\nu_{\phi}^0$ and $\nu_{\phi}$) or (ii) $\nu_{\phi}$ remains always above or below $\nu_{\phi}^0$.
+The first class (Number of phonemes and Number of synonyms) are features for which the substitution process only brings words slightly closer to $\nu_{\phi}^0$, and no uniform bias can be observed
+\TB{(furthermore, for these two features $\mathcal{H}_{00}$ stays inside the confidence intervals of the alteration, confirming that they are irrelevant for the substitution process)}.
+\rk{Ajouter ce texte en bleu si tu décides de mettre les figures avec $\mathcal{H}_{00}$.}
+The second class on the other hand (comprising Word frequency, Age of acquisition, and Clustering coefficient) are features for which the substitution process has a clear bias in one direction or the other.
 
-\rk{Comment these results} \todo{}
+Word frequency, with destination words always significantly above $\nu_{\phi}^0$, exhibits a strong bias towards more frequent words \TB{(this in turn confirms that substitution is more of a recall process than a familiarity process, since common words are favored over awkward ones)}.
+\rk{Mais est-ce que c'est pas une inférence inverse que de dire ceci? i.e. on sait que "familiarity" implique un biais en faveur des mots awkards, et que "recall" implique un biais en faveur des mots fréquents, mais on peut pas vraiment tirer de conclusions en utilisant la réciproque, si?}.
+The detailed variations of the Word frequency curve, despite an inflexion for high-frequency words, do not seem to follow any significant pattern.
 
-\tb{\begin{itemize}
-    \item Clustering: flat, no dependency. But negative bias, which corresponds to literature on word production.
-    \item AoA: global negative bias, also consistent with literature. Question: on one side, effect w.r.t. $H_0$ is weaker for higher AoA, but if you compare to $y = x$, it's not that clear.
-    \item Frequency: very strong positive bias, ok. Now extreme high-frequency words have a different pattern (maybe a third category at the opposite of the very low-frequency words?): even if above $H_0$, they're brought quite lower than their original value (complexified?)
-    \item Number of phonemes and Number of synonyms: expanding behavior (but check with $y = x$): lower goes to lower, higher goes to higher.
-\end{itemize}}
+Age of acquisition and Clustering coefficient, on the other hand, exhibit a clear negative bias for the substitution process. Both curves are significantly below their respective $\nu_{\phi}^0$ values, which is consistent with the literature on recall: words learned earlier and words with lower clustering coefficient are easier to produce than average~\citep{nelson2013activation,Zevin02}.
+Clustering coefficient has the additional particularity that, on average, the destination word does not depend on the start word: a substitution will always produce words with a clustering coefficient near $\exp(-2.4) \simeq 0.1$.
+
+\medskip
+We thus observe a clear convergence pattern for each feature, with two different classes corresponding to the psychological relevance of each feature for the substitution process.
+Taken as a dynamical system where substitutions are repeatedly applied, Number of phonemes and Number of synonyms will simply converge towards their average value (i.e. $\nu_{\phi}^0)$, while Word frequency, Age of acquisition and Clustering coefficient, consistent with the literature, will converge towards significantly biased values indicated by the intersection with $y = x$ (respectively, a frequency of $\exp(9.1) \simeq 9000$, an acquisition age of 8, and a Clustering coefficient of 0.1).
 
 \begin{figure*}[!th]
     \centering
