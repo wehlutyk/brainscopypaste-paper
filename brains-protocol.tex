@@ -260,6 +260,23 @@ The detailed variations of the Word frequency curve, despite an inflexion for hi
 Age of acquisition and Clustering coefficient, on the other hand, exhibit a clear negative bias for the substitution process. Both curves are significantly below their respective $\nu_{\phi}^0$ values, which is consistent with the literature on recall: words learned earlier and words with lower clustering coefficient are easier to produce than average~\citep{nelson2013activation,Zevin02}.
 Clustering coefficient has the additional particularity that, on average, the destination word does not depend on the start word: a substitution will always produce words with a clustering coefficient near $\exp(-2.4) \simeq 0.1$.
 
+To make things concrete, here is an example substitution taking place in the dataset.
+At the end of December 2008, many science-related websites reported the following quote,
+
+\begin{quote}
+    ``It could be that our emotions and the systems to regulate them are vestiges of our evolutionary ancestry.''
+\end{quote}
+and a minority of other websites reported the following,
+\begin{quote}
+    ``It could be that our emotions and the systems to regulate them are vestiges of our evolutionary \textbf{history}.''
+\end{quote}
+The word \emph{ancestry} is acquired at an average of 10.11 years old, appears about 12 times in the dataset, and (unfortunately) is not encoded in Free Association norms, meaning we have no Clustering coefficient for this word.
+The word it was replaced with, \emph{history}, is acquired on average at 6.42 years old, appears about 33k times in the dataset, and has a Clustering coefficient of 0.1.
+Such a change, though minor in appearance, is a typical example of alteration along the lines shown by our results.
+
+%ancestry (age 10.11, phonemes 8.0, freq 2.48, cc -, susceptibility 1.0)
+%history  [age 6.42, phonemes 6.0, freq 10.42, cc -2.30, susceptibility 0.0]
+
 \medskip
 We thus observe a clear convergence pattern for each feature, with two different classes corresponding to the psychological relevance of each feature for the substitution process.
 Taken as a dynamical system where substitutions are repeatedly applied, Number of phonemes and Number of synonyms will simply converge towards their average value (i.e. $\nu_{\phi}^0)$, while Word frequency, Age of acquisition and Clustering coefficient, consistent with the literature, will converge towards significantly biased values indicated by the intersection with $y = x$ (respectively, a frequency of $\exp(9.1) \simeq 9000$, an acquisition age of 8, and a Clustering coefficient of 0.1).
