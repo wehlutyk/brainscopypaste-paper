@@ -218,9 +218,12 @@ We may therefore globally assume that substitution targets are chosen in a more 
     \centering
     \includegraphics[width=\textwidth]{images/computed-figures/feature_susceptibilities.png}
     \caption{\textbf{Substitution susceptibility:} average susceptibility to substitution vs. average feature value of a candidate word for substitution, with 95\% asymptotic confidence intervals.
-    \TB{Apart from Word frequency (where low-frequency words are more susceptible than high-frequency words), results do not let us conclude either to an effect or to no effect of the features on susceptibility.
-    The heatmap on the lower-right details the interaction of Age of acquisition and Number of phonemes on susceptibility; susceptibility values are indicated in the cells, and the number of words per cell is indicated in parentheses.
-    Once outlier values with only 11 words are discarded, the heatmap shows no significant interaction effect.}}
+    %\TB{Apart from Word frequency (where low-frequency words are more susceptible than high-frequency words), results do not let us conclude either to an effect or to no effect of the features on susceptibility.
+	%%%%
+    % Cam: J'ai viré la phrase ci-dessus car redondante et même contradictoire avec le texte.
+    %%%%
+    The heatmap on the lower-right shows the joint effect of Age of acquisition and Number of phonemes on susceptibility, averaged over the respective single-variable ranges, with sample size (word numbers) in parentheses.
+    Without the rather unsignificant cells (11 words or less), the heatmap shows no specific trend in a direction or another.}
     \label{fig:feature-susceptibilities}
 \end{figure*}
 
@@ -245,15 +248,21 @@ This approach yields a fine-grained view of how word features evolve upon substi
 Results are gathered on Fig.~\ref{fig:feature-variations}.
 We can do a first striking observation: all graphs show the existence of a unique intersection of $\nu_{\phi}$ with $y=x$, while the slope of $\nu_{\phi}$ is smaller than 1, independently of the feature considered.
 In other words, beyond individual variation patterns, the substitution process is contractile for all the features, and each of them therefore exhibits a unique attractor.
-Second, the comparison with $\mathcal{H}_0$ shows that there are two classes of attractors, depending on whether (i) there is a triple intersection (of $y=x$, $\nu_{\phi}^0$ and $\nu_{\phi}$) or (ii) $\nu_{\phi}$ remains always above or below $\nu_{\phi}^0$.
+Second, the comparison with $\mathcal{H}_0$ shows that there are two classes of attractors, depending on whether:
+\begin{enumerate}[(i)] 
+\item there is a triple intersection (of $y=x$, $\nu_{\phi}^0$ and $\nu_{\phi}$);
+\item or $\nu_{\phi}$ remains always above or below $\nu_{\phi}^0$.
+\end{enumerate}
 The first class (Number of phonemes and Number of synonyms) are features for which the substitution process only brings words slightly closer to $\nu_{\phi}^0$, and no uniform bias can be observed
 \TB{(furthermore, $\mathcal{H}_{00}$ stays inside the confidence intervals of $\nu_{\phi}$, confirming that these two features are irrelevant for the substitution process)}.
-\rk{Ajouter ce texte en bleu si tu décides de mettre les figures avec $\mathcal{H}_{00}$.}
-On the other hand, the second class (comprising Word frequency, Age of acquisition, and Clustering coefficient) are features for which the substitution process has a clear positive or negative bias.
+\rk{Cam: On vire ou bien?}
 
-Word frequency, with $\nu_{\phi}$ always significantly above $\nu_{\phi}^0$, exhibits a strong bias towards more frequent words \TB{(this in turn confirms that substitution is more of a recall process than a familiarity process, since common words are favored over awkward ones)}.
-\rk{Mais est-ce que c'est pas une inférence inverse que de dire ceci? i.e. on sait qu'une tâche "familiarity/recognition" implique un biais en faveur des mots awkards, et qu'une tâche "recall" implique un biais en faveur des mots fréquents, mais on peut pas vraiment tirer de conclusions en utilisant la réciproque, si?}.
-The detailed variations of the Word frequency curve, despite an inflexion for high-frequency words, do not seem to follow any significant pattern.
+On the other hand, the second class (comprising Word frequency, Age of acquisition, and Clustering coefficient) are features for which the substitution process has a clear bias, positive or negative.
+
+Word frequency, with $\nu_{\phi}$ always significantly above $\nu_{\phi}^0$, exhibits a strong bias towards more frequent words. This, in turn, is consistent with the hypothesis that substitution is a recall process, since common words are favored over awkward ones, while it goes against the idea that it could be a familiarity process, where awkward terms would be favored.
+\cam{je crois qu'on peut éviter l'inférence inverse en ne disant pas "confirms" (c'est exagéré en effet) mais en disant juste que c'est cohérent avec un processus mais pas l'autre; j'ai changé le wording}
+% , Mais est-ce que c'est pas une inférence inverse que de dire ceci? i.e. on sait qu'une tâche "familiarity/recognition" implique un biais en faveur des mots awkards, et qu'une tâche "recall" implique un biais en faveur des mots fréquents, mais on peut pas vraiment tirer de conclusions en utilisant la réciproque, si?}.
+However, the detailed variations of the Word frequency curve, despite an inflection for high-frequency words, do not seem to follow any significant pattern.\cam{Je serais pour supprimer cette phrase purement factuelle et pas très clear-cut non plus}
 
 Age of acquisition and Clustering coefficient, on the other hand, exhibit a clear negative bias for the substitution process. Both curves are significantly below their respective $\nu_{\phi}^0$ values, which is consistent with the literature on recall: words learned earlier and words with lower clustering coefficient are easier to produce than average~\citep{nelson2013activation,Zevin02}.
 Clustering coefficient has the additional particularity that, on average, the destination word does not depend on the start word; i.e. on average, substitutions will always produce words with a clustering coefficient around $\exp(-2.4) \simeq 0.1$.
