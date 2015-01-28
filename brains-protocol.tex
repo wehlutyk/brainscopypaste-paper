@@ -110,7 +110,7 @@ Furthermore, the three variables are also strongly related to age of acquisition
 
 Conversely, clustering coefficient exhibits low correlation levels with all the variables we kept (maximum absolute value $0.38$), leading us to include it in the rest of the analysis.
 
-The final set of variables we consider, as well as their cross-correlations, can be seen in Figure~\ref{fig:feature-corrs-filtered}.
+The final set of variables we consider, as well as their cross-correlations, can be seen in Figure~\ref{fig:feature-corrs-filtered}.\footnote{Note that since the final features stem from different datasets, they do not encode the same amounts of words (and \emph{a fortiori}, not always the same words). Thus, frequency encodes about 22.6k words, age of acquisition 30.1k words, number of phonemes 123.4k words, number of synonyms 111.2k, and clustering coefficient 5.7k words (because of the relatively small size of the Free Association dataset). This is not a problem since the analysis is done on a per-feature basis, with no need for words to be encoded in all the features at once.}
 
 \begin{figure}[!th]
     \centering
