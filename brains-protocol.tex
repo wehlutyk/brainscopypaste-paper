@@ -264,21 +264,21 @@ Age of acquisition and Clustering coefficient, on the other hand, exhibit a clea
 Clustering coefficient has the additional particularity that, on average, the destination word does not depend on the start word; i.e. on average, substitutions will always produce words with a clustering coefficient around $\exp(-2.4) \simeq 0.1$.
 
 To make things concrete, here is an example substitution taking place in the dataset.
-At the end of December 2008, many science-related websites reported the following quote,
+At the end of January 2009, many media websites reported the following quote,
 
 \begin{quote}
-    ``It could be that our emotions and the systems to regulate them are vestiges of our evolutionary ancestry.''
+    ``The massive economic upheaval being experienced across the globe is sparing no one in the consumer electronics world.''
 \end{quote}
-and a minority of other websites reported the following,
+and a smaller number of media websites, and blogs, reported the following,
 \begin{quote}
-    ``It could be that our emotions and the systems to regulate them are vestiges of our evolutionary \textbf{history}.''
+    ``The massive economic upheaval being experienced across the \textbf{world} is sparing no one in the consumer electronics world.''
 \end{quote}
-The word \emph{ancestry} is acquired at an average of 10.11 years old, appears about 12 times in the dataset, and (unfortunately) is not encoded in Free Association norms, meaning we have no Clustering coefficient for this word.
-The word it was replaced with, \emph{history}, is acquired on average at 6.42 years old, appears about 33k times in the dataset, and has a Clustering coefficient of 0.1.
+The word \emph{globe} is acquired at an average of 6,5 years old, appears about 3,5k times in the dataset, and has a Clustering coefficient of 0,24.
+The word it was replaced with, \emph{world}, is acquired on average at 5,3 years old, appears about 146k times in the dataset, and has a Clustering coefficient of 0,05. (Both words have four phonemes.)
 Such a change, though minor in appearance, is a typical example of alteration along the lines shown by our results.
 
-%ancestry (age 10.11, phonemes 8.0, freq 2.48, cc -, susceptibility 1.0)
-%history  [age 6.42, phonemes 6.0, freq 10.42, cc -2.30, susceptibility 0.0]
+%globe (age 6.5, phonemes 4.0, freq 8.18, cc -1.42, susceptibility 1.0)
+%world  [age 5.32, phonemes 4.0, freq 11.89, cc -2.95, susceptibility 0.272727272727]
 
 \medskip
 We thus observe a clear convergence pattern for each feature, with two different classes corresponding to the psychological relevance of each feature for the substitution process.
