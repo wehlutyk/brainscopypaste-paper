@@ -49,7 +49,7 @@ We now introduce some of the most classical psycholinguistic measures on words.
     \item \textbf{Word frequency}: the frequency at which words appear in our dataset, known to be relevant for both recognition and recall~\citep{gregg1976word},
     \item \textbf{Age of Acquisition}: the average age at which words are learned (obtained from~\citet{Kuperman12}), known to have different effects than word frequency~\citep{morrison1995roles,dewhurst1998separate},
     \item The average \textbf{Number of Phonemes} and \textbf{Number of Syllables} for all pronunciations of a word (obtained from the Carnegie Mellon University Pronouncing Dictionary~\citep{Weide98})\footnote{The CMU Pronouncing Dictionary is included in the NTLK package~\citep{Bird09}, the natural language processing toolkit we used for the analysis.} as a proxy to word production cost,
-    \item The average \textbf{Number of Synonyms} for all meanings of a word (obtained from WordNet~\citep{WordNet10}) as an \emph{a priori} indicator of how easy it would be to replace a word.
+    \item The average \textbf{Number of Synonyms} for all meanings of a word (obtained from \citet{WordNet10}) as an \emph{a priori} indicator of how easy it would be to replace a word.
 \end{itemize}
 
 %We also considered grammatical types within quotations by detection of \emph{Part-of-Speech} (POS) categories, using the Penn TreeBank Project typology~\citep{Santorini90} and thereby distinguishing verbs, nouns, adjectives and adverbs. The results were however extremely similar across the various categories, exhibiting no specific effect of words belonging to different POS categories. \rk{See \#8 for this fact-check}
@@ -68,7 +68,7 @@ free association response probabilities index the likelihood that one word can c
 % \rk{we're in fact using the unweighed version of the network. Why?}
 %Following \citet{Griffiths07}, we first build a directed unweighted network based on association norms, where words are nodes and edges are directed from cue to target word whenever a target word is being produced when this particular cue word was presented.
 Following \citet{Griffiths07}, we first build a directed unweighted network based on association norms, where nodes are words and edges are directed from cue to target word whenever the considered target word was produced in response to the considered cue word.
-This network is of particular interest since it measures the \emph{in-vitro forced-choice} version of a substitution whereas the data we analyse is the \emph{in-vivo spontaneous} version of what we otherwise hypothesize to be the same process.
+This network is of particular interest since it measures the \emph{in-vitro forced-choice} version of a substitution whereas the data we analyze is the \emph{in-vivo spontaneous} version of what we otherwise hypothesize to be the same process.
 
 \bigskip
 We introduce three standard network-based measures to be used on the FA network% \rk{adapt once the weighing question (\#8) is settled}
@@ -110,9 +110,10 @@ Furthermore, the three variables are also strongly related to age of acquisition
 
 Conversely, clustering coefficient exhibits low correlation levels with all the variables we kept (maximum absolute value $0.38$), leading us to include it in the rest of the analysis.
 
-The final set of variables we consider, as well as their cross-correlations, can be seen in Figure~\ref{fig:feature-corrs-filtered}.\footnote{Note that since the final features stem from different datasets, they do not always encode the same words nor the same number of words.
-Indeed, frequency encodes about 22.6k words, age of acquisition 30.1k words, number of phonemes 123.4k words, number of synonyms 111.2k, and clustering coefficient 5.7k words.
-Quite often then, words from our dataset are encoded in only a subset of the features we use (if any at all); this is not a problem however, since the analysis is done on a per-feature basis and does not need words to be encoded in all the features at once.}
+The final set of variables we consider, as well as their cross-correlations, can be seen in Figure~\ref{fig:feature-corrs-filtered}.\footnote{Note that feature values stem from different datasets which do not always encode the same words.
+Indeed, we have data on frequency for about 22.6k words, on age of acquisition for 30.1k words, on number of phonemes for 123.4k words, number of synonyms 111.2k, and clustering coefficient 5.7k words.
+Quite often then, not all features are available for all words in our dataset; % are encoded in only a subset of the features we use (if any at all); 
+however this is not problematic since the analysis is done on a per-feature basis, all words need not be encoded in all features.}
 
 \begin{figure}[!th]
     \centering
@@ -191,6 +192,14 @@ $$\sigma_{\phi}(f) = \left< \frac{s_w}{p_w} \right>_{\left\lbrace w | \phi(w) = 
 
 Put shortly, susceptibility focuses on the selection of start words involved in substitutions, measuring the effect of features at the moment preceding the substitution when it is not yet known which word in the quotation will be substituted.
 
+\begin{figure*}[!th]
+    \centering
+    \includegraphics[width=\textwidth]{images/computed-figures/feature_susceptibilities.png}
+    \caption{\textbf{Substitution susceptibility:} average susceptibility to substitution vs. average feature value of a candidate word for substitution, with 95\% asymptotic confidence intervals.
+    The heatmap on the lower-right shows the joint effect of Age of acquisition and Number of phonemes on susceptibility, averaged over the respective single-variable ranges, with sample size (word numbers) in parentheses.
+    Without the rather unsignificant cells (11 words or less), the heatmap shows no specific trend in one direction or the other.}
+    \label{fig:feature-susceptibilities}
+\end{figure*}
 \medskip
 Results for this measure are gathered on Fig.~\ref{fig:feature-susceptibilities}. They first show an obvious strong effect of Word frequency: the more frequent a word, the less likely it is to attract substitutions.
 Indeed, susceptibility goes from nearly 0.4 for low-frequency words down to 0 for very high-frequency words.
@@ -216,14 +225,7 @@ We may therefore globally assume that substitution targets are chosen in a more 
 
 % plus ou moins choisies uniformément (modulo les réserves exhibées en 4.1), on peut montrer en quoi elles sont modifiées Finally the results for Clustering coefficient and Number of synonyms, despite some tendencies, do not allow us to conclude either to an effect or no effect of those features on substitution susceptibility.
 
-\begin{figure*}[!th]
-    \centering
-    \includegraphics[width=\textwidth]{images/computed-figures/feature_susceptibilities.png}
-    \caption{\textbf{Substitution susceptibility:} average susceptibility to substitution vs. average feature value of a candidate word for substitution, with 95\% asymptotic confidence intervals.
-    The heatmap on the lower-right shows the joint effect of Age of acquisition and Number of phonemes on susceptibility, averaged over the respective single-variable ranges, with sample size (word numbers) in parentheses.
-    Without the rather unsignificant cells (11 words or less), the heatmap shows no specific trend in one direction or the other.}
-    \label{fig:feature-susceptibilities}
-\end{figure*}
+
 
 \subsection{Variation}
 
@@ -241,6 +243,15 @@ $$\nu_{\phi}^0 (f) = \left<\phi\right>$$
 %We thereby obtain the mean variation of feature for each start feature value, comparing the variations to a situation where arrival words are chosen randomly.
 
 This approach yields a fine-grained view of how word features evolve upon substitution, on average, with respect to (i) the original feature (\hbox{vs.} $y=x$) and (ii) a random arrival (\hbox{vs.} $\mathcal{H}_0$).
+\begin{figure*}[!th]
+    \centering
+    \includegraphics[width=\textwidth]{images/computed-figures/feature_variations-binned.png}
+    \caption{\textbf{Feature variation upon substitution:} average feature value of the appearing word as a function of the feature value of the disappearing word in a substitution, with 95\% asymptotic confidence intervals.
+    The overall position of the curve with respect to the dashed line representing $\mathcal{H}_0$ (constant $\nu_{\phi}^0$) indicates the direction of the cognitive bias.
+    %The fact that all curves have slopes smaller than 1 means that the substitution operation is contractile on average: each feature will converge towards its own specific asymptotic range.    
+    }
+    \label{fig:feature-variations}
+\end{figure*}
 
 \medskip
 Results are gathered on Fig.~\ref{fig:feature-variations}.
@@ -286,12 +297,3 @@ Such a change, though minor in appearance, is a typical example of alteration al
 We thus observe a clear convergence pattern for each feature, with two different classes corresponding to the psychological relevance of each feature for the substitution process.
 Taken as a dynamical system where substitutions are repeatedly applied, Number of phonemes and Number of synonyms will simply converge towards their average value (i.e. $\nu_{\phi}^0)$, while Word frequency, Age of acquisition and Clustering coefficient, consistent with the literature, will converge towards significantly biased values indicated by the intersection with $y = x$ (respectively, a frequency of $\exp(9.1) \simeq 9000$, an acquisition age of 8, and a Clustering coefficient of 0.1).
 
-\begin{figure*}[!th]
-    \centering
-    \includegraphics[width=\textwidth]{images/computed-figures/feature_variations-binned.png}
-    \caption{\textbf{Feature variation upon substitution:} average feature value of the appearing word as a function of the feature value of the disappearing word in a substitution, with 95\% asymptotic confidence intervals.
-    The overall position of the curve with respect to the dashed line representing $\mathcal{H}_0$ (constant $\nu_{\phi}^0$) indicates the direction of the cognitive bias.
-    %The fact that all curves have slopes smaller than 1 means that the substitution operation is contractile on average: each feature will converge towards its own specific asymptotic range.    
-    }
-    \label{fig:feature-variations}
-\end{figure*}
