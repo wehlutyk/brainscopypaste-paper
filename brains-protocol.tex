@@ -41,9 +41,9 @@ The significantly larger loss in occurrences indicates that, on average, the clu
 \subsection{Word-level measures}
 
 
-\subsubsection{Standard psycholinguistic indices}
+\subsubsection{Psycholinguistic indices}
 
-We now introduce some of the most classical psycholinguistic measures on words.
+We first introduce some of the most classical psycholinguistic measures on words.
 
 \begin{itemize}
     \item \textbf{Word frequency}: the frequency at which words appear in our dataset, known to be relevant for both recognition and recall~\citep{gregg1976word},
@@ -54,24 +54,18 @@ We now introduce some of the most classical psycholinguistic measures on words.
 
 %We also considered grammatical types within quotations by detection of \emph{Part-of-Speech} (POS) categories, using the Penn TreeBank Project typology~\citep{Santorini90} and thereby distinguishing verbs, nouns, adjectives and adverbs. The results were however extremely similar across the various categories, exhibiting no specific effect of words belonging to different POS categories. \rk{See \#8 for this fact-check}
 
-\subsubsection{Network-based measures}
+The number of synonyms is related to a notion of the connectivity of words in a semantic network.  To go a bit further in this direction, we appraise the possible role of network-based variables which have received special attention in the recent related literature, following the blooming interest in networks from many disciplines over the last decade. 
 
-Aside from classical psycholinguistic measures, we also considered more recently studied variables based on semantic network properties.
-We relied on the ``free association'' norms collected by~\citet{Nelson04} which naturally embed information on the idea association process underlying transformation of quotations.
-
-Free association (FA) norms record the words that come to mind when someone is presented with a given cue (that is the ``free association'' task).
-As \citeauthor{Nelson04} explain,
-\begin{quote}
-free association response probabilities index the likelihood that one word can cue another word to come to mind with minimal contextual constraints in effect.~\citep{Nelson04}
-\end{quote}
+\medskip
+Aside from classical psycholinguistic measures, we thus considered more recently studied variables based on semantic network properties.
+We relied on the ``free association'' norms collected by~\citet{Nelson04} which naturally embed information on the idea association process underlying transformation of quotations. Free association (FA) norms record the words that come to mind when someone is presented with a given cue (that is the ``free association'' task). As \citet{Nelson04} explain, ``free association response probabilities index the likelihood that one word can cue another word to come to mind with minimal contextual constraints in effect.''
 %Following \citet{Griffiths07}, we first consider the directed weighted network formed by the association norms, that is the network where words are nodes and edges are directed from cue to associated word, with a weight equal to the probability of that target word being produced when this particular cue was presented.
 % \rk{we're in fact using the unweighed version of the network. Why?}
 %Following \citet{Griffiths07}, we first build a directed unweighted network based on association norms, where words are nodes and edges are directed from cue to target word whenever a target word is being produced when this particular cue word was presented.
 Following \citet{Griffiths07}, we first build a directed unweighted network based on association norms, where nodes are words and edges are directed from cue to target word whenever the considered target word was produced in response to the considered cue word.
 This network is of particular interest since it measures the \emph{in-vitro forced-choice} version of a substitution whereas the data we analyze is the \emph{in-vivo spontaneous} version of what we otherwise hypothesize to be the same process.
 
-\bigskip
-We introduce three standard network-based measures to be used on the FA network% \rk{adapt once the weighing question (\#8) is settled}
+Three standard network-based measures are to be used on the FA network% \rk{adapt once the weighing question (\#8) is settled}
 :
 
 \begin{itemize}
@@ -106,7 +100,7 @@ Frequency and number of synonyms both have relatively low levels of correlation 
 \bigskip
 Network centrality properties, on the other hand, are strongly dependent on one another.
 As mentioned earlier, degree centrality and pagerank have a very strong correlation ($0.85$), and are also redundant with betweenness centrality (with correlation levels at $0.75$ and $0.68$ respectively).
-Furthermore, the three variables are also strongly related to age of acquisition, which leads us to keep the latter as the sole indicator for centrality.
+Furthermore, the three variables are also strongly related to age of acquisition, which leads us to keep the latter as the sole indicator for centrality. This may trigger a chicken-and-egg issue where a strong centrality may be due, or be the result, of an early age of acquisition; in any case, the age of acquisition seems to partially capture centrality-based network properties.
 
 Conversely, clustering coefficient exhibits low correlation levels with all the variables we kept (maximum absolute value $0.38$), leading us to include it in the rest of the analysis.
 
