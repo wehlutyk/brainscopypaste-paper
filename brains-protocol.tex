@@ -54,11 +54,12 @@ We first introduce some of the most classical psycholinguistic measures on words
 
 %We also considered grammatical types within quotations by detection of \emph{Part-of-Speech} (POS) categories, using the Penn TreeBank Project typology~\citep{Santorini90} and thereby distinguishing verbs, nouns, adjectives and adverbs. The results were however extremely similar across the various categories, exhibiting no specific effect of words belonging to different POS categories. \rk{See \#8 for this fact-check}
 
-The number of synonyms is related to a notion of the connectivity of words in a semantic network.  To go a bit further in this direction, we appraise the possible role of network-based variables which have received special attention in the recent related literature, following the blooming interest in networks from many disciplines over the last decade. 
+The number of synonyms is related to a notion of the word connectivity in a semantic network.  To go a bit further in this direction, we appraise the possible role of network-based variables which have received special attention in the recent related literature, following the blooming interest in networks from many disciplines over the last decade. 
 
 \medskip
-Aside from classical psycholinguistic measures, we thus considered more recently studied variables based on semantic network properties.
-We relied on the ``free association'' norms collected by~\citet{Nelson04} which naturally embed information on the idea association process underlying transformation of quotations. Free association (FA) norms record the words that come to mind when someone is presented with a given cue (that is the ``free association'' task). As \citet{Nelson04} explain, ``free association response probabilities index the likelihood that one word can cue another word to come to mind with minimal contextual constraints in effect.''
+%, we thus considered more recently studied variables based on semantic network properties.
+We relied on the ``free association'' (FA) norms collected by~\citet{Nelson04} which naturally embed information on the idea association process underlying transformation of quotations. FA norms record the words that come to mind when someone is presented with a given cue% (that is the ``free association'' task)
+. As \citet{Nelson04} explain, ``free association response probabilities index the likelihood that one word can cue another word to come to mind with minimal contextual constraints in effect.''
 %Following \citet{Griffiths07}, we first consider the directed weighted network formed by the association norms, that is the network where words are nodes and edges are directed from cue to associated word, with a weight equal to the probability of that target word being produced when this particular cue was presented.
 % \rk{we're in fact using the unweighed version of the network. Why?}
 %Following \citet{Griffiths07}, we first build a directed unweighted network based on association norms, where words are nodes and edges are directed from cue to target word whenever a target word is being produced when this particular cue word was presented.
@@ -70,10 +71,10 @@ Three standard network-based measures are to be used on the FA network% \rk{adap
 
 \begin{itemize}
     \item \textbf{Degree centrality}, measured by the number of cues for which a given word is triggered as a target, and a corresponding generalized measure, node \emph{pagerank}~\citep{Page99}, which has already been used on the FA network by~\citet{Griffiths07}.
-    In the present case the two measures are quasi-perfectly correlated, and measure polysemy by taking into account the structure of the entire network.
+    In the present case these two polysemy-related measures are quasi-perfectly correlated. %, and measure polysemy by taking into account the structure of the entire network.
     %However in the present case there is a quasi-perfect correlation between node incoming degree and node \emph{pagerank}~\citep{Page99}, which will lead us to favour the latter later on. Word pagerank on the FA network had already been used by~\citet{Griffiths07}; it may be interpreted as a generalized and recursive measure of word polysemy: central nodes in the pagerank sense are words often selected as targets when presented with cues themselves often selected as targets, and so on recursively.
     \item \textbf{Betweenness centrality}, another measure of node centrality describing the extent to which a node connects otherwise remote areas of the network~\citep{free:set}.
-    This quantity tells us if some words behave like unavoidable waypoints on the path associating one word to another.
+    This quantity tells us if some words behave like unavoidable waypoints on association chains connecting one word to another.
     \item \textbf{Clustering coefficient}, which measures the extent to which a node belongs to a local aggregate of tightly connected nodes~\cite{watt-coll}, computed on the undirected version of the FA network.\footnote{The Clustering coefficient is formally defined as the ratio between the number of actual vs. possible edges between a node's neighbors.}
     This tells us if a word belongs more or less to a local aggregate of equivalent words (from a ``free association'' point of view).
 \end{itemize}
@@ -90,7 +91,7 @@ An important question arises concerning the possible correlations between all th
 \end{figure}
 
 The number of phonemes and the number of syllables naturally exhibit a strong linear correlation ($0.8$).
-The analysis showed a better prediction effect of the number of phonemes over the number of syllables, which is consistent with~\citet{nick-diss}, and we therefore chose to only present results for the former.
+The analysis showed a better prediction effect of the number of phonemes over the number of syllables, which is consistent with~\citet{nick-diss}, and we therefore chose to only present results for the former.\marginnote{C: which analysis, ours? (if yes, the notion of ``prediction effect'' wouldn't appear to be very understandable at this stage of the paper)} 
 
 Age of acquisition is a key variable which appears as a usual suspect in psycholinguistic studies.
 Despite it being usually difficult to disentangle from many of the other variables, it is known to have independent effects, which is consistent with what we see on Figure~\ref{fig:feature-corrs-initial}: age of acquisition has a limited correlation to the other variables (absolute value not above $0.39$ if we exclude the number of syllables and the network properties), leading us to keep the variable in the rest of the analysis.
@@ -149,7 +150,7 @@ or accurate reproductions of the previous occurrences of $q'$? (Options shown in
 	    \input{images/substitution-q_max.pdf_tex}
 	    \label{fig:substitution-q_max}
 	}
-	\caption{{\bf Temporal binning of quotation families.} In bin~3, $q'$ now holds the majority and is considered the unique basis for the last occurrence of $q$ (in bin~4). This is despite the fact that $q$ also appears in bin~3 alongside $q'$, and despite it having appeared earlier at the very beginning of the quotation family (indeed in the situation shown in Figure~\ref{fig:substitution-q_max}, this seems to be the most likely scenario). Conversely, if $q$ had been the most frequent quote in bin~3, the last occurrence of $q$ in bin~4 would have been considered a faithful copy of the occurrence in bin~3.}
+	\caption{{\bf Temporal binning of quotation families.} $q$ and $q'$ are two versions of a quotation belonging to the same cluster.  In the bottom panel (b), $q'$ holds the majority in the 3rd bin and is considered the unique basis for the last occurrence of $q$ (in the 4th bin). This is despite the fact that $q$ also appears in bin~3 alongside $q'$, and despite it having appeared earlier at the very beginning of the quotation family (indeed in the situation shown in Figure~\ref{fig:substitution-q_max}, this seems to be the most likely scenario). Conversely, if $q$ had been the most frequent quote in bin~3, the last occurrence of $q$ in bin~4 would have been considered a faithful copy of the occurrence of $q$ in bin~3.}
     \label{fig:substitution-temporal-binning}
 \end{figure}
 
@@ -159,6 +160,7 @@ These assumptions are only a subset of a wider set of possibilities, each leadin
 These various flavors of an ideal substitution detection model essentially change whether occurrences are considered as substitutions from another quote, repetitions of the original quote, or introduction of information external to the dataset.
 We identified and implemented eleven other such models, and they all yielded essentially the same results.
 
+\medskip
 Put shortly, such a model defines how many times quote occurrences can be counted as substitutions: in Figure~\ref{fig:substitution-q_max}, occurrences of $q'$ on the 20th are counted as substitutions, whereas the occurrences on the 21st are not.  In practice, from the 838k initial occurrences spread into 19,621 classes of quotes, with significant redundancy (many quotes are indeed simple duplicates), we manage to mine 2,873 real substitutions obeying to this model. From these substitutions we remove those featuring stop words, minor spelling changes (e.g. center/centre, November/Nov, Senator/Sen), abbreviations, spelled out numbers; this eventually yields 476 valid substitutions. 
 
 %Let us illustrate this ``majority'' rule by going back to the example described in Section~\ref{sec:temporal-binning} and extending it, in Figure~\ref{fig:substitution-q_max}.
