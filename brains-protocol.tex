@@ -238,22 +238,23 @@ In this case, since $\phi(\warrival)$ becomes a constant value in the above aver
 $$\nu_{\phi}^0 (f) = \left<\phi\right>$$
 %We thereby obtain the mean variation of feature for each start feature value, comparing the variations to a situation where arrival words are chosen randomly.
 
-This approach yields a fine-grained view of how word features evolve upon substitution, on average, with respect to (i) the original feature (\hbox{vs.} $y=x$) and (ii) a random arrival (\hbox{vs.} $\mathcal{H}_0$).
+This approach yields a fine-grained view of how word features evolve upon substitution, on average, with respect to (i) the original feature (\hbox{vs.} $y=x$) and (ii) a random arrival (\hbox{vs.} $\nu_{\phi}^0$).
 \begin{figure*}[!th]
     \centering
     \includegraphics[width=\textwidth]{images/computed-figures/feature_variations-binned.png}
     \caption{\textbf{Feature variation upon substitution:} $\nu_\phi$, average feature value of the appearing word as a function of the feature value of the disappearing word in a substitution, with 95\% asymptotic confidence intervals.
     The overall position of the curve with respect to the dashed line representing $\mathcal{H}_0$ (constant $\nu_{\phi}^0$) indicates the direction of the cognitive bias.
+    The intersection with $y = x$ marks the attractor value.
     %The fact that all curves have slopes smaller than 1 means that the substitution operation is contractile on average: each feature will converge towards its own specific asymptotic range.    
     }
     \label{fig:feature-variations}
 \end{figure*}
 
 \medskip
-Results are gathered on Fig.~\ref{fig:feature-variations}.
+Results are gathered in Fig.~\ref{fig:feature-variations}.
 We can do a first striking observation: all graphs show the existence of a unique intersection of $\nu_{\phi}$ with $y=x$, while the slope of $\nu_{\phi}$ is smaller than 1, independently of the feature considered.
 In other words, beyond individual variation patterns, the substitution process is contractile for all the features, and each of them therefore exhibits a unique attractor.
-Second, the comparison with $\mathcal{H}_0$ shows that there are two classes of attractors, depending on whether:
+Second, the comparison with $\nu_{\phi}^0$ shows that there are two classes of attractors, depending on whether:
 \begin{enumerate}[(i)] 
 \item there is a triple intersection (of $y=x$, $\nu_{\phi}^0$ and $\nu_{\phi}$);
 \item or $\nu_{\phi}$ always remains above or below $\nu_{\phi}^0$.
@@ -269,8 +270,6 @@ Word frequency, with $\nu_{\phi}$ always significantly above $\nu_{\phi}^0$, exh
 %\cam{je crois qu'on peut éviter l'inférence inverse en ne disant pas "confirms" (c'est exagéré en effet) mais en disant juste que c'est cohérent avec un processus mais pas l'autre; j'ai changé le wording}
 % , Mais est-ce que c'est pas une inférence inverse que de dire ceci? i.e. on sait qu'une tâche "familiarity/recognition" implique un biais en faveur des mots awkards, et qu'une tâche "recall" implique un biais en faveur des mots fréquents, mais on peut pas vraiment tirer de conclusions en utilisant la réciproque, si?}.
 %However, the detailed variations of the Word frequency curve, despite an inflection for high-frequency words, do not seem to follow any significant pattern.\cam{Je serais pour supprimer cette phrase purement factuelle et pas très clear-cut non plus}
-
-\marginnote{C: les légendes sur la figure 5 sont un peu trompeuses, on parle de $\nu_\phi$, $\nu_{\phi}^0$ dans le texte et ici de $y=x$ et $\mathcal{H}_0$; peut être préciser que la courbe pleine est $\nu_\phi$, etc.?}
 
 
 Age of acquisition and Clustering coefficient, on the other hand, exhibit a clear negative bias for the substitution process. Both curves are significantly below their respective $\nu_{\phi}^0$ values, which is consistent with the literature on recall: words learned earlier and words with lower clustering coefficient are easier to produce than average~\citep{nelson2013activation,Zevin02}.
