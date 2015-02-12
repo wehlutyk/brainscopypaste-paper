@@ -37,6 +37,7 @@ We thus filter out all clusters lasting more than 80 days, and all quotes less t
  (as well as quotes not written in English).
 We eventually keep 19,621 clusters (out of 71,568; i.e. 27.4\%), containing a total of 60,246 unique quotes (out of 310,457; i.e. 19.4\%) making up $\sim$838k occurrences (out of 8.12m, i.e. 10.3\%).
 The significantly larger loss in occurrences indicates that, on average, the clusters we lose contain more occurrences than those we keep, which is expected for everyday language utterances.\footnote{While we lose real event-related utterances such as ``the terrorists have used automatic weapons and in some places grenades have been lobbed the encounters are still going on and we are trying to overpower them'', we contend that the use of the unfiltered dataset would strongly jeopardize results related to linguistic evolution or information diffusion. We could manually check on a subsample of clusters that a large proportion of remaining quotes seem to be relevant, while filtered quotes are essentially irrelevant.}
+\marginnote{S: dans la footnote: we "could" check, on laisse ça ?}
 
 \subsection{Word-level measures}
 
@@ -91,7 +92,7 @@ An important question arises concerning the possible correlations between all th
 \end{figure}
 
 The number of phonemes and the number of syllables naturally exhibit a strong linear correlation ($0.8$).
-The analysis showed a better prediction effect of the number of phonemes over the number of syllables, which is consistent with~\citet{nick-diss}, and we therefore chose to only present results for the former.\marginnote{C: which analysis, ours? (if yes, the notion of ``prediction effect'' wouldn't appear to be very understandable at this stage of the paper)} 
+\TB{Our analysis showed clearer results with number of phonemes over number of syllables}, which is consistent with~\citet{nick-diss}, and we therefore chose to only present results for the former.
 
 Age of acquisition is a key variable which appears as a usual suspect in psycholinguistic studies.
 Despite it being usually difficult to disentangle from many of the other variables, it is known to have independent effects, which is consistent with what we see on Figure~\ref{fig:feature-corrs-initial}: age of acquisition has a limited correlation to the other variables (absolute value not above $0.39$ if we exclude the number of syllables and the network properties), leading us to keep the variable in the rest of the analysis.
@@ -126,7 +127,7 @@ however this is not problematic since the analysis is done on a per-feature basi
 We finally need a substitution detection model, for the utterance data we use presents a challenge: quote-to-quote transformations, and much less substitutions, are not explicitly encoded in the dataset. More precisely, each set of quotations bears no explicit information about either the authoritative original quotation, or the source quotation(s) each author relied on when creating a new post and reproducing (and possibly altering) that source.
 We thus face an inference problem where, given all quotations and their occurrence timestamps, we should estimate which was the originating quotation for each instance of each quotation.
 
-We therefore model the underlying quotation selection process by making a few additional assumptions.% which let us define quote-to-quote substitutions from the available data.
+We therefore model the underlying quotation selection process by making a few additional assumptions. % which let us define quote-to-quote substitutions from the available data.
 The main issue is deciding whether a later occurrence is a strict copy of an earlier occurrence, or a substitution of an even earlier occurrence, or perhaps even a substitution or copy from quotes appearing outside the dataset, \hbox{i.e.} from a source external to the data collection perimeter.
 
 Let us give an example: say the quotation ``These accusations are false and \textbf{absurd}'' ($q$) appears in a blog on January 19, and the slightly different quotation ``These accusations are false and \textbf{incoherent}'' ($q'$) appears in other blogs twice on the 20th and once on the 21st of January.
@@ -168,7 +169,7 @@ Put shortly, such a model defines how many times quote occurrences can be counte
 \section{Results}\label{sec:results}
 
 We may now use this substitution model to formulate a family of psycholinguistic hypotheses describing the role of each feature in the accuracy of the reformulation.  To this end, we build two main observables for each word feature.  
-First, we measure the susceptibility for words to be the target of a substitution in a quote, knowing that there has been a variation, in order to show which semantic features are the most likely to ``attract'' a substitution under this condition. Second, we measure the evolution of word feature over a substitution, looking at the variation of a given feature between start and arrival words.
+First, we measure the susceptibility for words to be the target of a substitution in a quote, knowing that there has been a variation, in order to show which semantic features are the most likely to ``attract'' a substitution under this condition. Second, we measure the change in word feature upon substitution, looking at the variation of a given feature between start and arrival words.
 
 Note that since we only consider substitutions and not faithful copies, we measure the features of an alteration \emph{knowing that there has been an alteration}, and we do not take invariant quotations into account.
 Indeed, in the former case we know there has been a human reformulation, whereas in the latter case it is impossible to know whether there has been perfect human reformulation or simply digital copy-pasting of a source (``{\sc Ctrl-C}/{\sc Ctrl-V}'').
@@ -178,7 +179,7 @@ The two situations are different enough to be studied separately, and we focus h
 \subsection{Susceptibility}
 
 We say that a word is \emph{substitutable} if it appears in a quote which undergoes a substitution, whether that substitution operates on that word or on another one.
-Word substitution susceptibility is computed as the ratio of the number of times $s_w$ a word is substituted to the number of times $p_w$ that word appears in a substitutable position, \hbox{i.e.} $\sfrac{s_w}{p_w}$. In other words, it measures how often a substitutable word $w$ actually gets substituted.
+Word substitution susceptibility is computed as the ratio of the number of times $s_w$ a word is substituted to the number of times $p_w$ that word appears in a substitutable position, \hbox{i.e.} $\sfrac{s_w}{p_w}$. \TB{In other words, it measures how often a word $w$ actually gets substituted, compared to how often it could have been substituted (because it appears in quotes undergoing substitution)}.
 
 Now, for a given feature $\phi$, we obtain the mean susceptibility $\sigma_{\phi}(f)$ for the feature value $f$ by averaging this ratio over all words such that $\phi(w) = f$, that is% (only taking into account words that are substituted at least once)
 :
@@ -196,7 +197,7 @@ Put shortly, susceptibility focuses on the selection of start words involved in 
     \label{fig:feature-susceptibilities}
 \end{figure*}
 \medskip
-Results for this measure are gathered on Fig.~\ref{fig:feature-susceptibilities}. They first show an obvious strong effect of Word frequency: the more frequent a word, the less likely it is to attract substitutions.
+Results for this measure are gathered in Fig.~\ref{fig:feature-susceptibilities}. They first show an obvious strong effect of Word frequency: the more frequent a word, the less likely it is to attract substitutions.
 Indeed, susceptibility goes from nearly 0.4 for low-frequency words down to 0 for very high-frequency words.
 To make things clear, this value of 0.4 means that low-frequency words, when present in a quote undergoing a substitution, are the ones being substituted 40\% of the time on average.
 
