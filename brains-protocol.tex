@@ -184,6 +184,7 @@ Word substitution susceptibility is computed as the ratio of the number of times
 Now, for a given feature $\phi$, we obtain the mean susceptibility $\sigma_{\phi}(f)$ for the feature value $f$ by averaging this ratio over all words such that $\phi(w) = f$, that is% (only taking into account words that are substituted at least once)
 :
 \footnote{To avoid possible autocorrelation effects due to substitutions belonging to the same cluster (which are likely not statistically independent and may lead to overly optimistic confidence intervals), we first average substitutions over each cluster, by considering the average of arrival word features for a given start word.}
+\marginnote{S: en fait cette footnote (8) est valide que pour les variations de features, pas pour les susceptibilités. C'est d'ailleurs consistent, puisque sur les susceptibilités cette opération serait pas vraiment possible. On la passe au 4.2 ?}
 $$\sigma_{\phi}(f) = \left< \frac{s_w}{p_w} \right>_{\left\lbrace w | \phi(w) = f \right\rbrace}$$
 
 Put shortly, susceptibility focuses on the selection of start words involved in substitutions, measuring the effect of features at the moment preceding the substitution when it is not yet known which word in the quotation will be substituted.
@@ -193,7 +194,7 @@ Put shortly, susceptibility focuses on the selection of start words involved in 
     \includegraphics[width=\textwidth]{images/computed-figures/feature_susceptibilities.png}
     \caption{\textbf{Substitution susceptibility:} average susceptibility to substitution vs. average feature value of a candidate word for substitution, with 95\% asymptotic confidence intervals.
     The heatmap on the lower-right shows the joint effect of Age of acquisition and Number of phonemes on susceptibility, averaged over the respective single-variable ranges, with sample size (word numbers) in parentheses.
-    Without the rather unsignificant cells (11 words or less), the heatmap shows no specific trend in one direction or the other.}
+    Without the rather non-significant cells (11 words or less), the heatmap shows no specific trend in one direction or the other.}
     \label{fig:feature-susceptibilities}
 \end{figure*}
 \medskip
@@ -232,7 +233,7 @@ $$\nu_{\phi}(f) = \left<\phi(\warrival)\right>_{\left\lbrace \wstart\rightarrow\
 Of prime interest is the comparison of the value of $\nu_{\phi}(f)$ with respect to $f$, as it shows whether there is an attraction (or a repulsion) effect towards (respectively from) some values of each feature.
 In other words, plotting the $y=x$ line, we can see if substitutions tend to converge towards some typical value of a word feature or not --- as is classically done in the study of dynamical systems.
 
-We also introduce a null hypothesis $\mathcal{H}_0$ to compare the actual variation of a word's feature to its expected variation, assuming the arrival word $\warrival$ has been chosen randomly from the whole pool of free association words.\marginnote{C: ici on est bien d'accord que le pool of FA words c'est tout le set de mots, pas juste les voisins? la formulation est un peu ambigüe}
+We also introduce a null hypothesis $\mathcal{H}_0$ to compare the actual variation of a word's feature to its expected variation, assuming the arrival word $\warrival$ was \TB{randomly chosen from the whole pool of words in the dataset from which the feature is built (e.g. for Clustering coefficient: randomly chosen in the pool of words in the Free Association norms)}.\marginnote{C: ici on est bien d'accord que le pool of FA words c'est tout le set de mots, pas juste les voisins? la formulation est un peu ambigüe. S: oui et non. Oui: c'est pas juste les voisins. Non: le pool dépend de la feature, c'est pas juste FA. Il y avait une erreur, j'ai reformulé pour être plus clair.}
 In this case, since $\phi(\warrival)$ becomes a constant value in the above averaging (by definition $\warrival$ does not depend on $\wstart$ anymore),  the baseline variation under $\mathcal{H}_0$ may be rewritten as:\footnote{We additionally considered an alternative null hypothesis, denoted $\mathcal{H}_{00}$, where the arrival word is randomly chosen \emph{among immediate synonyms of the start word}, \hbox{i.e.} an arrival word chosen among semantically plausible though still random words. In this case $\warrival_{00}$ does depend on $\wstart$. Our conclusions hold under this second null hypothesis, so for the sake of clarity we chose to keep the simpler~$\mathcal{H}_0$.}
 $$\nu_{\phi}^0 (f) = \left<\phi\right>$$
 %We thereby obtain the mean variation of feature for each start feature value, comparing the variations to a situation where arrival words are chosen randomly.
