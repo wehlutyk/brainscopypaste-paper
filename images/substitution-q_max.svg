@@ -14,7 +14,7 @@
    id="svg3430"
    version="1.1"
    inkscape:version="0.48.5 r10040"
-   sodipodi:docname="substitution-q_max.pdf">
+   sodipodi:docname="substitution-q_max.svg">
   <defs
      id="defs3432">
     <marker
@@ -272,9 +272,9 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="1.4"
-     inkscape:cx="354.09001"
-     inkscape:cy="366.40264"
+     inkscape:zoom="2.8"
+     inkscape:cx="418.76821"
+     inkscape:cy="375.36683"
      inkscape:document-units="px"
      inkscape:current-layer="g3156"
      showgrid="false"
@@ -291,7 +291,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title></dc:title>
+        <dc:title />
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -360,20 +360,6 @@
          id="rect7245"
          style="fill:#4c8cff;fill-opacity:0.20975611;stroke:#4c8cff;stroke-opacity:0.78536586"
          transform="scale(1,-1)" />
-      <g
-         id="g3963"
-         transform="matrix(1,0,0,-1,0,1301.1641)">
-        <path
-           d="m 435.49723,635.21226 a 6.859355,6.859355 0 0 1 -13.71871,0 6.859355,6.859355 0 1 1 13.71871,0 z"
-           id="path4199-24-449-6-5-9-1"
-           style="fill:#4c8cff;fill-opacity:1;stroke:none;display:inline"
-           inkscape:connector-curvature="0" />
-        <path
-           d="m 489.73771,635.21226 a 6.859355,6.859355 0 0 1 -13.71871,0 6.859355,6.859355 0 1 1 13.71871,0 z"
-           id="path4199-24-449-6-5-1-0-4"
-           style="fill:#4c8cff;fill-opacity:1;stroke:none;display:inline"
-           inkscape:connector-curvature="0" />
-      </g>
       <text
          x="159.69911"
          y="668.22931"
@@ -414,6 +400,20 @@
          id="path2985-73-4-6-0-1-4"
          style="fill:none;stroke:#a3a3a3;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0;marker-end:url(#Arrow2Lend);display:inline"
          inkscape:connector-curvature="0" />
+      <g
+         id="g3963"
+         transform="matrix(1,0,0,-1,0,1301.1641)">
+        <path
+           d="m 435.49723,635.21226 a 6.859355,6.859355 0 0 1 -13.71871,0 6.859355,6.859355 0 1 1 13.71871,0 z"
+           id="path4199-24-449-6-5-9-1"
+           style="fill:#4c8cff;fill-opacity:1;stroke:none;display:inline"
+           inkscape:connector-curvature="0" />
+        <path
+           d="m 489.73771,635.21226 a 6.859355,6.859355 0 0 1 -13.71871,0 6.859355,6.859355 0 1 1 13.71871,0 z"
+           id="path4199-24-449-6-5-1-0-4"
+           style="fill:#4c8cff;fill-opacity:1;stroke:none;display:inline"
+           inkscape:connector-curvature="0" />
+      </g>
       <path
          d="m 543.97816,635.71116 a 6.859355,6.859355 0 0 0 -13.71871,0 6.859355,6.859355 0 1 0 13.71871,0 z"
          id="path4199-1-4-5-4-5-6"
