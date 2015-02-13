@@ -36,8 +36,7 @@ Their presence is largely due to random variations around a casual expression, w
 We thus filter out all clusters lasting more than 80 days, and all quotes less than 5 words long %\seb{it is asymmetrical...}
  (as well as quotes not written in English).
 We eventually keep 19,621 clusters (out of 71,568; i.e. 27.4\%), containing a total of 60,246 unique quotes (out of 310,457; i.e. 19.4\%) making up $\sim$838k occurrences (out of 8.12m, i.e. 10.3\%).
-The significantly larger loss in occurrences indicates that, on average, the clusters we lose contain more occurrences than those we keep, which is expected for everyday language utterances.\footnote{While we lose real event-related utterances such as ``the terrorists have used automatic weapons and in some places grenades have been lobbed the encounters are still going on and we are trying to overpower them'', we contend that the use of the unfiltered dataset would strongly jeopardize results related to linguistic evolution or information diffusion. We could manually check on a subsample of clusters that a large proportion of remaining quotes seem to be relevant, while filtered quotes are essentially irrelevant.}
-\marginnote{S: dans la footnote: we "could" check, on laisse ça ?}
+The significantly larger loss in occurrences indicates that, on average, the clusters we lose contain more occurrences than those we keep, which is expected for everyday language utterances.\footnote{While we lose real event-related utterances such as ``the terrorists have used automatic weapons and in some places grenades have been lobbed the encounters are still going on and we are trying to overpower them'', we contend that the use of the unfiltered dataset would strongly jeopardize results related to linguistic evolution or information diffusion. We manually checked on a subsample of clusters that a large proportion of remaining quotes seem to be relevant, while filtered quotes are essentially irrelevant.}
 
 \subsection{Word-level measures}
 
@@ -92,7 +91,7 @@ An important question arises concerning the possible correlations between all th
 \end{figure}
 
 The number of phonemes and the number of syllables naturally exhibit a strong linear correlation ($0.8$).
-\TB{Our analysis showed clearer results with number of phonemes over number of syllables}, which is consistent with~\citet{nick-diss}, and we therefore chose to only present results for the former.
+Our analysis showed clearer results with number of phonemes over number of syllables, which is consistent with~\citet{nick-diss}, and we therefore chose to only present results for the former.
 
 Age of acquisition is a key variable which appears as a usual suspect in psycholinguistic studies.
 Despite it being usually difficult to disentangle from many of the other variables, it is known to have independent effects, which is consistent with what we see on Figure~\ref{fig:feature-corrs-initial}: age of acquisition has a limited correlation to the other variables (absolute value not above $0.39$ if we exclude the number of syllables and the network properties), leading us to keep the variable in the rest of the analysis.
@@ -179,12 +178,11 @@ The two situations are different enough to be studied separately, and we focus h
 \subsection{Susceptibility}
 
 We say that a word is \emph{substitutable} if it appears in a quote which undergoes a substitution, whether that substitution operates on that word or on another one.
-Word substitution susceptibility is computed as the ratio of the number of times $s_w$ a word is substituted to the number of times $p_w$ that word appears in a substitutable position, \hbox{i.e.} $\sfrac{s_w}{p_w}$. \TB{In other words, it measures how often a word $w$ actually gets substituted, compared to how often it could have been substituted (because it appears in quotes undergoing substitution)}.
+Word substitution susceptibility is computed as the ratio of the number of times $s_w$ a word is substituted to the number of times $p_w$ that word appears in a substitutable position, \hbox{i.e.} $\sfrac{s_w}{p_w}$. {In other words, it measures how often a word $w$ actually gets substituted, compared to how often it could have been substituted (because it appears in quotes undergoing substitution)}.
 
 Now, for a given feature $\phi$, we obtain the mean susceptibility $\sigma_{\phi}(f)$ for the feature value $f$ by averaging this ratio over all words such that $\phi(w) = f$, that is% (only taking into account words that are substituted at least once)
 :
-\footnote{To avoid possible autocorrelation effects due to substitutions belonging to the same cluster (which are likely not statistically independent and may lead to overly optimistic confidence intervals), we first average substitutions over each cluster, by considering the average of arrival word features for a given start word.}
-\marginnote{S: en fait cette footnote (8) est valide que pour les variations de features, pas pour les susceptibilités. C'est d'ailleurs consistent, puisque sur les susceptibilités cette opération serait pas vraiment possible. On la passe au 4.2 ?}
+
 $$\sigma_{\phi}(f) = \left< \frac{s_w}{p_w} \right>_{\left\lbrace w | \phi(w) = f \right\rbrace}$$
 
 Put shortly, susceptibility focuses on the selection of start words involved in substitutions, measuring the effect of features at the moment preceding the substitution when it is not yet known which word in the quotation will be substituted.
@@ -227,13 +225,14 @@ We may therefore globally assume that substitution targets are chosen in a more 
 
 We can thus show how words are modified once we know they are substituted, \hbox{i.e.} how their features are modified by said substitution.
 We therefore measure how a word $\wstart$'s feature varies as $\wstart$ is substituted for $\warrival$, i.e. $\phi(\warrival)$ as a function of $\phi(\wstart)$.
-Averaging this value over all start words such that $\phi(w) = f$ yields the mean variation for that feature value~$f$:
+Averaging this value over all start words such that $\phi(w) = f$ yields the mean variation for that feature value~$f$, i.e.:\footnote{To avoid possible autocorrelation effects due to substitutions belonging to the same cluster (which are likely not statistically independent and may lead to overly optimistic confidence intervals), we first average substitutions over each cluster, by considering the average of arrival word features for a given start word.}
 $$\nu_{\phi}(f) = \left<\phi(\warrival)\right>_{\left\lbrace \wstart\rightarrow\warrival | \phi(\wstart) = f \right\rbrace}$$
 
 Of prime interest is the comparison of the value of $\nu_{\phi}(f)$ with respect to $f$, as it shows whether there is an attraction (or a repulsion) effect towards (respectively from) some values of each feature.
 In other words, plotting the $y=x$ line, we can see if substitutions tend to converge towards some typical value of a word feature or not --- as is classically done in the study of dynamical systems.
 
-We also introduce a null hypothesis $\mathcal{H}_0$ to compare the actual variation of a word's feature to its expected variation, assuming the arrival word $\warrival$ was \TB{randomly chosen from the whole pool of words in the dataset from which the feature is built (e.g. for Clustering coefficient: randomly chosen in the pool of words in the Free Association norms)}.\marginnote{C: ici on est bien d'accord que le pool of FA words c'est tout le set de mots, pas juste les voisins? la formulation est un peu ambigüe. S: oui et non. Oui: c'est pas juste les voisins. Non: le pool dépend de la feature, c'est pas juste FA. Il y avait une erreur, j'ai reformulé pour être plus clair.}
+We also introduce a null hypothesis $\mathcal{H}_0$ to compare the actual variation of a word's feature to its expected variation, assuming the arrival word $\warrival$ was randomly chosen from the whole pool of words available in the dataset for that feature.\footnote{For instance, when considering the feature ``Clustering coefficient'', the arrival word is randomly chosen among words present in the dataset of FA norms.}
+%\TB{randomly chosen from the whole pool of words in the dataset from which the feature is built (e.g. for Clustering coefficient: randomly chosen in the pool of words in the Free Association norms)}.\marginnote{C: ici on est bien d'accord que le pool of FA words c'est tout le set de mots, pas juste les voisins? la formulation est un peu ambigüe. S: oui et non. Oui: c'est pas juste les voisins. Non: le pool dépend de la feature, c'est pas juste FA. Il y avait une erreur, j'ai reformulé pour être plus clair.}
 In this case, since $\phi(\warrival)$ becomes a constant value in the above averaging (by definition $\warrival$ does not depend on $\wstart$ anymore),  the baseline variation under $\mathcal{H}_0$ may be rewritten as:\footnote{We additionally considered an alternative null hypothesis, denoted $\mathcal{H}_{00}$, where the arrival word is randomly chosen \emph{among immediate synonyms of the start word}, \hbox{i.e.} an arrival word chosen among semantically plausible though still random words. In this case $\warrival_{00}$ does depend on $\wstart$. Our conclusions hold under this second null hypothesis, so for the sake of clarity we chose to keep the simpler~$\mathcal{H}_0$.}
 $$\nu_{\phi}^0 (f) = \left<\phi\right>$$
 %We thereby obtain the mean variation of feature for each start feature value, comparing the variations to a situation where arrival words are chosen randomly.
