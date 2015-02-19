@@ -4,9 +4,10 @@
 *.blg
 *.aux
 *.log
-*.pdf
 *.synctex.gz
-*.pdf
+# Explicitely set pdfs filnames here (vs. using *.pdf), so that when we add 
+# new ones in reviews/, they are not ignored by git.
+brainscopycut.pdf
 
 # R files
 .RData
