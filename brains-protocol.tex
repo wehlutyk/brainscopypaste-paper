@@ -38,10 +38,10 @@ Their presence is largely due to random variations around a casual expression, w
 \TB{If an entire cluster still lasts more than 80 days after this screening (because of short-lived but unrelated quotes far apart in time), we also filter it out.}
 % New filtering: 1051 substitutions out of 6172 mined. 45749 clusters. -- correct text with numbers and for new figures.
 We eventually keep 45,749 clusters (out of 71,568; i.e. 63.9\%), containing a total of 127,778 unique quotes (out of 310,457; i.e. 41.2\%) making up $\sim$2.43m occurrences (out of 8.16m, i.e. 29.8\%).
-The significantly larger loss in occurrences indicates that, on average, the clusters we lose contain more occurrences than those we keep, which is expected for everyday language utterances.\footnote{While we lose some real event-related utterances because of their presence in clusters lasting more than 80 days (such as \TB{``the city is tired of me and the organization and i have run our course together''}), we contend that the use of the unfiltered dataset would strongly jeopardize results related to linguistic evolution or information diffusion. We manually checked on a subsample of clusters that a large proportion of remaining quotes seem to be relevant, while filtered quotes are essentially irrelevant.\rk{fix}}
+The significantly larger loss in occurrences indicates that, on average, the clusters we lose contain more occurrences than those we keep, which is expected for everyday language utterances.\footnote{While we lose some real event-related utterances because of their presence in clusters lasting more than 80 days (such as \TB{``the city is tired of me and the organization and i have run our course together''}), we contend that the use of the unfiltered dataset would strongly jeopardize results related to linguistic evolution or information diffusion. \TB{Manual coding on a subsample of the excluded clusters revealed that XXX\% of them are indeed irrelevant to our analysis.}}\marginnote{Pour la footnote: avec un codage conservateur on a 67\% correctly filtered vs. 33\% qui pourraient êtres gardés. Avec un codage plus normal: 81\% correctly filtered vs. 19\% qui pourraient être gardés.}
+
 
 \subsection{Word-level measures}
-
 
 \subsubsection{Psycholinguistic indices}
 
@@ -164,7 +164,7 @@ It is however not feasible to try them all and, for the sake of simplicity, we d
 %\TB{We identified and implemented eleven other such models, and they all yielded essentially the same results.} \rk{T: I would prefer a bit more detail here. Maybe on supp. mats.? What does “essentially the same” mean? This could cause concern to reviewers.}
 
 \medskip
-Put shortly, such a model defines how many times quote occurrences can be counted as substitutions: in Figure~\ref{fig:substitution-q_max}, occurrences of $q'$ on the 20th are counted as substitutions, whereas the occurrences on the 21st are not.  In practice, from the 838k initial occurrences spread into 19,621 classes of quotes, with significant redundancy (many quotes are indeed simple duplicates), we manage to mine 2,873 real substitutions obeying to this model. From these substitutions we remove those featuring stop words, minor spelling changes (e.g. center/centre, November/Nov, Senator/Sen), abbreviations, spelled out numbers; this eventually yields 476 valid substitutions. \rk{fix}
+Put shortly, such a model defines how many times quote occurrences can be counted as substitutions: in Figure~\ref{fig:substitution-q_max}, occurrences of $q'$ on the 20th are counted as substitutions, whereas the occurrences on the 21st are not.  In practice, from the 2.43m initial occurrences spread into 45,749 classes of quotes, with significant redundancy (many quotes are indeed simple duplicates), we manage to mine 6,172 real substitutions obeying to this model. From these substitutions we remove those featuring stop words, minor spelling changes (e.g. center/centre, November/Nov, Senator/Sen), abbreviations, spelled out numbers; this eventually yields 1,051 valid substitutions.
 
 %Let us illustrate this ``majority'' rule by going back to the example described in Section~\ref{sec:temporal-binning} and extending it, in Figure~\ref{fig:substitution-q_max}.
 
@@ -193,32 +193,32 @@ Put shortly, susceptibility focuses on the selection of start words involved in 
 \begin{figure*}[!th]
     \centering
     \includegraphics[width=\textwidth]{images/computed-figures/feature_susceptibilities.png}
-    \caption{\textbf{Substitution susceptibility:} \rk{fix by replacing "number of synonyms" par "Age of acquisition"} average susceptibility to substitution vs. average feature value of a candidate word for substitution, with 95\% asymptotic confidence intervals.
-    The heatmap on the lower-right shows the joint effect of Age of acquisition and Number of phonemes on susceptibility, averaged over the respective single-variable ranges, with sample size (word numbers) in parentheses.
-    Without the rather non-significant cells (11 words or less), the heatmap shows no specific trend in one direction or the other.}
+    \caption{\textbf{Substitution susceptibility:} average susceptibility to substitution vs. average feature value of a candidate word for substitution, with 95\% asymptotic confidence intervals.
+    The heatmap on the lower-right shows the joint effect of Number of synonyms and Number of phonemes on susceptibility, averaged over the respective single-variable ranges, with sample size (word numbers) in parentheses.
+    \TB{TO BE FIXED: Without the rather non-significant cells (11 words or less), the heatmap shows no specific trend in one direction or the other.}}
     \label{fig:feature-susceptibilities}
 \end{figure*}
 \medskip
-\rk{fix by replacing "number of synonyms" par "Age of acquisition"} Results for this measure are gathered in Fig.~\ref{fig:feature-susceptibilities}. They first show an obvious strong effect of Word frequency: the more frequent a word, the less likely it is to attract substitutions.
-Indeed, susceptibility goes from nearly 0.4 for low-frequency words down to 0 for very high-frequency words.
-To make things clear, this value of 0.4 means that low-frequency words, when present in a quote undergoing a substitution, are the ones being substituted 40\% of the time on average.
+Results for this measure are gathered in Fig.~\ref{fig:feature-susceptibilities}. They first show an obvious strong effect of Word frequency: the more frequent a word, the less likely it is to attract substitutions.
+Indeed, susceptibility goes from 0.33 for low-frequency words down to nearly 0 for very high-frequency words.
+To make things clear, this value of 0.33 means that low-frequency words, when present in a quote undergoing a substitution, are the ones being substituted 33\% of the time on average.
 
-\rk{fix by replacing "number of synonyms" par "Age of acquisition"} The other features --- Age of acquisition, Number of phonemes, Clustering coefficient and Number of synonyms --- do not seem to exhibit any particularly significant effect on susceptibility.
-For each of these features, it is indeed possible to draw a constant line which always remains within the respective confidence intervals.
+The other features --- Age of acquisition, Number of phonemes, Clustering coefficient and Number of synonyms --- do not seem to exhibit any particularly significant effect on susceptibility.
+\TB{If we set aside the values for low Number of phonemes}, for each of these features it is indeed possible to draw a constant line which always remains within the respective confidence intervals.
 If these variables have an effect, it is by no means as strong as it is for Word frequency.
-This is remarkably clear for Clustering coefficient and Number of synonyms, where susceptibility values remain within quite small intervals (respectively [0.09-0.13] and [0.11-0.15]).
-We may notice a somewhat marked effect for the highest values of Age of acquisition and Number of phonemes, where the mean susceptibility is almost twice as high as in the rest (respectively 0.19 vs 0.13, and 0.21 vs 0.12).
-Keeping in mind the poor statistical significance of this effect, we could still suggest that the longest words and words learned late are more susceptible to substitution.
-To further examine this phenomenon, we plotted the two-dimensional map of susceptibility values for these two features (see heatmap at the bottom right of Fig.~\ref{fig:feature-susceptibilities}).
+This is remarkably clear for Clustering coefficient and Age of acquisition, where susceptibility values remain within quite small intervals (respectively [0.13-0.19] and [0.15-0.20]).
+\TB{We may notice a slight effect for the lowest values of Number of synonyms and Number of phonemes, where the mean susceptibility is almost half as high as in the rest (respectively 0.9 vs 0.16, and 0.11 vs 0.17).}
+Keeping in mind the poor statistical significance of this effect, we could still suggest that the shortest words and words with few synonyms are less susceptible to substitution.
+\TB{TO BE FIXED: To further examine this phenomenon, we plotted the two-dimensional map of susceptibility values for these two features (see heatmap at the bottom right of Fig.~\ref{fig:feature-susceptibilities}).
 We see that outlier values (the two darkest cells) are both due to cells where the number of items is only slightly above the significance threshold (11 items, while we decided to cut at 10).
 If we focus on cells based on at least several dozens of words, values range from 0.11 to 0.22 with little obvious regularity, making it hard to draw any conclusion as regards the direction of an effect.
-This confirms the fact that the slight late increases observed for Age of acquisition and Number of phonemes are rather non-significant.
+This confirms the fact that the slight late increases observed for Age of acquisition and Number of phonemes are rather non-significant.}
 
 %\TB{This class of words corresponds to \todo{} [\TB{highly specialized words? domain-specific? a hard limit on too complicated words?}]}
 %Age of acquisition and Number of phonemes delineate two categories of words: both features have little to no significant effect on susceptibility for low- to mid-valued words, but very high-valued words behave differently and tend to be more substituted (clearly for high Number of phonemes, and only as a tendency for high Age of acquisition).
 %These high-valued words also have low occurrence frequencies, which corresponds to the slope change in the frequency curve between extreme low frequency words and mid- to high-frequency words. \rk{check this with a plot of freq vs. clustering and freq vs. AoA, or simply plot of frequency for the high-valued words for AoA and CC.}
 
-\rk{fix by replacing "number of synonyms" par "Age of acquisition"} All in all, apart from Word frequency and despite some tendencies these results do not allow us to conclude either to a marked effect %or to no effect 
+All in all, apart from Word frequency and despite some tendencies these results do not allow us to conclude either to a marked effect %or to no effect 
 of the selected psycholinguistic features on substitution susceptibility.
 We may therefore globally assume that substitution targets are chosen in a more or less uniform way with respect to these features.
 
@@ -275,7 +275,7 @@ Word frequency, with $\nu_{\phi}$ always significantly above $\nu_{\phi}^0$, exh
 
 
 Age of acquisition and Clustering coefficient, on the other hand, exhibit a clear negative bias for the substitution process. Both curves are significantly below their respective $\nu_{\phi}^0$ values, which is consistent with the literature on recall: words learned earlier and words with lower clustering coefficient are easier to produce than average~\citep{nelson2013activation,Zevin02}.
-Clustering coefficient has the additional particularity that, on average, the destination word does not depend on the start word; i.e. on average, substitutions will always produce words with a clustering coefficient around \rk{fix} $\exp(-2.4) \simeq 0.1$.
+Clustering coefficient has the additional particularity that, on average, the destination word does not depend on the start word; i.e. on average, substitutions will always produce words with a clustering coefficient around $\exp(-2.4) \simeq 0.1$.
 
 To make things concrete, here is an example substitution taking place in the dataset.
 At the end of January 2009, many media websites reported the following quote,
@@ -295,6 +295,6 @@ Such a change, though minor in appearance, is a typical example of alteration al
 %world  [age 5.32, phonemes 4.0, freq 11.89, cc -2.95, susceptibility 0.272727272727]
 
 \medskip
-\rk{fix} We thus observe a clear convergence pattern for each feature, with two different classes corresponding to the psychological relevance of each feature for the substitution process.
-Taken as a dynamical system where substitutions are repeatedly applied, Number of phonemes and Number of synonyms will simply converge towards their average value in the FA corpus (i.e. $\nu_{\phi}^0)$, while Word frequency, Age of acquisition and Clustering coefficient, consistent with the literature, will converge towards significantly biased values indicated by the intersection with $y = x$ (respectively, a frequency of $\exp(9.1) \simeq 9000$, an acquisition age of 8, and a Clustering coefficient of 0.1).
+We thus observe a clear convergence pattern for each feature, with two different classes corresponding to the psychological relevance of each feature for the substitution process.
+Taken as a dynamical system where substitutions are repeatedly applied, Number of phonemes and Number of synonyms will simply converge towards their average value in the FA corpus (i.e. $\nu_{\phi}^0)$, while Word frequency, Age of acquisition and Clustering coefficient, consistent with the literature, will converge towards significantly biased values indicated by the intersection with $y = x$ (respectively, a frequency of $\exp(9.1) \simeq 9000$, an acquisition age slightly below 8, and a Clustering coefficient of 0.1).
 
