@@ -32,13 +32,13 @@ A community detection algorithm was applied to that quotation graph to detect ag
 This analysis yielded the final data we had access to, with a total of about \num{70000} sets of quotations; each of these sets allegedly contains all variations of a same parent utterance, along with their respective publication URLs and timestamps.
 
 Manual inspection of this dataset revealed that it contains a significant number of everyday language quotations (such as ``it was much better than I expected'', ``did that just happen'', as well as many simple expletive-based sentences).
-Their presence is largely due to random variations around a casual expression, while we are interested in transformations of news-related quotes causally linked to an original, identifiable utterance.
-\TB{We thus filter out all quotes less than 5 words long or lasting more than 80 days} %\seb{it is asymmetrical...}
- (as well as quotes not written in English).
-\TB{If an entire cluster still lasts more than 80 days after this screening (because of short-lived but unrelated quotes far apart in time), we also filter it out.}
+Their presence is largely due to random variations around casual expressions, while we are interested in transformations of news-related quotes causally linked to an original, identifiable utterance.
+To filter them out, we exclude all quotes having less than 5 words long or lasting more than 80 days %\seb{it is asymmetrical...}
+ (as well as quotes not written in English). If an entire cluster still lasts more than 80 days after this screening (because of short-lived but unrelated quotes far apart in time), we also exclude it.
 % New filtering: 1051 substitutions out of 6172 mined. 45749 clusters. -- correct text with numbers and for new figures.
-We eventually keep 45,749 clusters (out of 71,568; i.e. 63.9\%), containing a total of 127,778 unique quotes (out of 310,457; i.e. 41.2\%) making up $\sim$2.43m occurrences (out of 8.16m, i.e. 29.8\%).
-The significantly larger loss in occurrences indicates that, on average, the clusters we lose contain more occurrences than those we keep, which is expected for everyday language utterances.\footnote{While we lose some real event-related utterances because of their presence in clusters lasting more than 80 days (such as \TB{``the city is tired of me and the organization and i have run our course together''}), we contend that the use of the unfiltered dataset would strongly jeopardize results related to linguistic evolution or information diffusion. \TB{Manual coding on a subsample of the excluded clusters revealed that XXX\% of them are indeed irrelevant to our analysis.}}\marginnote{Pour la footnote: avec un codage conservateur on a 67\% correctly filtered vs. 33\% qui pourraient êtres gardés. Avec un codage plus normal: 81\% correctly filtered vs. 19\% qui pourraient être gardés.}
+We eventually keep 45,749 clusters (out of 71,568; i.e. 63.9\%), containing a total of 127,778 unique quotes (out of 310,457; i.e. 41.2\%) making up $\sim$2.43m occurrences (out of 8.16m, i.e. 29.8\%).\footnote{The significantly larger loss in occurrences indicates that, on average, the clusters we lose contain more occurrences than those we keep, which is expected for everyday language utterances.}
+%We contend that the use of the unfiltered dataset would strongly jeopardize results related to linguistic evolution or information diffusion, 
+Even if we lose some real event-related utterances which are present in clusters lasting more than 80 days (such as ``the city is tired of me and the organization and I have run our course together''), we check that our approach essentially fulfills its goals by manually coding a random subsample of 100 excluded clusters: a solid 71\% appear to be entirely irrelevant to our analysis (everyday language rather than quotations), and all but one of the remaining clusters were of relevance to the protocol set out below in Sec.~\ref{sec:model}.
 
 
 \subsection{Word-level measures}
@@ -121,9 +121,8 @@ however this is not problematic since the analysis is done on a per-feature basi
 
 
 \subsection{Substitution model}
-
 %\subsubsection{Temporal binning}
-\label{sec:temporal-binning}
+\label{sec:temporal-binning}\label{sec:model}
 
 We finally need a substitution detection model, for the utterance data we use presents a challenge: quote-to-quote transformations, and much less substitutions, are not explicitly encoded in the dataset. More precisely, each set of quotations bears no explicit information about either the authoritative original quotation, or the source quotation(s) each author relied on when creating a new post and reproducing (and possibly altering) that source.
 We thus face an inference problem where, given all quotations and their occurrence timestamps, we should estimate which was the originating quotation for each instance of each quotation.
