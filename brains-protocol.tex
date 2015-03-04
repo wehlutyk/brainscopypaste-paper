@@ -194,7 +194,7 @@ Put shortly, susceptibility focuses on the selection of start words involved in 
     \includegraphics[width=\textwidth]{images/computed-figures/feature_susceptibilities.png}
     \caption{\textbf{Substitution susceptibility:} average susceptibility to substitution vs. average feature value of a candidate word for substitution, with 95\% asymptotic confidence intervals.
     The heatmap on the lower-right shows the joint effect of Number of synonyms and Number of phonemes on susceptibility, averaged over the respective single-variable ranges, with sample size (word numbers) in parentheses.
-    \TB{TO BE FIXED: Without the rather non-significant cells (11 words or less), the heatmap shows no specific trend in one direction or the other.}}
+    \TG{TBF: Without the rather non-significant cells (11 words or less), the heatmap shows no specific trend in one direction or the other.}}
     \label{fig:feature-susceptibilities}
 \end{figure*}
 \medskip
@@ -209,9 +209,9 @@ This is remarkably clear for Clustering coefficient and Age of acquisition, wher
 {We may notice a slight effect for the lowest values of Number of synonyms and Number of phonemes, where the mean susceptibility is almost half as high as in the rest \marginnote{the rest c'est la moyenne des other values ou la plus extrême?} (respectively 0.\TB{0}9 vs 0.16, and 0.11 vs 0.17).}
 Keeping in mind the poor statistical significance of this effect, we could still wonder if the shortest words and words with fewest synonyms are significantly less susceptible to substitution.
 To further examine this phenomenon, we plotted the two-dimensional map of susceptibility values for these two features (see heatmap at the bottom right of Fig.~\ref{fig:feature-susceptibilities}).
-\TB{TBF: [[We see that outlier values (the two darkest cells) are both due to cells where the number of items is only slightly above the significance threshold (11 items, while we decided to cut at 10).]]}
-\TB{TBF: [[If we focus on cells based on at least several dozens of words]]} Values tend to navigate around the mean value \TB{[TBF:()]}, \TB{while we observe a few outlier cells with little obvious regularity (except for a low number of synonyms, consistently with the unidimensional graph).} \TB{On the whole, this makes it relatively hard to draw any conclusion as regards the direction of an effect, except for the least populated value ranges (which as a result are also less significant).}
-\TB{TBF: [[This confirms the fact that the slight late increases observed for Age of acquisition and Number of phonemes are rather non-significant.]]}
+\TG{TBF: [[We see that outlier values (the two darkest cells) are both due to cells where the number of items is only slightly above the significance threshold (11 items, while we decided to cut at 10).]]}
+\TG{TBF: [[If we focus on cells based on at least several dozens of words]]} \TB{Values tend to navigate around the mean value} \TG{[TBF:()]}, \TB{even if there a few outlier cells, yet with little obvious regularity (except for a low number of synonyms, consistently with the unidimensional graph).} \TB{On the whole, this makes it relatively hard to draw any conclusion as regards the direction of an effect, except for the least populated value ranges (which as a result are also less significant).}
+\TG{TBF: [[This confirms the fact that the slight late increases observed for Age of acquisition and Number of phonemes are rather non-significant.]]}
 
 %\TB{This class of words corresponds to \todo{} [\TB{highly specialized words? domain-specific? a hard limit on too complicated words?}]}
 %Age of acquisition and Number of phonemes delineate two categories of words: both features have little to no significant effect on susceptibility for low- to mid-valued words, but very high-valued words behave differently and tend to be more substituted (clearly for high Number of phonemes, and only as a tendency for high Age of acquisition).
