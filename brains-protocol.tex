@@ -205,19 +205,20 @@ To make things clear, this value of 0.33 means that low-frequency words, when pr
 The other features --- Age of acquisition, Number of phonemes, Clustering coefficient and Number of synonyms --- do not seem to exhibit any particularly significant effect on susceptibility.
 {If we set aside the values for low Number of phonemes}, for each of these features it is indeed possible to draw a constant line which always remains within the respective confidence intervals.
 If these variables have an effect, it is by no means as strong as it is for Word frequency.
-This is remarkably clear for Clustering coefficient and Age of acquisition, where susceptibility values remain within quite small intervals (respectively [0.13-0.18] and [0.16-0.20]\marginnote{corrigé les intervalles en fonction des arrondis (.5->1), à partir du graphique ceci dit (pas trouvé les valeurs exactes sur le ipython}).
-{We may notice a slight effect for the lowest values of Number of synonyms and Number of phonemes, where the mean susceptibility is almost half as high as in the rest \marginnote{the rest c'est la moyenne des other values ou la plus extrême?} (respectively 0.\TB{0}9 vs 0.16, and 0.11 vs 0.17).}
+This is remarkably clear for Clustering coefficient and Age of acquisition, where susceptibility values remain within quite small intervals (respectively [0.13-0.18] and [0.16-0.20]).
+{We may notice a slight effect for the lowest values of Number of synonyms and Number of phonemes, where the mean susceptibility is almost half as high as the average of the other values (respectively 0.09 vs 0.16, and 0.11 vs 0.17).}
 Keeping in mind the poor statistical significance of this effect, we could still wonder if the shortest words and words with fewest synonyms are significantly less susceptible to substitution.
 To further examine this phenomenon, we plotted the two-dimensional map of susceptibility values for these two features (see heatmap at the bottom right of Fig.~\ref{fig:feature-susceptibilities}).
-\TG{TBF: [[We see that outlier values (the two darkest cells) are both due to cells where the number of items is only slightly above the significance threshold (11 items, while we decided to cut at 10).]]}
-\TG{TBF: [[If we focus on cells based on at least several dozens of words]]} \TB{Values tend to navigate around the mean value} \TG{[TBF:()]}, \TB{even if there a few outlier cells, yet with little obvious regularity (except for a low number of synonyms, consistently with the unidimensional graph).} \TB{On the whole, this makes it relatively hard to draw any conclusion as regards the direction of an effect, except for the least populated value ranges (which as a result are also less significant).}
+%\TG{TBF: [[We see that outlier values (the two darkest cells) are both due to cells where the number of items is only slightly above the significance threshold (11 items, while we decided to cut at 10).]]}
+%\TG{TBF: [[If we focus on cells based on at least several dozens of words]]} 
+Values tend to navigate around the mean value \TG{[TBF:()]}, even if there are a few outlier cells, yet with little obvious regularity (except for a low number of synonyms, consistently with the unidimensional graph). {On the whole, this makes it relatively hard to draw any conclusion as regards the direction of an effect, except for the least populated value ranges (which as a result are also less significant).}
 \TG{TBF: [[This confirms the fact that the slight late increases observed for Age of acquisition and Number of phonemes are rather non-significant.]]}
 
 %\TB{This class of words corresponds to \todo{} [\TB{highly specialized words? domain-specific? a hard limit on too complicated words?}]}
 %Age of acquisition and Number of phonemes delineate two categories of words: both features have little to no significant effect on susceptibility for low- to mid-valued words, but very high-valued words behave differently and tend to be more substituted (clearly for high Number of phonemes, and only as a tendency for high Age of acquisition).
 %These high-valued words also have low occurrence frequencies, which corresponds to the slope change in the frequency curve between extreme low frequency words and mid- to high-frequency words. \rk{check this with a plot of freq vs. clustering and freq vs. AoA, or simply plot of frequency for the high-valued words for AoA and CC.}
 
-All in all, apart from Word frequency and despite some tendencies, \TB{in general} these results do not allow us to conclude either to a marked effect %or to no effect 
+All in all, apart from Word frequency and despite some local tendencies, {in general} these results do not allow us to conclude either to a marked effect %or to no effect 
 of the selected psycholinguistic features on substitution susceptibility.
 We may therefore globally assume that substitution targets are chosen in a more or less uniform way with respect to these features.
 
