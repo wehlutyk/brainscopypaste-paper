@@ -22,13 +22,13 @@ The next subsections describe the dataset and measures we used to assess this co
 \subsection{\emph{In vivo} utterances}
 
 We used a quotation dataset collected by \citet{Leskovec09}, large enough to lend itself to statistical analysis.
-This dataset consists of the daily crawling of news stories and blog posts from around a million online sources, with an approximate publication rate of 900k texts per day, over a nine-month period of time (from August 2008 to April 2009) \cite{Leskovec09-url}.\footnote{Unfortunately, the original article~\citep{Leskovec09} does not provide additional details on the source selection methodology.}
+This dataset consists of the daily crawling of news stories and blog posts from around a million online sources, with an approximate publication rate of 900k texts per day, over a nine-month period of time (from August 2008 to April 2009~---~\citealp{Leskovec09-url}).\footnote{Unfortunately, the original article~\citep{Leskovec09} does not provide additional details on the source selection methodology.}
 Quotations were then automatically extracted from this corpus: each quotation is a more or less faithful excerpt of an utterance (oral or written) by the quoted person. For instance,
 \begin{quote}
 The Bank of England said, ``these operations are designed to address funding pressures over quarter-end.''
 \end{quote}
 Quotations were then gathered in a graph and connected according to their similarity: either because they differ by very few words (in that case, no more than one word) or because they share a certain sequence of words (in that case, at least ten consecutive words). We find for example the following variation of the above quote: \begin{quote}``these operations are \textbf{intended} to address funding pressures over quarter-end.''\end{quote}
-A community detection algorithm was applied to that quotation graph to detect aggregates of tightly connected, that is sufficiently similar, groups of quotations (see \citet{Leskovec09} for more detail).
+A community detection algorithm was applied to that quotation graph to detect aggregates of tightly connected, that is sufficiently similar, groups of quotations~\citep[see][for more detail]{Leskovec09}.
 This analysis yielded the final data we had access to, with a total of about \num{70000} sets of quotations; each of these sets allegedly contains all variations of a same parent utterance, along with their respective publication URLs and timestamps.
 
 Manual inspection of this dataset revealed that it contains a significant number of everyday language quotations (such as ``it was much better than I expected'', ``did that just happen'', as well as many simple expletive-based sentences).
@@ -36,7 +36,7 @@ Their presence is largely due to random variations around casual expressions, wh
 To filter them out, we exclude all quotes having less than 5 words long or lasting more than 80 days %\seb{it is asymmetrical...}
  (as well as quotes not written in English). If an entire cluster still lasts more than 80 days after this screening (because of short-lived but unrelated quotes far apart in time), we also exclude it.
 % New filtering: 1051 substitutions out of 6172 mined. 45749 clusters. -- correct text with numbers and for new figures.
-We eventually keep 45,749 clusters (out of 71,568; i.e. 63.9\%), containing a total of 127,778 unique quotes (out of 310,457; i.e. 41.2\%) making up $\sim$2.43m occurrences (out of 8.16m, i.e. 29.8\%).\footnote{The significantly larger loss in occurrences indicates that, on average, the clusters we lose contain more occurrences than those we keep, which is expected for everyday language utterances.}
+We eventually keep 45,749 clusters (out of 71,568; i.e. 63.9\%), containing a total of 127,778 unique quotes (out of 310,457; i.e. 41.2\%) making up about 2.43m occurrences (out of 8.16m, i.e. 29.8\%).\footnote{The significantly larger loss in occurrences indicates that, on average, the clusters we lose contain more occurrences than those we keep, which is expected for everyday language utterances.}
 %We contend that the use of the unfiltered dataset would strongly jeopardize results related to linguistic evolution or information diffusion, 
 Even if we lose some real event-related utterances which are present in clusters lasting more than 80 days (such as ``the city is tired of me and the organization and I have run our course together''), we check that our approach essentially fulfills its goals by manually coding a random subsample of 100 excluded clusters: a solid 71\% appear to be entirely irrelevant to our analysis (everyday language rather than quotations), and all but one of the remaining clusters were of relevance to the protocol \TB{set out below.}% in Sec.~\ref{sec:model}.
 
@@ -49,9 +49,9 @@ We first introduce some of the most classical psycholinguistic measures on words
 
 \begin{APAitemize}
     \item \textbf{Word frequency}: the frequency at which words appear in our dataset, known to be relevant for both recognition and recall~\citep{gregg1976word},
-    \item \textbf{Age of Acquisition}: the average age at which words are learned (obtained from~\citet{Kuperman12}), known to have different effects than word frequency~\citep{morrison1995roles,dewhurst1998separate},
-    \item The average \textbf{Number of Phonemes} and \textbf{Number of Syllables} for all pronunciations of a word (obtained from the Carnegie Mellon University Pronouncing Dictionary~\citep{Weide98})\footnote{The CMU Pronouncing Dictionary is included in the NTLK package~\citep{Bird09}, the natural language processing toolkit we used for the analysis.} as a proxy to word production cost,
-    \item The average \textbf{Number of Synonyms} for all meanings of a word (obtained from \citet{WordNet10}) as an \emph{a priori} indicator of how easy it would be to replace a word.
+    \item \textbf{Age of Acquisition}: the average age at which words are learned~\citep[obtained from][]{Kuperman12}, known to have different effects than word frequency~\citep{morrison1995roles,dewhurst1998separate},
+    \item The average \textbf{Number of Phonemes} and \textbf{Number of Syllables} for all pronunciations of a word (obtained from the Carnegie Mellon University Pronouncing Dictionary, \citealp{Weide98})\footnote{The CMU Pronouncing Dictionary is included in the NTLK package~\citep{Bird09}, the natural language processing toolkit we used for the analysis.} as a proxy to word production cost,
+    \item The average \textbf{Number of Synonyms} for all meanings of a word~\citep[obtained from][]{WordNet10} as an \emph{a priori} indicator of how easy it would be to replace a word.
 \end{APAitemize}
 
 %We also considered grammatical types within quotations by detection of \emph{Part-of-Speech} (POS) categories, using the Penn TreeBank Project typology~\citep{Santorini90} and thereby distinguishing verbs, nouns, adjectives and adverbs. The results were however extremely similar across the various categories, exhibiting no specific effect of words belonging to different POS categories. \rk{See \#8 for this fact-check}
@@ -60,7 +60,7 @@ The number of synonyms is related to a notion of the word connectivity in a sema
 
 \medskip
 %, we thus considered more recently studied variables based on semantic network properties.
-We relied on the ``free association'' (FA) norms collected by~\citet{Nelson04} which naturally embed information on the idea association process underlying transformation of quotations. FA norms record the words that come to mind when someone is presented with a given cue% (that is the ``free association'' task)
+We relied on the ``free association'' (FA) norms collected by \citet{Nelson04} which naturally embed information on the idea association process underlying transformation of quotations. FA norms record the words that come to mind when someone is presented with a given cue% (that is the ``free association'' task)
 . As \citet{Nelson04} explain, ``free association response probabilities index the likelihood that one word can cue another word to come to mind with minimal contextual constraints in effect.''
 %Following \citet{Griffiths07}, we first consider the directed weighted network formed by the association norms, that is the network where words are nodes and edges are directed from cue to associated word, with a weight equal to the probability of that target word being produced when this particular cue was presented.
 % \rk{we're in fact using the unweighed version of the network. Why?}
@@ -72,12 +72,12 @@ Three standard network-based measures are to be used on the FA network% \rk{adap
 :
 
 \begin{APAitemize}
-    \item \textbf{Degree centrality}, measured by the number of cues for which a given word is triggered as a target, and a corresponding generalized measure, node \emph{pagerank}~\citep{Page99}, which has already been used on the FA network by~\citet{Griffiths07}.
+    \item \textbf{Degree centrality}, measured by the number of cues for which a given word is triggered as a target, and a corresponding generalized measure, node \emph{pagerank}~\citep{Page99}, which has already been used on the FA network by \citet{Griffiths07}.
     In the present case these two polysemy-related measures are quasi-perfectly correlated. %, and measure polysemy by taking into account the structure of the entire network.
     %However in the present case there is a quasi-perfect correlation between node incoming degree and node \emph{pagerank}~\citep{Page99}, which will lead us to favour the latter later on. Word pagerank on the FA network had already been used by~\citet{Griffiths07}; it may be interpreted as a generalized and recursive measure of word polysemy: central nodes in the pagerank sense are words often selected as targets when presented with cues themselves often selected as targets, and so on recursively.
     \item \textbf{Betweenness centrality}, another measure of node centrality describing the extent to which a node connects otherwise remote areas of the network~\citep{free:set}.
     This quantity tells us if some words behave like unavoidable waypoints on association chains connecting one word to another.
-    \item \textbf{Clustering coefficient}, which measures the extent to which a node belongs to a local aggregate of tightly connected nodes~\cite{watt-coll}, computed on the undirected version of the FA network.\footnote{The Clustering coefficient is formally defined as the ratio between the number of actual versus possible edges between a node's neighbors.}
+    \item \textbf{Clustering coefficient}, which measures the extent to which a node belongs to a local aggregate of tightly connected nodes~\citep{watt-coll}, computed on the undirected version of the FA network.\footnote{The Clustering coefficient is formally defined as the ratio between the number of actual versus possible edges between a node's neighbors.}
     This tells us if a word belongs more or less to a local aggregate of equivalent words (from a ``free association'' point of view).
 \end{APAitemize}
 
@@ -93,7 +93,7 @@ An important question arises concerning the possible correlations between all th
 \end{figure}
 
 The number of phonemes and the number of syllables naturally exhibit a strong linear correlation ($.8$).
-Our analysis showed clearer results with number of phonemes over number of syllables, which is consistent with~\citet{nick-diss}, and we therefore chose to only present results for the former.
+Our analysis showed clearer results with number of phonemes over number of syllables, which is consistent with \citet{nick-diss}, and we therefore chose to only present results for the former.
 
 Age of acquisition is a key variable which appears as a usual suspect in psycholinguistic studies.
 Despite it being usually difficult to disentangle from many of the other variables, it is known to have independent effects, which is consistent with what we see on Fig.~\ref{fig:feature-corrs-initial}: age of acquisition has a limited correlation to the other variables (absolute value not above $.39$ if we exclude the number of syllables and the network properties), leading us to keep the variable in the rest of the analysis.
