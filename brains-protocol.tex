@@ -47,12 +47,12 @@ Even if we lose some real event-related utterances which are present in clusters
 
 We first introduce some of the most classical psycholinguistic measures on words.
 
-\begin{itemize}
+\begin{APAitemize}
     \item \textbf{Word frequency}: the frequency at which words appear in our dataset, known to be relevant for both recognition and recall~\citep{gregg1976word},
     \item \textbf{Age of Acquisition}: the average age at which words are learned (obtained from~\citet{Kuperman12}), known to have different effects than word frequency~\citep{morrison1995roles,dewhurst1998separate},
     \item The average \textbf{Number of Phonemes} and \textbf{Number of Syllables} for all pronunciations of a word (obtained from the Carnegie Mellon University Pronouncing Dictionary~\citep{Weide98})\footnote{The CMU Pronouncing Dictionary is included in the NTLK package~\citep{Bird09}, the natural language processing toolkit we used for the analysis.} as a proxy to word production cost,
     \item The average \textbf{Number of Synonyms} for all meanings of a word (obtained from \citet{WordNet10}) as an \emph{a priori} indicator of how easy it would be to replace a word.
-\end{itemize}
+\end{APAitemize}
 
 %We also considered grammatical types within quotations by detection of \emph{Part-of-Speech} (POS) categories, using the Penn TreeBank Project typology~\citep{Santorini90} and thereby distinguishing verbs, nouns, adjectives and adverbs. The results were however extremely similar across the various categories, exhibiting no specific effect of words belonging to different POS categories. \rk{See \#8 for this fact-check}
 
@@ -71,7 +71,7 @@ This network is of particular interest since it measures the \emph{in-vitro forc
 Three standard network-based measures are to be used on the FA network% \rk{adapt once the weighing question (\#8) is settled}
 :
 
-\begin{itemize}
+\begin{APAitemize}
     \item \textbf{Degree centrality}, measured by the number of cues for which a given word is triggered as a target, and a corresponding generalized measure, node \emph{pagerank}~\citep{Page99}, which has already been used on the FA network by~\citet{Griffiths07}.
     In the present case these two polysemy-related measures are quasi-perfectly correlated. %, and measure polysemy by taking into account the structure of the entire network.
     %However in the present case there is a quasi-perfect correlation between node incoming degree and node \emph{pagerank}~\citep{Page99}, which will lead us to favour the latter later on. Word pagerank on the FA network had already been used by~\citet{Griffiths07}; it may be interpreted as a generalized and recursive measure of word polysemy: central nodes in the pagerank sense are words often selected as targets when presented with cues themselves often selected as targets, and so on recursively.
@@ -79,7 +79,7 @@ Three standard network-based measures are to be used on the FA network% \rk{adap
     This quantity tells us if some words behave like unavoidable waypoints on association chains connecting one word to another.
     \item \textbf{Clustering coefficient}, which measures the extent to which a node belongs to a local aggregate of tightly connected nodes~\cite{watt-coll}, computed on the undirected version of the FA network.\footnote{The Clustering coefficient is formally defined as the ratio between the number of actual vs. possible edges between a node's neighbors.}
     This tells us if a word belongs more or less to a local aggregate of equivalent words (from a ``free association'' point of view).
-\end{itemize}
+\end{APAitemize}
 
 \subsubsection{Variable correlations}
 
@@ -239,7 +239,11 @@ In this case, since $\phi(\warrival)$ becomes a constant value in the above aver
 $$\nu_{\phi}^0 (f) = \left<\phi\right>$$
 %We thereby obtain the mean variation of feature for each start feature value, comparing the variations to a situation where arrival words are chosen randomly.
 
-This approach yields a fine-grained view of how word features evolve upon substitution, on average, with respect to (i) the original feature (\hbox{vs.} $y=x$) and (ii) a random arrival (\hbox{vs.} $\nu_{\phi}^0$).
+This approach yields a fine-grained view of how word features evolve upon substitution, on average, with respect to 
+\begin{seriate}
+\item the original feature (\hbox{vs.} $y=x$) and 
+\item a random arrival (\hbox{vs.} $\nu_{\phi}^0$).
+\end{seriate}
 \begin{figure*}[!th]
     \centering
     \includegraphics[width=\textwidth]{images/computed-figures/feature_variations-binned.png}
@@ -256,10 +260,10 @@ Results are gathered in Fig.~\ref{fig:feature-variations}.
 We can do a first striking observation: all graphs show the existence of a unique intersection of $\nu_{\phi}$ with $y=x$, while the slope of $\nu_{\phi}$ is smaller than 1, independently of the feature considered.
 In other words, beyond individual variation patterns, the substitution process is contractile for all the features, and each of them therefore exhibits a unique attractor.
 Second, the comparison with $\nu_{\phi}^0$ shows that there are two classes of attractors, depending on whether:
-\begin{enumerate}[(i)] 
+\begin{APAenumerate} 
 \item there is a triple intersection (of $y=x$, $\nu_{\phi}^0$ and $\nu_{\phi}$);
 \item or $\nu_{\phi}$ always remains above or below $\nu_{\phi}^0$.
-\end{enumerate}
+\end{APAenumerate}
 The first class (Number of phonemes and Number of synonyms) are features for which the substitution process only brings words slightly closer to $\nu_{\phi}^0$, and no uniform bias can be observed.
 %\TB{(furthermore, $\mathcal{H}_{00}$ stays inside the confidence intervals of $\nu_{\phi}$, confirming that these two features are irrelevant for the substitution process)}.
 %\rk{Cam: On vire ou bien?}
