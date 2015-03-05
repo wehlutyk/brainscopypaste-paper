@@ -96,7 +96,7 @@ The number of phonemes and the number of syllables naturally exhibit a strong li
 Our analysis showed clearer results with number of phonemes over number of syllables, which is consistent with~\citet{nick-diss}, and we therefore chose to only present results for the former.
 
 Age of acquisition is a key variable which appears as a usual suspect in psycholinguistic studies.
-Despite it being usually difficult to disentangle from many of the other variables, it is known to have independent effects, which is consistent with what we see on Figure~\ref{fig:feature-corrs-initial}: age of acquisition has a limited correlation to the other variables (absolute value not above $0.39$ if we exclude the number of syllables and the network properties), leading us to keep the variable in the rest of the analysis.
+Despite it being usually difficult to disentangle from many of the other variables, it is known to have independent effects, which is consistent with what we see on Fig.~\ref{fig:feature-corrs-initial}: age of acquisition has a limited correlation to the other variables (absolute value not above $0.39$ if we exclude the number of syllables and the network properties), leading us to keep the variable in the rest of the analysis.
 
 Frequency and number of synonyms both have relatively low levels of correlation to the other variables (excluding again the network properties); we therefore also keep them in the rest of the analysis.
 
@@ -107,7 +107,7 @@ Furthermore, the three variables are also strongly related to age of acquisition
 
 Conversely, clustering coefficient exhibits low correlation levels with all the variables we kept (maximum absolute value $0.38$), leading us to include it in the rest of the analysis.
 
-The final set of variables we consider, as well as their cross-correlations, can be seen in Figure~\ref{fig:feature-corrs-filtered}.\footnote{Note that feature values stem from different datasets which do not always encode the same words.
+The final set of variables we consider, as well as their cross-correlations, can be seen in Fig.~\ref{fig:feature-corrs-filtered}.\footnote{Note that feature values stem from different datasets which do not always encode the same words.
 Indeed, we have data on frequency for about 22.6k words, on age of acquisition for 30.1k words, on number of phonemes for 123.4k words, number of synonyms 111.2k, and clustering coefficient 5.7k words.
 Quite often then, not all features are available for all words in our dataset; % are encoded in only a subset of the features we use (if any at all); 
 however this is not problematic since the analysis is done on a per-feature basis, and not all words need be encoded in all features.}
@@ -131,10 +131,10 @@ We therefore model the underlying quotation selection process by making a few ad
 The main issue is deciding whether a later occurrence is a strict copy of an earlier occurrence, or a substitution of an even earlier occurrence, or perhaps even a substitution or copy from quotes appearing outside the dataset, \hbox{i.e.} from a source external to the data collection perimeter.
 
 Let us give an example: say the quotation ``These accusations are false and \textbf{absurd}'' ($q$) appears in a blog on January 19, and the slightly different quotation ``These accusations are false and \textbf{incoherent}'' ($q'$) appears in other blogs twice on the 20th and once on the 21st of January.
-If $q$ was sufficiently prominent when $q'$ first appeared, we can safely assume that the first author of $q'$ on the 20th based himself on $q$ as is shown in Figure~\ref{fig:substitution-temporal-binning-a}.
+If $q$ was sufficiently prominent when $q'$ first appeared, we can safely assume that the first author of $q'$ on the 20th based himself on $q$ as is shown in Fig.~\ref{fig:substitution-temporal-binning-a}.
 But what about the second and third occurrences of $q'$, on the 20th and 21st?
 Should we consider them to be substitutions based on $q$ %(i.e. re-creations of $q'$ by a new instance of the substitution process that brought from $q$ to $q'$ in the first place) 
-or accurate reproductions of the previous occurrences of $q'$? (Options shown in Figure~\ref{fig:substitution-temporal-binning-a}.)
+or accurate reproductions of the previous occurrences of $q'$? (Options shown in Fig.~\ref{fig:substitution-temporal-binning-a}.)
 
 \begin{figure}[h]
     \centering
@@ -151,7 +151,7 @@ or accurate reproductions of the previous occurrences of $q'$? (Options shown in
 	    \input{images/substitution-q_max.pdf_tex}
 	    \label{fig:substitution-q_max}
 	}
-	\caption{{\bf Temporal binning of quotation families.} $q$ and $q'$ are two versions of a quotation belonging to the same cluster.  In the bottom panel (b), $q'$ holds the majority in the 3rd bin and is considered the unique basis for the last occurrence of $q$ (in the 4th bin). This is despite the fact that $q$ also appears in bin~3 alongside $q'$, and despite it having appeared earlier at the very beginning of the quotation family (indeed in the situation shown in Figure~\ref{fig:substitution-q_max}, this seems to be the most likely scenario). Conversely, if $q$ had been the most frequent quote in bin~3, the last occurrence of $q$ in bin~4 would have been considered a faithful copy of the occurrence of $q$ in bin~3.}
+	\caption{{\bf Temporal binning of quotation families.} $q$ and $q'$ are two versions of a quotation belonging to the same cluster.  In the bottom panel (b), $q'$ holds the majority in the 3rd bin and is considered the unique basis for the last occurrence of $q$ (in the 4th bin). This is despite the fact that $q$ also appears in bin~3 alongside $q'$, and despite it having appeared earlier at the very beginning of the quotation family (indeed in the situation shown in Fig.~\ref{fig:substitution-q_max}, this seems to be the most likely scenario). Conversely, if $q$ had been the most frequent quote in bin~3, the last occurrence of $q$ in bin~4 would have been considered a faithful copy of the occurrence of $q$ in bin~3.}
     \label{fig:substitution-temporal-binning}
 \end{figure}
 
@@ -163,9 +163,9 @@ It is however not feasible to try them all and, for the sake of simplicity, we d
 %\TB{We identified and implemented eleven other such models, and they all yielded essentially the same results.} \rk{T: I would prefer a bit more detail here. Maybe on supp. mats.? What does “essentially the same” mean? This could cause concern to reviewers.}
 
 \medskip
-Put shortly, such a model defines how many times quote occurrences can be counted as substitutions: in Figure~\ref{fig:substitution-q_max}, occurrences of $q'$ on the 20th are counted as substitutions, whereas the occurrences on the 21st are not.  In practice, from the 2.43m initial occurrences spread into 45,749 classes of quotes, with significant redundancy (many quotes are indeed simple duplicates), we manage to mine 6,172 real substitutions obeying to this model. From these substitutions we remove those featuring stop words, minor spelling changes (e.g. center/centre, November/Nov, Senator/Sen), abbreviations, spelled out numbers; this eventually yields 1,051 valid substitutions.
+Put shortly, such a model defines how many times quote occurrences can be counted as substitutions: in Fig.~\ref{fig:substitution-q_max}, occurrences of $q'$ on the 20th are counted as substitutions, whereas the occurrences on the 21st are not.  In practice, from the 2.43m initial occurrences spread into 45,749 classes of quotes, with significant redundancy (many quotes are indeed simple duplicates), we manage to mine 6,172 real substitutions obeying to this model. From these substitutions we remove those featuring stop words, minor spelling changes (e.g. center/centre, November/Nov, Senator/Sen), abbreviations, spelled out numbers; this eventually yields 1,051 valid substitutions.
 
-%Let us illustrate this ``majority'' rule by going back to the example described in Section~\ref{sec:temporal-binning} and extending it, in Figure~\ref{fig:substitution-q_max}.
+%Let us illustrate this ``majority'' rule by going back to the example described in Section~\ref{sec:temporal-binning} and extending it, in Fig.~\ref{fig:substitution-q_max}.
 
 \section{Results}\label{sec:results}
 
