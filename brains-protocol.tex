@@ -92,20 +92,20 @@ An important question arises concerning the possible correlations between all th
     \label{fig:feature-corrs-initial}
 \end{figure}
 
-The number of phonemes and the number of syllables naturally exhibit a strong linear correlation ($0.8$).
+The number of phonemes and the number of syllables naturally exhibit a strong linear correlation ($.8$).
 Our analysis showed clearer results with number of phonemes over number of syllables, which is consistent with~\citet{nick-diss}, and we therefore chose to only present results for the former.
 
 Age of acquisition is a key variable which appears as a usual suspect in psycholinguistic studies.
-Despite it being usually difficult to disentangle from many of the other variables, it is known to have independent effects, which is consistent with what we see on Fig.~\ref{fig:feature-corrs-initial}: age of acquisition has a limited correlation to the other variables (absolute value not above $0.39$ if we exclude the number of syllables and the network properties), leading us to keep the variable in the rest of the analysis.
+Despite it being usually difficult to disentangle from many of the other variables, it is known to have independent effects, which is consistent with what we see on Fig.~\ref{fig:feature-corrs-initial}: age of acquisition has a limited correlation to the other variables (absolute value not above $.39$ if we exclude the number of syllables and the network properties), leading us to keep the variable in the rest of the analysis.
 
 Frequency and number of synonyms both have relatively low levels of correlation to the other variables (excluding again the network properties); we therefore also keep them in the rest of the analysis.
 
 \bigskip
 Network centrality properties, on the other hand, are strongly dependent on one another.
-As mentioned earlier, degree centrality and pagerank have a very strong correlation ($0.85$), and are also redundant with betweenness centrality (with correlation levels at $0.75$ and $0.68$ respectively).
+As mentioned earlier, degree centrality and pagerank have a very strong correlation ($.85$), and are also redundant with betweenness centrality (with correlation levels at $.75$ and $.68$ respectively).
 Furthermore, the three variables are also strongly related to age of acquisition, which leads us to keep the latter as the sole indicator for centrality. This may trigger a chicken-and-egg issue where a strong centrality may be due, or be the result, of an early age of acquisition; in any case, the age of acquisition seems to partially capture centrality-based network properties.
 
-Conversely, clustering coefficient exhibits low correlation levels with all the variables we kept (maximum absolute value $0.38$), leading us to include it in the rest of the analysis.
+Conversely, clustering coefficient exhibits low correlation levels with all the variables we kept (maximum absolute value $.38$), leading us to include it in the rest of the analysis.
 
 The final set of variables we consider, as well as their cross-correlations, can be seen in Fig.~\ref{fig:feature-corrs-filtered}.\footnote{Note that feature values stem from different datasets which do not always encode the same words.
 Indeed, we have data on frequency for about 22.6k words, on age of acquisition for 30.1k words, on number of phonemes for 123.4k words, number of synonyms 111.2k, and clustering coefficient 5.7k words.
@@ -198,19 +198,19 @@ Put shortly, susceptibility focuses on the selection of start words involved in 
 \end{figure*}
 \medskip
 Results for this measure are gathered in Fig.~\ref{fig:feature-susceptibilities}. They first show an obvious strong effect of Word frequency: the more frequent a word, the less likely it is to attract substitutions.
-Indeed, susceptibility goes from 0.33 for low-frequency words down to nearly 0 for very high-frequency words.
-To make things clear, this value of 0.33 means that low-frequency words, when present in a quote undergoing a substitution, are the ones being substituted 33\% of the time on average.
+Indeed, susceptibility goes from $.33$ for low-frequency words down to nearly 0 for very high-frequency words.
+To make things clear, this value of $.33$ means that low-frequency words, when present in a quote undergoing a substitution, are the ones being substituted 33\% of the time on average.
 
 The other features --- Age of acquisition, Number of phonemes, Clustering coefficient and Number of synonyms --- do not seem to exhibit any particularly significant effect on susceptibility.
 {If we set aside the values for low Number of phonemes}, for each of these features it is indeed possible to draw a constant line which always remains within the respective confidence intervals.
 If these variables have an effect, it is by no means as strong as it is for Word frequency.
-This is remarkably clear for Clustering coefficient and Age of acquisition, where susceptibility values remain within quite small intervals (respectively [0.13-0.18] and [0.16-0.20]).
-{We may notice a slight effect for the lowest values of Number of synonyms and Number of phonemes, where the mean susceptibility is almost half as high as the average of the other values (respectively 0.09 vs. 0.16, and 0.11 vs. 0.17).}
+This is remarkably clear for Clustering coefficient and Age of acquisition, where susceptibility values remain within quite small intervals (respectively $[.13-.18]$ and $[.16-.20]$).
+{We may notice a slight effect for the lowest values of Number of synonyms and Number of phonemes, where the mean susceptibility is almost half as high as the average of the other values (respectively $.09$ vs. $.16$, and $.11$ vs. $.17$).}
 Keeping in mind the poor statistical significance of this effect, we could still wonder if the shortest words and words with fewest synonyms are significantly less susceptible to substitution.
 To further examine this phenomenon, we plotted the two-dimensional map of susceptibility values for these two features (see heatmap at the bottom right of Fig.~\ref{fig:feature-susceptibilities}).
 %\TG{TBF: [[We see that outlier values (the two darkest cells) are both due to cells where the number of items is only slightly above the significance threshold (11 items, while we decided to cut at 10).]]}
 %\TG{TBF: [[If we focus on cells based on at least several dozens of words]]} 
-Values tend to navigate around the mean value (0.16), even if there are a few outlier cells, yet with little obvious regularity (except for a low number of synonyms, consistently with the unidimensional graph). {On the whole, this makes it relatively hard to draw any conclusion as regards the direction of an effect, except for the least populated value ranges (which as a result are also less significant).}
+Values tend to navigate around the mean value ($.16$), even if there are a few outlier cells, yet with little obvious regularity (except for a low number of synonyms, consistently with the unidimensional graph). {On the whole, this makes it relatively hard to draw any conclusion as regards the direction of an effect, except for the least populated value ranges (which as a result are also less significant).}
 %\TG{TBF: [[This confirms the fact that the slight late increases observed for Age of acquisition and Number of phonemes are rather non-significant.]]}
 
 %\TB{This class of words corresponds to \todo{} [\TB{highly specialized words? domain-specific? a hard limit on too complicated words?}]}
@@ -278,7 +278,7 @@ Word frequency, with $\nu_{\phi}$ always significantly above $\nu_{\phi}^0$, exh
 
 
 Age of acquisition and Clustering coefficient, on the other hand, exhibit a clear negative bias for the substitution process. Both curves are significantly below their respective $\nu_{\phi}^0$ values, which is consistent with the literature on recall: words learned earlier and words with lower clustering coefficient are easier to produce than average~\citep{nelson2013activation,Zevin02}.
-Clustering coefficient has the additional particularity that, on average, the destination word does not depend on the start word; that is on average, substitutions will always produce words with a clustering coefficient around $\exp(-2.4) \simeq 0.1$.
+Clustering coefficient has the additional particularity that, on average, the destination word does not depend on the start word; that is on average, substitutions will always produce words with a clustering coefficient around $\exp(-2.4) \simeq .1$.
 
 To make things concrete, here is an example substitution taking place in the dataset.
 At the end of January 2009, many media websites reported the following quote,
@@ -290,8 +290,8 @@ and a smaller number of media websites, and blogs, reported the following,
 \begin{quote}
     ``The massive economic upheaval being experienced across the \textbf{world} is sparing no one in the consumer electronics world.''
 \end{quote}
-The word \emph{globe} is acquired at an average of 6.5 years old, appears about 3.5k times in the dataset, and has a Clustering coefficient of 0.24.
-The word it was replaced with, \emph{world}, is acquired on average at 5.3 years old, appears about 146k times in the dataset, and has a Clustering coefficient of 0.05. (Both words have four phonemes.)
+The word \emph{globe} is acquired at an average of 6.5 years old, appears about 3.5k times in the dataset, and has a Clustering coefficient of $.24$.
+The word it was replaced with, \emph{world}, is acquired on average at 5.3 years old, appears about 146k times in the dataset, and has a Clustering coefficient of $.05$. (Both words have four phonemes.)
 Such a change, though minor in appearance, is a typical example of alteration along the lines shown by our results.
 
 %globe (age 6.5, phonemes 4.0, freq 8.18, cc -1.42, susceptibility 1.0)
@@ -299,5 +299,5 @@ Such a change, though minor in appearance, is a typical example of alteration al
 
 \medskip
 We thus observe a clear convergence pattern for each feature, with two different classes corresponding to the psychological relevance of each feature for the substitution process.
-Taken as a dynamical system where substitutions are repeatedly applied, Number of phonemes and Number of synonyms will simply converge towards their average value in the FA corpus (i.e. $\nu_{\phi}^0)$, while Word frequency, Age of acquisition and Clustering coefficient, consistent with the literature, will converge towards significantly biased values indicated by the intersection with $y = x$ (respectively, a frequency of $\exp(9.1) \simeq 9000$, an acquisition age slightly below 8, and a Clustering coefficient of 0.1).
+Taken as a dynamical system where substitutions are repeatedly applied, Number of phonemes and Number of synonyms will simply converge towards their average value in the FA corpus (i.e. $\nu_{\phi}^0)$, while Word frequency, Age of acquisition and Clustering coefficient, consistent with the literature, will converge towards significantly biased values indicated by the intersection with $y = x$ (respectively, a frequency of $\exp(9.1) \simeq 9000$, an acquisition age slightly below 8, and a Clustering coefficient of $.1$).
 
