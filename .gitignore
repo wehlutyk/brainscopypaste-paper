@@ -5,6 +5,7 @@
 *.aux
 *.log
 *.fff
+*.dvi
 *.synctex.gz
 # Explicitely set pdfs filnames here (vs. using *.pdf), so that when we add 
 # new ones in reviews/, they are not ignored by git.
