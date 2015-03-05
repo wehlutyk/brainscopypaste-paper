@@ -28,7 +28,7 @@ Quotations were then automatically extracted from this corpus: each quotation is
 The Bank of England said, ``these operations are designed to address funding pressures over quarter-end.''
 \end{quote}
 Quotations were then gathered in a graph and connected according to their similarity: either because they differ by very few words (in that case, no more than one word) or because they share a certain sequence of words (in that case, at least ten consecutive words). We find for example the following variation of the above quote: \begin{quote}``these operations are \textbf{intended} to address funding pressures over quarter-end.''\end{quote}
-A community detection algorithm was applied to that quotation graph to detect aggregates of tightly connected, i.e. sufficiently similar, groups of quotations (see \citet{Leskovec09} for more detail).
+A community detection algorithm was applied to that quotation graph to detect aggregates of tightly connected, that is sufficiently similar, groups of quotations (see \citet{Leskovec09} for more detail).
 This analysis yielded the final data we had access to, with a total of about \num{70000} sets of quotations; each of these sets allegedly contains all variations of a same parent utterance, along with their respective publication URLs and timestamps.
 
 Manual inspection of this dataset revealed that it contains a significant number of everyday language quotations (such as ``it was much better than I expected'', ``did that just happen'', as well as many simple expletive-based sentences).
@@ -77,7 +77,7 @@ Three standard network-based measures are to be used on the FA network% \rk{adap
     %However in the present case there is a quasi-perfect correlation between node incoming degree and node \emph{pagerank}~\citep{Page99}, which will lead us to favour the latter later on. Word pagerank on the FA network had already been used by~\citet{Griffiths07}; it may be interpreted as a generalized and recursive measure of word polysemy: central nodes in the pagerank sense are words often selected as targets when presented with cues themselves often selected as targets, and so on recursively.
     \item \textbf{Betweenness centrality}, another measure of node centrality describing the extent to which a node connects otherwise remote areas of the network~\citep{free:set}.
     This quantity tells us if some words behave like unavoidable waypoints on association chains connecting one word to another.
-    \item \textbf{Clustering coefficient}, which measures the extent to which a node belongs to a local aggregate of tightly connected nodes~\cite{watt-coll}, computed on the undirected version of the FA network.\footnote{The Clustering coefficient is formally defined as the ratio between the number of actual vs. possible edges between a node's neighbors.}
+    \item \textbf{Clustering coefficient}, which measures the extent to which a node belongs to a local aggregate of tightly connected nodes~\cite{watt-coll}, computed on the undirected version of the FA network.\footnote{The Clustering coefficient is formally defined as the ratio between the number of actual versus possible edges between a node's neighbors.}
     This tells us if a word belongs more or less to a local aggregate of equivalent words (from a ``free association'' point of view).
 \end{APAitemize}
 
@@ -128,7 +128,7 @@ We finally need a substitution detection model, for the utterance data we use pr
 We thus face an inference problem where, given all quotations and their occurrence timestamps, we should estimate which was the originating quotation for each instance of each quotation.
 
 We therefore model the underlying quotation selection process by making a few additional assumptions. % which let us define quote-to-quote substitutions from the available data.
-The main issue is deciding whether a later occurrence is a strict copy of an earlier occurrence, or a substitution of an even earlier occurrence, or perhaps even a substitution or copy from quotes appearing outside the dataset, \hbox{i.e.} from a source external to the data collection perimeter.
+The main issue is deciding whether a later occurrence is a strict copy of an earlier occurrence, or a substitution of an even earlier occurrence, or perhaps even a substitution or copy from quotes appearing outside the dataset, that is from a source external to the data collection perimeter.
 
 Let us give an example: say the quotation ``These accusations are false and \textbf{absurd}'' ($q$) appears in a blog on January 19, and the slightly different quotation ``These accusations are false and \textbf{incoherent}'' ($q'$) appears in other blogs twice on the 20th and once on the 21st of January.
 If $q$ was sufficiently prominent when $q'$ first appeared, we can safely assume that the first author of $q'$ on the 20th based himself on $q$ as is shown in Fig.~\ref{fig:substitution-temporal-binning-a}.
@@ -174,13 +174,13 @@ First, we measure the susceptibility for words to be the target of a substitutio
 
 Note that since we only consider substitutions and not faithful copies, we measure the features of an alteration \emph{knowing that there has been an alteration}, and we do not take invariant quotations into account.
 Indeed, in the former case we know there has been a human reformulation, whereas in the latter case it is impossible to know whether there has been perfect human reformulation or simply digital copy-pasting of a source (``{\sc Ctrl-C}/{\sc Ctrl-V}'').
-Furthermore, perfect human reformulation possibly involves different practices than those involved in alteration ---~e.g. drafting before publishing, double-checking sources, proof-reading~--- and may not be representative of the cognitive processes at work during alteration.
+Furthermore, perfect human reformulation possibly involves different practices than those involved in alteration ---~for instance drafting before publishing, double-checking sources, proof-reading~--- and may not be representative of the cognitive processes at work during alteration.
 The two situations are different enough to be studied separately, and we focus here on the latter.
 
 \subsection{Susceptibility}
 
 We say that a word is \emph{substitutable} if it appears in a quote which undergoes a substitution, whether that substitution operates on that word or on another one.
-Word substitution susceptibility is computed as the ratio of the number of times $s_w$ a word is substituted to the number of times $p_w$ that word appears in a substitutable position, \hbox{i.e.} $\sfrac{s_w}{p_w}$. {In other words, it measures how often a word $w$ actually gets substituted, compared to how often it could have been substituted (because it appears in quotes undergoing substitution)}.
+Word substitution susceptibility is computed as the ratio of the number of times $s_w$ a word is substituted to the number of times $p_w$ that word appears in a substitutable position, that is $\sfrac{s_w}{p_w}$. {In other words, it measures how often a word $w$ actually gets substituted, compared to how often it could have been substituted (because it appears in quotes undergoing substitution)}.
 
 Now, for a given feature $\phi$, we obtain the mean susceptibility $\sigma_{\phi}(f)$ for the feature value $f$ by averaging this ratio over all words such that $\phi(w) = f$, that is% (only taking into account words that are substituted at least once)
 :
@@ -192,7 +192,7 @@ Put shortly, susceptibility focuses on the selection of start words involved in 
 \begin{figure*}[!th]
     \centering
     \includegraphics[width=\textwidth]{images/computed-figures/feature_susceptibilities.png}
-    \caption{\textbf{Substitution susceptibility:} average susceptibility to substitution vs. average feature value of a candidate word for substitution, with 95\% asymptotic confidence intervals.
+    \caption{\textbf{Substitution susceptibility:} average susceptibility to substitution versus average feature value of a candidate word for substitution, with 95\% asymptotic confidence intervals.
     The heatmap on the lower-right shows the joint effect of Number of synonyms and Number of phonemes on susceptibility, averaged over the respective single-variable ranges, with sample size (word numbers) in parentheses.}
     \label{fig:feature-susceptibilities}
 \end{figure*}
@@ -205,7 +205,7 @@ The other features --- Age of acquisition, Number of phonemes, Clustering coeffi
 {If we set aside the values for low Number of phonemes}, for each of these features it is indeed possible to draw a constant line which always remains within the respective confidence intervals.
 If these variables have an effect, it is by no means as strong as it is for Word frequency.
 This is remarkably clear for Clustering coefficient and Age of acquisition, where susceptibility values remain within quite small intervals (respectively [0.13-0.18] and [0.16-0.20]).
-{We may notice a slight effect for the lowest values of Number of synonyms and Number of phonemes, where the mean susceptibility is almost half as high as the average of the other values (respectively 0.09 vs 0.16, and 0.11 vs 0.17).}
+{We may notice a slight effect for the lowest values of Number of synonyms and Number of phonemes, where the mean susceptibility is almost half as high as the average of the other values (respectively 0.09 vs. 0.16, and 0.11 vs. 0.17).}
 Keeping in mind the poor statistical significance of this effect, we could still wonder if the shortest words and words with fewest synonyms are significantly less susceptible to substitution.
 To further examine this phenomenon, we plotted the two-dimensional map of susceptibility values for these two features (see heatmap at the bottom right of Fig.~\ref{fig:feature-susceptibilities}).
 %\TG{TBF: [[We see that outlier values (the two darkest cells) are both due to cells where the number of items is only slightly above the significance threshold (11 items, while we decided to cut at 10).]]}
@@ -225,9 +225,9 @@ We may therefore globally assume that substitution targets are chosen in a more 
 
 \subsection{Variation}
 
-We can thus show how words are modified once we know they are substituted, \hbox{i.e.} how their features are modified by said substitution.
-Considering a word $\wstart$ substituted for $\warrival$, we measure how the feature of $\wstart$ varies when it is replaced with $\warrival$, i.e. we look at $\phi(\warrival)$ as a function of $\phi(\wstart)$. 
-Averaging this value over all start words such that $\phi(w) = f$ yields the mean variation for that feature value~$f$, i.e.:\footnote{To avoid possible autocorrelation effects due to substitutions belonging to the same cluster (which are likely not statistically independent and may lead to overly optimistic confidence intervals), we first average substitutions over each cluster, by considering the average of arrival word features for a given start word.}
+We can thus show how words are modified once we know they are substituted, that is how their features are modified by said substitution.
+Considering a word $\wstart$ substituted for $\warrival$, we measure how the feature of $\wstart$ varies when it is replaced with $\warrival$, that is we look at $\phi(\warrival)$ as a function of $\phi(\wstart)$. 
+Averaging this value over all start words such that $\phi(w) = f$ yields the mean variation for that feature value~$f$, that is:\footnote{To avoid possible autocorrelation effects due to substitutions belonging to the same cluster (which are likely not statistically independent and may lead to overly optimistic confidence intervals), we first average substitutions over each cluster, by considering the average of arrival word features for a given start word.}
 $$\nu_{\phi}(f) = \left<\phi(\warrival)\right>_{\left\lbrace \wstart\rightarrow\warrival | \phi(\wstart) = f \right\rbrace}$$
 
 Of prime interest is the comparison of the value of $\nu_{\phi}(f)$ with respect to $f$, as it shows whether there is an attraction (or a repulsion) effect towards (respectively from) some values of each feature.
@@ -235,7 +235,7 @@ In other words, plotting the $y=x$ line, we can see if substitutions tend to con
 
 We also introduce a null hypothesis $\mathcal{H}_0$ to compare the actual variation of a word's feature to its expected variation, assuming the arrival word $\warrival$ was randomly chosen from the whole pool of words available in the dataset for that feature.\footnote{For instance, when considering the feature ``Clustering coefficient'', the arrival word is randomly chosen among words present in the dataset of FA norms.}
 %\TB{randomly chosen from the whole pool of words in the dataset from which the feature is built (e.g. for Clustering coefficient: randomly chosen in the pool of words in the Free Association norms)}.\marginnote{C: ici on est bien d'accord que le pool of FA words c'est tout le set de mots, pas juste les voisins? la formulation est un peu ambigüe. S: oui et non. Oui: c'est pas juste les voisins. Non: le pool dépend de la feature, c'est pas juste FA. Il y avait une erreur, j'ai reformulé pour être plus clair.}
-In this case, since $\phi(\warrival)$ becomes a constant value in the above averaging (by definition $\warrival$ does not depend on $\wstart$ anymore),  the baseline variation under $\mathcal{H}_0$ may be rewritten as:\footnote{We additionally considered an alternative null hypothesis, denoted $\mathcal{H}_{00}$, where the arrival word is randomly chosen \emph{among immediate synonyms of the start word}, \hbox{i.e.} an arrival word chosen among semantically plausible though still random words. In this case $\warrival_{00}$ does depend on $\wstart$. Our conclusions hold under this second null hypothesis, so for the sake of clarity we chose to keep the simpler~$\mathcal{H}_0$.}
+In this case, since $\phi(\warrival)$ becomes a constant value in the above averaging (by definition $\warrival$ does not depend on $\wstart$ anymore),  the baseline variation under $\mathcal{H}_0$ may be rewritten as:\footnote{We additionally considered an alternative null hypothesis, denoted $\mathcal{H}_{00}$, where the arrival word is randomly chosen \emph{among immediate synonyms of the start word}, that is an arrival word chosen among semantically plausible though still random words. In this case $\warrival_{00}$ does depend on $\wstart$. Our conclusions hold under this second null hypothesis, so for the sake of clarity we chose to keep the simpler~$\mathcal{H}_0$.}
 $$\nu_{\phi}^0 (f) = \left<\phi\right>$$
 %We thereby obtain the mean variation of feature for each start feature value, comparing the variations to a situation where arrival words are chosen randomly.
 
@@ -278,7 +278,7 @@ Word frequency, with $\nu_{\phi}$ always significantly above $\nu_{\phi}^0$, exh
 
 
 Age of acquisition and Clustering coefficient, on the other hand, exhibit a clear negative bias for the substitution process. Both curves are significantly below their respective $\nu_{\phi}^0$ values, which is consistent with the literature on recall: words learned earlier and words with lower clustering coefficient are easier to produce than average~\citep{nelson2013activation,Zevin02}.
-Clustering coefficient has the additional particularity that, on average, the destination word does not depend on the start word; i.e. on average, substitutions will always produce words with a clustering coefficient around $\exp(-2.4) \simeq 0.1$.
+Clustering coefficient has the additional particularity that, on average, the destination word does not depend on the start word; that is on average, substitutions will always produce words with a clustering coefficient around $\exp(-2.4) \simeq 0.1$.
 
 To make things concrete, here is an example substitution taking place in the dataset.
 At the end of January 2009, many media websites reported the following quote,
