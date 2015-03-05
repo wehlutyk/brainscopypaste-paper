@@ -1,5 +1,5 @@
 % General document style ------------------------------------------------------------------
-\documentclass{acmtog}
+\documentclass[man]{apa6}
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
 \usepackage{enumerate}
@@ -7,14 +7,14 @@
 % Colors
 \usepackage[usenames,dvipsnames]{color}
 
-\acmVolume{VV}
-\acmNumber{N}
-\acmYear{YYYY}
-\acmMonth{Monteh}
-\acmArticleNum{XXX}  
-\acmdoi{10.1145/XXXXXXX.YYYYYYY}
+%\acmVolume{VV}
+%\acmNumber{N}
+%\acmYear{YYYY}
+%\acmMonth{Month}
+%\acmArticleNum{XXX}  
+%\acmdoi{10.1145/XXXXXXX.YYYYYYY}
 
-\markboth{S. Lerique and C. Roth}{How do we copy and paste? The semantic drift of quotations in blogspace}
+%\markboth{S. Lerique and C. Roth}{How do we copy and paste? The semantic drift of quotations in blogspace}
 
 % Let us have multiline comments
 \usepackage{verbatim}
@@ -23,8 +23,9 @@
 \usepackage[stable]{footmisc}
 
 % Formatting bibliography
-\usepackage{natbib}
-\setcitestyle{authoryear,round,semicolon}
+%\usepackage{natbib}
+\usepackage[natbibapa]{apacite}
+%\setcitestyle{authoryear,round,semicolon}
 
 % Mathematics and Code
 \usepackage{amsmath}
@@ -48,6 +49,13 @@
 % Help in placing the floats
 \usepackage{placeins}
 
+% shortcuts
+\newcommand{\arrival}{\text{arrival}}
+\newcommand{\start}{\text{start}}
+
+\newcommand{\warrival}{w'}
+\newcommand{\wstart}{w}
+
 % To make comments, corrections, notes
 \newcommand{\TB}[1]{\textcolor{blue}{#1}}
 \newcommand{\new}[1]{\TB{#1}}
@@ -65,13 +73,6 @@
 \newcommand{\todo}{\fcolorbox{blue}{lightblue}{(...)}}
 \definecolor{lightblue}{rgb}{.85,.85,1}
 
-% shortcuts
-\newcommand{\arrival}{\text{arrival}}
-\newcommand{\start}{\text{start}}
-
-\newcommand{\warrival}{w'}
-\newcommand{\wstart}{w}
-
 % If citations or references are missing, make it visible
 \newcommand{\CN}{\textsuperscript{\TB{[Citation needed]}}}
 \newcommand{\CNs}{\textsuperscript{\TB{[Multiple citations needed]}}}
@@ -79,9 +80,21 @@
 
 % Start with the real content -------------------------------------------------------------
 
-\title{{How do we copy and paste?\\The semantic drift of quotations in blogspace}}
+\title{How do we copy and paste? The semantic drift of quotations in blogspace}
+\shorttitle{The semantic drift of quotations in blogspace}
 \date{}
-\author{S\'EBASTIEN LERIQUE {\upshape and} CAMILLE ROTH}
+\author{Sébastien Lerique \& Camille Roth}
+\affiliation{\TB{Centre d'Analyse et de Mathématique Sociales () \& Centre Marc Bloch ()}}
+\abstract{We describe reformulation processes within a large distributed system such as blogspace;
+showing how some specific features of public representations may be altered by bloggers when they freely reproduce them.
+To deal with robust and simple cultural representations, we focus on the evolution of quotations.
+In particular, we uncover some of the semantic and structural characteristics of individual words and the substitutions they undergo.
+Our work amounts to a large in vivo experiment where we appraise the impact of classically-influent psycholinguistic variables in the accuracy of the reproduction.
+We show that all variables remarkably exhibit a single attractor and are generally contractile.
+Even though the observed convergence patterns only partially explain quotation evolution, we shed light on a class of phenomena which are prone to constitute a key element of a broader empirically-grounded, attractor-based theory of cultural evolution.}
+\authornote{\TB{Correspondence should be directed to XXXXX}}
+\keywords{\TB{XXXXX}}
+\note{\TB{Note XXXX (version? date?)}}
 
 \begin{document}
 \maketitle
@@ -96,7 +109,7 @@
 
 We are warmly grateful to Ana Sofia Morais for her precious feedback and advice on this research, and to Telmo Menezes, Jean-Pierre Nadal, Sharon Peperkamp, and Nicolas Baumard for useful suggestions and comments.
 
-\bibliographystyle{plainnat}
+\bibliographystyle{apacite}
 \bibliography{brainscopycut.bib}
 
 %\clearpage 

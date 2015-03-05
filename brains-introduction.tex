@@ -1,30 +1,23 @@
 % !TEX root = brainscopycut.tex
 
-\subsection*{ABSTRACT}
-
-We describe reformulation processes within a large distributed system such as blogspace; showing how some specific features of public representations may be altered by bloggers when they freely reproduce them. To deal with robust and simple cultural representations, we focus on the evolution of quotations.  In particular, we uncover some of the semantic and structural characteristics of individual words and the substitutions they undergo. Our work amounts to a large in vivo experiment where we appraise the impact of classically-influent psycholinguistic variables in the accuracy of the reproduction. We show that all variables remarkably exhibit a single attractor and are generally contractile. Even though the observed convergence patterns only partially explain quotation evolution, we shed light on a class of phenomena which are prone to constitute a key element of a broader empirically-grounded, attractor-based theory of cultural evolution.
-
-\bigskip
-\hrule
-
 % ============================
 \section{Introduction} % =====
 % ============================
 
 The understanding of knowledge transmission mechanisms has led to a sizable literature in the recent past, spanning over numerous research fields ranging from cultural anthropology to social network analysis and complex systems modeling; from social cognition to data mining. These works are diversely labeled as studies on ``opinion dynamics'', ``cultural evolution'', or ``information diffusion'' and, for the most part, investigate phenomena pertaining to both cognitive science and social science, both at the individual and social levels.
 
-Broadly speaking, we may distinguish two main research streams, depending on whether the focus lies on cognitive processes or on social dynamics. A first stream is largely structured around cultural anthropology and essentially addresses cultural similarity, diversity and its evolution. It features several theories mixing social and individual cognition including, to cite a few, the debated ``memetic'' program initiated by \citet{Dawkins76} (for which the collection of works by \citet{Aunger00} provides a solid overview), the development of evolutionary models of norms (see for instance \citet{Ehrlich05}) following the seminal work of \citet{Boyd85}); or the ``cultural epidemiology'' program proposed by \citet{sper:expl}, which links the concept of mental representation to the concept of public representation (the latter being the counterpart of the former outside of the brain, \hbox{i.e.} in all sorts of cultural artifacts: texts, utterances, etc.).
+Broadly speaking, we may distinguish two main research streams, depending on whether the focus lies on cognitive processes or on social dynamics. A first stream is largely structured around cultural anthropology and essentially addresses cultural similarity, diversity and its evolution. It features several theories mixing social and individual cognition including, to cite a few, the debated ``memetic'' program initiated by \citet{Dawkins76} (for which the collection of works by \citealp{Aunger00}, provides a solid overview), the development of evolutionary models of norms~\citep[see for instance][]{Ehrlich05} following the seminal work of \citet{Boyd85}; or the ``cultural epidemiology'' program proposed by \citet{sper:expl}, which links the concept of mental representation to the concept of public representation (the latter being the counterpart of the former outside of the brain, \hbox{i.e.} in all sorts of cultural artifacts: texts, utterances, etc.).
 %\footnote{\citet{sper:expl} emphasizes this distinction in his seminal work: ``A representation may exist inside its user: it is then a \emph{mental representation}, such as a memory, a belief, or an intention. The producer and the user of a mental representation are one and the same person. A representation may also exist in the environment of its user, as is the case, for instance, of the text you are presently reading: it is then a \emph{public representation}''.}
 
 One of the core claims of this literature consists in emphasizing that not all knowledge is equally fit for being reproduced, although the various approaches have a different take on how exactly this notion of fitness should be operationalized. Sperber's cultural epidemiology classically opposes Dawkins' memetics by insisting that representations are not being replicated through a high-fidelity copy process, but are being interpreted and produced anew, and are thus greatly subject to change.
 Cultural epidemiology postulates that this conceptual evolution can be appraised through the notion of ``cultural attractor'', seen as the attraction domain of an underlying socio-semantic dynamical system.\footnote{Works such as \citet{Atran03} argue that this approach is anthropologically better suited than memetics, and some of the main issues in this debate are further detailed by \citet{Kuper00} and \citet{Bloch00}.}
-Despite some recent modeling attempts (\hbox{e.g.} \citet{Claidiere07}), the development of quantitative measurements relying on the concept of cultural attractors has remained a relatively hard task and, to our knowledge, this hypothesis has not yet been empirically analyzed in an extensive manner.
+Despite some recent modeling attempts~\citep[e.g.][]{Claidiere07}, the development of quantitative measurements relying on the concept of cultural attractors has remained a relatively hard task and, to our knowledge, this hypothesis has not yet been empirically analyzed in an extensive manner.
 
 
 Another research stream deals with rather macroscopic studies of knowledge diffusion. Here, one of the focal points is that not all knowledge gets propagated identically along the same routes, within the same communities, at the same pace. The various approaches usually feature a minimalistic description of cognitive processes, strongly reminiscent of biological epidemiology (a single, atomic piece of information may or may not be adopted by each individual).  
 This research program nonetheless exhibits a particularly interesting empirical track record --- largely owing to a recent avalanche of observable \emph{in vivo} data which, for a good decade now, have mainly come from online interaction contexts.
 While these information trails are not records of ``physical'' inter-individual interactions (in the sense of ``real life'' interactions), they still constitute a wealth of observations on the dynamics of public --~albeit online~-- representations.
-Some authors could describe for instance the propagation of cultural artifacts across social networks such as blogspace \citep{Gruhl04}, the characteristic times and diffusion cycles both within these social networks and with respect to the topical dynamics of news media \citep{Leskovec09}, or the reciprocal influence between the social network topology and the distribution of issues \citep{Cointet09}.
+Some authors could describe for instance the propagation of cultural artifacts across social networks such as blogspace~\citep{Gruhl04}, the characteristic times and diffusion cycles both within these social networks and with respect to the topical dynamics of news media~\citep{Leskovec09}, or the reciprocal influence between the social network topology and the distribution of issues~\citep{Cointet09}.
 
 These latter studies are at the interface between data mining, complex systems and quantitative sociology (first and foremost social network analysis) and are relatively remote from cognitive science; for a significant part, they rely rather marginally on specific social science theories. They nonetheless show us the added value of using these rapidly growing records %--~given the already significant and rapidly growing importance of our online interactions~--
 %and, %more broadly, large textual corpora \cam{google n-grams??} 
@@ -33,7 +26,7 @@ towards radically improving the empirical understanding of (individual-level) cu
 
 \bigskip
 Stepping back, we thus observe a gap between, on one side, empirical studies of diffusion dynamics in social systems and, on the other side, more theoretical works  focused on knowledge transformation processes. %--- these latter studies being either strongly normative, or with results difficult to articulate with realistic cultural epidemiology models.
-Our research lies at the intersection of these two programs, aiming to shed light on micro-level information transformation by leveraging the empirical wealth of (in vivo) social diffusion phenomena. More precisely, we hope to describe reformulation processes within a large distributed system such as blogspace; showing how some specific types and features of public representations may be altered by bloggers when they freely reproduce them.
+Our research lies at the intersection of these two programs, aiming to shed light on micro-level information transformation by leveraging the empirical wealth of (\emph{in vivo}) social diffusion phenomena. More precisely, we hope to describe reformulation processes within a large distributed system such as blogspace; showing how some specific types and features of public representations may be altered by bloggers when they freely reproduce them.
 
 We focus on simple linguistic modifications, thereby connecting our research to the broader psycholinguistic literature.
 To deal with robust and simple cultural representations, we paid attention to the evolution of quotations.
@@ -42,9 +35,14 @@ We will in particular exhibit a non-trivial process by which individual words in
 We will uncover some of the semantic and structural characteristics of these words and the substitutions they undergo.
 In a way using this type of data is equivalent to a large-scale psycholinguistic experiment and at the same time constitutes a first step towards building empirically realistic models of cultural evolution.
 
-The next section (Sec.~\ref{sec:related}) describes our hypotheses along with the relevant state-of-the-art on this psycholinguistic matter.
-In Sec.~\ref{sec:protocol}, we detail the empirical protocol and the various assumptions that were made in order to deal with the available empirical material.
-Sec.~\ref{sec:results} describes the significant psycholinguistic biases observed during \emph{in vivo} quotation reformulation as well as their epidemiological setting, followed by a discussion and general guidelines for further work in Sec.~\ref{sec:conclusion}.
+\TB{The next section %(Sec.~\ref{sec:related}) 
+describes our hypotheses along with the relevant state-of-the-art on this psycholinguistic matter.
+%In Sec.~\ref{sec:protocol}, 
+In the section that follows it, 
+we detail the empirical protocol and the various assumptions that were made in order to deal with the available empirical material.
+%Sec.~\ref{sec:results} 
+The results section describes the significant psycholinguistic biases observed during \emph{in vivo} quotation reformulation as well as their epidemiological setting, followed by a discussion and general guidelines for further work in the final section.%Sec.~\ref{sec:conclusion}.
+}
 
 % ============================
 \section{Related work} % =====
@@ -57,25 +55,25 @@ Sec.~\ref{sec:results} describes the significant psycholinguistic biases observe
 %Without necessarily relying on specific social science theories, this research stream is of interest for its use of large textual corpora in studying cultural dynamics.
  
 The practical study of the transformation of public representations has emerged only recently.
-For one, models involving evolution and representations to study the notion of ``cultural attractor'' have appeared only a few years ago (see \citet{Claidiere07,claidiere2014darwinian} as well as a hybrid empirical-theoretical protocol in \citet{maccallum2012evolution}).
+For one, models involving evolution and representations to study the notion of ``cultural attractor'' have appeared only a few years ago (see \citealp{Claidiere07}, and \citealp{claidiere2014darwinian}, as well as a hybrid empirical-theoretical protocol in \citealp{maccallum2012evolution}).
 Among the empirical approaches, some of the most relevant studies to date consist in a series of papers investigating \emph{quotation} transformations in a large corpus of US blog posts, initially collected and studied by \citet{Leskovec09} and further analyzed by \citet{Simmons11} and \citet{omod-mult}.
 %They exhibit several types of regularities and propose diffusion-transformation models of the evolution of quotations, which may nonetheless appear to be relatively simplistic from a cognitive viewpoint. One of the main observations in these works is that even for quotations, a type of public representation that should be among the most stable, it is still possible to witness significant transformations. However, these studies address transformations by focusing on the properties of the source of the quotation (\hbox{e.g.} news outlet {vs.} blog), or the surrounding public space (\hbox{e.g.} quotation frequency in the corpus), rather than the very cognitive-level features which may determine or, at least, influence these transformations.
 One of the main observations in these works is that even for quotations, a type of public representation that should be among the most stable, it is still possible to witness significant transformations. They essentially examine the effect of some properties of the quotation source (\hbox{e.g.} news outlet {vs.} blog) or of the surrounding public space (\hbox{e.g.} quotation frequency in the corpus). Some diffusion-transformation models have been proposed, yet the very cognitive features which may determine or, at least, influence these transformations, are overlooked; which may appear to be relatively unsatisfying from a cognitive viewpoint.
 
 
 At this level, we have to turn to the broader psycholinguistic literature which provides one of the main cognitive foundations for public representation evolution by studying the influence of word features on the ease of recall.
-This field is well developed and details the impact that classical psycholinguistic variables such as word frequency (see \citet{Yonelinas02} for a review), age-of-acquisition \citep{Zevin02}, number of phonemes or number of syllables (see for instance \citet{Rey98} and \citet{nick-diss}), have in this type of task.
+This field is well developed and details the impact that classical psycholinguistic variables such as word frequency~\citep[see][for a review]{Yonelinas02}, age-of-acquisition~\citep{Zevin02}, number of phonemes or number of syllables~\citep[see for instance][]{Rey98,nick-diss}, have in this type of task.
 
-Less classical linguistic variables, based on the study of semantic network properties, have recently started to be used, in the context of connectionism and its normative processual models (see for instance \citet{collins1975spreading}).
+Less classical linguistic variables, based on the study of semantic network properties, have recently started to be used, in the context of connectionism and its normative processual models~\citep[see for instance][]{collins1975spreading}.
 Let us mention four interesting studies on that matter, which demonstrate in a strictly \emph{in vitro} framework and at the vocabulary level that properties computed on a word network are important factors for the cognitive processes and reproduction of those words.
 First, \citet{Griffiths07} analyze a task where subjects are asked to name the first word which comes to their mind when they are presented with a random letter from the %Latin
 alphabet. The authors show that there exists a link between the ease of recall of words and one of their semantic features, namely their authority position (pagerank) in a language-wide semantic network built from external word association data.
-\citet{austerweil2012human} further develop this idea by showing that random walk on such a semantic network, i.e. the exact process measured by the pagerank index, gives a parsimonious account of some semantic retrieval effects (namely, related items being retrieved together).
+\citet{austerweil2012human} further develop this idea by showing that random walk on such a semantic network, that is the exact process measured by the pagerank index, gives a parsimonious account of some semantic retrieval effects (namely, related items being retrieved together).
 A third psycholinguistic study by \citet{Chan10} shows, in a picture-naming task, that words are produced faster and with fewer mistakes when they have a lower clustering coefficient in an underlying phonological network (which, again, is  defined from external phonological data).
 \citet{nelson2013activation}, finally, show the importance of clustering coefficient in a semantic network by studying the role it plays in a variety of recall and recognition tasks (extralist and intralist cuing, single item recognition, and primed free assocation).
 
 On the whole, the current psycholinguistic state-of-the-art seems to hint towards two antagonistic types of results.
 On one hand, part of the literature tends to show that recall is easier for the least ``awkward'' words; those whose age of acquisition is earlier, length is smaller, semantic network position is more central -- this is particularly true in tasks where participants are asked to form spontaneous associations or utter a word in response to a given signal.
-On the other hand, when the task consists in recognizing a specific item in a list, ``awkward'' words are actually more easily remembered, possibly as they are more informative and plausibly more discernible (see again~\citet{Yonelinas02} for a review).
-The jury is still out as to whether reformulation alteration, i.e. spontaneous replacement of words when asked to repeat a given utterance, is rather of the former or latter sort.
+On the other hand, when the task consists in recognizing a specific item in a list, ``awkward'' words are actually more easily remembered, possibly as they are more informative and plausibly more discernible~\citep[see again][for a review]{Yonelinas02}.
+The jury is still out as to whether reformulation alteration, that is spontaneous replacement of words when asked to repeat a given utterance, is rather of the former or latter sort.
 We also aim here at shedding some light on this debate, considering oddness as a dimension of the purported fitness of utterances.
