@@ -4,16 +4,16 @@
 % ============================
 \label{sec:protocol}
 
-%In order to start bridging this gap, we set out to \emph{empirically} study public representation transformations at the microscopic level; 
+%In order to start bridging this gap, we set out to \emph{empirically} study public representation transformations at the microscopic level;
 %aiming to stay compatible with macroscopic-level studies of these public representations.
 Quotations appeared to be a perfect candidate to propose a first \emph{in vivo} measure of low-level cognitive bias in a reformulation task. % as public representations.
-First, they are usually cleanly delimited by quotation marks %(and often with HTML markup in web pages), 
+First, they are usually cleanly delimited by quotation marks %(and often with HTML markup in web pages),
 which greatly facilitates their detection in text corpora.
 Second, they stem from a unique ``original'' version, and could ideally be traceable back to that version.
 Third, and most importantly, their duplication should \emph{a priori} be highly faithful, apart from cases of cropping: not only should transformations be of moderate magnitude, but when specific words are not perfectly duplicated, it is safe to assume that the variation is due to involuntary cognitive bias --- as writers may expect any casual reader to easily verify, and thus criticize, the fidelity to the original quotation.
 
 
-We could therefore examine the individual substitution process at work when authors transform quotations, by examining the features of the substituted and substituting words in each substitution. To keep the analysis palatable, we focused on quotation transformations consisting in the \emph{substitution} of a word by another word (and only those cases) in order to unambiguously discuss single word replacements. 
+\TB{We could therefore study the individual transformation process at work when authors alter quotations, by examining the modified words in each transformation.} To keep the analysis palatable, we focused on quotation transformations consisting in the \emph{substitution} of a word by another word (and only those cases) in order to unambiguously discuss single word replacements.
 To quantify those substitutions, we decided to associate a number of features to each word, the variation of which we can statistically study.
 
 The next subsections describe the dataset and measures we used to assess this cognitive bias.
@@ -28,7 +28,7 @@ Quotations were then automatically extracted from this corpus: each quotation is
 The Bank of England said, ``these operations are designed to address funding pressures over quarter-end.''
 \end{quote}
 Quotations were then gathered in a graph and connected according to their similarity: either because they differ by very few words (in that case, no more than one word) or because they share a certain sequence of words (in that case, at least ten consecutive words). We find for example the following variation of the above quote: \begin{quote}``these operations are \textbf{intended} to address funding pressures over quarter-end.''\end{quote}
-A community detection algorithm was applied to that quotation graph to detect aggregates of tightly connected, that is sufficiently similar, groups of quotations~\citep[see][for more detail]{Leskovec09}.
+A community detection algorithm was applied to that quotation graph to detect aggregates of tightly connected, that is sufficiently similar, groups of quotations~\citep[see][for more details]{Leskovec09}.
 This analysis yielded the final data we had access to, with a total of about \num{70000} sets of quotations; each of these sets allegedly contains all variations of a same parent utterance, along with their respective publication URLs and timestamps.
 
 Manual inspection of this dataset revealed that it contains a significant number of everyday language quotations (such as ``it was much better than I expected'', ``did that just happen'', as well as many simple expletive-based sentences).
@@ -37,7 +37,7 @@ To filter them out, we exclude all quotes having less than 5 words long or lasti
  (as well as quotes not written in English). If an entire cluster still lasts more than 80 days after this screening (because of short-lived but unrelated quotes far apart in time), we also exclude it.
 % New filtering: 1051 substitutions out of 6172 mined. 45749 clusters. -- correct text with numbers and for new figures.
 We eventually keep 45,749 clusters (out of 71,568; i.e. 63.9\%), containing a total of 127,778 unique quotes (out of 310,457; i.e. 41.2\%) making up about 2.43m occurrences (out of 8.16m, i.e. 29.8\%).\footnote{The significantly larger loss in occurrences indicates that, on average, the clusters we lose contain more occurrences than those we keep, which is expected for everyday language utterances.}
-%We contend that the use of the unfiltered dataset would strongly jeopardize results related to linguistic evolution or information diffusion, 
+%We contend that the use of the unfiltered dataset would strongly jeopardize results related to linguistic evolution or information diffusion,
 Even if we lose some real event-related utterances which are present in clusters lasting more than 80 days (such as ``the city is tired of me and the organization and I have run our course together''), we check that our approach essentially fulfills its goals by manually coding a random subsample of 100 excluded clusters: a solid 71\% appear to be entirely irrelevant to our analysis (everyday language rather than quotations), and all but one of the remaining clusters were of relevance to the protocol {set out below.}% in Sec.~\ref{sec:model}.
 
 
@@ -56,7 +56,7 @@ We first introduce some of the most classical psycholinguistic measures on words
 
 %We also considered grammatical types within quotations by detection of \emph{Part-of-Speech} (POS) categories, using the Penn TreeBank Project typology~\citep{Santorini90} and thereby distinguishing verbs, nouns, adjectives and adverbs. The results were however extremely similar across the various categories, exhibiting no specific effect of words belonging to different POS categories. \rk{See \#8 for this fact-check}
 
-The number of synonyms is related to a notion of the word connectivity in a semantic network.  To go a bit further in this direction, we appraise the possible role of network-based variables which have received special attention in the recent related literature, following the blooming interest in networks from many disciplines over the last decade. 
+The number of synonyms is related to a notion of the word connectivity in a semantic network.  To go a bit further in this direction, we appraise the possible role of network-based variables which have received special attention in the recent related literature, following the blooming interest in networks from many disciplines over the last decade.
 
 \medskip
 %, we thus considered more recently studied variables based on semantic network properties.
@@ -109,7 +109,7 @@ Conversely, clustering coefficient exhibits low correlation levels with all the 
 
 The final set of variables we consider, as well as their cross-correlations, can be seen in Fig.~\ref{fig:feature-corrs-filtered}.\footnote{Note that feature values stem from different datasets which do not always encode the same words.
 Indeed, we have data on frequency for about 22.6k words, on age of acquisition for 30.1k words, on number of phonemes for 123.4k words, number of synonyms 111.2k, and clustering coefficient 5.7k words.
-Quite often then, not all features are available for all words in our dataset; % are encoded in only a subset of the features we use (if any at all); 
+Quite often then, not all features are available for all words in our dataset; % are encoded in only a subset of the features we use (if any at all);
 however this is not problematic since the analysis is done on a per-feature basis, and not all words need be encoded in all features.}
 
 \begin{figure}[!th]
@@ -133,7 +133,7 @@ The main issue is deciding whether a later occurrence is a strict copy of an ear
 Let us give an example: say the quotation ``These accusations are false and \textbf{absurd}'' ($q$) appears in a blog on January 19, and the slightly different quotation ``These accusations are false and \textbf{incoherent}'' ($q'$) appears in other blogs twice on the 20th and once on the 21st of January.
 If $q$ was sufficiently prominent when $q'$ first appeared, we can safely assume that the first author of $q'$ on the 20th based himself on $q$ as is shown in Fig.~\ref{fig:substitution-temporal-binning-a}.
 But what about the second and third occurrences of $q'$, on the 20th and 21st?
-Should we consider them to be substitutions based on $q$ %(i.e. re-creations of $q'$ by a new instance of the substitution process that brought from $q$ to $q'$ in the first place) 
+Should we consider them to be substitutions based on $q$ %(i.e. re-creations of $q'$ by a new instance of the substitution process that brought from $q$ to $q'$ in the first place)
 or accurate reproductions of the previous occurrences of $q'$? (Options shown in Fig.~\ref{fig:substitution-temporal-binning-a}.)
 
 \begin{figure}[h]
@@ -156,7 +156,7 @@ or accurate reproductions of the previous occurrences of $q'$? (Options shown in
 \end{figure}
 
 To settle this question we group quote occurrences into fixed bins spanning $\Delta t$ days (1 day in the implementation), each one representing a unit of time evolution.
-When a quotation $q'$ appears in bin $t+1$, it is counted as a substitution if it differs from the most frequent quote $q$ of the preceding bin $t$ (or a substring thereof) by only one word. If not, $q'$ is not considered to be an instance of substitution.  %We assume here that quotes are based on the most frequent quote of the preceding bin (\hbox{vs.} all the other quotes in that bin).  
+When a quotation $q'$ appears in bin $t+1$, it is counted as a substitution if it differs from the most frequent quote $q$ of the preceding bin $t$ (or a substring thereof) by only one word. If not, $q'$ is not considered to be an instance of substitution.  %We assume here that quotes are based on the most frequent quote of the preceding bin (\hbox{vs.} all the other quotes in that bin).
 Note that these assumptions are admittedly a subset of a much wider set of possibilities, each leading to alternative substitution inferences.\footnote{In particular, the criterion of the most frequent quote in the preceding bin may be replaced with the most frequent quote overall, or the oldest quote; time can be sliced into fixed bins as is done here, or kept fine-grained by using sliding bins.}
 It is however not feasible to try them all and, for the sake of simplicity, we decided to go with a sensible set of assumptions, and stick to them without trying alternative options.
 %These various flavors of an ideal substitution detection model essentially change whether occurrences are considered as substitutions from another quote, repetitions of the original quote, or introduction of information external to the dataset.
@@ -169,11 +169,11 @@ Put shortly, such a model defines how many times quote occurrences can be counte
 
 \section{Results}\label{sec:results}
 
-We may now use this substitution model to formulate a family of psycholinguistic hypotheses describing the role of each feature in the accuracy of the reformulation.  To this end, we build two main observables for each word feature.  
+We may now use this substitution model to formulate a family of psycholinguistic hypotheses describing the role of each feature in the accuracy of the reformulation.  To this end, we build two main observables for each word feature.
 First, we measure the susceptibility for words to be the target of a substitution in a quote, knowing that there has been a variation, in order to show which semantic features are the most likely to ``attract'' a substitution under this condition. Second, we measure the change in word feature upon substitution, looking at the variation of a given feature between start and arrival words.
 
 Note that since we only consider substitutions and not faithful copies, we measure the features of an alteration \emph{knowing that there has been an alteration}, and we do not take invariant quotations into account.
-Indeed, in the former case we know there has been a human reformulation, whereas in the latter case it is impossible to know whether there has been perfect human reformulation or simply digital copy-pasting of a source (``{\sc Ctrl-C}/{\sc Ctrl-V}'').
+Indeed, in the former case we know there has been a human reformulation, whereas in the latter case it is impossible to know whether there has been perfect human reformulation or simply digital copy-pasting of a source~(``{\sc Ctrl-C}/{\sc Ctrl-V}'').
 Furthermore, perfect human reformulation possibly involves different practices than those involved in alteration ---~for instance drafting before publishing, double-checking sources, proof-reading~--- and may not be representative of the cognitive processes at work during alteration.
 The two situations are different enough to be studied separately, and we focus here on the latter.
 
@@ -198,7 +198,7 @@ Put shortly, susceptibility focuses on the selection of start words involved in 
 \end{figure*}
 \medskip
 Results for this measure are gathered in Fig.~\ref{fig:feature-susceptibilities}. They first show an obvious strong effect of Word frequency: the more frequent a word, the less likely it is to attract substitutions.
-Indeed, susceptibility goes from $.33$ for low-frequency words down to nearly 0 for very high-frequency words.
+Indeed, susceptibility goes from $.33$ for low-frequency words down to nearly~0 for very high-frequency words.
 To make things clear, this value of $.33$ means that low-frequency words, when present in a quote undergoing a substitution, are the ones being substituted 33\% of the time on average.
 
 The other features --- Age of acquisition, Number of phonemes, Clustering coefficient and Number of synonyms --- do not seem to exhibit any particularly significant effect on susceptibility.
@@ -209,15 +209,15 @@ This is remarkably clear for Clustering coefficient and Age of acquisition, wher
 Keeping in mind the poor statistical significance of this effect, we could still wonder if the shortest words and words with fewest synonyms are significantly less susceptible to substitution.
 To further examine this phenomenon, we plotted the two-dimensional map of susceptibility values for these two features (see heatmap at the bottom right of Fig.~\ref{fig:feature-susceptibilities}).
 %\TG{TBF: [[We see that outlier values (the two darkest cells) are both due to cells where the number of items is only slightly above the significance threshold (11 items, while we decided to cut at 10).]]}
-%\TG{TBF: [[If we focus on cells based on at least several dozens of words]]} 
-Values tend to navigate around the mean value ($.16$), even if there are a few outlier cells, yet with little obvious regularity (except for a low number of synonyms, consistently with the unidimensional graph). {On the whole, this makes it relatively hard to draw any conclusion as regards the direction of an effect, except for the least populated value ranges (which as a result are also less significant).}
+%\TG{TBF: [[If we focus on cells based on at least several dozens of words]]}
+\TB{Even if there are a few outlier cells, values tend to navigate around the mean value ($.16$) with little obvious regularity (except for a low number of synonyms, consistent with the unidimensional graph)}. {On the whole, this makes it relatively hard to draw any conclusion as regards the direction of an effect, except for the least populated value ranges (which as a result are also less significant).}
 %\TG{TBF: [[This confirms the fact that the slight late increases observed for Age of acquisition and Number of phonemes are rather non-significant.]]}
 
 %\TB{This class of words corresponds to \todo{} [\TB{highly specialized words? domain-specific? a hard limit on too complicated words?}]}
 %Age of acquisition and Number of phonemes delineate two categories of words: both features have little to no significant effect on susceptibility for low- to mid-valued words, but very high-valued words behave differently and tend to be more substituted (clearly for high Number of phonemes, and only as a tendency for high Age of acquisition).
 %These high-valued words also have low occurrence frequencies, which corresponds to the slope change in the frequency curve between extreme low frequency words and mid- to high-frequency words. \rk{check this with a plot of freq vs. clustering and freq vs. AoA, or simply plot of frequency for the high-valued words for AoA and CC.}
 
-All in all, apart from Word frequency and despite some local tendencies, {in general} these results do not allow us to conclude either to a marked effect %or to no effect 
+All in all, apart from Word frequency and despite some local tendencies, {in general} these results do not allow us to conclude \TB{\sout{either}} to a marked effect %or to no effect
 of the selected psycholinguistic features on substitution susceptibility.
 We may therefore globally assume that substitution targets are chosen in a more or less uniform way with respect to these features.
 
@@ -226,7 +226,7 @@ We may therefore globally assume that substitution targets are chosen in a more 
 \subsection{Variation}
 
 We can thus show how words are modified once we know they are substituted, that is how their features are modified by said substitution.
-Considering a word $\wstart$ substituted for $\warrival$, we measure how the feature of $\wstart$ varies when it is replaced with $\warrival$, that is we look at $\phi(\warrival)$ as a function of $\phi(\wstart)$. 
+Considering a word~$\wstart$ substituted for~$\warrival$, we measure how the feature of~$\wstart$ varies when it is replaced with~$\warrival$, that is we look at~$\phi(\warrival)$ as a function of~$\phi(\wstart)$.
 Averaging this value over all start words such that $\phi(w) = f$ yields the mean variation for that feature value~$f$, that is:\footnote{To avoid possible autocorrelation effects due to substitutions belonging to the same cluster (which are likely not statistically independent and may lead to overly optimistic confidence intervals), we first average substitutions over each cluster, by considering the average of arrival word features for a given start word.}
 $$\nu_{\phi}(f) = \left<\phi(\warrival)\right>_{\left\lbrace \wstart\rightarrow\warrival | \phi(\wstart) = f \right\rbrace}$$
 
@@ -239,9 +239,9 @@ In this case, since $\phi(\warrival)$ becomes a constant value in the above aver
 $$\nu_{\phi}^0 (f) = \left<\phi\right>$$
 %We thereby obtain the mean variation of feature for each start feature value, comparing the variations to a situation where arrival words are chosen randomly.
 
-This approach yields a fine-grained view of how word features evolve upon substitution, on average, with respect to 
+This approach yields a fine-grained view of how word features evolve upon substitution, on average, with respect to
 \begin{seriate}
-\item the original feature (\hbox{vs.} $y=x$) and 
+\item the original feature (\hbox{vs.} $y=x$) and
 \item a random arrival (\hbox{vs.} $\nu_{\phi}^0$).
 \end{seriate}
 \begin{figure*}[!th]
@@ -250,7 +250,7 @@ This approach yields a fine-grained view of how word features evolve upon substi
     \caption{\textbf{Feature variation upon substitution:} $\nu_\phi$, average feature value of the appearing word as a function of the feature value of the disappearing word in a substitution, with 95\% asymptotic confidence intervals.
     The overall position of the curve with respect to the dashed line representing $\mathcal{H}_0$ (constant $\nu_{\phi}^0$) indicates the direction of the cognitive bias.
     The intersection with $y = x$ marks the attractor value.
-    %The fact that all curves have slopes smaller than 1 means that the substitution operation is contractile on average: each feature will converge towards its own specific asymptotic range.    
+    %The fact that all curves have slopes smaller than 1 means that the substitution operation is contractile on average: each feature will converge towards its own specific asymptotic range.
     }
     \label{fig:feature-variations}
 \end{figure*}
@@ -260,7 +260,7 @@ Results are gathered in Fig.~\ref{fig:feature-variations}.
 We can do a first striking observation: all graphs show the existence of a unique intersection of $\nu_{\phi}$ with $y=x$, while the slope of $\nu_{\phi}$ is smaller than 1, independently of the feature considered.
 In other words, beyond individual variation patterns, the substitution process is contractile for all the features, and each of them therefore exhibits a unique attractor.
 Second, the comparison with $\nu_{\phi}^0$ shows that there are two classes of attractors, depending on whether:
-\begin{APAenumerate} 
+\begin{APAenumerate}
 \item there is a triple intersection (of $y=x$, $\nu_{\phi}^0$ and $\nu_{\phi}$);
 \item or $\nu_{\phi}$ always remains above or below $\nu_{\phi}^0$.
 \end{APAenumerate}
