@@ -7,8 +7,6 @@
 *.fff
 *.dvi
 *.synctex.gz
-# Explicitely set pdfs filnames here (vs. using *.pdf), so that when we add 
-# new ones in reviews/, they are not ignored by git.
 brainscopycut.pdf
 
 # R files
@@ -16,6 +14,6 @@ brainscopycut.pdf
 .Rapp.history
 .Rhistory
 
-# Latexmk files
+# Latexmk and TexMaker files
 *.fdb_latexmk
-.gitignore
+*.bak
