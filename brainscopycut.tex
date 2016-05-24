@@ -61,21 +61,20 @@
 \newcommand{\wstart}{w}
 
 % To make comments, corrections, notes
-\newcommand{\TB}[1]{\textcolor{blue}{#1}}
-\newcommand{\new}[1]{\TB{#1}}
-\newcommand{\tb}[1]{\textcolor{blue}{#1}}
-\newcommand{\TG}[1]{\textcolor{MidnightBlue}{#1}}
-\newcommand{\add}[1]{\TB{TOADD: #1}}
+\newcommand{\tbb}[1]{\fcolorbox{blue}{lightblue}{#1}}
+\newcommand{\tbg}[1]{\fcolorbox{blue}{lightgreen}{#1}}
+\newcommand{\tg}[1]{\textcolor{MidnightBlue}{#1}}
+\newcommand{\new}[1]{\tg{#1}}
+\newcommand{\add}[1]{\tbb{ADD: #1}}
 \newcommand{\ra}[1]{$\rightarrow$#1}
-\newcommand{\replace}[2]{\sout{#1} \TB{#2}}
-\newcommand{\rk}[1]{\TG{{\footnotesize {\bf[\emph{#1}]}}}}
-\newcommand{\remark}[1]{\noindent\fbox{\parbox{.99\linewidth}{\TB{#1}}}}
-\newcommand{\smallremark}[1]{\noindent\fbox{{\TB{#1}}}}
-\newcommand{\marginnote}[1]{\marginpar{{\parbox{1.\linewidth}{\hrulefill\\\TB{\scriptsize \sf #1}}}}}
-\newcommand{\cam}[1]{\textcolor{blue}{\small{[{\bf C:} }#1{]}}}
-\newcommand{\seb}[1]{\textcolor{blue}{[{\bf S:} #1{]}}}
-\newcommand{\todo}{\fcolorbox{blue}{lightblue}{(...)}}
+\newcommand{\replace}[2]{\sout{#1} \tbb{#2}}
+\newcommand{\rk}[1]{\tbg{{\footnotesize {\bf[\emph{#1}]}}}}
+\newcommand{\marginnote}[1]{\marginpar{{\parbox{1.\linewidth}{\hrulefill\\\tbb{\scriptsize \sf #1}}}}}
+\newcommand{\cam}[1]{\tbb{\small{[{\bf C:} }#1{]}}}
+\newcommand{\seb}[1]{\tbb{\small{[{\bf S:} #1{]}}}}
+\newcommand{\todo}[1]{\tbb{#1}}
 \definecolor{lightblue}{rgb}{.85,.85,1}
+\definecolor{lightgreen}{rgb}{.85,1,.85}
 
 % If citations or references are missing, make it visible
 \newcommand{\CN}{\textsuperscript{\TB{[Citation needed]}}}
