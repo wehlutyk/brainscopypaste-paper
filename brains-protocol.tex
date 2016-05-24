@@ -85,12 +85,12 @@ Three standard network-based measures are to be used on the FA network% \rk{adap
 
 An important question arises concerning the possible correlations between all the variables we use.
 
-\begin{figure}[!th]
-    \centering
-    \includegraphics[width=\linewidth]{images/computed-figures/correlations-filter1.png}
-    \caption{Spearman correlations in the initial set of features}
-    \label{fig:feature-corrs-initial}
-\end{figure}
+%\begin{figure}[!th]
+%    \centering
+%    \includegraphics[width=\linewidth]{images/computed-figures/all-feature_correlations.png}
+%    \caption{Spearman correlations in the initial set of features}
+%    \label{fig:feature-corrs-initial}
+%\end{figure}
 
 The number of phonemes and the number of syllables naturally exhibit a strong linear correlation ($.8$).
 Our analysis showed clearer results with number of phonemes over number of syllables, which is consistent with \citet{nick-diss}, and we therefore chose to only present results for the former.
@@ -112,12 +112,12 @@ Indeed, we have data on frequency for about 22.6k words, on age of acquisition f
 Quite often then, not all features are available for all words in our dataset; % are encoded in only a subset of the features we use (if any at all);
 however this is not problematic since the analysis is done on a per-feature basis, and not all words need be encoded in all features.}
 
-\begin{figure}[!th]
-    \centering
-    \includegraphics[width=0.6975\linewidth]{images/computed-figures/correlations-filter2.png}
-    \caption{Spearman correlations in the filtered set of features}
-    \label{fig:feature-corrs-filtered}
-\end{figure}
+%\begin{figure}[!th]
+%    \centering
+%    \includegraphics[width=0.6412\linewidth]{images/computed-figures/paper-feature_correlations-v2.png}
+%    \caption{Spearman correlations in the filtered set of features}
+%    \label{fig:feature-corrs-filtered}
+%\end{figure}
 
 
 \subsection{Substitution model}
@@ -189,13 +189,13 @@ $$\sigma_{\phi}(f) = \left< \frac{s_w}{p_w} \right>_{\left\lbrace w | \phi(w) = 
 
 Put shortly, susceptibility focuses on the selection of start words involved in substitutions, measuring the effect of features at the moment preceding the substitution when it is not yet known which word in the quotation will be substituted.
 
-\begin{figure*}[!th]
-    \centering
-    \includegraphics[width=\textwidth]{images/computed-figures/feature_susceptibilities.png}
-    \caption{\textbf{Substitution susceptibility:} average susceptibility to substitution versus average feature value of a candidate word for substitution, with 95\% asymptotic confidence intervals.
-    The heatmap on the lower-right shows the joint effect of Number of synonyms and Number of phonemes on susceptibility, averaged over the respective single-variable ranges, with sample size (word numbers) in parentheses.}
-    \label{fig:feature-susceptibilities}
-\end{figure*}
+%\begin{figure*}[!th]
+%    \centering
+%    \includegraphics[width=\textwidth]{images/computed-figures/feature_susceptibilities.png}
+%    \caption{\textbf{Substitution susceptibility:} average susceptibility to substitution versus average feature value of a candidate word for substitution, with 95\% asymptotic confidence intervals.
+%    The heatmap on the lower-right shows the joint effect of Number of synonyms and Number of phonemes on susceptibility, averaged over the respective single-variable ranges, with sample size (word numbers) in parentheses.}
+%    \label{fig:feature-susceptibilities}
+%\end{figure*}
 \medskip
 Results for this measure are gathered in Fig.~\ref{fig:feature-susceptibilities}. They first show an obvious strong effect of Word frequency: the more frequent a word, the less likely it is to attract substitutions.
 Indeed, susceptibility goes from $.33$ for low-frequency words down to nearly~0 for very high-frequency words.
@@ -244,16 +244,16 @@ This approach yields a fine-grained view of how word features evolve upon substi
 \item the original feature (\hbox{vs.} $y=x$) and
 \item a random arrival (\hbox{vs.} $\nu_{\phi}^0$).
 \end{seriate}
-\begin{figure*}[!th]
-    \centering
-    \includegraphics[width=\textwidth]{images/computed-figures/feature_variations-binned.png}
-    \caption{\textbf{Feature variation upon substitution:} $\nu_\phi$, average feature value of the appearing word as a function of the feature value of the disappearing word in a substitution, with 95\% asymptotic confidence intervals.
-    The overall position of the curve with respect to the dashed line representing $\mathcal{H}_0$ (constant $\nu_{\phi}^0$) indicates the direction of the cognitive bias.
-    The intersection with $y = x$ marks the attractor value.
-    %The fact that all curves have slopes smaller than 1 means that the substitution operation is contractile on average: each feature will converge towards its own specific asymptotic range.
-    }
-    \label{fig:feature-variations}
-\end{figure*}
+%\begin{figure*}[!th]
+%    \centering
+%    \includegraphics[width=\textwidth]{images/computed-figures/feature_variations-binned.png}
+%    \caption{\textbf{Feature variation upon substitution:} $\nu_\phi$, average feature value of the appearing word as a function of the feature value of the disappearing word in a substitution, with 95\% asymptotic confidence intervals.
+%    The overall position of the curve with respect to the dashed line representing $\mathcal{H}_0$ (constant $\nu_{\phi}^0$) indicates the direction of the cognitive bias.
+%    The intersection with $y = x$ marks the attractor value.
+%    %The fact that all curves have slopes smaller than 1 means that the substitution operation is contractile on average: each feature will converge towards its own specific asymptotic range.
+%    }
+%    \label{fig:feature-variations}
+%\end{figure*}
 
 \medskip
 Results are gathered in Fig.~\ref{fig:feature-variations}.
