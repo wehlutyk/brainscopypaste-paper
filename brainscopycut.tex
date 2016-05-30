@@ -61,18 +61,17 @@
 \newcommand{\wstart}{w}
 
 % To make comments, corrections, notes
-\newcommand{\tbb}[1]{\textcolor{blue}{#1}}
-\newcommand{\tbg}[1]{\textcolor{blue}{#1}}
+\newcommand{\tb}[1]{\textcolor{blue}{#1}}
 \newcommand{\tg}[1]{\textcolor{MidnightBlue}{#1}}
-\newcommand{\new}[1]{\tg{#1}}
-\newcommand{\add}[1]{\tbb{ADD: #1}}
+\newenvironment{new}{\par\color{MidnightBlue}}{\par}
+\newcommand{\add}[1]{\tb{ADD: #1}}
 \newcommand{\ra}[1]{$\rightarrow$#1}
-\newcommand{\replace}[2]{\sout{#1} \tbb{#2}}
-\newcommand{\rk}[1]{\tbg{{\footnotesize {\bf[\emph{#1}]}}}}
-\newcommand{\marginnote}[1]{\marginpar{{\parbox{1.\linewidth}{\hrulefill\\\tbb{\scriptsize \sf #1}}}}}
-\newcommand{\cam}[1]{\tbb{\small{[{\bf C:} }#1{]}}}
-\newcommand{\seb}[1]{\tbb{\small{[{\bf S:} #1{]}}}}
-\newcommand{\todo}[1]{\tbb{#1}}
+\newcommand{\replace}[2]{\sout{#1} \tb{#2}}
+\newcommand{\rk}[1]{\tb{{\footnotesize {\bf[\emph{#1}]}}}}
+\newcommand{\marginnote}[1]{\marginpar{{\parbox{1.\linewidth}{\hrulefill\\\tb{\scriptsize \sf #1}}}}}
+\newcommand{\cam}[1]{\tb{\small{[{\bf C:} }#1{]}}}
+\newcommand{\seb}[1]{\tb{\small{[{\bf S:} #1{]}}}}
+\newcommand{\todo}[1]{\tb{#1}}
 \definecolor{lightblue}{rgb}{.85,.85,1}
 \definecolor{lightgreen}{rgb}{.85,1,.85}
 
@@ -113,7 +112,7 @@ Even though the observed convergence patterns only partially explain quotation e
 
 We are warmly grateful to Ana Sofia Morais for her precious feedback and advice on this research, and to Telmo Menezes, Jean-Philippe Cointet, Jean-Pierre Nadal, Sharon Peperkamp, and Nicolas Baumard for useful suggestions and comments.
 
-\new{This work has also been partially supported by the French National Agency of Research (ANR) through the grant Algopol (ANR-12-CORD-0018).}
+{\new This work has also been partially supported by the French National Agency of Research (ANR) through the grant Algopol (ANR-12-CORD-0018).}
 
 \bibliographystyle{apacite}
 \bibliography{brainscopycut.bib}
