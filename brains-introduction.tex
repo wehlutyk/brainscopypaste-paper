@@ -4,27 +4,70 @@
 \section{Introduction} % =====
 % ============================
 
-\todo{
-\#14: Rework to
-(1) present shifts in biology (eco-evo-devo) rejoining attempts to bridge social/cognitive rift and study knowledge transmission (cultural evolution),
-(2) present current problem of testing theories to incorporate those discoveries,
-(3) introduce the question of cultural attractors,
-(4) present big data literature which can bring measurement tools,
-(5) to be studied through quotes on the web: it's the proposal of an online approach, we'll be describing and cross-checking with existing literature (vs. predicting, since there are too many possible things to predict)
-}
-
 \todo{\#20: check text/flow/definitions for clarity against Gureckis' edited pdf}
 
 \begin{new}
-Since the very beginning of psychology, of social sciences, and later that of cognitive science, several authors have proposed frameworks to unify the study of cognition and culture in meaningful ways.
-In social science, the question already existed in Durkheim's initial works \CN, but was only later tackled in earnest by Mauss' \emph{Techniques of the Body} \CN, Giddens' \emph{Structuration Theory} \CN and Bourdieu's \emph{Sens Pratique} \CN.
+START SENTENCE.
 
-Today's debate of that question, however, is structured by proponents from cognitive science.
-There is, on one side, a theory allying neo-darwinism and representation-based cognitive science that is best summarized by Sperber in his description of \emph{Epidemiology of Representations} \CN, complementary to Boyd and Richerson's work on gene-culture co-evolution \CN.
-On the other side an enactive proposition which anthropologists like Ingold, in line with Mauss' works, are calling for \CN, is being developed by Froese, Di Paolo, and De Jaegher among others \CNs.
+Since the very beginnings of both social science and psychology, scientists have tried to capture the way cognition and culture influence each other.
+%the reciprocal influences of cognition and culture in meaningful ways.
+While it has been the subject of intense debate in the social sciences in the 20th century (starting with Durkheim's initial works, \citeyear{durkheim_les_1912}, later tackled in earnest by e.g. Mauss' \emph{Techniques of the Body}, \citeyear{mauss_sociology_1979}, Giddens' \emph{Structuration Theory}, \citeyear{giddens_constitution_1984}, and Bourdieu's \emph{Sens Pratique}, \citeyear{bourdieu_sens_1980}), today's discussion is mostly structured by proponents from cognitive science.
 
-The question is also gaining relevance in other fields, as work in evo-devo and non-genetic inheritance is accumulating evidence not accounted for by the modern synthesis \CN;
-these discoveries are creating demand for new or extended approaches to life evolution that unify its different levels, as well as creative empirical methods to test the predictions these approaches make \CN.
+These construe culture as an evolutionary process analogous and parallel to biological evolution (and especially the modern synthesis' account of it).
+That analogy can be traced a long way back in the 20th century and earlier, with milestones such as Kroeber's works~\citeyearpar{kroeber_nature_1952}, Dawkins' \emph{Memetics}~\citeyearpar{dawkins_selfish_2006}, and later the development of \emph{Dual inheritance theory} by \citet{boyd_culture_1985} and \citet{cavalli-sforza_cultural_1981} among others.
+More recently, Dan Sperber has drawn on this principle to explicitly connect anthropology and cognitive science through the theory of \emph{Epidemiology of Representations} \citep{sperber_explaining_1996}, and the study of cultural evolution has been growing steadily since.
+
+The collection of works by \citet{aunger_darwinizing_2000} (in particular \citealp{bloch_well-disposed_2000}, and \citealp{kuper_if_2000}) have shown how the theory of memetics cannot account for the levels of transformation culture undergoes as it is transmitted.
+\Citet{mesoudi_multiple_2008} have discussed the uses of transmission chain experiments to test what dual inheritance theory can explain about cultural evolution.
+\Citet{morin_how_2013} and \citet{miton_universal_2015}, by carefully compiling a series of anthropological works, show how cognitive biases have influenced the evolution of cultural artifacts over several centuries.
+\Citeauthor{kirby_cumulative_2008} \citeyearpar{kirby_cumulative_2008,cornish_systems_2013} have shown how evolutionary pressures lead to the emergence of structured and expressive artificial languages in simulations and laboratory experiments.
+Such transmission chain experiments have also been explored in non-human primates by \citet{claidiere_cultural_2014}.
+
+The theory of epidemiology of representations proposes a unifying framework for all these works by recasting them as questions of spread and transformation of representations:
+these are alternatively located in the mind ("mental representation" in Sperber's terminology), or in the outer world ("public representations") as expressions of mental representations in diverse cultural artifacts (pieces of text, utterances, pictures, building techniques, etc.).
+A human society is then modeled as a large dynamical system of people constantly interpreting public representations into mental representations, and producing new public representations based on what they have previously interpreted.
+Two key points are that (a) transmission is not reliable (representations change significantly each time they are interpreted and produced anew, as opposed to e.g. memetics), and (b) the reciprocal influences of cognition and culture can be captured by studying the evolution of public representations themselves, which is what the studies cited above are doing.
+
+The theory makes an additional strong hypothesis, which this paper focuses on:
+the accumulation of cognitive effects in transmission leads to the emergence of very stable representations (called "cultural representations") that spread throughout an entire society, a process which should manifest itself as attractors (called "cultural attractors") in the dynamical system that models that society.
+
+This hypothesis has been hard to test in concrete situations, as quantitative data on out-of-laboratory cultural artifacts is not easy to collect.
+One approach, as mentioned above, has been the meta-analysis of large bodies of anthropological studies (see \citealp{miton_universal_2015}, for instance).
+This paper exemplifies a second approach, taking advantage of the ever-increasing avalanche of available digital footprints since the 2000's.
+Indeed, tools and computing power to analyze such data are now widespread, and the body of research aimed at describing online communities and content is growing accordingly (see for instance \citealp{gruhl_information_2004}, \citealp{liben-nowell_tracing_2008}, \citealp{cointet_socio-semantic_2009}, and \citealp{danescu-niculescu-mizil_you_2012}, for good examples).
+We believe these tools can connect the field of cultural evolution with psycholinguistics to advance the testing of cultural attractors.
+
+\bigskip
+
+To do so we analyze the way quotes in blogs and media outlets are modified when they are copied from website to website.
+These public representations should normally not change when they are copied from one website and published on another (as opposed to more elaborate expressions or opinions, not identified as quoted utterances), but empirical observation shows that they are in fact occasionally transformed \citep{simmons_memes_2011}.\footnote{
+It seems that authors do not always copy-paste, but copy quotes by hand instead.
+}
+Analyzing this process gives us information on (a) the way these public representations are transformed when they are transmitted, and (b) which cognitive biases are responsible for those transformations.
+By using an exploratory approach, our study gives a detailed view of one of the cognitive effects responsible for the evolution of online quotes, and shows that it is compatible with the hypothesis of cultural attractors.
+
+We chose to restrict our analysis to substitutions (one word being replaced by another), both to keep the analysis tractable and because of missing information in our data set.\footnote{
+As explained further down, source-destination links between quotes must be inferred from the data set, an operation which is much more reliable if we restrict our analysis to substitutions.
+This also impedes us from observing the effect of accumulated transformations in the long term, limiting our results to a view of the individual evolutionary step.
+}
+While this restricts the scope of our observations for this particular data set, the methodological point we also make is left intact.
+
+By characterizing substitutions with 6 features on the disappearing and appearing words, we identify what makes a substitution more likely, and how a word changes when it is substituted.
+Consistent with known effects in linguistics, we observe that low-frequency words and words learned later in development are more susceptible to substitution than other words.
+Looking at the context those words appear in, we observe a marked effect for substitution of extreme words in a sentence (either very high-valued or very low-valued features compared to sentence average, except for word frequency).
+Focusing on how words are transformed, we see that the appearing words have significantly higher frequency and lower age-of-acquisition than synonyms of the disappearing word.
+Finally, the patterns we observe are also consistent with an attraction of each of the features towards a (feature-specific) asymptotic value.
+
+While the transformations we describe are not the only ones at work in this data set, our analysis shows that the substitution process is both consistent with known biases and compatible with the existence of feature-specific attractors.
+This study can be viewed as analyzing part of the transmission step operating in transmission chains of artificial languages like those studied by \citet{kirby_cumulative_2008}, but with natural language out of the laboratory.
+
+The next section %(Sec.~\ref{sec:related})
+describes our hypotheses along with a review of the psycholinguistics literature.
+%In Sec.~\ref{sec:protocol},
+Then, we describe the data set and detail the various assumptions that were made in order to analyze it.
+%Sec.~\ref{sec:results}
+Next, we describe the measures built to observe the cognitive biases operating in quote transmission.
+Finally, we discuss the relevance of these results for the study of cultural evolution, followed with general guidelines for further work.%Sec.~\ref{sec:conclusion}.
 
 \end{new}
 
