@@ -7,58 +7,58 @@
 \todo{\#20: check text/flow/definitions for clarity against Gureckis' edited pdf}
 
 \begin{new}
-START SENTENCE.
-
 Since the very beginnings of both social science and psychology, scientists have tried to capture the way cognition and culture influence each other.
 %the reciprocal influences of cognition and culture in meaningful ways.
-While it has been the subject of intense debate in the social sciences in the 20th century (starting with Durkheim's initial works, \citeyear{durkheim_les_1912}, later tackled in earnest by e.g. Mauss' \emph{Techniques of the Body}, \citeyear{mauss_sociology_1979}, Giddens' \emph{Structuration Theory}, \citeyear{giddens_constitution_1984}, and Bourdieu's \emph{Sens Pratique}, \citeyear{bourdieu_sens_1980}), today's discussion is mostly structured by proponents from cognitive science.
+While it has been the subject of intense debate in the social sciences in the 20th century (starting with Durkheim's initial works, \citeyear{durkheim_les_1912}, later tackled in earnest by e.g. Mauss' \emph{Techniques of the Body}, \citeyear{mauss_les_1936}, Giddens' \emph{Structuration Theory}, \citeyear{giddens_constitution_1984}, and Bourdieu's \emph{Sens Pratique}, \citeyear{bourdieu_sens_1980}), today's discussion is mostly structured by proponents from cognitive science.
 
 These construe culture as an evolutionary process analogous and parallel to biological evolution (and especially the modern synthesis' account of it).
-That analogy can be traced a long way back in the 20th century and earlier, with milestones such as Kroeber's works~\citeyearpar{kroeber_nature_1952}, Dawkins' \emph{Memetics}~\citeyearpar{dawkins_selfish_2006}, and later the development of \emph{Dual inheritance theory} by \citet{boyd_culture_1985} and \citet{cavalli-sforza_cultural_1981} among others.
+That analogy can be traced a long way back in the 20th century and earlier, with milestones such as Kroeber's works~\citeyearpar{kroeber_nature_1952}, Dawkins' \emph{Memetics}~\citeyearpar{dawkins_selfish_2006}, and later the development of \emph{Dual Inheritance Theory} by \citet{boyd_culture_1985} and \citet{cavalli-sforza_cultural_1981} among others.
 More recently, Dan Sperber has drawn on this principle to explicitly connect anthropology and cognitive science through the theory of \emph{Epidemiology of Representations} \citep{sperber_explaining_1996}, and the study of cultural evolution has been growing steadily since.
 
-The collection of works by \citet{aunger_darwinizing_2000} (in particular \citealp{bloch_well-disposed_2000}, and \citealp{kuper_if_2000}) have shown how the theory of memetics cannot account for the levels of transformation culture undergoes as it is transmitted.
+The collection of works by \citet{aunger_darwinizing_2000} (in particular \citealp{bloch_well-disposed_2000}, and \citealp{kuper_if_2000}) has shown how the theory of memetics cannot account for the levels of transformation culture undergoes as it is transmitted.
 \Citet{mesoudi_multiple_2008} have discussed the uses of transmission chain experiments to test what dual inheritance theory can explain about cultural evolution.
 \Citet{morin_how_2013} and \citet{miton_universal_2015}, by carefully compiling a series of anthropological works, show how cognitive biases have influenced the evolution of cultural artifacts over several centuries.
 \Citeauthor{kirby_cumulative_2008} \citeyearpar{kirby_cumulative_2008,cornish_systems_2013} have shown how evolutionary pressures lead to the emergence of structured and expressive artificial languages in simulations and laboratory experiments.
 Such transmission chain experiments have also been explored in non-human primates by \citet{claidiere_cultural_2014}.
 
 The theory of epidemiology of representations proposes a unifying framework for all these works by recasting them as questions of spread and transformation of representations:
-these are alternatively located in the mind ("mental representation" in Sperber's terminology), or in the outer world ("public representations") as expressions of mental representations in diverse cultural artifacts (pieces of text, utterances, pictures, building techniques, etc.).
+these are alternatively located in the mind ("mental representations" in Sperber's terminology), or in the outer world ("public representations") as expressions of mental representations in diverse cultural artifacts (pieces of text, utterances, pictures, building techniques, etc.).
 A human society is then modeled as a large dynamical system of people constantly interpreting public representations into mental representations, and producing new public representations based on what they have previously interpreted.
 Two key points are that (a) transmission is not reliable (representations change significantly each time they are interpreted and produced anew, as opposed to e.g. memetics), and (b) the reciprocal influences of cognition and culture can be captured by studying the evolution of public representations themselves, which is what the studies cited above are doing.
 
 The theory makes an additional strong hypothesis, which this paper focuses on:
-the accumulation of cognitive effects in transmission leads to the emergence of very stable representations (called "cultural representations") that spread throughout an entire society, a process which should manifest itself as attractors (called "cultural attractors") in the dynamical system that models that society.
+as transformations accumulate, some representations evolve to be very stable and spread throughout an entire society without changing any more (they are called "cultural representations", because they characterize a given culture).
+This process should manifest itself as attractors (called "cultural attractors") in the dynamical system that models cultural evolution, that is:
+there should be areas of the representation space where any cognitive effect in transformation brings representations closer to a given stable asymptotic point.\footnote{
+Attractors need not be points in fact, they can also be sub-areas; in that case any transformation brings representations in the area closer to (or maintained inside) the target sub-area.
+}
 
-This hypothesis has been hard to test in concrete situations, as quantitative data on out-of-laboratory cultural artifacts is not easy to collect.
+This hypothesis, a cornerstone of the theory because of the intelligibility it gives to cultural evolution, has been hard to test in concrete situations:
+quantitative data on out-of-laboratory cultural artifacts is not easy to collect.
 One approach, as mentioned above, has been the meta-analysis of large bodies of anthropological studies (see \citealp{miton_universal_2015}, for instance).
 This paper exemplifies a second approach, taking advantage of the ever-increasing avalanche of available digital footprints since the 2000's.
-Indeed, tools and computing power to analyze such data are now widespread, and the body of research aimed at describing online communities and content is growing accordingly (see for instance \citealp{gruhl_information_2004}, \citealp{liben-nowell_tracing_2008}, \citealp{cointet_socio-semantic_2009}, and \citealp{danescu-niculescu-mizil_you_2012}, for good examples).
-We believe these tools can connect the field of cultural evolution with psycholinguistics to advance the testing of cultural attractors.
+Indeed, tools and computing power to analyze such data are now widespread, and the body of research aimed at describing online communities and content is growing accordingly.
+For instance, the propagation of cultural artifacts across social networks has been studied in blogspace~\citep{gruhl_information_2004} and in the email network~\citep{liben-nowell_tracing_2008};
+\citet{cointet_socio-semantic_2009} have described the reciprocal influence between the social network topology and the distribution of issues;
+\citet{leskovec_meme-tracking_2009} detailed the characteristic times and diffusion cycles both within these social networks and with respect to the topical dynamics of news media, and \citet{danescu-niculescu-mizil_you_2012} have studied the characteristics of particularly memorable quotes that circulate in those networks.
+We believe those works can connect the field of cultural evolution with psycholinguistics to advance the testing of cultural attractors.
 
 \bigskip
 
-To do so we analyze the way quotes in blogs and media outlets are modified when they are copied from website to website.
-These public representations should normally not change when they are copied from one website and published on another (as opposed to more elaborate expressions or opinions, not identified as quoted utterances), but empirical observation shows that they are in fact occasionally transformed \citep{simmons_memes_2011}.\footnote{
-It seems that authors do not always copy-paste, but copy quotes by hand instead.
-}
-Analyzing this process gives us information on (a) the way these public representations are transformed when they are transmitted, and (b) which cognitive biases are responsible for those transformations.
-By using an exploratory approach, our study gives a detailed view of one of the cognitive effects responsible for the evolution of online quotes, and shows that it is compatible with the hypothesis of cultural attractors.
+To show this we analyze the way quotes in blogs and media outlets are modified when they are copied from website to website.
+These public representations should normally not change as they spread on the Web (as opposed to more elaborate expressions or opinions, not identified as quoted utterances), but empirical observation shows that they are in fact occasionally transformed~\citep{simmons_memes_2011}:
+authors spontaneously transform quotes, not only cropping them but also replacing words, when in fact they are implicitly required to copy them exactly.
+We can therefore assume that most transformations, especially the simple ones, are the result of automatic (i.e. hard to control) low-level cognitive biases of the authors.
 
+Our question is as follows: given such representations that seem to evolve precisely because of the kind of automatic cognitive biases referred to in the theory of epidemiology of representations, do cultural attractors appear and how do cognitive biases participate in them?
 We chose to restrict our analysis to substitutions (one word being replaced by another), both to keep the analysis tractable and because of missing information in our data set.\footnote{
 As explained further down, source-destination links between quotes must be inferred from the data set, an operation which is much more reliable if we restrict our analysis to substitutions.
 This also impedes us from observing the effect of accumulated transformations in the long term, limiting our results to a view of the individual evolutionary step.
 }
-While this restricts the scope of our observations for this particular data set, the methodological point we also make is left intact.
-
-By characterizing substitutions with 6 features on the disappearing and appearing words, we identify what makes a substitution more likely, and how a word changes when it is substituted.
-Consistent with known effects in linguistics, we observe that low-frequency words and words learned later in development are more susceptible to substitution than other words.
-Looking at the context those words appear in, we observe a marked effect for substitution of extreme words in a sentence (either very high-valued or very low-valued features compared to sentence average, except for word frequency).
-Focusing on how words are transformed, we see that the appearing words have significantly higher frequency and lower age-of-acquisition than synonyms of the disappearing word.
-Finally, the patterns we observe are also consistent with an attraction of each of the features towards a (feature-specific) asymptotic value.
-
-While the transformations we describe are not the only ones at work in this data set, our analysis shows that the substitution process is both consistent with known biases and compatible with the existence of feature-specific attractors.
+While this restricts the scope of our observations for the particular data set we use, the methodological point we also make is left intact.
+By characterizing words with 6 well-known features, we identify what makes a substitution more likely, and how a word changes when it is substituted.
+This exploratory approach uncovers a number of transmission biases consistent with known effects in linguistics.
+While the transformations we describe are not the only ones at work in this data set, our analysis also indicates that feature-specific attractors could exist because of the substitution process.
 This study can be viewed as analyzing part of the transmission step operating in transmission chains of artificial languages like those studied by \citet{kirby_cumulative_2008}, but with natural language out of the laboratory.
 
 The next section %(Sec.~\ref{sec:related})
@@ -70,44 +70,6 @@ Next, we describe the measures built to observe the cognitive biases operating i
 Finally, we discuss the relevance of these results for the study of cultural evolution, followed with general guidelines for further work.%Sec.~\ref{sec:conclusion}.
 
 \end{new}
-
-The understanding of knowledge transmission mechanisms has led to a sizable literature in the recent past, spanning over numerous research fields ranging from cultural anthropology to social network analysis and complex systems modeling; from social cognition to data mining. These works are diversely labeled as studies on ``opinion dynamics'', ``cultural evolution'', or ``information diffusion'' and, for the most part, investigate phenomena pertaining to both cognitive science and social science, both at the individual and social levels.
-
-Broadly speaking, we may distinguish two main research streams, depending on whether the focus lies on cognitive processes or on social dynamics. A first stream is largely structured around cultural anthropology and essentially addresses cultural similarity, diversity and its evolution. It features several theories mixing social and individual cognition including, to cite a few, the debated ``memetic'' program initiated by \citet{Dawkins76} (for which the collection of works by \citealp{Aunger00}, provides a solid overview), the development of evolutionary models of norms~\citep[see for instance][]{Ehrlich05} following the seminal work of \citet{Boyd85}; or the ``cultural epidemiology'' program proposed by \citet{sper:expl}, which links the concept of mental representation to the concept of public representation (the latter being the counterpart of the former outside of the brain, \hbox{i.e.} in all kinds of cultural artifacts: texts, utterances, etc.).
-%\footnote{\citet{sper:expl} emphasizes this distinction in his seminal work: ``A representation may exist inside its user: it is then a \emph{mental representation}, such as a memory, a belief, or an intention. The producer and the user of a mental representation are one and the same person. A representation may also exist in the environment of its user, as is the case, for instance, of the text you are presently reading: it is then a \emph{public representation}''.}
-
-One of the core claims of this literature consists in emphasizing that not all knowledge is equally fit for being reproduced, although the various approaches have a different take on how exactly this notion of fitness should be operationalized. Sperber's cultural epidemiology classically opposes Dawkins' memetics by insisting that representations are not being replicated through a high-fidelity copy process, but are being interpreted and produced anew, and are thus greatly subject to change.
-Cultural epidemiology postulates that this conceptual evolution can be appraised through the notion of ``cultural attractor'', seen as the attraction domain of an underlying socio-semantic dynamical system.\footnote{Works such as \citet{Atran03} argue that this approach is anthropologically better suited than memetics, and some of the main issues in this debate are further detailed by \citet{Kuper00} and \citet{Bloch00}.}
-Despite some recent modeling attempts~\citep[e.g.][]{Claidiere07}, the development of quantitative measurements relying on the concept of cultural attractors has remained a relatively hard task and, to our knowledge, this hypothesis has not yet been empirically analyzed in an extensive manner.
-
-
-Another research stream deals with rather macroscopic studies of knowledge diffusion. Here, one of the focal points is that not all knowledge gets propagated identically along the same routes, within the same communities, at the same pace. The various approaches usually feature a minimalistic description of cognitive processes, strongly reminiscent of biological epidemiology (a single, atomic piece of information may or may not be adopted by each individual).
-This research program nonetheless exhibits a particularly interesting empirical track record --- largely owing to a recent avalanche of observable \emph{in vivo} data which, for a good decade now, have mainly come from online interaction contexts.
-While these information trails are not records of ``physical'' inter-individual interactions (in the sense of ``real life'' interactions), they still constitute a wealth of observations on the dynamics of public --~albeit online~-- representations.
-Some authors could describe for instance the propagation of cultural artifacts across social networks such as blogspace~\citep{Gruhl04} or the email network~\citep{Liben-Nowell25032008}, the characteristic times and diffusion cycles both within these social networks and with respect to the topical dynamics of news media~\citep{Leskovec09}, or the reciprocal influence between the social network topology and the distribution of issues~\citep{Cointet09}.
-
-These latter studies are at the interface between data mining, complex systems and quantitative sociology (first and foremost social network analysis) and are relatively remote from cognitive science; for a significant part, they rely rather marginally on specific social science theories. They nonetheless show us the added value of using these rapidly growing records %--~given the already significant and rapidly growing importance of our online interactions~--
-%and, %more broadly, large textual corpora \cam{google n-grams??}
-towards radically improving the empirical understanding of (individual-level) cultural evolution processes.
-
-
-\bigskip
-Stepping back, we thus observe a gap between, on one side, empirical studies of diffusion dynamics in social systems and, on the other side, more theoretical works  focused on knowledge transformation processes. %--- these latter studies being either strongly normative, or with results difficult to articulate with realistic cultural epidemiology models.
-Our research lies at the intersection of these two programs, aiming to shed light on micro-level information transformation by leveraging the empirical wealth of (\emph{in vivo}) social diffusion phenomena. More precisely, we hope to describe reformulation processes within a large distributed system such as blogspace; showing how some specific types and features of public representations may be altered by bloggers when they freely reproduce them.
-
-We focus on simple linguistic modifications, thereby connecting our research to the broader psycholinguistic literature.
-To deal with robust and simple cultural representations, we paid attention to the evolution of quotations.
-While these verbatim public representations should in theory not suffer any alterations when they are produced anew (as opposed to more elaborate expressions and opinions, not identified as quoted utterances), empirical observation shows that they are occasionally transformed.
-We will in particular exhibit a non-trivial process by which individual words in quotations are replaced.
-We will uncover some of the semantic and structural characteristics of these words and the substitutions they undergo.
-In a way using this type of data is equivalent to a large-scale psycholinguistic experiment and at the same time constitutes a first step towards building empirically realistic models of cultural evolution.
-
-The next section %(Sec.~\ref{sec:related})
-describes our hypotheses along with the relevant state-of-the-art on this psycholinguistic matter.
-%In Sec.~\ref{sec:protocol},
-Then, we detail the empirical protocol and the various assumptions that were made in order to deal with the available empirical material.
-%Sec.~\ref{sec:results}
-We further describe the significant psycholinguistic biases observed during \emph{in vivo} quotation reformulation as well as their epidemiological setting, followed by a discussion and general guidelines for further work in the final section.%Sec.~\ref{sec:conclusion}.
 
 
 % ============================
