@@ -8,7 +8,6 @@
 *.dvi
 *.fls
 *.synctex.gz
-brainscopycut.pdf
 
 # R files
 .RData
