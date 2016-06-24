@@ -6,6 +6,7 @@
 *.log
 *.fff
 *.dvi
+*.fls
 *.synctex.gz
 brainscopycut.pdf
 
