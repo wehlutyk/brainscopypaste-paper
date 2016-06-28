@@ -23,6 +23,27 @@ Finally, the patterns we observe are also consistent with an attraction of each 
 ADDTHIS:
 It is possible however, that these attractors appear due to an interaction between biases and sentence context, making it a contingency rather than a rule. This is not really dealt with (context, aside from relevance) by Sperber.
 
+Attraction can also be defined on any number of dimensions. It can be on the structure, on anything, so saying there could be an attraction while not specifying the dimension is really meaningless. What's more important is to look at a specific dimension, and see if there's attraction on that one, as we did here for features.
+
+We could've done also on semantic grouping, predicting the new word based on semantic similarity (or on frequent dyads, i.e. collocation with previous word the same way Zaromb et al. 2006 explain PLIs), and predicting the disappearing word based on the cost of doing such a substitution (lower cost -> higher prob of substitution). The point is, there's decades and many fields of psycholinguistics, and we can connect each of them with this question.
+
+All of this is possible with our software that we published.
+
+ADDTHIS:
+Taking context into account is more than what we did. For instance, building on Zaromb 2006, you could imagine that the substitutions appear because the word preceding the substituted one appears in another dyad a lot more than this one, triggering a substitution (Zaromb's associative vs. contextual retrieval processes in recall).
+
+ADDTHIS:
+Soooooo... following literature on word lists (Zaromb and DRM):
+- we could predict the new word in substitution? Take the strongest average association to words in the sentence.
+- we could predict substituted word? Take the word following the one that triggers the new word.
+Problems:
+- we probably won't find the exact word, but one similar to it (even Zaromb can't predict the exact word, they don't try, they just check it comes from the right list). How to evaluate that?
+- if computing LSA/LDA on the corpus (which probably isn't adapted because of the short sentence nature of the data -> topics = quote families), it's tautological unless you suppose substitutions have a negligible effect.
+Explain that to the reviewer.
+
+Again justify our approach w/ features by the shape of our data: few substitutions per cluster (avg. 9), and substitutions on relatively few clusters overall -> opposite situation to a few lists repeated through 50 subjects where frequency of transition has meaning. Here for each word, it's nearly one shot. So we have to categorize words (by using low number of features -> known features best) to get frequencies. From there, you can predict many many things, so better describe.
+
+
 \end{new}
 
 \section{Concluding remarks}\label{sec:conclusion}
