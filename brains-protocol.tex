@@ -6,56 +6,63 @@
 
 \todo{\#20: check text/flow/definitions for clarity against Gureckis' edited pdf}
 
-%In order to start bridging this gap, we set out to \emph{empirically} study public representation transformations at the microscopic level;
-%aiming to stay compatible with macroscopic-level studies of these public representations.
-Quotations appeared to be a perfect candidate to propose a first \emph{in vivo} measure of low-level cognitive bias in a reformulation task. % as public representations.
-First, they are usually cleanly delimited by quotation marks %(and often with HTML markup in web pages),
-which greatly facilitates their detection in text corpora.
-Second, they stem from a unique ``original'' version, and could ideally be traceable back to that version.
-Third, and most importantly, their duplication should \emph{a priori} be highly faithful, apart from cases of cropping: not only should transformations be of moderate magnitude, but when specific words are not perfectly duplicated, it is safe to assume that the variation is due to involuntary cognitive bias --- as writers may expect any casual reader to easily verify, and thus criticize, the fidelity to the original quotation.
+Quotations appeared to be a perfect candidate to propose a first measure of \newtext{automatic} cognitive bias in \newtext{cultural transmission}.
+First, they are usually cleanly delimited by quotation marks which greatly facilitates their detection in text corpora.
+Second, they stem from a unique original version, and are ideally traceable back to that version.
+Third, and most importantly, their duplication should \emph{a priori} be highly faithful, apart from cases of cropping:
+not only should transformations be of moderate magnitude, but when specific words are not perfectly duplicated, it is safe to assume that the variation is due to involuntary cognitive bias --- as writers may expect any casual reader to easily verify, and thus criticize, the fidelity to the original quotation.
 
-\todo{
-\#19: better explain choice of single-substitution case, referring to further down in (1) substitution detection and (2) susceptibility measure
-}
+We could therefore study the individual transformation process at work when authors alter quotations, by examining the modified words in each transformation.
+\newtext{Since our approach is exploratory however, we do not know at the outset which precise effect of cognitive bias we are looking for.
+Indeed the data we use does not come from a controlled experiment in the laboratory, designed to elicit a particular effect: they are recordings of real life interactions going on every day, with all the complexity and uncertainty of conditions that this entails.
+In this first study, therefore, we did not try to predict and explain in detail the cognitive processes responsible for transformations, as this would be akin to a drink from the firehose.
+Our goal, instead, is to show that such effects exist and are measurable even if they are part of a larger complexity, that is, we aim to prove first a relatively weak hypothesis before trying stronger ones.
+If this is confirmed, we will have successfully applied laboratory analyses to out-of-laboratory data, opening a path to explanations of actual (\hbox{vs.} simulated) cultural evolution with tools from cognitive science.
+As explained in the previous section, this is the reason we chose to use measures that can aggregate over all the transformations in the data set.}
 
-We could therefore study the individual transformation process at work when authors alter quotations, by examining the modified words in each transformation. To keep the analysis palatable, we focused on quotation transformations consisting in the \emph{substitution} of a word by another word (and only those cases) in order to unambiguously discuss single word replacements.
-To quantify those substitutions, we decided to associate a number of features to each word, the variation of which we can statistically study.
+\newtext{With this goal of keeping} the analysis \newtext{tractable}, we focused on quotation transformations consisting in the \emph{substitution} of a word by another word (and only those cases) in order to unambiguously discuss single word replacements.
+\newtext{This restriction also allows us to more reliably infer the information that is missing in our data set, as explained further down (see "Substitution model").}
+To quantify those substitutions we decided to associate a number of features to each word, the variation of which we can statistically study.
 
-The next subsections describe the dataset and measures we used to assess this cognitive bias.
-%Quotation evolution is therefore a perfect environment to measure cognition-induced transformations.%and relate those findings to macroscopic social dynamics.
+The next subsections describe the data set and the measures we used to assess this cognitive bias.
 
 \subsection{\emph{In vivo} utterances}
 
-\todo{\#17: go into more detail on how quotes are selected by Leskovec et al. (or explain there's no info if there's none)}
-
-We used a quotation dataset collected by \citet{Leskovec09}, large enough to lend itself to statistical analysis.
-This dataset consists of the daily crawling of news stories and blog posts from around a million online sources, with an approximate publication rate of 900k texts per day, over a nine-month period of time (from August 2008 to April 2009~---~\citealp{Leskovec09-url}).\footnote{Unfortunately, the original article~\citep{Leskovec09} does not provide additional details on the source selection methodology.}
-Quotations were then automatically extracted from this corpus: each quotation is a more or less faithful excerpt of an utterance (oral or written) by the quoted person. For instance,
+We used a quotation data set collected by \citet{leskovec_meme-tracking_2009}, large enough to lend itself to statistical analysis.
+This data set consists of the daily crawling of news stories and blog posts from around a million online sources, with an approximate publication rate of 900k texts per day, over a nine-month period of time from August 2008 to April 2009 \newtext{(\citealp{leskovec_memetracker:_2009}; unfortunately, the original article, \citealp{leskovec_meme-tracking_2009}, does not provide further details on the source selection methodology).}
+\newtext{The authors automatically extracted quotations} from this corpus. Each quotation is a more or less faithful excerpt of an utterance (oral or written) by the quoted person; for instance:
 \begin{quote}
 The Bank of England said, ``these operations are designed to address funding pressures over quarter-end.''
 \end{quote}
 
-\todo{\#20: make clear we didn't do this, it's Leskovec et al.}
+\newtext{Then, they gathered quotations in a graph and connected each pair that differed by no more than one word or that shared at least ten consecutive words (they tested this procedure with a number of different parameters, see~\citealp{leskovec_meme-tracking_2009}, for more details).}
+We find for example the following variation of the above quote:
+\begin{quote}
+"these operations are \textbf{intended} to address funding pressures over quarter-end."
+\end{quote}
+\newtext{Next, they applied a community detection algorithm} to that quotation graph to detect aggregates of tightly connected, that is sufficiently similar, groups of quotations~\citep[see again][for more details]{leskovec_meme-tracking_2009}.
+This analysis yielded the final data we had access to, with a total of about \num{70000} sets of quotations; each of these sets ideally contains all variations of a same parent utterance, along with their respective publication URLs and timestamps \newtext{(since the procedure cannot be perfect, sets of quotations contain occasional rogue unrelated variations that should have been assigned to another set)}.
 
-Quotations were then gathered in a graph and connected according to their similarity: either because they differ by very few words (in that case, no more than one word) or because they share a certain sequence of words (in that case, at least ten consecutive words). We find for example the following variation of the above quote: \begin{quote}``these operations are \textbf{intended} to address funding pressures over quarter-end.''\end{quote}
-A community detection algorithm was applied to that quotation graph to detect aggregates of tightly connected, that is sufficiently similar, groups of quotations~\citep[see][for more details]{Leskovec09}.
-This analysis yielded the final data we had access to, with a total of about \num{70000} sets of quotations; each of these sets allegedly contains all variations of a same parent utterance, along with their respective publication URLs and timestamps.
-
-\todo{\#17: precision/recall analysis on anti-spam and language}
-
-Manual inspection of this dataset revealed that it contains a significant number of everyday language quotations (such as ``it was much better than I expected'', ``did that just happen'', as well as many simple expletive-based sentences).
+Manual inspection of this data set revealed that it contains a significant number of everyday language quotations (such as ``it was much better than I expected'', ``did that just happen'', as well as many simple expletive-based sentences).
 Their presence is largely due to random variations around casual expressions, while we are interested in transformations of news-related quotes causally linked to an original, identifiable utterance.
-To filter them out, we exclude all quotes having less than 5 words long or lasting more than 80 days %\seb{it is asymmetrical...}
- (as well as quotes not written in English). If an entire cluster still lasts more than 80 days after this screening (because of short-lived but unrelated quotes far apart in time), we also exclude it.
-% New filtering: 1051 substitutions out of 6172 mined. 45749 clusters. -- correct text with numbers and for new figures.
-We eventually keep 45,749 clusters (out of 71,568; i.e. 63.9\%), containing a total of 127,778 unique quotes (out of 310,457; i.e. 41.2\%) making up about 2.43m occurrences (out of 8.16m, i.e. 29.8\%).\footnote{The significantly larger loss in occurrences indicates that, on average, the clusters we lose contain more occurrences than those we keep, which is expected for everyday language utterances.}
-%We contend that the use of the unfiltered dataset would strongly jeopardize results related to linguistic evolution or information diffusion,
-Even if we lose some real event-related utterances which are present in clusters lasting more than 80 days (such as ``the city is tired of me and the organization and I have run our course together''), we check that our approach essentially fulfills its goals by manually coding a random subsample of 100 excluded clusters: a solid 71\% appear to be entirely irrelevant to our analysis (everyday language rather than quotations), and all but one of the remaining clusters were of relevance to the protocol {set out below.}% in Sec.~\ref{sec:model}.
+To filter them out, we exclude quotes with less than 5 words or \newtext{whose occurrences span more} than 80 days (indicating causally unrelated occurrences), as well as quotes not written in English.
+\newtext{Clusters that are emptied by this procedure are therefore excluded.}
+If, after this screening, a cluster's occurrences still span more than 80 days (because of short-lived but unrelated quotes far apart in time), we also exclude it.
+\newtext{We eventually keep 50,427 clusters (out of 71,568; \hbox{i.e.} 70.5\%), containing a total of 141,324 unique quotes (out of 310,457; \hbox{i.e.} 45.5\%) making up about 2.60m occurrences (out of 7.67m; \hbox{i.e.} 33.9\%).\footnote{
+The significantly larger loss in occurrences indicates that, on average, the clusters we lose contain more occurrences than those we keep, which is to be expected for everyday language utterances.
+}
+Even if we lose some real event-related utterances which are present in clusters lasting more than 80 days (one such lost quote, for instance, is "the city is tired of me and the organization and I have run our course together"), we check that our approach fulfills its goals by coding a random sub-sample of 100 clusters:
+35 of them are rejected by the filter, with 15 false negatives (rejected clusters that should have been kept) and 9 false positives (clusters kept when they should have been rejected), giving a precision score of 0.862 and a recall score of 0.789.
+Furthermore, all but one of the 9 false positives are left with a single non-rejected quote, meaning those clusters are ignored by our substitution analysis; this brings the effective precision of our filter to 0.982.\footnote{
+A similar analysis was made for language detection, which is part of the cluster filtering:
+out of 100 randomly sampled quotes, 17 are rejected because their detected language is not English, with no false positives and 6 false negatives, giving a precision score of 1 and a recall score of 0.933.
+Of the 6 false negatives, 4 had less than 5 tokens and would have been excluded by the cluster filter anyway.
+}}
 
 
 \subsection{Word-level measures}
 
-\subsubsection{Psycholinguistic indices}
+\subsubsection{Lexical features}
 
 \todo{\#16:
 (1) update the set of features,
@@ -66,7 +73,7 @@ Even if we lose some real event-related utterances which are present in clusters
 We first introduce some of the most classical psycholinguistic measures on words.
 
 \begin{APAitemize}
-    \item \textbf{Word frequency}: the frequency at which words appear in our dataset, known to be relevant for both recognition and recall~\citep{gregg1976word},
+    \item \textbf{Word frequency}: the frequency at which words appear in our data set, known to be relevant for both recognition and recall~\citep{gregg1976word},
     \item \textbf{Age of Acquisition}: the average age at which words are learned~\citep[obtained from][]{Kuperman12}, known to have different effects than word frequency~\citep{morrison1995roles,dewhurst1998separate},
     \item The average \textbf{Number of Phonemes} and \textbf{Number of Syllables} for all pronunciations of a word (obtained from the Carnegie Mellon University Pronouncing Dictionary, \citealp{Weide98})\footnote{The CMU Pronouncing Dictionary is included in the NTLK package~\citep{Bird09}, the natural language processing toolkit we used for the analysis.} as a proxy to word production cost,
     \item The average \textbf{Number of Synonyms} for all meanings of a word~\citep[obtained from][]{WordNet10} as an \emph{a priori} indicator of how easy it would be to replace a word.
@@ -128,9 +135,9 @@ Furthermore, the three variables are also strongly related to age of acquisition
 
 Conversely, clustering coefficient exhibits low correlation levels with all the variables we kept (maximum absolute value $.38$), leading us to include it in the rest of the analysis.
 
-The final set of variables we consider, as well as their cross-correlations, can be seen in Fig.~\ref{fig:feature-corrs-filtered}.\footnote{Note that feature values stem from different datasets which do not always encode the same words.
+The final set of variables we consider, as well as their cross-correlations, can be seen in Fig.~\ref{fig:feature-corrs-filtered}.\footnote{Note that feature values stem from different data sets which do not always encode the same words.
 Indeed, we have data on frequency for about 22.6k words, on age of acquisition for 30.1k words, on number of phonemes for 123.4k words, number of synonyms 111.2k, and clustering coefficient 5.7k words.
-Quite often then, not all features are available for all words in our dataset; % are encoded in only a subset of the features we use (if any at all);
+Quite often then, not all features are available for all words in our data set; % are encoded in only a subset of the features we use (if any at all);
 however this is not problematic since the analysis is done on a per-feature basis, and not all words need be encoded in all features.}
 
 %\begin{figure}[!th]
@@ -149,11 +156,11 @@ however this is not problematic since the analysis is done on a per-feature basi
 
 \todo{\#17: explain all models and the work involved, with graphs and explanatory figures for each model in annex}
 
-We finally need a substitution detection model, for the utterance data we use presents a challenge: quote-to-quote transformations, and much less substitutions, are not explicitly encoded in the dataset. More precisely, each set of quotations bears no explicit information about either the authoritative original quotation, or the source quotation(s) each author relied on when creating a new post and reproducing (and possibly altering) that source.
+We finally need a substitution detection model, for the utterance data we use presents a challenge: quote-to-quote transformations, and much less substitutions, are not explicitly encoded in the data set. More precisely, each set of quotations bears no explicit information about either the authoritative original quotation, or the source quotation(s) each author relied on when creating a new post and reproducing (and possibly altering) that source.
 We thus face an inference problem where, given all quotations and their occurrence timestamps, we should estimate which was the originating quotation for each instance of each quotation.
 
 We therefore model the underlying quotation selection process by making a few additional assumptions. % which let us define quote-to-quote substitutions from the available data.
-The main issue is deciding whether a later occurrence is a strict copy of an earlier occurrence, or a substitution of an even earlier occurrence, or perhaps even a substitution or copy from quotes appearing outside the dataset, that is from a source external to the data collection perimeter.
+The main issue is deciding whether a later occurrence is a strict copy of an earlier occurrence, or a substitution of an even earlier occurrence, or perhaps even a substitution or copy from quotes appearing outside the data set, that is from a source external to the data collection perimeter.
 
 Let us give an example: say the quotation ``These accusations are false and \textbf{absurd}'' ($q$) appears in a blog on January 19, and the slightly different quotation ``These accusations are false and \textbf{incoherent}'' ($q'$) appears in other blogs twice on the 20th and once on the 21st of January.
 If $q$ was sufficiently prominent when $q'$ first appeared, we can safely assume that the first author of $q'$ on the 20th based himself on $q$ as is shown in Fig.~\ref{fig:substitution-temporal-binning-a}.
@@ -184,7 +191,7 @@ To settle this question we group quote occurrences into fixed bins spanning $\De
 When a quotation $q'$ appears in bin $t+1$, it is counted as a substitution if it differs from the most frequent quote $q$ of the preceding bin $t$ (or a substring thereof) by only one word. If not, $q'$ is not considered to be an instance of substitution.  %We assume here that quotes are based on the most frequent quote of the preceding bin (\hbox{vs.} all the other quotes in that bin).
 Note that these assumptions are admittedly a subset of a much wider set of possibilities, each leading to alternative substitution inferences.\footnote{In particular, the criterion of the most frequent quote in the preceding bin may be replaced with the most frequent quote overall, or the oldest quote; time can be sliced into fixed bins as is done here, or kept fine-grained by using sliding bins.}
 It is however not feasible to try them all and, for the sake of simplicity, we decided to go with a sensible set of assumptions, and stick to them without trying alternative options.
-%These various flavors of an ideal substitution detection model essentially change whether occurrences are considered as substitutions from another quote, repetitions of the original quote, or introduction of information external to the dataset.
+%These various flavors of an ideal substitution detection model essentially change whether occurrences are considered as substitutions from another quote, repetitions of the original quote, or introduction of information external to the data set.
 %\TB{We identified and implemented eleven other such models, and they all yielded essentially the same results.} \rk{T: I would prefer a bit more detail here. Maybe on supp. mats.? What does “essentially the same” mean? This could cause concern to reviewers.}
 
 \medskip
@@ -279,8 +286,8 @@ $$\nu_{\phi}(f) = \left<\phi(\warrival)\right>_{\left\lbrace \wstart\rightarrow\
 Of prime interest is the comparison of the value of $\nu_{\phi}(f)$ with respect to $f$, as it shows whether there is an attraction (or a repulsion) effect towards (respectively from) some values of each feature.
 In other words, plotting the $y=x$ line, we can see if substitutions tend to converge towards some typical value of a word feature or not --- as is classically done in the study of dynamical systems.
 
-We also introduce a null hypothesis $\mathcal{H}_0$ to compare the actual variation of a word's feature to its expected variation, assuming the arrival word $\warrival$ was randomly chosen from the whole pool of words available in the dataset for that feature.\footnote{For instance, when considering the feature ``Clustering coefficient'', the arrival word is randomly chosen among words present in the dataset of FA norms.}
-%\TB{randomly chosen from the whole pool of words in the dataset from which the feature is built (e.g. for Clustering coefficient: randomly chosen in the pool of words in the Free Association norms)}.\marginnote{C: ici on est bien d'accord que le pool of FA words c'est tout le set de mots, pas juste les voisins? la formulation est un peu ambigüe. S: oui et non. Oui: c'est pas juste les voisins. Non: le pool dépend de la feature, c'est pas juste FA. Il y avait une erreur, j'ai reformulé pour être plus clair.}
+We also introduce a null hypothesis $\mathcal{H}_0$ to compare the actual variation of a word's feature to its expected variation, assuming the arrival word $\warrival$ was randomly chosen from the whole pool of words available in the data set for that feature.\footnote{For instance, when considering the feature ``Clustering coefficient'', the arrival word is randomly chosen among words present in the data set of FA norms.}
+%\TB{randomly chosen from the whole pool of words in the data set from which the feature is built (e.g. for Clustering coefficient: randomly chosen in the pool of words in the Free Association norms)}.\marginnote{C: ici on est bien d'accord que le pool of FA words c'est tout le set de mots, pas juste les voisins? la formulation est un peu ambigüe. S: oui et non. Oui: c'est pas juste les voisins. Non: le pool dépend de la feature, c'est pas juste FA. Il y avait une erreur, j'ai reformulé pour être plus clair.}
 In this case, since $\phi(\warrival)$ becomes a constant value in the above averaging (by definition $\warrival$ does not depend on $\wstart$ anymore),  the baseline variation under $\mathcal{H}_0$ may be rewritten as:\footnote{We additionally considered an alternative null hypothesis, denoted $\mathcal{H}_{00}$, where the arrival word is randomly chosen \emph{among immediate synonyms of the start word}, that is an arrival word chosen among semantically plausible though still random words. In this case $\warrival_{00}$ does depend on $\wstart$. Our conclusions hold under this second null hypothesis, so for the sake of clarity we chose to keep the simpler~$\mathcal{H}_0$.}
 $$\nu_{\phi}^0 (f) = \left<\phi\right>$$
 %We thereby obtain the mean variation of feature for each start feature value, comparing the variations to a situation where arrival words are chosen randomly.
@@ -340,7 +347,7 @@ Word frequency, with $\nu_{\phi}$ always significantly above $\nu_{\phi}^0$, exh
 Age of acquisition and Clustering coefficient, on the other hand, exhibit a clear negative bias for the substitution process. Both curves are significantly below their respective $\nu_{\phi}^0$ values, which is consistent with the literature on recall: words learned earlier and words with lower clustering coefficient are easier to produce than average~\citep{nelson2013activation,Zevin02}.
 Clustering coefficient has the additional particularity that, on average, the destination word does not depend on the start word; that is on average, substitutions will always produce words with a clustering coefficient around $\exp(-2.4) \simeq .1$.
 
-To make things concrete, here is an example substitution taking place in the dataset.
+To make things concrete, here is an example substitution taking place in the data set.
 At the end of January 2009, many media websites reported the following quote,
 
 \begin{quote}
@@ -350,8 +357,8 @@ and a smaller number of media websites, and blogs, reported the following,
 \begin{quote}
     ``The massive economic upheaval being experienced across the \textbf{world} is sparing no one in the consumer electronics world.''
 \end{quote}
-The word \emph{globe} is acquired at an average of 6.5 years old, appears about 3.5k times in the dataset, and has a Clustering coefficient of $.24$.
-The word it was replaced with, \emph{world}, is acquired on average at 5.3 years old, appears about 146k times in the dataset, and has a Clustering coefficient of $.05$. (Both words have four phonemes.)
+The word \emph{globe} is acquired at an average of 6.5 years old, appears about 3.5k times in the data set, and has a Clustering coefficient of $.24$.
+The word it was replaced with, \emph{world}, is acquired on average at 5.3 years old, appears about 146k times in the data set, and has a Clustering coefficient of $.05$. (Both words have four phonemes.)
 Such a change, though minor in appearance, is a typical example of alteration along the lines shown by our results.
 
 %globe (age 6.5, phonemes 4.0, freq 8.18, cc -1.42, susceptibility 1.0)
