@@ -37,13 +37,13 @@ Each quotation is a more or less faithful excerpt of an utterance (oral or writt
 The Bank of England said, "these operations are designed to address funding pressures over quarter-end."
 \end{quote}
 
-\newtext{Then, they gathered quotations in a graph and connected each pair that differed by no more than one word or that shared at least ten consecutive words (they tested this procedure with a number of different parameters, see~\citealp{leskovec_meme-tracking_2009}, for more details).}
+\newtext{Then, the authors gathered quotations in a graph and connected each pair that differed by no more than one word or that shared at least ten consecutive words (they tested this procedure with a number of different parameters, see~\citealp{leskovec_meme-tracking_2009}, for more details).}
 We find for example the following variation of the above quote:
 \begin{quote}
 "these operations are \textbf{intended} to address funding pressures over quarter-end."
 \end{quote}
 \newtext{Next, they applied a community detection algorithm} to that quotation graph to detect aggregates of tightly connected, that is sufficiently similar, groups of quotations~\citep[see again][for more details]{leskovec_meme-tracking_2009}.
-This analysis yielded the final data we had access to, with a total of about \num{70000} sets of quotations; each of these sets ideally contains all variations of a same parent utterance, along with their respective publication URLs and timestamps \newtext{(since the procedure cannot be perfect, sets of quotations contain occasional rogue unrelated variations that should have been assigned to another set)}.
+This analysis yielded the final data we had access to, with a total of about \num{70000} sets of quotations; each of these sets ideally contains all variations of a same parent utterance, along with their respective publication URLs and timestamps \newtext{(since the procedure cannot be perfect, sets of quotations contain occasional rogue unrelated variations that should have been discarded or assigned to another set)}.
 
 Manual inspection of this data set revealed that it contains a significant number of everyday language quotations (such as ``it was much better than I expected'', ``did that just happen'', as well as many simple expletive-based sentences).
 Their presence is largely due to random variations around casual expressions, while we are interested in transformations of news-related quotes causally linked to an original, identifiable utterance.
@@ -66,88 +66,107 @@ Of the 6 false negatives, 4 had less than 5 tokens and would have been excluded 
 
 \subsubsection{Lexical features}
 
-\todo{\#16:
-(1) update the set of features,
-(2) better explain feature selection: no PCA or all-feature regression (a predictive model doesn't differentiate correlated features), it's robust feature selection with domain knowledge
-(3) note clustering values have changed because of weights
-}
-
-We first introduce some of the most classical psycholinguistic measures on words.
+We first introduce some lexical measures on words.
 
 \begin{APAitemize}
-    \item \textbf{Word frequency}: the frequency at which words appear in our data set, known to be relevant for both recognition and recall~\citep{gregg1976word},
-    \item \textbf{Age of Acquisition}: the average age at which words are learned~\citep[obtained from][]{Kuperman12}, known to have different effects than word frequency~\citep{morrison1995roles,dewhurst1998separate},
-    \item The average \textbf{Number of Phonemes} and \textbf{Number of Syllables} for all pronunciations of a word (obtained from the Carnegie Mellon University Pronouncing Dictionary, \citealp{Weide98})\footnote{The CMU Pronouncing Dictionary is included in the NTLK package~\citep{Bird09}, the natural language processing toolkit we used for the analysis.} as a proxy to word production cost,
-    \item The average \textbf{Number of Synonyms} for all meanings of a word~\citep[obtained from][]{WordNet10} as an \emph{a priori} indicator of how easy it would be to replace a word.
+
+    \item \textbf{Word frequency}: the frequency at which words appear in our data set, known to be relevant for both recognition and recall~\citep{gregg_word_1976},
+
+    \item \textbf{Age of Acquisition}: the average age at which words are learned~\citep[obtained from][]{kuperman_age--acquisition_2012}, known to have different effects than word frequency~\citep{morrison_roles_1995,dewhurst_separate_1998},
+
+    \item \newtext{\textbf{Phonological} and \textbf{Orthographic Neighborhood Density}~\citep[obtained from][]{marian_clearpond:_2012}, also known to be relevant for word production~\citep{garlock_age--acquisition_2001},}
+
+    \item The average \textbf{Number of Phonemes} and \textbf{Number of Syllables} for all pronunciations of a word (obtained from the Carnegie Mellon University Pronouncing Dictionary, \citealp{weide_cmu_1998})\footnote{
+    The CMU Pronouncing Dictionary is included in the NTLK package~\citep{bird_nltk_2009}, the natural language processing toolkit we used for the analysis.
+    },
+    \newtext{as well as \textbf{Number of Letters}}, as a proxy to word production cost,
+
+    \item The average \textbf{Number of Synonyms} for all meanings of a word~\citep[obtained from][]{wordnet_princeton_2010} as an \emph{a priori} indicator of how easy it would be to replace a word.
+
 \end{APAitemize}
 
-%We also considered grammatical types within quotations by detection of \emph{Part-of-Speech} (POS) categories, using the Penn TreeBank Project typology~\citep{Santorini90} and thereby distinguishing verbs, nouns, adjectives and adverbs. The results were however extremely similar across the various categories, exhibiting no specific effect of words belonging to different POS categories. \rk{See \#8 for this fact-check}
-
-The number of synonyms is related to a notion of the word connectivity in a semantic network.  To go a bit further in this direction, we appraise the possible role of network-based variables which have received special attention in the recent related literature, following the blooming interest in networks from many disciplines over the last decade.
+\newtext{We also consider grammatical types within quotations by detecting \emph{Part-of-Speech} (POS) categories with TreeTagger~\citep{schmid_probabilistic_1994}; we distinguish between verbs, nouns, adjectives, adverbs, and stopword-like words.}
 
 \medskip
 
-\todo{\#20: FA don't encode reformulation explicitly, they did norms. We hypothesize it's what's at work.}
+\newtext{Aside from these raw features, the systemic dimension of vocabulary~\citep{cornish_systems_2013} has led authors to develop measures based on the full topology of networks built from free association data or phonological similarity.
+Several such measures have been shown to be involved in recall, recognition, and naming tasks~\citep{nelson_how_2013,chan_network_2010,griffiths_google_2007}.}
 
-%, we thus considered more recently studied variables based on semantic network properties.
-We relied on the ``free association'' (FA) norms collected by \citet{Nelson04} which naturally embed information on the idea association process underlying transformation of quotations. FA norms record the words that come to mind when someone is presented with a given cue% (that is the ``free association'' task)
-. As \citet{Nelson04} explain, ``free association response probabilities index the likelihood that one word can cue another word to come to mind with minimal contextual constraints in effect.''
-%Following \citet{Griffiths07}, we first consider the directed weighted network formed by the association norms, that is the network where words are nodes and edges are directed from cue to associated word, with a weight equal to the probability of that target word being produced when this particular cue was presented.
-% \rk{we're in fact using the unweighed version of the network. Why?}
-%Following \citet{Griffiths07}, we first build a directed unweighted network based on association norms, where words are nodes and edges are directed from cue to target word whenever a target word is being produced when this particular cue word was presented.
-Following \citet{Griffiths07}, we first build a directed unweighted network based on association norms, where nodes are words and edges are directed from cue to target word whenever the considered target word was produced in response to the considered cue word.
-This network is of particular interest since it measures the \emph{in-vitro forced-choice} version of a substitution whereas the data we analyze is the \emph{in-vivo spontaneous} version of what we otherwise hypothesize to be the same process.
+\newtext{To compute those features} we relied on the free association (FA) norms collected by \citet{nelson_university_2004}, which record the words that come to mind when someone is presented with a given cue.
+As \citet{nelson_university_2004} explain, "free association response probabilities index the likelihood that one word can cue another word to come to mind with minimal contextual constraints in effect."
+\newtext{Similar to what \citet{griffiths_google_2007} did, we first considered the directed \newtext{weighted} network formed by association norms, where nodes are words and edges are directed from cue to target word, with a weight equal to the association strength (that is the probability of that target word being produced when this particular cue is presented).
+This network is of particular interest since it lets us define features that reflect the associations driving false memories in word lists~\citep{deese_prediction_1959}, a phenomenon which may be involved in the transformation of quotations.}
 
-Three standard network-based measures are to be used on the FA network% \rk{adapt once the weighing question (\#8) is settled}
-:
+We used three standard measures on the FA network:
 
 \begin{APAitemize}
-    \item \textbf{Degree centrality}, measured by the number of cues for which a given word is triggered as a target, and a corresponding generalized measure, node \emph{pagerank}~\citep{Page99}, which has already been used on the FA network by \citet{Griffiths07}.
-    In the present case these two polysemy-related measures are quasi-perfectly correlated. %, and measure polysemy by taking into account the structure of the entire network.
+
+    \item \textbf{\newtext{Incoming} degree centrality}, measured by the number of cues for which a given word is triggered as a target, and a corresponding generalized measure, node \textbf{Pagerank}~\citep{page_pagerank_1999}, which has already been used on the FA network by \citet{griffiths_google_2007}.
+    In the present case these two polysemy-related measures are quasi-perfectly correlated.\footnote{
+    \newtext{Note that in-degree does not take the weights of links into account, as it counts 1 for each incoming link.
+    Pagerank on the other hand, does take the weights into account.}
+    }
+    %, and measure polysemy by taking into account the structure of the entire network.
     %However in the present case there is a quasi-perfect correlation between node incoming degree and node \emph{pagerank}~\citep{Page99}, which will lead us to favour the latter later on. Word pagerank on the FA network had already been used by~\citet{Griffiths07}; it may be interpreted as a generalized and recursive measure of word polysemy: central nodes in the pagerank sense are words often selected as targets when presented with cues themselves often selected as targets, and so on recursively.
-    \item \textbf{Betweenness centrality}, another measure of node centrality describing the extent to which a node connects otherwise remote areas of the network~\citep{free:set}.
-    This quantity tells us if some words behave like unavoidable waypoints on association chains connecting one word to another.
-    \item \textbf{Clustering coefficient}, which measures the extent to which a node belongs to a local aggregate of tightly connected nodes~\citep{watt-coll}, computed on the undirected version of the FA network.\footnote{The Clustering coefficient is formally defined as the ratio between the number of actual versus possible edges between a node's neighbors.}
-    This tells us if a word belongs more or less to a local aggregate of equivalent words (from a ``free association'' point of view).
+
+    \item \textbf{Betweenness centrality}, another measure of node centrality describing the extent to which a node connects otherwise remote areas of the network~\citep{freeman_set_1977}.
+    This quantity tells us if some words behave as unavoidable waypoints on association chains connecting one word to another.\footnote{
+    \newtext{For this measure, weights are interpreted as inverse cost:
+    the stronger a link, the easier it is to travel across it.
+    A stronger link will be favored over weaker links in the computation of the shortest path between two words.}
+    }
+
+    \item \textbf{Clustering coefficient}, which measures the extent to which a node belongs to a local aggregate of tightly connected nodes~\citep{watts_collective_1998}, computed on the undirected \newtext{weighted} version of the FA network.\footnote{The Clustering coefficient is formally defined as the ratio between the number of actual versus possible edges between a node's neighbors;
+    \newtext{this is poorly defined in the case of directed networks, which led us to ignore the direction of links in the network for this measure (if two words are connected in both directions, the weights of both links are added to make the final undirected link's weight).}
+    }
+    This tells us if a word belongs more or less to a local aggregate of equivalent words (from a free association point of view).
+
 \end{APAitemize}
 
 \subsubsection{Variable correlations}
 
-An important question arises concerning the possible correlations between all the variables we use.
+\newtext{Several of these features are strongly related and can be grouped together.
+To make correlation values as well as future comparisons more reliable, we log-transformed features that have marked exponential distributions (a few words valued orders of magnitude higher than the vast majority of other words).\footnote{
+The distributions of original and log-transformed features appears in the supplementary material, along with correlation scatter plots for each feature pair, summarized below with correlation values.
+}}
 
-%\begin{figure}[!th]
-%    \centering
-%    \includegraphics[width=\linewidth]{images/computed-figures/all-feature_correlations.png}
-%    \caption{Spearman correlations in the initial set of features}
-%    \label{fig:feature-corrs-initial}
-%\end{figure}
+\begin{figure}[!th]
+    \centering
+    \includegraphics[width=\linewidth]{images/computed-figures/all-feature_correlations.png}
+    \caption{Spearman correlations in the initial set of features}
+    \label{fig:feature-corrs-initial}
+\end{figure}
 
-The number of phonemes and the number of syllables naturally exhibit a strong linear correlation ($.8$).
-Our analysis showed clearer results with number of phonemes over number of syllables, which is consistent with \citet{nick-diss}, and we therefore chose to only present results for the former.
+\begin{new}
 
-Age of acquisition is a key variable which appears as a usual suspect in psycholinguistic studies.
-Despite it being usually difficult to disentangle from many of the other variables, it is known to have independent effects, which is consistent with what we see on Fig.~\ref{fig:feature-corrs-initial}: age of acquisition has a limited correlation to the other variables (absolute value not above $.39$ if we exclude the number of syllables and the network properties), leading us to keep the variable in the rest of the analysis.
+The pairwise correlations in the initial set of features appears in Fig.~\ref{fig:feature-corrs-initial}.
+By looking at absolute values, three subsets of highly correlated features can be easily identified:
+(a) number of letters, phonemes, and syllables with pairwise correlations greater than .75;
+(b) orthographic and phonological neighborhood densities, with a correlation of .8;
+(c) age of acquisition, betweenness, degree, and pagerank centralities, with absolute pairwise correlations at .41, .6, .59, .63, .61 and .85.
+Applying a feature agglomeration algorithm targeted at 6 groups refined this observation by producing identical (a) and (b) groups, a (c) group without betweenness centrality which was instead assigned to a group (d) with clustering coefficient, and the remaining features (frequency and number of synonyms) as singletons.\footnote{
+\newtext{Agglomerating into less than 6 groups merged groups (a) and (b), which we excluded to keep neighborhood densities in their own group;
+agglomerating into more than 6 groups separated age of acquisition from group (c), which we excluded given its high correlation values to the rest of group (c). 
+We used scikit-learn's FeatureAgglomeration class for this procedure~\citep{pedregosa_scikit-learn:_2011}.}
+}
 
-Frequency and number of synonyms both have relatively low levels of correlation to the other variables (excluding again the network properties); we therefore also keep them in the rest of the analysis.
-
-\bigskip
-Network centrality properties, on the other hand, are strongly dependent on one another.
-As mentioned earlier, degree centrality and pagerank have a very strong correlation ($.85$), and are also redundant with betweenness centrality (with correlation levels at $.75$ and $.68$ respectively).
-Furthermore, the three variables are also strongly related to age of acquisition, which leads us to keep the latter as the sole indicator for centrality. This may trigger a chicken-and-egg issue where a strong centrality may be due, or be the result, of an early age of acquisition; in any case, the age of acquisition seems to partially capture centrality-based network properties.
-
-Conversely, clustering coefficient exhibits low correlation levels with all the variables we kept (maximum absolute value $.38$), leading us to include it in the rest of the analysis.
-
-The final set of variables we consider, as well as their cross-correlations, can be seen in Fig.~\ref{fig:feature-corrs-filtered}.\footnote{Note that feature values stem from different data sets which do not always encode the same words.
-Indeed, we have data on frequency for about 22.6k words, on age of acquisition for 30.1k words, on number of phonemes for 123.4k words, number of synonyms 111.2k, and clustering coefficient 5.7k words.
-Quite often then, not all features are available for all words in our data set; % are encoded in only a subset of the features we use (if any at all);
+Since our data is about written transformations, number of letters and orthographic neighborhood density are the natural representatives of groups (a) and (b) respectively.
+Given the importance of age of acquisition in the lexical feature literature, we chose it to represent group (c).
+Finally we used clustering coefficient to represent group (d) since it has already been used in previous studies.
+The final set of features we will discuss in the rest of the paper, as well as their cross-correlations, can be seen in Fig.~\ref{fig:feature-corrs-filtered} (the analysis on the complete set of features can be found in Supplementary Material).\footnote{
+Note that feature values stem from different data sets which do not always encode the same words.
+Indeed, we have data on frequency for about \newtext{33.5k} words, on age of acquisition for 30.1k words, on clustering coefficient for 5.7k words, number of synonyms 111.2k, and \newtext{orthographic density 17.8k words}.
+Quite often then, not all features are available for all words in our data set;
 however this is not problematic since the analysis is done on a per-feature basis, and not all words need be encoded in all features.}
 
-%\begin{figure}[!th]
-%    \centering
-%    \includegraphics[width=0.6412\linewidth]{images/computed-figures/paper-feature_correlations-v2.png}
-%    \caption{Spearman correlations in the filtered set of features}
-%    \label{fig:feature-corrs-filtered}
-%\end{figure}
+\end{new}
+
+\begin{figure}[!th]
+    \centering
+    \includegraphics[width=0.6412\linewidth]{images/computed-figures/paper-feature_correlations-v2.png}
+    \caption{Spearman correlations in the filtered set of features}
+    \label{fig:feature-corrs-filtered}
+\end{figure}
 
 
 \subsection{Substitution model}
@@ -198,9 +217,11 @@ It is however not feasible to try them all and, for the sake of simplicity, we d
 
 \medskip
 
-\todo{\#12: fix substitution counts}
+\todo{\#12: fix substitution counts and add precision/recall}
 
 Put shortly, such a model defines how many times quote occurrences can be counted as substitutions: in Fig.~\ref{fig:substitution-q_max}, occurrences of $q'$ on the 20th are counted as substitutions, whereas the occurrences on the 21st are not.  In practice, from the 2.43m initial occurrences spread into 45,749 classes of quotes, with significant redundancy (many quotes are indeed simple duplicates), we manage to mine 6,172 real substitutions obeying to this model. From these substitutions we remove those featuring stop words, minor spelling changes (e.g. center/centre, November/Nov, Senator/Sen), abbreviations, spelled out numbers; this eventually yields 1,051 valid substitutions.
+
+\todo{Note that our minor-spelling-changes exclusion does not affect orthographic nd: in a sample of 100 substitutions, no rejected substitutions are minor orthographic changes that would interest us (they're always different spelling of the same concept).}
 
 %Let us illustrate this ``majority'' rule by going back to the example described in Section~\ref{sec:temporal-binning} and extending it, in Fig.~\ref{fig:substitution-q_max}.
 
