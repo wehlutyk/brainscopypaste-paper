@@ -1,0 +1,45 @@
+--- brainscopycut.bib	2016-07-12 13:41:52.382574702 +0200
++++ brainscopycut.bib	2016-07-12 13:42:14.585684295 +0200
+@@ -373,9 +373,7 @@
+ @article{mauss_les_1936,
+ 	title = {Les techniques du corps},
+ 	volume = {32},
+-	url = {http://classiques.uqac.ca/classiques/mauss_marcel/socio_et_anthropo/6_Techniques_corps/Techniques_corps.html},
+ 	number = {3-4},
+-	urldate = {2016-06-22},
+ 	journal = {Journal de Psychologie},
+ 	author = {Mauss, Marcel},
+ 	year = {1936},
+@@ -947,7 +945,6 @@
+ 
+ @article{santorini_part--speech_1990,
+ 	title = {Part-of-{Speech} {Tagging} {Guidelines} for the {Penn} {Treebank} {Project} (3rd {Revision})},
+-	url = {http://repository.upenn.edu/cis_reports/570},
+ 	journal = {Technical Reports (CIS)},
+ 	author = {Santorini, Beatrice},
+ 	month = jul,
+@@ -1461,7 +1458,7 @@
+ 	title = {Les formes élémentaires de la vie religieuse le système totémique en {Australie}},
+ 	language = {French},
+ 	publisher = {F. Alcan},
+-	author = {Durkheim, Émile},
++	author = {Durkheim, Emile},
+ 	year = {1912},
+ 	note = {OCLC: 489968385}
+ }
+@@ -3037,7 +3034,7 @@
+ 	number = {Oct},
+ 	urldate = {2016-07-12},
+ 	journal = {Journal of Machine Learning Research},
+-	author = {Pedregosa, Fabian and Varoquaux, Gaël and Gramfort, Alexandre and Michel, Vincent and Thirion, Bertrand and Grisel, Olivier and Blondel, Mathieu and Prettenhofer, Peter and Weiss, Ron and Dubourg, Vincent and Vanderplas, Jake and Passos, Alexandre and Cournapeau, David and Brucher, Matthieu and Perrot, Matthieu and Duchesnay, Édouard},
++	author = {Pedregosa, Fabian and Varoquaux, Gaël and Gramfort, Alexandre and Michel, Vincent and Thirion, Bertrand and Grisel, Olivier and Blondel, Mathieu and Prettenhofer, Peter and Weiss, Ron and Dubourg, Vincent and Vanderplas, Jake and Passos, Alexandre and Cournapeau, David and Brucher, Matthieu and Perrot, Matthieu and Duchesnay, Edouard},
+ 	year = {2011},
+ 	pages = {2825--2830},
+ 	file = {Pedregosa et al_2011_Scikit-learn.pdf:/home/sl/.mozilla/firefox/dv0e3tkv.default-1432918138968/zotero/storage/FZRUEF2S/Pedregosa et al_2011_Scikit-learn.pdf:application/pdf;Snapshot:/home/sl/.mozilla/firefox/dv0e3tkv.default-1432918138968/zotero/storage/H72TMEWG/pedregosa11a.html:text/html}
+@@ -4310,4 +4307,4 @@
+ 	author = {Bloch, Maurice},
+ 	year = {2000},
+ 	pages = {189--204}
+-}
+\ No newline at end of file
++}
