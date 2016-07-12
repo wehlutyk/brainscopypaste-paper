@@ -170,39 +170,56 @@ however this is not problematic since the analysis is done on a per-feature basi
 
 
 \subsection{Substitution model}
-%\subsubsection{Temporal binning}
 \label{sec:temporal-binning}\label{sec:model}
 
 \todo{\#19: show more clearly why this is more robust with single-substitution, justifying our choice of this case}
 
 \todo{\#17: explain all models and the work involved, with graphs and explanatory figures for each model in annex}
 
-We finally need a substitution detection model, for the utterance data we use presents a challenge: quote-to-quote transformations, and much less substitutions, are not explicitly encoded in the data set. More precisely, each set of quotations bears no explicit information about either the authoritative original quotation, or the source quotation(s) each author relied on when creating a new post and reproducing (and possibly altering) that source.
-We thus face an inference problem where, given all quotations and their occurrence timestamps, we should estimate which was the originating quotation for each instance of each quotation.
+We finally need a substitution detection model, for the \newtext{quotation} data we use presents a challenge:
+quote-to-quote transformations and substitutions are not explicitly encoded in the data set.
+More precisely, each set of quotations bears no explicit information about either the authoritative original quotation, or the source quotation(s) each author relied on when creating a new post and reproducing (and possibly altering) that source.
+\newtext{In other words} we face an inference problem where, given all quotations and their occurrence timestamps, we must estimate which was the originating quotation for each instance of each quotation.
 
-We therefore model the underlying quotation selection process by making a few additional assumptions. % which let us define quote-to-quote substitutions from the available data.
+We therefore model the underlying quotation selection process by making a few additional assumptions.
 The main issue is deciding whether a later occurrence is a strict copy of an earlier occurrence, or a substitution of an even earlier occurrence, or perhaps even a substitution or copy from quotes appearing outside the data set, that is from a source external to the data collection perimeter.
 
-Let us give an example: say the quotation ``These accusations are false and \textbf{absurd}'' ($q$) appears in a blog on January 19, and the slightly different quotation ``These accusations are false and \textbf{incoherent}'' ($q'$) appears in other blogs twice on the 20th and once on the 21st of January.
+Let us give an example:
+say the quotation "These accusations are false and \textbf{absurd}" ($q$) appears in a blog on January 19, and the slightly different quotation "These accusations are false and \textbf{incoherent}" ($q'$) appears in other blogs twice on the 20th and once on the 21st of January.
 If $q$ was sufficiently prominent when $q'$ first appeared, we can safely assume that the first author of $q'$ on the 20th based himself on $q$ as is shown in Fig.~\ref{fig:substitution-temporal-binning-a}.
 But what about the second and third occurrences of $q'$, on the 20th and 21st?
 Should we consider them to be substitutions based on $q$ %(i.e. re-creations of $q'$ by a new instance of the substitution process that brought from $q$ to $q'$ in the first place)
-or accurate reproductions of the previous occurrences of $q'$? (Options shown in Fig.~\ref{fig:substitution-temporal-binning-a}.)
+or accurate reproductions of the previous occurrences of $q'$?
+(Options shown in Fig.~\ref{fig:substitution-unmodelled}.)
 
-\begin{figure}[h]
+\begin{figure}[!h]
     \centering
     \subfloat[Possible paths from occurrence to occurrence]{
 	    \def\svgwidth{\linewidth}
 	    \small
-	    \input{images/substitution-temporal-binning-a.pdf_tex}
-	    \label{fig:substitution-temporal-binning-a}
+	    \input{images/substitution-unmodelled.pdf_tex}
+	    \label{fig:substitution-unmodelled}
 	}
 	\hfill \\
 	\subfloat[Binned quotation family with majority rule]{
 	    \def\svgwidth{\linewidth}
 	    \small
-	    \input{images/substitution-q_max.pdf_tex}
-	    \label{fig:substitution-q_max}
+	    \input{images/substitution-Time=discrete-Source=majority-Past=last_bin-Durl=all.pdf_tex}
+	    \label{fig:substitution-Time=discrete-Source=majority-Past=last_bin-Durl=all}
+	}
+	\hfill \\
+	\subfloat[Binned quotation family with majority rule and excluded past]{
+	    \def\svgwidth{\linewidth}
+	    \small
+	    \input{images/substitution-Time=discrete-Source=majority-Past=last_bin-Durl=exclude_past.pdf_tex}
+	    \label{fig:substitution-Time=discrete-Source=majority-Past=last_bin-Durl=exclude_past}
+	}
+	\hfill \\
+	\subfloat[Binned quotation family with \emph{no} majority rule and excluded past extended to the beginning of the quotation family]{
+	    \def\svgwidth{\linewidth}
+	    \small
+	    \input{images/substitution-Time=discrete-Source=all-Past=all-Durl=exclude_past.pdf_tex}
+	    \label{fig:substitution-Time=discrete-Source=all-Past=all-Durl=exclude_past}
 	}
 	\caption{{\bf Temporal binning of quotation families.} $q$ and $q'$ are two versions of a quotation belonging to the same cluster.  In the bottom panel (b), $q'$ holds the majority in the 3rd bin and is considered the unique basis for the last occurrence of $q$ (in the 4th bin). This is despite the fact that $q$ also appears in bin~3 alongside $q'$, and despite it having appeared earlier at the very beginning of the quotation family (indeed in the situation shown in Fig.~\ref{fig:substitution-q_max}, this seems to be the most likely scenario). Conversely, if $q$ had been the most frequent quote in bin~3, the last occurrence of $q$ in bin~4 would have been considered a faithful copy of the occurrence of $q$ in bin~3.}
     \label{fig:substitution-temporal-binning}

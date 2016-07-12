@@ -1,6 +1,6 @@
-%% Creator: Inkscape inkscape 0.48.5, www.inkscape.org
+%% Creator: Inkscape inkscape 0.91, www.inkscape.org
 %% PDF/EPS/PS + LaTeX output extension by Johan Engelen, 2010
-%% Accompanies image file 'substitution-q_max.pdf' (pdf, eps, ps)
+%% Accompanies image file 'substitution-Time=discrete-Source=majority-Past=last_bin-Durl=all.pdf' (pdf, eps, ps)
 %%
 %% To include the image in your LaTeX document, write
 %%   \input{<filename>.pdf_tex}
@@ -36,7 +36,7 @@
   }%
   \providecommand\rotatebox[2]{#2}%
   \ifx\svgwidth\undefined%
-    \setlength{\unitlength}{354.78034668bp}%
+    \setlength{\unitlength}{319.93908691bp}%
     \ifx\svgscale\undefined%
       \relax%
     \else%
@@ -48,13 +48,17 @@
   \global\let\svgwidth\undefined%
   \global\let\svgscale\undefined%
   \makeatother%
-  \begin{picture}(1,0.32520386)%
-    \put(0,0){\includegraphics[width=\unitlength]{substitution-q_max.pdf}}%
-    \put(0.04833826,0.14726889){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{$q'$}}}%
-    \put(0.04895483,0.21549869){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{$q$}}}%
-    \put(0.94116453,0.0303686){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{$t$}}}%
-    \put(0.22663248,0.03970013){\color[rgb]{0,0,0}\makebox(0,0)[b]{\smash{{\tiny 1 day}}}}%
-    \put(0.47111019,0.03970013){\color[rgb]{0,0,0}\makebox(0,0)[b]{\smash{{\tiny 1 day}}}}%
-    \put(0.71586317,0.03970013){\color[rgb]{0,0,0}\makebox(0,0)[b]{\smash{{\tiny 1 day}}}}%
+  \begin{picture}(1,0.29639105)%
+    \put(0.15020329,0.22706419){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=1]{substitution-Time=discrete-Source=majority-Past=last_bin-Durl=all.pdf}}%
+    \put(0.05977294,0.15621346){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{$q'$}}}%
+    \put(0.063216,0.21591293){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{$q$}}}%
+    \put(0.92678101,0.05684014){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{$t$}}}%
+    \put(0.26742412,0.0231704){\color[rgb]{0,0,0}\makebox(0,0)[b]{\smash{{\tiny 1 day}}}}%
+    \put(0.53852542,0.0231704){\color[rgb]{0,0,0}\makebox(0,0)[b]{\smash{{\tiny 1 day}}}}%
+    \put(0.77270719,0.0231704){\color[rgb]{0,0,0}\makebox(0,0)[b]{\smash{{\tiny 1 day}}}}%
+    \put(0.0563299,0.09651413){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{$q''$}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=2]{substitution-Time=discrete-Source=majority-Past=last_bin-Durl=all.pdf}}%
+    \put(0.49298376,0.80664473){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{}}}%
   \end{picture}%
 \endgroup%

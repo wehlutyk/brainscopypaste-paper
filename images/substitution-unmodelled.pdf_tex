@@ -1,0 +1,72 @@
+%% Creator: Inkscape inkscape 0.91, www.inkscape.org
+%% PDF/EPS/PS + LaTeX output extension by Johan Engelen, 2010
+%% Accompanies image file 'substitution-unmodelled.pdf' (pdf, eps, ps)
+%%
+%% To include the image in your LaTeX document, write
+%%   \input{<filename>.pdf_tex}
+%%  instead of
+%%   \includegraphics{<filename>.pdf}
+%% To scale the image, write
+%%   \def\svgwidth{<desired width>}
+%%   \input{<filename>.pdf_tex}
+%%  instead of
+%%   \includegraphics[width=<desired width>]{<filename>.pdf}
+%%
+%% Images with a different path to the parent latex file can
+%% be accessed with the `import' package (which may need to be
+%% installed) using
+%%   \usepackage{import}
+%% in the preamble, and then including the image with
+%%   \import{<path to file>}{<filename>.pdf_tex}
+%% Alternatively, one can specify
+%%   \graphicspath{{<path to file>/}}
+%% 
+%% For more information, please see info/svg-inkscape on CTAN:
+%%   http://tug.ctan.org/tex-archive/info/svg-inkscape
+%%
+\begingroup%
+  \makeatletter%
+  \providecommand\color[2][]{%
+    \errmessage{(Inkscape) Color is used for the text in Inkscape, but the package 'color.sty' is not loaded}%
+    \renewcommand\color[2][]{}%
+  }%
+  \providecommand\transparent[1]{%
+    \errmessage{(Inkscape) Transparency is used (non-zero) for the text in Inkscape, but the package 'transparent.sty' is not loaded}%
+    \renewcommand\transparent[1]{}%
+  }%
+  \providecommand\rotatebox[2]{#2}%
+  \ifx\svgwidth\undefined%
+    \setlength{\unitlength}{319.91242676bp}%
+    \ifx\svgscale\undefined%
+      \relax%
+    \else%
+      \setlength{\unitlength}{\unitlength * \real{\svgscale}}%
+    \fi%
+  \else%
+    \setlength{\unitlength}{\svgwidth}%
+  \fi%
+  \global\let\svgwidth\undefined%
+  \global\let\svgscale\undefined%
+  \makeatother%
+  \begin{picture}(1,0.61273391)%
+    \put(0.15017414,0.29505229){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=1]{substitution-unmodelled.pdf}}%
+    \put(0.20725984,0.56953246){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{Quote occurrences}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=2]{substitution-unmodelled.pdf}}%
+    \put(0.05973625,0.29921618){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{$q'$}}}%
+    \put(0.0631796,0.43394108){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{$q$}}}%
+    \put(0.826458,0.07480036){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{$t$}}}%
+    \put(0.26740474,0.04112782){\color[rgb]{0,0,0}\makebox(0,0)[b]{\smash{{\tiny Jan 19}}}}%
+    \put(0.53852863,0.04112782){\color[rgb]{0,0,0}\makebox(0,0)[b]{\smash{{\tiny Jan 20}}}}%
+    \put(0.74270171,0.04112782){\color[rgb]{0,0,0}\makebox(0,0)[b]{\smash{{\tiny Jan 21}}}}%
+    \put(0.05629293,0.16449135){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{$q''$}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=3]{substitution-unmodelled.pdf}}%
+    \put(0.32649177,0.37810778){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{?}}}%
+    \put(0.48151985,0.21714172){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{?}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=4]{substitution-unmodelled.pdf}}%
+    \put(0.11427728,0.34690776){\color[rgb]{0,0,0}\rotatebox{90}{\makebox(0,0)[lb]{\smash{{\tiny 1 word}}}}}%
+    \put(0.11427728,0.21218293){\color[rgb]{0,0,0}\rotatebox{90}{\makebox(0,0)[lb]{\smash{{\tiny 1 word}}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=5]{substitution-unmodelled.pdf}}%
+    \put(0.49298318,0.87468113){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{}}}%
+  \end{picture}%
+\endgroup%
