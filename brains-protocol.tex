@@ -56,10 +56,10 @@ The significantly larger loss in occurrences indicates that, on average, the clu
 Even if we lose some real event-related utterances which are present in clusters lasting more than 80 days (one such lost quote, for instance, is "the city is tired of me and the organization and I have run our course together"), we check that our approach fulfills its goals by coding a random sub-sample of 100 clusters:
 35 of them are rejected by the filter, with 15 false negatives (rejected clusters that should have been kept) and 9 false positives (clusters kept when they should have been rejected), giving a precision score of 0.862 and a recall score of 0.789.
 Furthermore, all but one of the 9 false positives are left with a single non-rejected quote, meaning those clusters are ignored by our substitution analysis; this brings the effective precision of our filter to 0.982.\footnote{
-A similar analysis was made for language detection, which is part of the cluster filtering:
+\newtext{A similar analysis was made for language detection, which is part of the cluster filtering:
 out of 100 randomly sampled quotes, 17 are rejected because their detected language is not English, with no false positives and 6 false negatives, giving a precision score of 1 and a recall score of 0.933.
 Of the 6 false negatives, 4 had less than 5 tokens and would have been excluded by the cluster filter anyway.
-}}
+}}}
 
 
 \subsection{Word-level measures}
@@ -127,8 +127,8 @@ We used three standard measures on the FA network:
 
 \newtext{Several of these features are strongly related and can be grouped together.
 To make correlation values as well as future comparisons more reliable, we log-transformed features that have marked exponential distributions (a few words valued orders of magnitude higher than the vast majority of other words).\footnote{
-The distributions of original and log-transformed features appears in the supplementary material, along with correlation scatter plots for each feature pair, summarized below with correlation values.
-}}
+\newtext{The distributions of original and log-transformed features appears in the supplementary material, along with scatter plots for each feature pair, summarized below with correlation values.
+}}}
 
 \begin{figure}[!th]
     \centering
@@ -186,9 +186,7 @@ Let us give an example:
 The second occurrence of $q$ can safely be assumed to be a faithful copy of the first one the same day.
 And since $q$ is fairly prominent when $q'$ first appears, we could assume that the author of $q'$ on the 20th based herself on $q$ as is shown with a dashed line in Fig.~\ref{fig:substitution-unmodelled}.
 Now say a third version, "These \textbf{allegations} are false and \textbf{incoherent}" ($q''$) also appears once on January 19 and once on January 20 after $q'$.
-$q$ and $q''$ differ by two substitutions, so we ignore the possibility that one was written based on the other.\footnote{
-NOTE WE TESTED THIS.
-}
+$q$ and $q''$ differ by two substitutions, so we discard the possibility that one was written based on the other (this below for further details).
 $q''$ is only one substitution away from $q'$ however, so we could also consider the first occurrence of $q''$ as a potential source for $q'$ on the 20th.
 Conversely, the occurrence of $q''$ on the 20th could be considered as a substitution from $q'$, or as a faithful copy from its initial occurrence on January 19.}
 (Options shown in Fig.~\ref{fig:substitution-unmodelled}.)
