@@ -61,11 +61,13 @@
     \put(0.74270171,0.04112782){\color[rgb]{0,0,0}\makebox(0,0)[b]{\smash{{\tiny Jan 21}}}}%
     \put(0.05629293,0.16449135){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{$q''$}}}%
     \put(0,0){\includegraphics[width=\unitlength,page=3]{substitution-unmodelled.pdf}}%
-    \put(0.32649177,0.37810778){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{?}}}%
-    \put(0.48151985,0.21714172){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{?}}}%
+    \put(0.41012389,0.24847796){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{?}}}%
+    \put(0.56933357,0.24223128){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{?}}}%
     \put(0,0){\includegraphics[width=\unitlength,page=4]{substitution-unmodelled.pdf}}%
     \put(0.11427728,0.34690776){\color[rgb]{0,0,0}\rotatebox{90}{\makebox(0,0)[lb]{\smash{{\tiny 1 word}}}}}%
     \put(0.11427728,0.21218293){\color[rgb]{0,0,0}\rotatebox{90}{\makebox(0,0)[lb]{\smash{{\tiny 1 word}}}}}%
+    \put(0.42437134,0.36349807){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{?}}}%
+    \put(0.40764477,0.13547783){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{?}}}%
     \put(0,0){\includegraphics[width=\unitlength,page=5]{substitution-unmodelled.pdf}}%
     \put(0.49298318,0.87468113){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{}}}%
   \end{picture}%

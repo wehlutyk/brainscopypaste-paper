@@ -172,75 +172,140 @@ however this is not problematic since the analysis is done on a per-feature basi
 \subsection{Substitution model}
 \label{sec:temporal-binning}\label{sec:model}
 
-\todo{\#19: show more clearly why this is more robust with single-substitution, justifying our choice of this case}
-
-\todo{\#17: explain all models and the work involved, with graphs and explanatory figures for each model in annex}
-
 We finally need a substitution detection model, for the \newtext{quotation} data we use presents a challenge:
 quote-to-quote transformations and substitutions are not explicitly encoded in the data set.
 More precisely, each set of quotations bears no explicit information about either the authoritative original quotation, or the source quotation(s) each author relied on when creating a new post and reproducing (and possibly altering) that source.
 \newtext{In other words} we face an inference problem where, given all quotations and their occurrence timestamps, we must estimate which was the originating quotation for each instance of each quotation.
 
 We therefore model the underlying quotation selection process by making a few additional assumptions.
-The main issue is deciding whether a later occurrence is a strict copy of an earlier occurrence, or a substitution of an even earlier occurrence, or perhaps even a substitution or copy from quotes appearing outside the data set, that is from a source external to the data collection perimeter.
+\newtext{Given a particular occurrence of a quotation, the first issue is deciding whether} that occurrence is a strict copy of an earlier occurrence, or a substitution of another \newtext{quotation}, or maybe a substitution or copy from quotes appearing outside the data set, that is from a source external to the data collection perimeter.
+\newtext{The second issue is deciding which source originated such a substitution when several candidate sources are available.}
 
 Let us give an example:
-say the quotation "These accusations are false and \textbf{absurd}" ($q$) appears in a blog on January 19, and the slightly different quotation "These accusations are false and \textbf{incoherent}" ($q'$) appears in other blogs twice on the 20th and once on the 21st of January.
-If $q$ was sufficiently prominent when $q'$ first appeared, we can safely assume that the first author of $q'$ on the 20th based himself on $q$ as is shown in Fig.~\ref{fig:substitution-temporal-binning-a}.
-But what about the second and third occurrences of $q'$, on the 20th and 21st?
-Should we consider them to be substitutions based on $q$ %(i.e. re-creations of $q'$ by a new instance of the substitution process that brought from $q$ to $q'$ in the first place)
-or accurate reproductions of the previous occurrences of $q'$?
+\newtext{say the quotation "These accusations are false and \textbf{absurd}" ($q$) appears in two different blogs on January 19, and the slightly different quotation "These accusations are false and \textbf{incoherent}" ($q'$) appears in another blog on the 20th of January.
+The second occurrence of $q$ can safely be assumed to be a faithful copy of the first one the same day.
+And since $q$ is fairly prominent when $q'$ first appears, we could assume that the author of $q'$ on the 20th based herself on $q$ as is shown with a dashed line in Fig.~\ref{fig:substitution-unmodelled}.
+Now say a third version, "These \textbf{allegations} are false and \textbf{incoherent}" ($q''$) also appears once on January 19 and once on January 20 after $q'$.
+$q$ and $q''$ differ by two substitutions, so we ignore the possibility that one was written based on the other.\footnote{
+NOTE WE TESTED THIS.
+}
+$q''$ is only one substitution away from $q'$ however, so we could also consider the first occurrence of $q''$ as a potential source for $q'$ on the 20th.
+Conversely, the occurrence of $q''$ on the 20th could be considered as a substitution from $q'$, or as a faithful copy from its initial occurrence on January 19.}
 (Options shown in Fig.~\ref{fig:substitution-unmodelled}.)
 
-\begin{figure}[!h]
+\begin{figure}[h]
     \centering
-    \subfloat[Possible paths from occurrence to occurrence]{
-	    \def\svgwidth{\linewidth}
-	    \small
-	    \input{images/substitution-unmodelled.pdf_tex}
-	    \label{fig:substitution-unmodelled}
+	\def\svgwidth{\linewidth}
+	\small
+	\input{images/substitution-unmodelled.pdf_tex}
+	\caption{{\bf Possible paths from occurrence to occurrence.}
+	\newtext{$q$, $q'$ and $q''$ are three quotation variants belonging to the same cluster.
+	$q$ and $q''$ differ by two words, but $q'$ differs from both $q$ and $q''$ by a word.
+	The second occurrence of $q$ can safely be considered a faithful copy of the first, but the occurrences of $q'$ and $q''$ are uncertain:
+	while the first occurrence of $q'$ is most likely a substitution from $q'$, it could also stem from $q''$;
+	conversely, the second occurrence of $q''$ could also be a substitution from $q'$ instead of being a faithful copy of its first occurrence.}
 	}
-	\hfill \\
-	\subfloat[Binned quotation family with majority rule]{
-	    \def\svgwidth{\linewidth}
-	    \small
-	    \input{images/substitution-Time=discrete-Source=majority-Past=last_bin-Durl=all.pdf_tex}
-	    \label{fig:substitution-Time=discrete-Source=majority-Past=last_bin-Durl=all}
-	}
-	\hfill \\
-	\subfloat[Binned quotation family with majority rule and excluded past]{
-	    \def\svgwidth{\linewidth}
-	    \small
-	    \input{images/substitution-Time=discrete-Source=majority-Past=last_bin-Durl=exclude_past.pdf_tex}
-	    \label{fig:substitution-Time=discrete-Source=majority-Past=last_bin-Durl=exclude_past}
-	}
-	\hfill \\
-	\subfloat[Binned quotation family with \emph{no} majority rule and excluded past extended to the beginning of the quotation family]{
-	    \def\svgwidth{\linewidth}
-	    \small
-	    \input{images/substitution-Time=discrete-Source=all-Past=all-Durl=exclude_past.pdf_tex}
-	    \label{fig:substitution-Time=discrete-Source=all-Past=all-Durl=exclude_past}
-	}
-	\caption{{\bf Temporal binning of quotation families.} $q$ and $q'$ are two versions of a quotation belonging to the same cluster.  In the bottom panel (b), $q'$ holds the majority in the 3rd bin and is considered the unique basis for the last occurrence of $q$ (in the 4th bin). This is despite the fact that $q$ also appears in bin~3 alongside $q'$, and despite it having appeared earlier at the very beginning of the quotation family (indeed in the situation shown in Fig.~\ref{fig:substitution-q_max}, this seems to be the most likely scenario). Conversely, if $q$ had been the most frequent quote in bin~3, the last occurrence of $q$ in bin~4 would have been considered a faithful copy of the occurrence of $q$ in bin~3.}
-    \label{fig:substitution-temporal-binning}
+	\label{fig:substitution-unmodelled}
 \end{figure}
 
-To settle this question we group quote occurrences into fixed bins spanning $\Delta t$ days (1 day in the implementation), each one representing a unit of time evolution.
-When a quotation $q'$ appears in bin $t+1$, it is counted as a substitution if it differs from the most frequent quote $q$ of the preceding bin $t$ (or a substring thereof) by only one word. If not, $q'$ is not considered to be an instance of substitution.  %We assume here that quotes are based on the most frequent quote of the preceding bin (\hbox{vs.} all the other quotes in that bin).
-Note that these assumptions are admittedly a subset of a much wider set of possibilities, each leading to alternative substitution inferences.\footnote{In particular, the criterion of the most frequent quote in the preceding bin may be replaced with the most frequent quote overall, or the oldest quote; time can be sliced into fixed bins as is done here, or kept fine-grained by using sliding bins.}
-It is however not feasible to try them all and, for the sake of simplicity, we decided to go with a sensible set of assumptions, and stick to them without trying alternative options.
-%These various flavors of an ideal substitution detection model essentially change whether occurrences are considered as substitutions from another quote, repetitions of the original quote, or introduction of information external to the data set.
-%\TB{We identified and implemented eleven other such models, and they all yielded essentially the same results.} \rk{T: I would prefer a bit more detail here. Maybe on supp. mats.? What does “essentially the same” mean? This could cause concern to reviewers.}
+\newtext{One way to settle these questions is the following:}
+group quote occurrences into fixed bins spanning $\Delta t$ days (1 day in the implementation), each one representing a unit of time evolution;
+when a quotation $q'$ appears in bin $t+1$, it is counted as a substitution if it differs from the most frequent quote of the preceding bin $t$ (or a substring thereof) by only one word;
+if not, $q'$ is not considered to be an instance of substitution.
+\newtext{Fig.~\ref{fig:substitution-modelled-majority-all} shows the inferences made by such a model.
+The assumptions it embeds, however, are a subset of a much wider set of possibilities, each leading to alternative inferences.}
+
+\begin{new}
+
+We identified four binary parameters that differentiate potential models, such that the resulting 16 combinations cover most of the reasonable answers to inference uncertainties.
+The first two parameters define the preceding time bin from which authors could have drawn a source when producing a new occurrence:
+(1) \textbf{bin positions}, which can be discretized (aligning the end of a bin to midnight, as in the model presented above) or kept continuous (for each occurrence, use a bin that ends precisely at that occurrence);
+(2) \textbf{bin span}, which can be 24 hours (as in the model above) or can be extended to start at the very first occurrence in the quotation family.
+The other two parameters define rules on the selection of source and destination quotes of a substitution:
+(3) \textbf{candidate sources} can be restricted to the most frequent quotations in the preceding time bin (as in the model above), or not (in which case all quotations in the preceding bin are candidate sources);
+(4) \textbf{candidate destinations} can be restricted to quotations that do not appear in the preceding bin, or not (as in the model above).
+A substitution model, then, is the given of a value for each of those parameters;
+it considers valid all the substitutions (and only those) where the source and destination follow the rules set out by the parameters.
+If a destination has substitutions from multiple sources we count a single effective substitution where, for each feature, the value for the effective source word is the average of the values of the candidate source words.
+
+\end{new}
+\begin{figure*}[h]
+	\centering
+	\begin{subfigure}{.49\textwidth}
+	    \def\svgwidth{\textwidth}
+	    \small
+	    \input{images/substitution-Time=discrete-Source=majority-Past=last_bin-Durl=all.pdf_tex}
+	    \caption{Source must be majority in preceding bin, destination can be anything}
+	    \label{fig:substitution-modelled-majority-all}
+	\end{subfigure}
+	~
+	\begin{subfigure}{.49\textwidth}
+	    \def\svgwidth{\textwidth}
+	    \small
+	    \input{images/substitution-Time=discrete-Source=majority-Past=last_bin-Durl=exclude_past.pdf_tex}
+	    \caption{Source must be majority in preceding bin, destination must not appear in preceding bin}
+	    \label{fig:substitution-modelled-majority-exclude_past}
+	\end{subfigure}
+
+	\begin{subfigure}{.49\textwidth}
+	    \def\svgwidth{\textwidth}
+	    \small
+	    \input{images/substitution-Time=discrete-Source=all-Past=last_bin-Durl=all.pdf_tex}
+	    \caption{Source can be anything, destination can be anything}
+	    \label{fig:substitution-modelled-all-all}
+	\end{subfigure}
+	~
+	\begin{subfigure}{.49\textwidth}
+	    \def\svgwidth{\textwidth}
+	    \small
+	    \input{images/substitution-Time=discrete-Source=all-Past=last_bin-Durl=exclude_past.pdf_tex}
+	    \caption{Source can be anything, destination must not appear in preceding bin}
+	    \label{fig:substitution-modelled-all-exclude_past}
+	\end{subfigure}
+	\caption{\newtext{
+	{\bf Substitution models.}
+	Substitutions inferred by four models in the situation introduced by Fig.~\ref{fig:substitution-unmodelled}.
+	Each of these models uses discretely positioned bins spanning 1 day (see the main text for a complete description of parameters).
+	In the top left panel~(a), $q$ holds the majority in the first bin and is considered the unique basis for $q'$ in bin~2.
+	$q'$ and $q''$ have equal maximum frequency in bin~2 however, so both are sources of substitutions towards bin~3.
+	In the top right panel~(b), quotes that appear in the preceding bin cannot be the target of a substitution; this removes two substitutions compared to panel~(a).
+	In the bottom left panel~(c), the majority constraint is lifted compared to panel~(a), making $q''$ in bin~1 a candidate source for $q'$ in bin~2.
+	In the bottom right panel~(d), the majority constraint is also lifted compared to panel~(a) (adding the same $q'' \rightarrow q'$ substitution as in panel~(c)), and the excluded-past constraint is added as in panel~(b) (removing two same substitutions from bin~2 to bin~3 as in panel~(b)).
+	If the bins were extended to the beginning of the quotation family, the exclude past constraint would also remove the $q' \rightarrow q$ substitution from bin~2 to bin~3.
+	In all four panels, a background rectangle or square indicates the quotation is the source of a substitution.
+	A thick border on that rectangle or square indicates the quotation was selected because it has maximum frequency.}
+	}
+    \label{fig:substitution-modelled}
+\end{figure*}
+
+\begin{new}
+
+Put shortly a model defines how many times, and under what source and destination conditions, quote occurrences can be counted as substitutions.
+Fig.~\ref{fig:substitution-modelled} shows the inferences made by the four models that use discretely positioned bins spanning 1 day:
+later occurrences of $q'$ and $q''$ are counted as substitutions in Fig.~\ref{fig:substitution-modelled-majority-all} and Fig.~\ref{fig:substitution-modelled-all-all}, whereas in Fig.~\ref{fig:substitution-modelled-majority-exclude_past} and Fig.~\ref{fig:substitution-modelled-all-exclude_past} they are not.
+
+The results reported and discussed in the following sections are valid for all 16 models, and the graphics we present were produced by the model first introduced above.
+Finally, note that this inference procedure is one of the reasons we restricted our analysis to single-substitutions:
+looking for more complex transformations would
+(a) exponentially increase the number of candidate sources for a destination occurrence, which correspondingly reduces the confidence in inferences made,
+and (b) greatly increase the complexity of the transformation models used to make these inferences.\footnote{
+\newtext{We checked that this restriction does not bias the results discussed below by extending our protocol to two-substitution transformations.
+The results and graphics for the 16 additional models involved are available in the code repository for this paper: \url{https://github.com/wehlutyk/brainscopypaste}.
+\todo{check they're the same}.}
+}
+
+\end{new}
 
 \medskip
 
-\todo{\#12: fix substitution counts and add precision/recall}
-
-Put shortly, such a model defines how many times quote occurrences can be counted as substitutions: in Fig.~\ref{fig:substitution-q_max}, occurrences of $q'$ on the 20th are counted as substitutions, whereas the occurrences on the 21st are not.  In practice, from the 2.43m initial occurrences spread into 45,749 classes of quotes, with significant redundancy (many quotes are indeed simple duplicates), we manage to mine 6,172 real substitutions obeying to this model. From these substitutions we remove those featuring stop words, minor spelling changes (e.g. center/centre, November/Nov, Senator/Sen), abbreviations, spelled out numbers; this eventually yields 1,051 valid substitutions.
-
-\todo{Note that our minor-spelling-changes exclusion does not affect orthographic nd: in a sample of 100 substitutions, no rejected substitutions are minor orthographic changes that would interest us (they're always different spelling of the same concept).}
-
-%Let us illustrate this ``majority'' rule by going back to the example described in Section~\ref{sec:temporal-binning} and extending it, in Fig.~\ref{fig:substitution-q_max}.
+In practice \newtext{for the model first introduced above}, from the \newtext{2.60m} initial occurrences spread into 50,427 quotation families, with significant redundancy (many quotes are indeed simple duplicates), we mine \newtext{40,868} substitutions.
+From these substitutions we remove those featuring stop words, minor spelling changes (e.g. center/centre, November/Nov, Senator/Sen), abbreviations, spelled out numbers, \newtext{words unknown to WordNet, and deletions in substrings (which can appear as substitutions of non-deleted words)};
+this eventually yields \newtext{6,318} valid substitutions (before merging substitutions that share the same destination).\footnote{
+\newtext{Manually coding a random subset of 100 substitutions to evaluate this last filter showed that 84 were true negatives, 5 were false positives, and 11 true positives, giving a recall score of .688.
+Precision was evaluated over a random subset of 100 \emph{kept} substitutions, showing a score of .87.
+Finally, note that excluding minor spelling changes does not bias our use of orthographic neighborhood density as a feature:
+out of the first 100 substitutions coded for recall, those with levenshtein distance equal to 1 (which is what orthographic neighborhood density codes,~\citealp{marian_clearpond:_2012}) were all typos or UK/US spelling changes, neither of which are relevant for this study.}
+}
 
 \section{Results}\label{sec:results}
 
