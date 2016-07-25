@@ -311,17 +311,9 @@ out of the first 100 substitutions coded for recall, those with levenshtein dist
 
 \section{Results}\label{sec:results}
 
-\todo{\#16: add a quick description of what types of substitutions we see, then moving on to the observables since it's not what principally interests us.}
+\todo{Quick description of what types of substitutions we see (\#16)}
 
-\todo{order of presentation:
-- distance in substitution
-- susceptibility of POS
-- susceptibility of bins of absolute value
-- variation of bins of absolute value
-- susceptibility of quartiles in sentence
-- variation of quartiles in sentence (bins->bins or quartile->bins or quartile->quartile)
-- PCA of susceptibilities absolute, quartile, absolute+quartile
-}
+\todo{Mention distance in substitution}
 
 We may now use this substitution model to formulate a family of psycholinguistic hypotheses describing the role of each feature in the accuracy of the reformulation.  To this end, we build two main observables for each word feature.
 First, we measure the susceptibility for words to be the target of a substitution in a quote, knowing that there has been a variation, in order to show which semantic features are the most likely to ``attract'' a substitution under this condition. Second, we measure the change in word feature upon substitution, looking at the variation of a given feature between start and arrival words.
@@ -333,39 +325,36 @@ The two situations are different enough to be studied separately, and we focus h
 
 \subsection{Susceptibility}
 
-\todo{\#19: explain if we're susceptible to bias from single-substitution}
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=\linewidth]{images/computed-figures/all-susceptibilities-pos.png}
+    \caption{}
+    \label{fig:pos-susceptibilities}
+\end{figure}
 
 We say that a word is \emph{substitutable} if it appears in a quote which undergoes a substitution, whether that substitution operates on that word or on another one.
 Word substitution susceptibility is computed as the ratio of the number of times $s_w$ a word is substituted to the number of times $p_w$ that word appears in a substitutable position, that is $\sfrac{s_w}{p_w}$. {In other words, it measures how often a word $w$ actually gets substituted, compared to how often it could have been substituted (because it appears in quotes undergoing substitution)}.
 
-Now, for a given feature $\phi$, we obtain the mean susceptibility $\sigma_{\phi}(f)$ for the feature value $f$ by averaging this ratio over all words such that $\phi(w) = f$, that is% (only taking into account words that are substituted at least once)
-:
+Now, for a given feature $\phi$, we obtain the mean susceptibility $\sigma_{\phi}(f)$ for the feature value $f$ by averaging this ratio over all words such that $\phi(w) = f$, that is:
 
 $$\sigma_{\phi}(f) = \left< \frac{s_w}{p_w} \right>_{\left\lbrace w | \phi(w) = f \right\rbrace}$$
 
 Put shortly, susceptibility focuses on the selection of start words involved in substitutions, measuring the effect of features at the moment preceding the substitution when it is not yet known which word in the quotation will be substituted.
 
-%\begin{figure*}[!th]
-%    \centering
-%    \includegraphics[width=\textwidth]{images/computed-figures/feature_susceptibilities.png}
-%    \caption{\textbf{Substitution susceptibility:} average susceptibility to substitution versus average feature value of a candidate word for substitution, with 95\% asymptotic confidence intervals.
-%    The heatmap on the lower-right shows the joint effect of Number of synonyms and Number of phonemes on susceptibility, averaged over the respective single-variable ranges, with sample size (word numbers) in parentheses.}
-%    \label{fig:feature-susceptibilities}
-%\end{figure*}
+\begin{figure*}[!th]
+    \centering
+    \includegraphics[width=\textwidth]{images/computed-figures/paper-susceptibilities-quantilebins_global.png}
+    \caption{\textbf{Substitution susceptibility:}% average susceptibility to substitution versus average feature value of a candidate word for substitution, with 95\% asymptotic confidence intervals.
+    %The heatmap on the lower-right shows the joint effect of Number of synonyms and Number of phonemes on susceptibility, averaged over the respective single-variable ranges, with sample size (word numbers) in parentheses.
+    }
+    \label{fig:feature-susceptibilities-global}
+\end{figure*}
+
 \medskip
 
-\todo{\#16:
-(1) show POS don't differ,
-(2) note that stopwords are excluded, which excludes POS open/closed discussion
-}
+\todo{Exemplify with POS (note stopwords excluded) (\#16)}
 
-\todo{\#16: explain we do this on quartiles, rework results discussion}
-
-\todo{\#16: explicit all significance claims, referring to the CIs}
-
-\todo{\#17: show other feature variations and other models in annex}
-
-\todo{\#15: relate to missed literature}
+\todo{Discuss results for global value, then (\#15) relate to missed literature}
 
 Results for this measure are gathered in Fig.~\ref{fig:feature-susceptibilities}. They first show an obvious strong effect of Word frequency: the more frequent a word, the less likely it is to attract substitutions.
 Indeed, susceptibility goes from $.33$ for low-frequency words down to nearly~0 for very high-frequency words.
@@ -378,22 +367,24 @@ This is remarkably clear for Clustering coefficient and Age of acquisition, wher
 {We may notice a slight effect for the lowest values of Number of synonyms and Number of phonemes, where the mean susceptibility is almost half as high as the average of the other values (respectively $.09$ vs. $.16$, and $.11$ vs. $.17$).}
 Keeping in mind the poor statistical significance of this effect, we could still wonder if the shortest words and words with fewest synonyms are significantly less susceptible to substitution.
 To further examine this phenomenon, we plotted the two-dimensional map of susceptibility values for these two features (see heatmap at the bottom right of Fig.~\ref{fig:feature-susceptibilities}).
-%\TG{TBF: [[We see that outlier values (the two darkest cells) are both due to cells where the number of items is only slightly above the significance threshold (11 items, while we decided to cut at 10).]]}
-%\TG{TBF: [[If we focus on cells based on at least several dozens of words]]}
 {Even if there are a few outlier cells, values tend to navigate around the mean value ($.16$) with little obvious regularity (except for a low number of synonyms, consistent with the unidimensional graph)}. {On the whole, this makes it relatively hard to draw any conclusion as regards the direction of an effect, except for the least populated value ranges (which as a result are also less significant).}
-%\TG{TBF: [[This confirms the fact that the slight late increases observed for Age of acquisition and Number of phonemes are rather non-significant.]]}
-
-%\TB{This class of words corresponds to \todo{} [\TB{highly specialized words? domain-specific? a hard limit on too complicated words?}]}
-%Age of acquisition and Number of phonemes delineate two categories of words: both features have little to no significant effect on susceptibility for low- to mid-valued words, but very high-valued words behave differently and tend to be more substituted (clearly for high Number of phonemes, and only as a tendency for high Age of acquisition).
-%These high-valued words also have low occurrence frequencies, which corresponds to the slope change in the frequency curve between extreme low frequency words and mid- to high-frequency words. \rk{check this with a plot of freq vs. clustering and freq vs. AoA, or simply plot of frequency for the high-valued words for AoA and CC.}
 
 All in all, apart from Word frequency and despite some local tendencies, {in general} these results do not allow us to conclude to a marked effect %or to no effect
 of the selected psycholinguistic features on substitution susceptibility.
 We may therefore globally assume that substitution targets are chosen in a more or less uniform way with respect to these features.
 
-% plus ou moins choisies uniformément (modulo les réserves exhibées en 4.1), on peut montrer en quoi elles sont modifiées Finally the results for Clustering coefficient and Number of synonyms, despite some tendencies, do not allow us to conclude either to an effect or no effect of those features on substitution susceptibility.
-
 \subsection{Variation}
+
+\begin{figure*}[!th]
+    \centering
+    \includegraphics[width=\textwidth]{images/computed-figures/paper-variations-quantilebins_global.png}
+    \caption{\textbf{Feature variation upon substitution:} %$\nu_\phi$, average feature value of the appearing word as a function of the feature value of the disappearing word in a substitution, with 95\% asymptotic confidence intervals.
+    %The overall position of the curve with respect to the dashed line representing $\mathcal{H}_0$ (constant $\nu_{\phi}^0$) indicates the direction of the cognitive bias.
+    %The intersection with $y = x$ marks the attractor value.
+    %The fact that all curves have slopes smaller than 1 means that the substitution operation is contractile on average: each feature will converge towards its own specific asymptotic range.
+    }
+    \label{fig:feature-variations-global}
+\end{figure*}
 
 We can thus show how words are modified once we know they are substituted, that is how their features are modified by said substitution.
 Considering a word~$\wstart$ substituted for~$\warrival$, we measure how the feature of~$\wstart$ varies when it is replaced with~$\warrival$, that is we look at~$\phi(\warrival)$ as a function of~$\phi(\wstart)$.
@@ -403,42 +394,21 @@ $$\nu_{\phi}(f) = \left<\phi(\warrival)\right>_{\left\lbrace \wstart\rightarrow\
 Of prime interest is the comparison of the value of $\nu_{\phi}(f)$ with respect to $f$, as it shows whether there is an attraction (or a repulsion) effect towards (respectively from) some values of each feature.
 In other words, plotting the $y=x$ line, we can see if substitutions tend to converge towards some typical value of a word feature or not --- as is classically done in the study of dynamical systems.
 
+\todo{Introduce both H0 and H00}
+
 We also introduce a null hypothesis $\mathcal{H}_0$ to compare the actual variation of a word's feature to its expected variation, assuming the arrival word $\warrival$ was randomly chosen from the whole pool of words available in the data set for that feature.\footnote{For instance, when considering the feature ``Clustering coefficient'', the arrival word is randomly chosen among words present in the data set of FA norms.}
-%\TB{randomly chosen from the whole pool of words in the data set from which the feature is built (e.g. for Clustering coefficient: randomly chosen in the pool of words in the Free Association norms)}.\marginnote{C: ici on est bien d'accord que le pool of FA words c'est tout le set de mots, pas juste les voisins? la formulation est un peu ambigüe. S: oui et non. Oui: c'est pas juste les voisins. Non: le pool dépend de la feature, c'est pas juste FA. Il y avait une erreur, j'ai reformulé pour être plus clair.}
 In this case, since $\phi(\warrival)$ becomes a constant value in the above averaging (by definition $\warrival$ does not depend on $\wstart$ anymore),  the baseline variation under $\mathcal{H}_0$ may be rewritten as:\footnote{We additionally considered an alternative null hypothesis, denoted $\mathcal{H}_{00}$, where the arrival word is randomly chosen \emph{among immediate synonyms of the start word}, that is an arrival word chosen among semantically plausible though still random words. In this case $\warrival_{00}$ does depend on $\wstart$. Our conclusions hold under this second null hypothesis, so for the sake of clarity we chose to keep the simpler~$\mathcal{H}_0$.}
 $$\nu_{\phi}^0 (f) = \left<\phi\right>$$
-%We thereby obtain the mean variation of feature for each start feature value, comparing the variations to a situation where arrival words are chosen randomly.
 
 This approach yields a fine-grained view of how word features evolve upon substitution, on average, with respect to
 \begin{seriate}
 \item the original feature (\hbox{vs.} $y=x$) and
 \item a random arrival (\hbox{vs.} $\nu_{\phi}^0$).
 \end{seriate}
-%\begin{figure*}[!th]
-%    \centering
-%    \includegraphics[width=\textwidth]{images/computed-figures/feature_variations-binned.png}
-%    \caption{\textbf{Feature variation upon substitution:} $\nu_\phi$, average feature value of the appearing word as a function of the feature value of the disappearing word in a substitution, with 95\% asymptotic confidence intervals.
-%    The overall position of the curve with respect to the dashed line representing $\mathcal{H}_0$ (constant $\nu_{\phi}^0$) indicates the direction of the cognitive bias.
-%    The intersection with $y = x$ marks the attractor value.
-%    %The fact that all curves have slopes smaller than 1 means that the substitution operation is contractile on average: each feature will converge towards its own specific asymptotic range.
-%    }
-%    \label{fig:feature-variations}
-%\end{figure*}
 
 \medskip
 
-\todo{\#16:
-(1) add H00 lines to account for semantic similarity (nothing more fancy since it involves a threshold),
-(2) rework results discussion
-}
-
-\todo{\#17: show other feature variations and other models in annex}
-
-\todo{\#17: explain binning}
-
-\todo{\#18: tone down claims about contractile: it's a possible hypothesis if this were the only process, but not observed with the mix of all other processes}
-
-\todo{\#15: relate to missed literature}
+\todo{Update results, explaining binning and toning down contractility, and relate to missed literature}
 
 Results are gathered in Fig.~\ref{fig:feature-variations}.
 We can do a first striking observation: all graphs show the existence of a unique intersection of $\nu_{\phi}$ with $y=x$, while the slope of $\nu_{\phi}$ is smaller than 1, independently of the feature considered.
@@ -456,10 +426,6 @@ The first class (Number of phonemes and Number of synonyms) are features for whi
 On the other hand, the second class (comprising Word frequency, Age of acquisition, and Clustering coefficient) are features for which the substitution process has a clear bias, positive or negative, with respect to the purely random situation ($\mathcal{H}_0$).
 
 Word frequency, with $\nu_{\phi}$ always significantly above $\nu_{\phi}^0$, exhibits a strong bias towards more frequent words. This, in turn, is consistent with the hypothesis that substitution is a recall process, since common words are favored over awkward ones, while it goes against the idea that it could be a familiarity process, where awkward terms would be favored.
-%\cam{je crois qu'on peut éviter l'inférence inverse en ne disant pas "confirms" (c'est exagéré en effet) mais en disant juste que c'est cohérent avec un processus mais pas l'autre; j'ai changé le wording}
-% , Mais est-ce que c'est pas une inférence inverse que de dire ceci? i.e. on sait qu'une tâche "familiarity/recognition" implique un biais en faveur des mots awkards, et qu'une tâche "recall" implique un biais en faveur des mots fréquents, mais on peut pas vraiment tirer de conclusions en utilisant la réciproque, si?}.
-%However, the detailed variations of the Word frequency curve, despite an inflection for high-frequency words, do not seem to follow any significant pattern.\cam{Je serais pour supprimer cette phrase purement factuelle et pas très clear-cut non plus}
-
 
 Age of acquisition and Clustering coefficient, on the other hand, exhibit a clear negative bias for the substitution process. Both curves are significantly below their respective $\nu_{\phi}^0$ values, which is consistent with the literature on recall: words learned earlier and words with lower clustering coefficient are easier to produce than average~\citep{nelson2013activation,Zevin02}.
 Clustering coefficient has the additional particularity that, on average, the destination word does not depend on the start word; that is on average, substitutions will always produce words with a clustering coefficient around $\exp(-2.4) \simeq .1$.
@@ -481,15 +447,23 @@ Such a change, though minor in appearance, is a typical example of alteration al
 %globe (age 6.5, phonemes 4.0, freq 8.18, cc -1.42, susceptibility 1.0)
 %world  [age 5.32, phonemes 4.0, freq 11.89, cc -2.95, susceptibility 0.272727272727]
 
-\todo{\#16: add the taking-context-into-account parts, potentially moving the non-relative results discussions to here:
-(1) explain and add sentence-relative susceptibility by quartiles, which has a perfectly clear interpretation + results discussion,
-(2) explain and add sentence-relative variations + results discussion
-(3) link those results to non sentence-relative values
-}
+\subsection{Sentence context}
 
-\todo{\#17: show other feature variations and other models in annex}
+\todo{Explain in-sentence susceptibility and sentence-relative variation, relating to global value results}
 
-\todo{\#15: relate to missed literature}
+\begin{figure*}[!th]
+    \centering
+    \includegraphics[width=\textwidth]{images/computed-figures/paper-susceptibilities-sentencequantiles.png}
+    \caption{}
+    \label{fig:feature-susceptibilities-in_sentence}
+\end{figure*}
+
+\begin{figure*}[!th]
+    \centering
+    \includegraphics[width=\textwidth]{images/computed-figures/paper-variations-quantilebins_sentencerel.png}
+    \caption{}
+    \label{fig:feature-variations-sentencerel}
+\end{figure*}
 
 \medskip
 We thus observe a clear convergence pattern for each feature, with two different classes corresponding to the psychological relevance of each feature for the substitution process.
