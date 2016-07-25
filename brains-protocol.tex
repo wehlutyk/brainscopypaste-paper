@@ -22,6 +22,7 @@ Our goal, therefore, is to show that such effects exist and are measurable even 
 %\todo{That is, we aim to prove first a relatively weak hypothesis before trying stronger ones. [Cam: idem, je supprimerais celle-là]}
 If this is confirmed, we will have successfully applied laboratory analyses to out-of-laboratory data, opening a path to explanations of actual (\hbox{vs.} simulated) cultural evolution with tools from cognitive science.
 As explained in the previous section, this is the reason we chose to use measures that can aggregate over all the transformations in the data set.}
+\todo{this last sentence is unclear or not useful}
 
 To keep the analysis \newtext{tractable}, we focused on quotation transformations consisting in the \emph{substitution} of a word by another word (and only those cases) in order to unambiguously discuss single word replacements.
 \newtext{This restriction also allows us to more reliably infer the information that is missing in our data set, as explained further down (see "Substitution model").}
@@ -59,11 +60,11 @@ The significantly larger loss in occurrences indicates that, on average, the clu
 }
 Even if we lose some real event-related utterances which are present in clusters lasting more than 80 days (one such lost quote, for instance, is "the city is tired of me and the organization and I have run our course together"), we check that our approach fulfills its goals by coding a random sub-sample of 100 clusters:
 35 of them are rejected by the filter, with 15 false negatives (rejected clusters that should have been kept) and 9 false positives (clusters kept when they should have been rejected), giving a precision score of 0.862 and a recall score of 0.789.
-Furthermore, all but one of the 9 false positives are left with a single non-rejected quote, meaning those clusters are ignored by our substitution analysis; this brings the effective precision of our filter to 0.982.\footnote{
+Furthermore, all but one of the 9 false positives are left with a single non-rejected quote, meaning those clusters are ignored by our substitution analysis; this brings the effective precision of our filter to 0.982.}\footnote{
 \newtext{A similar analysis was made for language detection, which is part of the cluster filtering:
 out of 100 randomly sampled quotes, 17 are rejected because their detected language is not English, with no false positives and 6 false negatives, giving a precision score of 1 and a recall score of 0.933.
 Of the 6 false negatives, 4 had less than 5 tokens and would have been excluded by the cluster filter anyway.
-}}}
+}}
 
 
 \subsection{Word-level measures}
@@ -292,8 +293,7 @@ looking for more complex transformations would
 (a) exponentially increase the number of candidate sources for a destination occurrence, which correspondingly reduces the confidence in inferences made,
 and (b) greatly increase the complexity of the transformation models used to make these inferences.\footnote{
 \newtext{We checked that this restriction does not bias the results discussed below by extending our protocol to two-substitution transformations.
-The results and graphics for the 16 additional models involved are available in the code repository for this paper: \url{https://github.com/wehlutyk/brainscopypaste}.
-\todo{check they're the same}.}
+The results and graphics for the 16 additional models involved are available in the code repository for this paper: \url{https://github.com/wehlutyk/brainscopypaste}.}
 }
 
 \end{new}
@@ -302,7 +302,7 @@ The results and graphics for the 16 additional models involved are available in 
 
 In practice \newtext{for the model first introduced above}, from the \newtext{2.60m} initial occurrences spread into 50,427 quotation families, with significant redundancy (many quotes are indeed simple duplicates), we mine \newtext{40,868} substitutions.
 From these substitutions we remove those featuring stop words, minor spelling changes (e.g. center/centre, November/Nov, Senator/Sen), abbreviations, spelled out numbers, \newtext{words unknown to WordNet, and deletions in substrings (which can appear as substitutions of non-deleted words)};
-this eventually yields \newtext{6,318} valid substitutions (before merging substitutions that share the same destination).\footnote{
+this eventually yields \newtext{6,318} valid substitutions \newtext{(before merging substitutions that share the same destination)}.\footnote{
 \newtext{Manually coding a random subset of 100 substitutions to evaluate this last filter showed that 84 were true negatives, 5 were false positives, and 11 true positives, giving a recall score of .688.
 Precision was evaluated over a random subset of 100 \emph{kept} substitutions, showing a score of .87.
 Finally, note that excluding minor spelling changes does not bias our use of orthographic neighborhood density as a feature:
@@ -312,6 +312,16 @@ out of the first 100 substitutions coded for recall, those with levenshtein dist
 \section{Results}\label{sec:results}
 
 \todo{\#16: add a quick description of what types of substitutions we see, then moving on to the observables since it's not what principally interests us.}
+
+\todo{order of presentation:
+- distance in substitution
+- susceptibility of POS
+- susceptibility of bins of absolute value
+- variation of bins of absolute value
+- susceptibility of quartiles in sentence
+- variation of quartiles in sentence (bins->bins or quartile->bins or quartile->quartile)
+- PCA of susceptibilities absolute, quartile, absolute+quartile
+}
 
 We may now use this substitution model to formulate a family of psycholinguistic hypotheses describing the role of each feature in the accuracy of the reformulation.  To this end, we build two main observables for each word feature.
 First, we measure the susceptibility for words to be the target of a substitution in a quote, knowing that there has been a variation, in order to show which semantic features are the most likely to ``attract'' a substitution under this condition. Second, we measure the change in word feature upon substitution, looking at the variation of a given feature between start and arrival words.
