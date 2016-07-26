@@ -132,7 +132,7 @@ We used three standard measures on the FA network:
 
 \newtext{Several of these features are strongly related and can be grouped together.
 To make correlation values as well as future comparisons more reliable, we log-transformed features that have marked exponential distributions (a few words valued orders of magnitude higher than the vast majority of other words).\footnote{
-\newtext{The distributions of original and log-transformed features appears in the supplementary material, along with scatter plots for each feature pair, summarized below with correlation values.
+\newtext{The distributions of original and log-transformed features appears in the Supplementary Information, along with scatter plots for each feature pair, summarized below with correlation values.
 }}}
 
 \begin{figure}[!th]
@@ -222,11 +222,11 @@ The assumptions it embeds, however, are a subset of a much wider set of possibil
 
 We identified four binary parameters that differentiate potential models, such that the resulting 16 combinations cover most of the reasonable answers to inference uncertainties.
 The first two parameters define the preceding time bin from which authors could have drawn a source when producing a new occurrence:
-(1) \textbf{bin positions}, which can be discretized (aligning the end of a bin to midnight, as in the model presented above) or kept continuous (for each occurrence, use a bin that ends precisely at that occurrence);
+(1) \textbf{bin positions}, which can be aligned to midnight (as in the model presented above) or kept sliding (for each occurrence, use a bin that ends precisely at that occurrence);
 (2) \textbf{bin span}, which can be 24 hours (as in the model above) or can be extended to start at the very first occurrence in the quotation family.
 The other two parameters define rules on the selection of source and destination quotes of a substitution:
 (3) \textbf{candidate sources} can be restricted to the most frequent quotations in the preceding time bin (as in the model above), or not (in which case all quotations in the preceding bin are candidate sources);
-(4) \textbf{candidate destinations} can be restricted to quotations that do not appear in the preceding bin, or not (as in the model above).
+(4) \textbf{candidate destinations} can be restricted to quotations that do not appear in the preceding bin, or without restriction (as in the model above).
 A substitution model, then, is the given of a value for each of those parameters;
 it considers valid all the substitutions (and only those) where the source and destination follow the rules set out by the parameters.
 If a destination has substitutions from multiple sources we count a single effective substitution where, for each feature, the value for the effective source word is the average of the values of the candidate source words.
@@ -254,7 +254,7 @@ If a destination has substitutions from multiple sources we count a single effec
 	    \def\svgwidth{\textwidth}
 	    \small
 	    \input{images/substitution-Time=discrete-Source=all-Past=last_bin-Durl=all.pdf_tex}
-	    \caption{Source can be anything, destination can be anything}
+	    \caption{Source can be anything, destination can be anything\\\hfill} % \\\hfill to add a line, aligning with the other panels which have two-line captions
 	    \label{fig:substitution-modelled-all-all}
 	\end{subfigure}
 	~
@@ -311,16 +311,31 @@ out of the first 100 substitutions coded for recall, those with levenshtein dist
 
 \section{Results}\label{sec:results}
 
-\todo{Quick description of what types of substitutions we see (\#16)}
+\begin{new}
 
-\todo{Mention distance in substitution}
+While most of the substitutions we obtain with this procedure replace a word with another semantically related word, the two are rarely direct synonyms:
+only a third of all substitutions travel less than 3 hops on the hyponym-hypernym network defined by WordNet (direct synonyms count as 0~hops on this network), meaning that at least two thirds involve non-synonyms.\footnote{
+\newtext{A similar behavior is observed on the FA network, where about 104 clusters have substitutions traveling only 1 hop, 110 traveling 2 hops, 137 traveling 3, 72 traveling 4, and 13 traveling 5.
+}}
+Compared to the word it replaces, the new word usually achieves a similar meaning in the context of its sentence while still slightly changing the implications or the attitude expressed by the author.
+The following examples illustrate this behavior:
 
-We may now use this substitution model to formulate a family of psycholinguistic hypotheses describing the role of each feature in the accuracy of the reformulation.  To this end, we build two main observables for each word feature.
-First, we measure the susceptibility for words to be the target of a substitution in a quote, knowing that there has been a variation, in order to show which semantic features are the most likely to ``attract'' a substitution under this condition. Second, we measure the change in word feature upon substitution, looking at the variation of a given feature between start and arrival words.
+\begin{APAitemize}
+	\item ``This is \{socialism~$\rightarrow$~welfare\} for the rich'',
+	\item {[}The{]} ``perverse logic of \{clashes~$\rightarrow$~confrontation\} and violence'',
+	\item ``This \{crisis~$\rightarrow$~problem\} did not develop overnight and it will not be solved overnight''.
+\end{APAitemize}
 
-Note that since we only consider substitutions and not faithful copies, we measure the features of an alteration \emph{knowing that there has been an alteration}, and we do not take invariant quotations into account.
-Indeed, in the former case we know there has been a human reformulation, whereas in the latter case it is impossible to know whether there has been perfect human reformulation or simply digital copy-pasting of a source~(``{\sc Ctrl-C}/{\sc Ctrl-V}'').
-Furthermore, perfect human reformulation possibly involves different practices than those involved in alteration ---~for instance drafting before publishing, double-checking sources, proof-reading~--- and may not be representative of the cognitive processes at work during alteration.
+\end{new}
+
+\newtext{Our question concerns the low-level properties of these substitutions; to address it} we build the following two observables for each word feature.
+First, we measure \newtext{which word features are more or less substituted compared to how often they would be if the process were random, in order to capture} the susceptibility for words to be the target of a substitution in a quote.
+Second, we measure the change in word feature upon substitution, looking at the variation of a given feature between start and arrival words.
+\newtext{Since sentence context is also central to this process, we extend these two observables by applying them to feature values relative to the distribution of feature values of the sentence in which a word appears.}
+
+Note that since we only consider substitutions and not faithful copies, we measure the features of an alteration \emph{knowing that there has been an alteration}, \newtext{that is} we do not take invariant quotations into account.
+Indeed, in the former case we know there has been a human reformulation, whereas in the latter case it \newtext{we cannot} know whether there has been perfect human reformulation or simply digital copy-pasting of a source~(``{\sc Ctrl-C}/{\sc Ctrl-V}'').
+\newtext{Moreover}, perfect human reformulation possibly involves different practices than those involved in alteration ---~for instance drafting before publishing, double-checking sources, proof-reading~--- and may not be representative of the cognitive processes at work during alteration.
 The two situations are different enough to be studied separately, and we focus here on the latter.
 
 \subsection{Susceptibility}
