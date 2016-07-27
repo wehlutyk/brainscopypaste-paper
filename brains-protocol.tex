@@ -341,7 +341,8 @@ The two situations are different enough to be studied separately, and we focus h
 \subsection{Susceptibility}
 
 We say that a word is \emph{substitutable} if it appears in a quote which undergoes a substitution, whether the substitution operates on that word or on another one.
-\newtext{For a given group of words $g$, susceptibility is computed as the ratio of the number of times $s_g$ words of that group are substituted to the number of times $s_g^0$ words of that group would be substituted if substitutions fell randomly on substitutable words, that is:}\footnote{
+% utiliser "word-level measures", et/ou "For a given value of a given type of word-level measure (say, words of length 5), we define susceptibility as the ratio (...)"
+\newtext{For a given group of words $g$ \todo{[not clear this is not a given word -- maybe present by example instead of generally]}, susceptibility is computed as the ratio of the number of times $s_g$ words of that group are substituted to the number of times $s_g^0$ words of that group would be substituted if substitutions fell randomly on substitutable words, that is:}\footnote{
 \newtext{$s_g^0$ is computed by summing, over all quotes undergoing a substitution, the ratio of the number of words in a quote that are from group $g$ to the number of words in the same quote that could have been the substitution's target.
 If, for instance, half the content words of a given quote are from group $g$, such a quote contributes .5 to the total $s_g^0$.}
 }
@@ -356,7 +357,7 @@ In other words, susceptibility measures \newtext{how much more or less a group o
     \caption{\newtext{\textbf{Substitution susceptibility for POS categories:} categories are simplified from the TreeTagger tag set: \emph{J} means adjective, \emph{N}~noun, \emph{R}~adverb, \emph{V}~verb, and \emph{Stopword-like} gathers together all the categories partially or completely affected by the stopword filter (see main text for details).
     The top panel shows the actual $s_{POS}$ and $s_{POS}^0$ counts, the bottom panel shows $\sigma_{POS}$, the ratio of the two.
     Confidence intervals are computed with the Goodman method for multinomial proportions.}
-    \todo{Split into 2 subfigures; fix labels; add H0 dashed line.}}
+    \todo{Split into 2 subfigures; fix labels; use log-y for second pane; add H0 dashed line.}}
     \label{fig:pos-susceptibilities}
 \end{figure}
 
@@ -383,6 +384,7 @@ it seems, then, that POS categories don't capture any strong bias in the selecti
     \centering
     \includegraphics[width=\textwidth]{images/computed-figures/paper-susceptibilities-quantilebins_global.png}
     \caption{\textbf{Substitution susceptibility for feature values:} susceptibility to substitution versus feature value of a candidate word for substitution \newtext{(binned by quartiles)}, with 95\% asymptotic confidence intervals \newtext{(Goodman-based multinomial)}.
+    \todo{Use log-y}
     }
     \label{fig:feature-susceptibilities-global}
 \end{figure*}
@@ -461,38 +463,47 @@ This is how the number of intersections with $y=x$, and the slope of $\nu_{\phi}
 }}}
 In other words, beyond individual variation patterns, the substitution process exhibits a unique attractor \newtext{for each feature}.
 
-Second, the comparison with $\nu_{\phi}^0$ shows that there are two classes of attractors, depending on whether:
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=\linewidth]{images/computed-figures/paper-variations_regression-globals_to_globalsvariation.png}
+    \caption{\newtext{\textbf{Coefficients of the regressions of feature variations:}
+	\todo{only aoa and clustering are impacted by frequency, the rest is only impacted by itself}
+	}}
+    \label{fig:feature-variations_regression-global}
+\end{figure}
+
+Second, the comparison with $\nu_{\phi}^0$ \newtext{and $\nu_{\phi}^{00}$} shows that there are two classes of attractors, depending on whether:
 \begin{APAenumerate}
-\item there is a triple intersection (of $y=x$, $\nu_{\phi}^0$ and $\nu_{\phi}$);
-\item or $\nu_{\phi}$ always remains above or below $\nu_{\phi}^0$.
+\item there is a triple intersection (of $y=x$, $\nu_{\phi}$, \newtext{and $\nu_{\phi}^0$ or $\nu_{\phi}^{00}$});
+\item or $\nu_{\phi}$ always remains above or below $\nu_{\phi}^0$ \newtext{and $\nu_{\phi}^{00}$}.
 \end{APAenumerate}
-The first class (Number of phonemes and Number of synonyms) are features for which the substitution process only brings words slightly closer to $\nu_{\phi}^0$, and no uniform bias can be observed.
+The first class (Number of synonyms and \newtext{Orthographic neighborhood density}) are features for which the substitution process only brings words slightly closer to $\nu_{\phi}^0$ \newtext{(for Number of synonyms) or $\nu_{\phi}^{00}$ (for Orthographic neighborhood density)}, and no uniform bias can be observed.
+The second class (comprising Word frequency, Age of acquisition, Clustering coefficient\newtext{, and Number of letters}) are features for which the substitution process has a clear bias, positive or negative, with respect to \newtext{both} the purely random situation ($\mathcal{H}_0$) \newtext{and the semantically plausible random situation ($\mathcal{H}_{00}$)}.
 
-
-
-On the other hand, the second class (comprising Word frequency, Age of acquisition, and Clustering coefficient) are features for which the substitution process has a clear bias, positive or negative, with respect to the purely random situation ($\mathcal{H}_0$).
-
-Word frequency, with $\nu_{\phi}$ always significantly above $\nu_{\phi}^0$, exhibits a strong bias towards more frequent words. This, in turn, is consistent with the hypothesis that substitution is a recall process, since common words are favored over awkward ones, while it goes against the idea that it could be a familiarity process, where awkward terms would be favored.
-
-Age of acquisition and Clustering coefficient, on the other hand, exhibit a clear negative bias for the substitution process. Both curves are significantly below their respective $\nu_{\phi}^0$ values, which is consistent with the literature on recall: words learned earlier and words with lower clustering coefficient are easier to produce than average~\citep{nelson2013activation,Zevin02}.
-Clustering coefficient has the additional particularity that, on average, the destination word does not depend on the start word; that is on average, substitutions will always produce words with a clustering coefficient around $\exp(-2.4) \simeq .1$.
+Word frequency, with $\nu_{\phi}$ always significantly above $\nu_{\phi}^0$ \newtext{and $\nu_{\phi}^{00}$}, exhibits a strong bias towards more frequent words.
+This, in turn, is consistent with the hypothesis that substitution is a recall process, since common words are favored over awkward ones.%, while it goes against the idea that it could be a familiarity process, where awkward terms would be favored.
+Age of acquisition, Clustering coefficient \newtext{and Number of letters}, on the other hand, exhibit a clear negative bias for the substitution process (except for high clustering values or very high number of letters).
+\newtext{The three} curves are significantly below their respective $\nu_{\phi}^0$ \newtext{and $\nu_{\phi}^{00}$ curves for most start values}, which is consistent with the literature on recall:
+words learned earlier, with lower clustering coefficient \newtext{or with fewer letters} are easier to produce than average~\citep{nelson_how_2013,zevin_age_2002,baddeley_word_1975}.
 
 To make things concrete, here is an example substitution taking place in the data set.
-At the end of January 2009, many media websites reported the following quote,
-
+\newtext{Around mid-November 2008, several media websites reported the following quote from Burmese poet Saw Wai (arrested for one of his poems),
 \begin{quote}
-    ``The massive economic upheaval being experienced across the globe is sparing no one in the consumer electronics world.''
+    ``Senior general Than Shwe is foolish with power.''
 \end{quote}
 and a smaller number of media websites, and blogs, reported the following,
 \begin{quote}
-    ``The massive economic upheaval being experienced across the \textbf{world} is sparing no one in the consumer electronics world.''
+    ``Senior general Than Shwe is \textbf{crazy} with power.''
 \end{quote}
-The word \emph{globe} is acquired at an average of 6.5 years old, appears about 3.5k times in the data set, and has a Clustering coefficient of $.24$.
-The word it was replaced with, \emph{world}, is acquired on average at 5.3 years old, appears about 146k times in the data set, and has a Clustering coefficient of $.05$. (Both words have four phonemes.)
+The word \emph{foolish} is acquired at an average of 8.94 years old, appears 675 times in the data set, has a Clustering coefficient of $8.2 \times 10^{-3}$ and is 7 letters long.
+The word it was replaced with, \emph{crazy}, is acquired on average at 5.22 years old, appears about 4.1k times in the data set, has a Clustering coefficient of $1.7 \times 10^{-3}$, and is 5 letters long.}
 Such a change, though minor in appearance, is a typical example of alteration along the lines shown by our results.
 
-%globe (age 6.5, phonemes 4.0, freq 8.18, cc -1.42, susceptibility 1.0)
-%world  [age 5.32, phonemes 4.0, freq 11.89, cc -2.95, susceptibility 0.272727272727]
+% foolish / crazy
+%  frequency: (6.5147126908725301, 8.3192299386323256)
+%  aoa: (8.94, 5.22)
+%  clustering: (-4.7983132551456364, -6.369204119494885)
+%  letters_count: (7, 5)
 
 \subsection{Sentence context}
 
@@ -508,7 +519,7 @@ Such a change, though minor in appearance, is a typical example of alteration al
 \begin{figure*}[!th]
     \centering
     \includegraphics[width=\textwidth]{images/computed-figures/paper-variations-quantilebins_sentencerel.png}
-    \caption{}
+    \caption{\todo{Bring back to 1, and use log-y}}
     \label{fig:feature-variations-sentencerel}
 \end{figure*}
 
