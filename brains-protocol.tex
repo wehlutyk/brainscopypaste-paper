@@ -342,7 +342,8 @@ The two situations are different enough to be studied separately, and we focus h
 
 We say that a word is \emph{substitutable} if it appears in a quote which undergoes a substitution, whether the substitution operates on that word or on another one.
 % utiliser "word-level measures", et/ou "For a given value of a given type of word-level measure (say, words of length 5), we define susceptibility as the ratio (...)"
-\newtext{For a given group of words $g$ \todo{[not clear this is not a given word -- maybe present by example instead of generally]}, susceptibility is computed as the ratio of the number of times $s_g$ words of that group are substituted to the number of times $s_g^0$ words of that group would be substituted if substitutions fell randomly on substitutable words, that is:}\footnote{
+\newtext{For a given group of words $g$ \todo{[not clear this is not a given word -- maybe present by example instead of generally]}, susceptibility is computed as the ratio of $s_g$, the number of times words of that group are substituted, to $s_g^0$, the number of times words of that group would be substituted if substitutions fell randomly on substitutable words.
+That is:}\footnote{
 \newtext{$s_g^0$ is computed by summing, over all quotes undergoing a substitution, the ratio of the number of words in a quote that are from group $g$ to the number of words in the same quote that could have been the substitution's target.
 If, for instance, half the content words of a given quote are from group $g$, such a quote contributes .5 to the total $s_g^0$.}
 }
@@ -526,23 +527,60 @@ Such a change, though minor in appearance, is a typical example of alteration al
 
 \subsection{Sentence context}
 
-\todo{Explain in-sentence susceptibility and sentence-relative variation, relating to global value results}
-
-\begin{figure*}[!th]
-    \centering
-    \includegraphics[width=\textwidth]{images/computed-figures/paper-susceptibilities-sentencequantiles.png}
-    \caption{\todo{Bring back to 1, and use log-y}}
-    \label{fig:feature-susceptibilities-in_sentence}
-\end{figure*}
-
 \begin{figure*}[!th]
     \centering
     \includegraphics[width=\textwidth]{images/computed-figures/paper-variations-quantilebins_sentencerel.png}
-    \caption{}
+    \caption{\newtext{\textbf{Sentence-relative feature variation:}
+    $\nu_{\phi_r}$, average sentence-relative feature value of the appearing word as a function of the sentence-relative value of the disappearing word (binned by quartiles), with 95\% asymptotic confidence intervals based on Student's \emph{t}-distribution.
+    $\nu_{\phi_r}^0$ and $\nu_{\phi_r}^{00}$ are similarly converted to be sentence-relative.
+    Attraction, magnitude and direction of bias with respect to null hypotheses are similar to Fig.~\ref{fig:feature-variations-global}.
+    However, attractors are always positioned between sentence median ($y=0$) on one side and $\nu_{\phi_r}^0$ and $\nu_{\phi_r}^{00}$ on the other side.
+    Clustering coefficient, Number of synonyms and Orthographic neighborhood density are limit cases, with triple intersections with one of the null hypothesis curves.
+    }
+    \todo{fix labels}
+    }
     \label{fig:feature-variations-sentencerel}
 \end{figure*}
 
-\medskip
-We thus observe a clear convergence pattern for each feature, with two different classes corresponding to the psychological relevance of each feature for the substitution process.
-Taken as a dynamical system where substitutions are repeatedly applied, Number of phonemes and Number of synonyms will simply converge towards their average value in the FA corpus (i.e. $\nu_{\phi}^0)$, while Word frequency, Age of acquisition and Clustering coefficient, consistent with the literature, will converge towards significantly biased values indicated by the intersection with $y = x$ (respectively, a frequency of $\exp(9.1) \simeq 9000$, an acquisition age slightly below 8, and a Clustering coefficient of $.1$).
+\begin{new}
 
+The alterations we study are always made in a context, that is while the author is writing.
+We wish to ask, therefore, if taking that context into account can provide more insight into the substitution process.
+To do so we adapt the two observables presented above to capture some of the relationships between a word and the sentence it appears in.
+
+Let us start with the first one:
+given a feature $\phi$, we define the context-relative susceptibility to substitution in the following three steps.
+(1) For each quote in which a substitution appears, compute the distribution of $\phi$ values in that quote (excluding stopwords) and divide it into quartiles.
+(2) Count how many times each quartile (first, second, third or fourth) contains a word that is substituted.
+This procedure tells us, for $i \in \{1, 2, 3, 4\}$, how many times substitutions fall in the $i$-th quartile of each in-quote distribution of $\phi$;
+in other words it gives us the numerator $s_{q_i}$ for the computation of susceptibility, where $q_i$ represents the $i$-th quartile of the distributions of $\phi$ in the quotes.
+(3) Finally divide each quartile count by its corresponding $s_{q_i}^0$, that is the number of times the $i$-th quartile would receive substitutions if targets were picked at random;
+since the random situation would equally distribute a fourth of all substitutions to each quartile, we divide by the number of substitutions divided by 4.
+Taking for instance word frequency, this measure tells us if words that have high- or low-frequency \emph{compared to the quote they appear in} are more or less substituted than at random.
+
+Surprisingly the results for this measure are no different from the context-free measure, as can be seen in Fig.~\ref{fig:feature-susceptibilities-in_sentence} of the Appendix:
+low-frequency words compared to the sentence are substituted much more than higher-frequency words, words learned earlier than the rest of the sentence are substituted less than words learned later, shorter words less than longer words, and words with scarce neighborhoods slightly more than words with denser neighborhoods.
+Clustering coefficient and Number of synonyms are, here again and across all substitution models, not significantly different from $\mathcal{H}_0$:
+with or without context, they do not seem relevant to the selection of substitution targets.
+
+Feature variation is more easily extended to the context-relative case.
+To do so we consider all feature values relative to the median word feature in the sentence.
+That is, in all the equations of the previous section we replace $\phi(w)$ with:
+$$\phi_r(w) = \phi(w) - \operatorname{median}\left\lbrace \phi(w) | w \in \text{sentence} \right\rbrace$$
+$\nu_{\phi}$, $\nu_{\phi}^0$ and $\nu_{\phi}^{00}$ each transpose to $\nu_{\phi_r}$, $\nu_{\phi_r}^0$ and $\nu_{\phi_r}^{00}$ (note that $\nu_{\phi_r}^0$ now depends on $w$ since it is sentence-relative, whereas $\nu_{\phi}^0$ did not).
+
+The results for sentence-relative feature variations are gathered in Fig.~\ref{fig:feature-variations-sentencerel}.
+Here too, the behavior is strikingly similar to the context-free measure:
+a single attractor is visible for each feature, and the magnitude and direction of biases are near-identical to those for the previous measure.
+The values of the appearing words give an additional insight into the process, however:
+the attractor value of a feature, at the intersection of $\nu_{\phi_r}$ and $y=x$, is always between the sentence median, on one side, and $\nu_{\phi_r}^0$ and $\nu_{\phi_r}^{00}$ on the other side (for Number of synonyms it is a triple intersection with $\nu_{\phi_r}^0$; for Clustering coefficient and Orthographic neighborhood density, a triple intersection with $\nu_{\phi_r}^{00}$).
+Substitutions, therefore, seem to attract words closer to the sentence median than what a random process would do.
+This is true with respect to both null hypotheses (semantically plausible or not) for Frequency, Age of Acquisition and Number of letters, and true with respect to at least one of the two null hypotheses for the remaining features.
+
+\end{new}
+
+\medskip
+
+\newtext{On the whole}, we observe a clear \newtext{attraction} pattern for each feature, with two different classes corresponding to the psychological relevance of each feature for the substitution process.
+\newtext{More awkward words along relevant features (less frequent, learned later, or with made of more letters), both globally and with respect to the sentence they appear in, are substituted more often than more common words.
+And across all features, words are brought generally closer to the sentence median than what a random process would do.}
