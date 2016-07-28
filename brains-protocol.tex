@@ -412,10 +412,13 @@ On the whole, the trends observed are consistent with known effects of word freq
 \begin{figure*}[!th]
     \centering
     \includegraphics[width=\textwidth]{images/computed-figures/paper-variations-quantilebins_global.png}
-    \caption{\textbf{Feature variation upon substitution:} %$\nu_\phi$, average feature value of the appearing word as a function of the feature value of the disappearing word in a substitution, with 95\% asymptotic confidence intervals.
-    %The overall position of the curve with respect to the dashed line representing $\mathcal{H}_0$ (constant $\nu_{\phi}^0$) indicates the direction of the cognitive bias.
-    %The intersection with $y = x$ marks the attractor value.
-    %The fact that all curves have slopes smaller than 1 means that the substitution operation is contractile on average: each feature will converge towards its own specific asymptotic range.
+    \caption{\textbf{Feature variation upon substitution:}
+    $\nu_\phi$, average feature value of the appearing word as a function of the feature value of the disappearing word in a substitution \newtext{(binned by quartiles)}, with 95\% asymptotic confidence intervals based on Student's \emph{t}-distribution.
+    The overall position of the curve with respect to the dashed line representing $\mathcal{H}_0$ (constant $\nu_{\phi}^0$) indicates the direction of the cognitive bias \newtext{compared to a purely random variation}.
+    \newtext{The position with respect to the dash-dotted line representing $\mathcal{H}_{00}$ ($\nu_{\phi}^{00}$) indicates the bias compared to a semantically plausible random variation obtained by choosing a random synonym of the disappearing word.}
+    The intersection with $y = x$ marks the attractor value.
+    The fact that all curves have slopes smaller than 1 \newtext{in absolute value} means that the substitution operation is contractile on average:
+    \newtext{it brings} each feature \newtext{closer to} its own specific asymptotic range.
     }
     \label{fig:feature-variations-global}
 \end{figure*}
@@ -451,23 +454,26 @@ This approach yields a fine-grained view of how word features evolve upon substi
 
 \medskip
 
-\todo{Update results, explaining binning and toning down contractility, and relate to missed literature}
+\todo{Relate to missed literature}
 
 Results are gathered in Fig.~\ref{fig:feature-variations-global}.
 A first observation is that all graphs show the existence of a unique intersection of $\nu_{\phi}$ with $y=x$, and the slope of $\nu_{\phi}$ is smaller than 1 in absolute value, independently of the feature considered.
-\newtext{This means that for each feature $\phi$, whichever the value $\phi(\wstart)$ of the start word, the arrival word's feature value $\phi(\warrival)$ will, on average, be closer to that feature's intersection between $\nu_{\phi}$ and $y=x$.\footnote{
-\newtext{The observation becomes obvious when one manually simulates a substitution on the graph by picking a start value, using the $\nu_{\phi}$ curve to obtain the corresponding arrival value, and comparing it to the start value:
-it is always closer to the intersection with $y=x$, meaning that that intersection is an attractor point for the substitution process.
-If the slope of $\nu_{\phi}$ were greater than one (in absolute value), the arrival value would always be \emph{farther} from the intersection than the start value was, making it a \emph{repulsor} point.
-This is how the number of intersections with $y=x$, and the slope of $\nu_{\phi}$ at those intersections, characterize the behavior of substitutions.
+\newtext{This means that for each feature $\phi$, whichever the value $\phi(\wstart)$ of the disappearing word, the appearing word's feature value $\phi(\warrival)$ will, on average, be closer to that feature's intersection between $\nu_{\phi}$ and $y=x$.\footnote{
+\newtext{This reasoning is standard in the analysis of dynamical systems (where the same transformation is applied to the whole system over and over), and becomes obvious when one manually simulates a substitution on the graph by picking a start value, using the $\nu_{\phi}$ curve to obtain the corresponding arrival value, and comparing it to the start value:
+the arrival value is always closer to the intersection with $y=x$, meaning that that intersection is an attractor point for the substitution process.
+If the slope of $\nu_{\phi}$ were greater than one (in absolute value), the arrival value would always be \emph{farther} from the intersection than the start value was, making the intersection with $y=x$ a \emph{repulsor} point.
+This is how the number of intersections with $y=x$ and the slope of $\nu_{\phi}$ at those intersections characterize the behavior of substitutions.
 }}}
 In other words, beyond individual variation patterns, the substitution process exhibits a unique attractor \newtext{for each feature}.
 
 \begin{figure}[h]
     \centering
-    \includegraphics[width=\linewidth]{images/computed-figures/paper-variations_regression-globals_to_globalsvariation.png}
-    \caption{\newtext{\textbf{Coefficients of the regressions of feature variations:}
-	\todo{only aoa and clustering are impacted by frequency, the rest is only impacted by itself}
+    \includegraphics[width=\linewidth]{images/computed-figures/paper-variations_regression-globals_to_globalsvariation-heatmap.png}
+    \caption{\newtext{\textbf{Feature variations regression coefficients}:
+    source feature values and feature variations were normalized to $[0; 1]$ to ensure the coefficients are comparable.
+    Significance levels for individual \emph{t}-tests against the hypothesis of a null coefficient are denoted by stars below the corresponding coefficient (*** for $p \leq .001$, ** for $p \leq .01$, * for $p \leq .05$, and nothing when $p > .05$).
+	Frequency has a slight effect on Age of acquisition and Clustering coefficient, with small coefficients compared to the respective diagonal ones.
+	Aside from those two, only diagonal values are significantly non null.
 	}}
     \label{fig:feature-variations_regression-global}
 \end{figure}
@@ -481,13 +487,26 @@ The first class (Number of synonyms and \newtext{Orthographic neighborhood densi
 The second class (comprising Word frequency, Age of acquisition, Clustering coefficient\newtext{, and Number of letters}) are features for which the substitution process has a clear bias, positive or negative, with respect to \newtext{both} the purely random situation ($\mathcal{H}_0$) \newtext{and the semantically plausible random situation ($\mathcal{H}_{00}$)}.
 
 Word frequency, with $\nu_{\phi}$ always significantly above $\nu_{\phi}^0$ \newtext{and $\nu_{\phi}^{00}$}, exhibits a strong bias towards more frequent words.
-This, in turn, is consistent with the hypothesis that substitution is a recall process, since common words are favored over awkward ones.%, while it goes against the idea that it could be a familiarity process, where awkward terms would be favored.
+This, in turn, is consistent with the hypothesis that substitution is a recall process, since common words are favored over awkward ones.
 Age of acquisition, Clustering coefficient \newtext{and Number of letters}, on the other hand, exhibit a clear negative bias for the substitution process (except for high clustering values or very high number of letters).
 \newtext{The three} curves are significantly below their respective $\nu_{\phi}^0$ \newtext{and $\nu_{\phi}^{00}$ curves for most start values}, which is consistent with the literature on recall:
 words learned earlier, with lower clustering coefficient \newtext{or with fewer letters} are easier to produce than average~\citep{nelson_how_2013,zevin_age_2002,baddeley_word_1975}.
+\newtext{All these effects are significant at $p < .05$ (and more often $p < .001$) and were verified across the 16 substitution models.}
+
+\begin{new}
+
+To make sure our observations are not the product of correlations or interactions, we model the variations of the 6 features as a linear function of the start word's feature values:
+$$\bm{\phi}(\warrival) - \bm{\phi}(\wstart) = \bm{A} +  \bm{B} \cdot \bm{\phi}(\wstart)$$
+where $\bm{\phi}$ is the vector of all 6 features of a word, $\bm{A}$ is an intercept vector, and $\bm{B}$ is a $6 \times 6$ coefficients matrix.
+This regression achieves an overall $R^2$ of $.33$.
+The corresponding matrix of coefficients $\bm{B}$ is shown in Fig.~\ref{fig:feature-variations_regression-global}:
+aside from Age of acquisition and Clustering coefficient on which word frequency has a slight effect, the variation of all other features depends solely on the disappearing word's same feature.
+In other words there is little to no interaction between a disappearing word's features in determining the variations that that word will undergo when substituted.
+
+\end{new}
 
 To make things concrete, here is an example substitution taking place in the data set.
-\newtext{Around mid-November 2008, several media websites reported the following quote from Burmese poet Saw Wai (arrested for one of his poems),
+\newtext{Around mid-November 2008 several media websites reported the following quote from Burmese poet Saw Wai (arrested for one of his poems),
 \begin{quote}
     ``Senior general Than Shwe is foolish with power.''
 \end{quote}
@@ -512,14 +531,14 @@ Such a change, though minor in appearance, is a typical example of alteration al
 \begin{figure*}[!th]
     \centering
     \includegraphics[width=\textwidth]{images/computed-figures/paper-susceptibilities-sentencequantiles.png}
-    \caption{}
+    \caption{\todo{Bring back to 1, and use log-y}}
     \label{fig:feature-susceptibilities-in_sentence}
 \end{figure*}
 
 \begin{figure*}[!th]
     \centering
     \includegraphics[width=\textwidth]{images/computed-figures/paper-variations-quantilebins_sentencerel.png}
-    \caption{\todo{Bring back to 1, and use log-y}}
+    \caption{}
     \label{fig:feature-variations-sentencerel}
 \end{figure*}
 
