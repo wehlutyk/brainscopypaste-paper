@@ -1,0 +1,138 @@
+Dear Dr. Lerique,
+
+Thank you for your submission to Cognitive Science.  I have obtained three reviews of your paper from experts in language, memory, and social network analysis.  All three saw interesting ideas in your paper and advocated some version of revise-and-resubmit or accept.  I agree that the project itself is appropriate for Cognitive Science but I am much less enthusiastic about this particular manuscript.  
+
+The main issues I see are that:
+
+1. The main results of the paper are based on a lot of arbitrary decisions about how various quantities are defined.  I am interested if small differences in these choices radically changes the conclusions you would draw, and how many other approaches you tried before you arrived at the data patterns you present.  All the reviewers agreed on this point (asking for more clarification about feature selection, why certain choices were made in the analysis, etc…).  This ranges from what types of quotes were included, to the rules to detecting substitution errors, to the inclusion of certain features in your analyses.  The reader needs to be convinced that the few “strong” looking patterns you do find are not too dependent on these arbitrary choices.  I actually question if this is the best way to address this question (effect of memory and linguistic variables on copy errors) given the noisiness of the data and the difficult in attributing copying errors to any particular parent
+source.
+
+2. The conclusions about “contractile” processes seem pretty speculative (as almost all reviewers agreed).   Sure, this might be the theoretical implication of iterating this substitution process, but you do not present any further evidence of this type of contraction towards a fixed point.  I think if you want to make this a major conclusion of the paper there is more work to be done.  Also this idea has been explored, in my view, in a much more sophisticated way in the iterated learning literature (e.g., Kalish, Lewandowsky, Griffiths, Kirby… see my PDF comments for specific references).  You should really check these arguments and papers out because you really have an iterated learning task.
+
+3. The writing of this paper is of very low quality compared to what is expected at the journal.  I will email separately a very detailed editing of the paper via Adobe Acrobat where I tried to point these problems out.  However, it simply couldn’t be published without a nearly complete re-write or very heavy editing.
+
+The bottom line is that while I think this is a really interesting idea/question, this is not the best execution of this idea that I could imagine being published in the journal.  My gut reaction is that this paper needs a lot of work, additional analysis, and rewriting before it could be published and therefore should be rejected.  However, because the reviewers are unanimously more positive in their evaluation I will invited a revision for this in the hope that you can make it a pretty significant change and can benefit from the excellent and detailed reviewer comments.
+
+So you understand what is requested:  typically papers which are revised at Cognitive Science are returned with a detailed cover letter responding to each of the reviewer comments in detail, along with pointers to what has changed in the paper.  I would appreciate this type of cover letter if you choose to resubmit because it can help me and the reviewers process what changes you made.
+
+Sincerely,
+Todd Gureckis
+Associate editor
+
+
+
+================================================================
+Reviewer #1
+
+I think this is an interesting approach and dataset for better understanding how sentences are recalled and how paraphrases are constructed.  However, I think that the experiment design needs to be refined, and the project as a whole needs to be better connected to larger theoretical problems and better grounded within cognitive science.
+
+Starting with the grounding, the Introduction talks about theories of "knowledge transmission mechanisms" but doesn't provide examples aside from the quote-copying problem. The theories also don't re-appear in the results discussion, leaving the experimental results stranded and unconnected to any larger domain.  No discussion of sentence recall tasks within psycholinguistics is given - there isn't a huge literature on this, but there are at least a few papers that should inform this work, such as Potter & Lombardi 1990 "Regeneration in the short-term recall of sentences". No discussion is made about whether and how much the substitutions change the quotes (e.g., is the substituted word a synonym, phonological-neighbor, or something else? - cf. Lauf et al 2013 "Analyzing Variation Patterns in Quotes Over Time"). Lastly, the meaning of the analysis (pg. 17-19) of this process as a dynamical system with "cultural attractors" is not fleshed out - why doesn't this predict that all quotes will eventually, through substitution, converge to the same string? (Does it?) As a result, the conclusion that psycholinguistic factors don't have a big impact on substitution likelihood is interesting but doesn't have clear theoretical repercussions, or any clear meaning outside the very specific problem of quote replication.  This needs to be substantially revised and expanded to make this work useful to the audience at large.
+
+The experiment design also has some substantial flaws. First, some crucial factors were not considered - most notably, part of speech. I suspect, for instance, that pronouns and other closed-class words less often substituted than open-class words.  Phonological neighborhood density could also be important, though probably less so.  Second, no analysis was done that included all of the factors in, e.g., a multi-feature regression model.  While the features being considered are not strongly correlated, they are still likely to interact - especially if part-of-speech is added.  Third, the restriction to single-word substitutions introduces some significant confounds.  I'm not convinced that correctly and incorrectly copying a quote should be viewed as separate behaviors.  But more importantly, the \sigma_\phi(f) calculation can be misleading under the single-substitution restriction:
+
+Consider a toy case where all quotes are two words, and there is a single binary feature F. p(F=1) = 3/4, and the true substitution probabilities, given the value of F, are p(S|F=1)=1, p(S|F=0)=1/2.  All the quotes where both words have feature F=1 will have two substitutions and be omitted from the dataset, as will half of the quotes with one F=1 & one F=0 word.  Half of the quotes with two F=0 words will also be omitted for having no substitutions.  Due to these omissions, if you actually generate some test data and calculate the \sigma_F values, the \sigma_F(1) value is correctly estimated as 1, but the \sigma_F(0) value is erroneously estimated as 1/8 (not 1/2), because the F=0 words are never substituted in the F=1/F=0 pairs, and these are three times more common than the F=0/F=0 pairs.  I haven't run more complicated cases, such where the length of the quotes vary, but this leads me to have limited confidence that the estimates in the Figure 4 are appropriate to draw conclusions from. I would want to see either a mathematical analysis with realistic values showing that the error is expected to be small in this data or an expansion to include multiple-substitution examples to avoid this problem.
+
+Some high-level suggestions:
+- more discussion of what dynamical systems are and especially their interpretation in this task before their appearance in the results
+- needs a substantive discussion of the results
+- show that the phi value is capturing what it purports to capture
+  - and that the factors aren't conflated with length
+    - is the single-substitution biasing the data?
+  - make sure that the reported measures are interpretable
+    - if low-frequency words have 1/3 chance of being chosen as substitution (Fig. 4), what if there are four low-frequency words in a quote?
+- improving statements of motivation and grounding within cognitive science
+  - what are representation transformation processes?
+  - give examples in the introduction
+  - show how the quotation test case connects to more general representation transformation?
+- what about the semantics of quote replication?
+  - does part of speech influence substitution rate?
+  - can you quantify the semantic distance between the original and substituted quote (e.g., get Mechanical Turkers to rate the semantic distance?)
+- what happens when you run a multi-factor regression model? Do the features interact?
+- clarify from the beginning the predictions you are making so that the results will be interpretable
+
+Some low-level points:
+- the in vitro/in vivo distinction is unfamiliar and ought to be defined in the text
+- introducing eight measures and then removing three of them due to collinearity is presentationally confusing
+- was there a reason to expect that # of synonyms and # of phonemes would interact (Fig. 4)?]
+- how are you binning the continuous-valued features into categorical features for Fig 4 & 5?
+  - are there multiple y=x crossovers in Fig 5 if more bins are used?
+
+
+================================================================
+Reviewer #2
+
+This is a review of "How do we copy and paste? The semantic drift of quotations in blogspace." This paper attempts to discover the underlying psycholinguistic variables that is involved in blog authors making mistakes in the copying of quotations across time. Although I think the motivations and goals of this article are interesting and noteworthy, I think the actual analysis needs improvement in a number of areas.
+
+Although I appreciate the brief writeup on intrusions in recall, the article fails to capture the amount of research done on this topic. Going back to Deese (1959; the precursor to modern experimental studies on false memory) and the subjective organization results of Tulving (1962) it has been well known that extra-list intrusions in free recall are often semantic in nature, with the intruding word being very similar in meaning to a studied item. A recent study that reinforces this is one by Zaromb, et al. (2006; JEP:LMC).
+
+This leads into a larger issue: there is no direct word-word semantic similarity score included in the psycholinguistic variables in the analysis. Global measures such as clustering coefficients based on free association norms are included, but this isn't as appropriate, since as the authors find, the vast majority of words that are being substituted are low frequency words. Low frequency words are not as well represented in the Nelson norms, given that they are less likely to be produced, and are thus less likely to have an appropriate clustering coefficient from this dataset. Variables based on corpus analyses need to be included to provide an appropriate overview of the impacts of semantics on this task. Even so, I would suspect that global semantic network measures are not nearly as important as word-word metrics.
+
+I would guess that the substitutions that are made in quotations are overwhelmingly higher frequency, highly semantically similar words. As the example on pg. 19 states, the substitution was "world" for "globe," where a higher frequency word replaced a lower frequency, semantically related word. There are a number of different models that can be used to assess this type of similarity, with the classic model being latent semantic analysis (Landauer & Dumais, 1997). There are a number of additional models that have been proposed, such as Topics (Griffiths, Steyvers, & Tenenbaum, 2007, Psyc Review) or Beagle (Jones & Mewhort, 2007, Psyc Review). These models differ in their implementational complexity, but there are tools available that allow for useful statistics to be acquired easily. A tool by Recchia & Jones (2010, BRM) allows for pointwise mutual information (PMI) of different words to be retrieved from a given corpus very simply. A tool such as this would allow for word-word similarity to be included in the analysis.
+
+I understand that word-word metrics are not easily introduced in the type of analysis that the authors are attempting to do, where the analysis of the contributions of different global psycholinguistic variables are being weighed against each other. I just think that type of analysis is inappropriate here. Since the quotations were selected on the basis of single substitutions, it seems to me that the appropriate level of analysis is what properties of the word that is being substituted is the most predictive of the substitution. I suspect that the combination of frequency and semantic similarity will be by far the most predictive variables, consistent with past results on recall.
+
+Beyond this, I think the authors are missing out on the most interesting aspect of the data that they have collected: how the surrounding context of the quotation used is changing across time. That is, the quote is being propagated, and the prior usage of that quote is likely predictive of how that information is spread. This is likely a dynamical process where multiple news sources are used to construct a new blog post, and being able to analyze this type of information propagation would be a very interesting study. I point to the semantic space models cited (and the work derived from them) as being very useful tools to analyze this type of question.
+
+
+================================================================
+Reviewer #3
+
+In this paper, the authors analyze a large data set of quotations taken from a variety of news sources to study the form of substitutions in quotes, to determine if the transformations follow expected patterns given psycholinguistic theory.  Specifically, the words that are likely to be substituted are found to be less frequent words, and the pattern of substitution is such that the substituting word is more frequent, acquired earlier, and has lower clustering in the free-association word network.  These patterns are consistent with expected cognitive biases.
+
+There are a few issues I would want to see addressed.
+
+Foremost is the method of detecting substitution.  I understand that, given the data set, there is no perfect way to identify what quote is a transformation of what quote, and that it is not feasible to test all possible methods AND that it is simpler to focus on one method for the purposes of the paper.  However, given that this decision of which method to use can directly influence the main conclusions, it behooves the authors to do some sort of robustness check around this method.  For example, one could imagine two distinct groups that only exactly copy from themselves and never copy from each other, where one always publishes earlier than the other.  If the earlier-publishing group tended to select variations of quotes that used lower-frequency words, and the later-publishing group tended to select variations of quotes that used higher-frequency words, this method would infer many more low-frequency to high-frequency substitutions than actually existed.  This may not be a likely scenario, but it demonstrates the benefit of a robustness check. Trying the same analysis with one or two different substitution models would strengthen the authors' claims.
+
+A second issue is the time spent on feature selection.  It is unclear why the authors do feature selection at all, as "the analysis is done on a per-feature basis."  It would again add to the robustness of their claims if they showed that all of the correlated features show the same pattern of susceptibility and bias in substitution.  In the same vein, it is not clear why the authors claim that age of acquisition, frequency, and number of synonyms have low levels of correlation "excluding the network properties".  Why would one ignore the correlations with the network features?
+
+One smaller issue has to do with the filtering of the quotations.  The authors manually inspected the filtered quotes to see how many real event-related utterances are incorrectly filtered, but I would argue the precision of the filter is more important than the recall; how many of the kept quotes are not real event-related utterances?  Why not do manual coding of those and report that accuracy?
+
+Finally, while I understand the appeal of doing a dynamic systems analysis to find the convergence points of the substitutions, but it is not really valid here.  The analysis in this paper does not provide information on what happens with multiple substitutions, so the authors cannot really make claims about the convergence points given this methodology.
+
+Overall, the analysis of the patterns of substitution in a series of quotations to validate psycholinguistic theory is novel and advances the current science.  The results would be more solid with some additional robustness checks, but in general they are quite intuitive.  I hope in the future the authors find a dataset that provides certain information about the transmission of language from one person to another, as this would allow for stronger claims about causality and greater confidence in the pattern of substitutions, as well as a finer-grained analysis of repeated substitutions.
+
+
+
+
+-- 
+COGNITIVE SCIENCE SOCIETY
+http://www.cognitivesciencesociety.org
+
+EDITORIAL MANAGER FOR COGNITIVE SCIENCE
+http://cogsci.edmgr.com
+
+COGNITIVE SCIENCE JOURNAL
+
+Executive Editor
+     Richard P. Cooper
+     Birkbeck, University of London
+     Department of Psychological Sciences
+     email: R.Cooper@bbk.ac.uk
+
+Managing Editor
+     Caroline Verdier
+     Cognitive Science Program
+     Indiana University
+     Eigenmann 819
+     1900 E. 10th St.
+     Bloomington, IN 47406-7512
+     phone: 812-855-4883
+     email: cogscij@indiana.edu
+     fax: 812-855-1086
+
+Associate Editors
+     Susan E. Brennan, Stony Brook University
+     Cristina Cacciari, University of Modena and Reggio Emilia
+     Todd Gureckis, New York University
+     James A. Hampton, City University London
+     Markus Knauff, University of Giessen
+     David Landy, Indiana University
+     Cristine H. Legare, University of Texas at Austin
+     Roger Levy, University of California, San Diego
+     Max M. Louwerse, Tilburg University
+     Padraic Monaghan, Lancaster University
+     John E. Opfer, The Ohio State University
+     Amy Perfors, The University of Adelaide
+     Colleen M. Seifert, University of Michigan, Ann Arbor
+     Michael J. Spivey, University of California, Merced
+     Niels A. Taatgen, University of Groningen
