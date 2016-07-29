@@ -21,8 +21,7 @@ Indeed the data we use does not come from a controlled experiment in the laborat
 Our goal, therefore, is to show that such effects exist and are measurable even if they are part of a larger complexity (the detailed prediction and deconstruction of the cognitive processes responsible for them being left to further research).
 %\todo{That is, we aim to prove first a relatively weak hypothesis before trying stronger ones. [Cam: idem, je supprimerais celle-là]}
 If this is confirmed, we will have successfully applied laboratory analyses to out-of-laboratory data, opening a path to explanations of actual (\hbox{vs.} simulated) cultural evolution with tools from cognitive science.
-As explained in the previous section, this is the reason we chose to use measures that can aggregate over all the transformations in the data set.}
-\todo{this last sentence is unclear or not useful}
+Aiming to exhibit such subtle biases in complex data is the main reason we chose to use aggregate measures that have a chance of smoothing out the possible variations of experimental conditions in the data set.}
 
 To keep the analysis \newtext{tractable}, we focused on quotation transformations consisting in the \emph{substitution} of a word by another word (and only those cases) in order to unambiguously discuss single word replacements.
 \newtext{This restriction also allows us to more reliably infer the information that is missing in our data set, as explained further down (see "Substitution model").}
@@ -342,15 +341,18 @@ The two situations are different enough to be studied separately, and we focus h
 
 We say that a word is \emph{substitutable} if it appears in a quote which undergoes a substitution, whether the substitution operates on that word or on another one.
 % utiliser "word-level measures", et/ou "For a given value of a given type of word-level measure (say, words of length 5), we define susceptibility as the ratio (...)"
-\newtext{For a given group of words $g$ \todo{[not clear this is not a given word -- maybe present by example instead of generally]}, susceptibility is computed as the ratio of $s_g$, the number of times words of that group are substituted, to $s_g^0$, the number of times words of that group would be substituted if substitutions fell randomly on substitutable words.
+\newtext{For a given group of words $g$, say all nouns, or all words in a particular range of values for a feature (e.g. words 2 to 4 letters long), susceptibility is computed as the ratio of $s_g$, the number of times words of that group are substituted, to $s_g^0$, the number of times words of that group would be substituted if substitutions fell randomly on substitutable words.
 That is:}\footnote{
 \newtext{$s_g^0$ is computed by summing, over all quotes undergoing a substitution, the ratio of the number of words in a quote that are from group $g$ to the number of words in the same quote that could have been the substitution's target.
-If, for instance, half the content words of a given quote are from group $g$, such a quote contributes .5 to the total $s_g^0$.}
+If, for instance, half the content words of a given quote are nouns, such a quote contributes .5 to the total $s_{nouns}^0$.}
 }
 $$\sigma_g = \frac{s_g}{s_g^0}$$
 
 In other words, susceptibility measures \newtext{how much more or less a group of words $g$ actually gets substituted compared to picking targets at random in quotes undergoing substitutions}.
-\newtext{By applying this measure to Part-of-Speech (POS) categories and feature bins (e.g. for a feature $\phi$ and a bin $[a, b]$, $g = \{w | \phi(w) \in [a, b]\}$), susceptibility measures the bias in} the selection of start words involved in substitutions, \newtext{that is} the effect of word \newtext{properties} at the moment preceding the substitution when it is not yet known which word in the quotation will be substituted.
+\newtext{By applying this measure to Part-of-Speech (POS) categories and feature bins (e.g. for a feature $\phi$ and a bin $[a, b]$, $g = \{w | \phi(w) \in [a, b]\}$), susceptibility measures the bias in} the selection of start words involved in substitutions, \newtext{that is} the effect of word \newtext{properties} at the moment preceding the substitution when it is not yet known which word in the quotation will be substituted.\footnote{
+\newtext{To avoid possible autocorrelation effects due to substitutions belonging to the same cluster (which are likely not statistically independent and may lead to overly optimistic confidence intervals), we scale $s_g$ and $s_g^0$ to count one for each cluster.
+That is, each individual substitution contributes to $s_g$ or $s_g^0$ by only 1 over the number of substitutions in its cluster.}
+}
 
 \begin{figure}[h]
     \centering
@@ -423,7 +425,9 @@ On the whole, the trends observed are consistent with known effects of word freq
 
 We \newtext{now examine} how words are modified \newtext{when} they are substituted, that is how their features change upon substitution.
 Considering a word~$\wstart$ substituted for~$\warrival$, we measure how a feature~\newtext{$\phi$} of~$\wstart$ varies when it is replaced with~$\warrival$, that is we look at~$\phi(\warrival)$ as a function of~$\phi(\wstart)$.
-Averaging this value over all start words such that $\phi(w) = f$ yields the mean variation for that feature value~$f$, that is:\footnote{To avoid possible autocorrelation effects due to substitutions belonging to the same cluster (which are likely not statistically independent and may lead to overly optimistic confidence intervals), we first average substitutions over each cluster, by considering the average of arrival word features for a given start word. \todo{explain this for susceptibility too}}
+Averaging this value over all start words such that $\phi(w) = f$ yields the mean variation for that feature value~$f$, that is:\footnote{
+\newtext{Similarly to what we do for susceptibility, we avoid possible autocorrelation effects by averaging start- and arrival-word features of substitutions from the same cluster into a single aggregate substitution per cluster.}
+}
 $$\nu_{\phi}(f) = \left<\phi(\warrival)\right>_{\left\lbrace \wstart\rightarrow\warrival | \phi(\wstart) = f \right\rbrace}$$
 
 \newtext{We are interested in comparing} the value of $\nu_{\phi}(f)$ to $f$ \newtext{itself}, as \newtext{this} shows whether there is an attraction (or a repulsion) effect towards (respectively from) some values of each feature.
