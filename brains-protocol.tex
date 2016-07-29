@@ -22,7 +22,7 @@ If this is confirmed, we will have successfully applied laboratory analyses to o
 Aiming to exhibit such subtle biases in complex data is the main reason we chose to use aggregate measures that have a chance of smoothing out the possible variations of experimental conditions in the data set.}
 
 To keep the analysis \newtext{tractable}, we focused on quotation transformations consisting in the \emph{substitution} of a word by another word (and only those cases) in order to unambiguously discuss single word replacements.
-\newtext{This restriction also allows us to more reliably infer the information that is missing in our data set, as explained further down (see "Substitution model").}
+\newtext{This restriction also allows us to more reliably infer the information that is missing in our data set, as explained further down (see ``Substitution model'').}
 To quantify those substitutions we decided to associate a number of features to each word, the variation of which we can statistically study.
 
 The next subsections describe the data set and the measures we used to assess this cognitive bias.
@@ -36,13 +36,13 @@ The original article~\citep{leskovec_meme-tracking_2009} does not provide furthe
 \newtext{The authors automatically extracted quotations} from this corpus.
 Each quotation is a more or less faithful excerpt of an utterance (oral or written) by the quoted person; for instance:
 \begin{quote}
-The Bank of England said, "these operations are designed to address funding pressures over quarter-end."
+The Bank of England said, ``these operations are designed to address funding pressures over quarter-end.''
 \end{quote}
 
 \newtext{Then, the authors gathered quotations in a graph and connected each pair that differed by no more than one word or that shared at least ten consecutive words (they tested this procedure with a number of different parameters, see~\citealp{leskovec_meme-tracking_2009}, for more details).}
 We find for example the following variation of the above quote:
 \begin{quote}
-"these operations are \textbf{intended} to address funding pressures over quarter-end."
+``these operations are \textbf{intended} to address funding pressures over quarter-end.''
 \end{quote}
 \newtext{Next, they applied a community detection algorithm} to that quotation graph to detect aggregates of tightly connected, that is sufficiently similar, groups of quotations~\citep[see again][for more details]{leskovec_meme-tracking_2009}.
 This analysis yielded the final data we had access to, with a total of about \num{70000} sets of quotations; each of these sets ideally contains all variations of a same parent utterance, along with their respective publication URLs and timestamps \newtext{(since the procedure cannot be perfect, sets of quotations contain occasional rogue unrelated variations that should have been discarded or assigned to another set)}.
@@ -55,7 +55,7 @@ If, after this screening, a cluster's occurrences still span more than 80 days (
 \newtext{We eventually keep 50,427 clusters (out of 71,568; \hbox{i.e.} 70.5\%), containing a total of 141,324 unique quotes (out of 310,457; \hbox{i.e.} 45.5\%) making up about 2.60m occurrences (out of 7.67m; \hbox{i.e.} 33.9\%).\footnote{
 The significantly larger loss in occurrences indicates that, on average, the clusters we lose contain more occurrences than those we keep, which is to be expected for everyday language utterances.
 }
-Even if we lose some real event-related utterances which are present in clusters lasting more than 80 days (one such lost quote, for instance, is "the city is tired of me and the organization and I have run our course together"), we check that our approach fulfills its goals by coding a random sub-sample of 100 clusters:
+Even if we lose some real event-related utterances which are present in clusters lasting more than 80 days (one such lost quote, for instance, is ``the city is tired of me and the organization and I have run our course together''), we check that our approach fulfills its goals by coding a random sub-sample of 100 clusters:
 35 of them are rejected by the filter, with 15 false negatives (rejected clusters that should have been kept) and 9 false positives (clusters kept when they should have been rejected), giving a precision score of 0.862 and a recall score of 0.789.
 Furthermore, all but one of the 9 false positives are left with a single non-rejected quote, meaning those clusters are ignored by our substitution analysis; this brings the effective precision of our filter to 0.982.}\footnote{
 \newtext{A similar analysis was made for language detection, which is part of the cluster filtering:
@@ -95,7 +95,7 @@ We first introduce some lexical measures on words.
 Several such measures have been shown to be involved in recall, recognition, and naming tasks~\citep{nelson_how_2013,chan_network_2010,griffiths_google_2007}.}
 
 \newtext{To compute those features} we relied on the free association (FA) norms collected by \citet{nelson_university_2004}, which record the words that come to mind when someone is presented with a given cue.
-As \citet{nelson_university_2004} explain, "free association response probabilities index the likelihood that one word can cue another word to come to mind with minimal contextual constraints in effect."
+As \citet{nelson_university_2004} explain, ``free association response probabilities index the likelihood that one word can cue another word to come to mind with minimal contextual constraints in effect.''
 \newtext{Similar to what \citet{griffiths_google_2007} did, we first considered the directed \newtext{weighted} network formed by association norms, where nodes are words and edges are directed from cue to target word, with a weight equal to the association strength (that is the probability of that target word being produced when this particular cue is presented).
 This network is of particular interest since it lets us define features that reflect the associations driving false memories in word lists~\citep{deese_prediction_1959}, a phenomenon which may be involved in the transformation of quotations.}
 
@@ -186,10 +186,10 @@ We therefore model the underlying quotation selection process by making a few ad
 \newtext{The second issue is deciding which source originated such a substitution when several candidate sources are available.}
 
 Let us give an example:
-\newtext{say the quotation "These accusations are false and \textbf{absurd}" ($q$) appears in two different blogs on January 19, and the slightly different quotation "These accusations are false and \textbf{incoherent}" ($q'$) appears in another blog on the 20th of January.
+\newtext{say the quotation ``These accusations are false and \textbf{absurd}'' ($q$) appears in two different blogs on January 19, and the slightly different quotation ``These accusations are false and \textbf{incoherent}'' ($q'$) appears in another blog on the 20th of January.
 The second occurrence of $q$ can safely be assumed to be a faithful copy of the first one the same day.
 And since $q$ is fairly prominent when $q'$ first appears, we could assume that the author of $q'$ on the 20th based herself on $q$ as is shown with a dashed line in Fig.~\ref{fig:substitution-unmodelled}.
-Now say a third version, "These \textbf{allegations} are false and \textbf{incoherent}" ($q''$) also appears once on January 19 and once on January 20 after $q'$.
+Now say a third version, ``These \textbf{allegations} are false and \textbf{incoherent}'' ($q''$) also appears once on January 19 and once on January 20 after $q'$.
 $q$ and $q''$ differ by two substitutions, so we discard the possibility that one was written based on the other (this below for further details).
 $q''$ is only one substitution away from $q'$ however, so we could also consider the first occurrence of $q''$ as a potential source for $q'$ on the 20th.
 Conversely, the occurrence of $q''$ on the 20th could be considered as a substitution from $q'$, or as a faithful copy from its initial occurrence on January 19.}
@@ -300,7 +300,7 @@ The results and graphics for the 16 additional models involved are available in 
 \medskip
 
 In practice \newtext{for the model first introduced above}, from the \newtext{2.60m} initial occurrences spread into 50,427 quotation families, with significant redundancy (many quotes are indeed simple duplicates), we mine \newtext{40,868} substitutions.
-From these substitutions we remove those featuring stop words, minor spelling changes (e.g. center/centre, November/Nov, Senator/Sen), abbreviations, spelled out numbers, \newtext{words unknown to WordNet, and deletions in substrings (which can appear as substitutions of non-deleted words)};
+From these substitutions we remove those featuring stop words, minor spelling changes (\hbox{e.g.} center/centre, November/Nov, Senator/Sen), abbreviations, spelled out numbers, \newtext{words unknown to WordNet, and deletions in substrings (which can appear as substitutions of non-deleted words)};
 this eventually yields \newtext{6,318} valid substitutions \newtext{(before merging substitutions that share the same destination)}.\footnote{
 \newtext{Manually coding a random subset of 100 substitutions to evaluate this last filter showed that 84 were true negatives, 5 were false positives, and 11 true positives, giving a recall score of .688.
 Precision was evaluated over a random subset of 100 \emph{kept} substitutions, showing a score of .87.
@@ -359,8 +359,7 @@ The two situations are different enough to be studied separately, and we focus h
 \end{figure}
 
 We say that a word is \emph{substitutable} if it appears in a quote which undergoes a substitution, whether the substitution operates on that word or on another one.
-% utiliser "word-level measures", et/ou "For a given value of a given type of word-level measure (say, words of length 5), we define susceptibility as the ratio (...)"
-\newtext{For a given group of words $g$, say all nouns, or all words in a particular range of values for a feature (e.g. words 2 to 4 letters long), susceptibility is computed as the ratio of $s_g$, the number of times words of that group are substituted, to $s_g^0$, the number of times words of that group would be substituted if substitutions fell randomly on substitutable words.
+\newtext{For a given group of words $g$, say all nouns, or all words in a particular range of values for a feature (\hbox{e.g.} words 2 to 4 letters long), susceptibility is computed as the ratio of $s_g$, the number of times words of that group are substituted, to $s_g^0$, the number of times words of that group would be substituted if substitutions fell randomly on substitutable words.
 That is:}\footnote{
 \newtext{$s_g^0$ is computed by summing, over all quotes undergoing a substitution, the ratio of the number of words in a quote that are from group $g$ to the number of words in the same quote that could have been the substitution's target.
 If, for instance, half the content words of a given quote are nouns, such a quote contributes .5 to the total $s_{nouns}^0$.}
@@ -368,7 +367,7 @@ If, for instance, half the content words of a given quote are nouns, such a quot
 $$\sigma_g = \frac{s_g}{s_g^0}$$
 
 In other words, susceptibility measures \newtext{how much more or less a group of words $g$ actually gets substituted compared to picking targets at random in quotes undergoing substitutions}.
-\newtext{By applying this measure to Part-of-Speech (POS) categories and feature bins (e.g. for a feature $\phi$ and a bin $[a, b]$, $g = \{w | \phi(w) \in [a, b]\}$), susceptibility measures the bias in} the selection of start words involved in substitutions, \newtext{that is} the effect of word \newtext{properties} at the moment preceding the substitution when it is not yet known which word in the quotation will be substituted.\footnote{
+\newtext{By applying this measure to Part-of-Speech (POS) categories and feature bins (\hbox{e.g.} for a feature $\phi$ and a bin $[a, b]$, $g = \{w | \phi(w) \in [a, b]\}$), susceptibility measures the bias in} the selection of start words involved in substitutions, \newtext{that is} the effect of word \newtext{properties} at the moment preceding the substitution when it is not yet known which word in the quotation will be substituted.\footnote{
 \newtext{To avoid possible autocorrelation effects due to substitutions belonging to the same cluster (which are likely not statistically independent and may lead to overly optimistic confidence intervals), we scale $s_g$ and $s_g^0$ to count one for each cluster.
 That is, each individual substitution contributes to $s_g$ or $s_g^0$ by only 1 over the number of substitutions in its cluster.}
 }
