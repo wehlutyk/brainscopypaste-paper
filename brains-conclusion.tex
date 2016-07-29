@@ -1,128 +1,65 @@
 % !TEX root = brainscopycut.tex
 \section{Discussion}
 
-- place back into the initial question: in our example, do reps converge?
--> we don't know because we couldn't test (ref. sub models and complicated data), but there is attraction.
-  - Remind the details
-  - It's consistent with known effects (word frequency: easier recall for high freq, age of acquistion: Zevin, Dewhurst, Morrison, clustering coefficient: nelson, age of acquisition (corr pagerank): griffiths, orth. neighborhoos: Garlock), which is interesting, because it's applying cogsci tools on real life data
-  - it's also a first step towards analyzing together cogsci and culture (because cogsci on real life data), which is much of a challenge still, although we don't get to see any global effect on the corpus nor reciprocity, therefore (i.e. we don't loop the loop yet)
-  - there's a cost to this however: noise, uncertainty (hence single sub), data shaped oppositely to lab experiments.
-  - so naturally it's a far cry from the whole story. It's not even the main transformation at work, so we can't conclude on the evolution of the dataset. But we know something more for this simple case, and what it costs to reach that knowledge.
-
-- Now we also looked at context, but there's vast oceans to explore in this direction too. Indeed there's way more to do on this case:
-  - in lab exps you can predict the word if proper measures or well-designed lists
-  - you can ask what triggers the substitution with semantic similarity: low cost of switching to a more frequent dyad, given the sentence, following Zaromb
-  - you can see how previous context influences the semantic similarity (PLI, LSA/LDA). Note that these LSA/LDA methods are ill-suited to the data.
-  - with better data, building on our software, we could do that, and look at chains
-
-More broadly with Sperber:
-  - you can have a simplistic interpretation, or you can look for attraction on different dimensions, which a more rich (and useful) interpretation.
-  - kirby and co have looked at that on artificial languages, on non-meaningful patterns (claidiere), we could look at that on real language.
-  - What we see is consistent with lineage specificity (contraction around sentence median), and many things push towards that (context that influences the fitness, as in "language as a system" from kirby, previous history that changes bias, as in PLIs), but right now we don't know in detail what pressure creates that. It's likely the type of task influences that.
-  - What we see is not clear w.r.t. convergence however: (1) we don't observe it on our data, and (2) if there's lineage specificity there's no reason convergence should appear (on contrary). But, this is only half the story, since in reality there's also selection, i.e. not all chains go on forever, so you lose some diversity, and it changes the dynamics.
-  - finally, context is addressed with relevance in Sperber, but it's still all representational, as we did here. Others have said that it will never be enough. Ingold, Di Paolo.
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-\todo{Discuss related to introduction. Attractors, lineage with specification, what we couldn't observe, how it fits into Kirby.
-}
-
-
-
-\todo{\#15: relate to missed literature}
-
 \begin{new}
 
-ADDTHIS:
-We also chose exploratory vs. predictive to give a detailed view of what happens and because there's too many possible things to predict.
+We aimed to connect the field of cultural evolution with psycholinguistics by asking if cultural attractors appear in a corpus of online news-related quotes which are gradually transformed by low-level biases.
+The data set we used imposed a few constraints on our analysis:
+first, it was necessary to infer source-destination links, an operation made more reliable when restricting the scope of transformations to very simple cases, which we did by focusing on word substitutions.
+Second, contrary to laboratory experiments which produce data made of many repeated measures on a small number of cases (\hbox{e.g.} a given list of words), we have a great number of different cases (one case per cluster in which substitutions are found, \hbox{i.e.} 698 cases), with very few measures on each of them (average 9, median 5).
+This rendered the prediction of individual words impractical: if we cannot compute a percentage of explained data for a given case, any approximate prediction will be heavily underestimated.
+This last factor, added to the potential for variation of external conditions when authors wrote the quotes, led us to use word features to analyze the transformations by aggregating over individual cases.
 
-ADDTHIS:
-By characterizing substitutions with 6 features on the disappearing and appearing words, we identify what makes a substitution more likely, and how a word changes when it is substituted.
-Consistent with known effects in linguistics, we observe that low-frequency words and words learned later in development are more susceptible to substitution than other words.
-Looking at the context those words appear in, we observe a marked effect for substitution of extreme words in a sentence (either very high-valued or very low-valued features compared to sentence average, except for word frequency).
-Focusing on how words are transformed, we see that the appearing words have significantly higher frequency and lower age-of-acquisition than synonyms of the disappearing word.
-Finally, the patterns we observe are also consistent with an attraction of each of the features towards a (feature-specific) asymptotic value.
+By characterizing substitutions with 6 features on the disappearing word, we show that authors preferentially substitute words known for being harder to recall:
+most prominently words with low frequency~\citep{gregg_word_1976}, learned later~\citep{dewhurst_separate_1998}, or made up of more letters~\citep{nickels_dissociating_2004}, both globally and in comparison to the sentence they appear in.
+Further characterizing the substitutions by examining the variation of word features from disappearing to appearing words, we show:
+(1) that the operation is contractile on average, that is words are brought closer to an attractor point on each feature;
+(2) that authors produce words that are easier to remember than the average of synonyms of the disappearing word (a fact that is reflected in the position of the attraction point).
 
-ADDTHIS:
-It is possible however, that these attractors appear due to an interaction between biases and sentence context, making it a contingency rather than a rule. This is not really dealt with (context, aside from relevance) by Sperber.
+We do not actually observe quotes converging on a global scale towards attractors in their various dimensions.
+Indeed the limits of the data set don't allow us to infer chains of substitutions, and substitutions themselves are not the only type of transformation at work in the data set.
+Nonetheless, these findings (1) bring light to this simple type of transformation, and (2) are consistent with known psycholinguistic effects, with the hypothesis of cultural attractors in representations from everyday life, and with the lineage specificity discussed in the iterated learning literature~\citep{claidiere_cultural_2014,cornish_systems_2013}.
+They are obtained by successfully applying knowledge from cognitive science to real-life complex data, a task that remains a challenge in the study of cultural evolution.
+We believe that applying such data mining tools to manage the complexity of real-life data is a promising approach for the joint analysis of cognitive science and culture.
 
-Attraction can also be defined on any number of dimensions. It can be on the structure, on anything, so saying there could be an attraction while not specifying the dimension is really meaningless. What's more important is to look at a specific dimension, and see if there's attraction on that one, as we did here for features.
-
-We could've done also on semantic grouping, predicting the new word based on semantic similarity (or on frequent dyads, i.e. collocation with previous word the same way Zaromb et al. 2006 explain PLIs), and predicting the disappearing word based on the cost of doing such a substitution (lower cost -> higher prob of substitution). The point is, there's decades and many fields of psycholinguistics, and we can connect each of them with this question.
-
-All of this is possible with our software that we published.
-
-ADDTHIS:
-Taking context into account is more than what we did. For instance, building on Zaromb 2006, you could imagine that the substitutions appear because the word preceding the substituted one appears in another dyad a lot more than this one, triggering a substitution (Zaromb's associative vs. contextual retrieval processes in recall).
-
-ADDTHIS:
-Soooooo... following literature on word lists (Zaromb and DRM):
-- we could predict the new word in substitution? Take the strongest average association to words in the sentence.
-- we could predict substituted word? Take the word following the one that triggers the new word.
-Problems:
-- we probably won't find the exact word, but one similar to it (even Zaromb can't predict the exact word, they don't try, they just check it comes from the right list). How to evaluate that?
-- if computing LSA/LDA on the corpus (which probably isn't adapted because of the short sentence nature of the data -> topics = quote families), it's tautological unless you suppose substitutions have a negligible effect.
-Explain that to the reviewer.
-
-Again justify our approach w/ features by the shape of our data: few substitutions per cluster (avg. 9), and substitutions on relatively few clusters overall -> opposite situation to a few lists repeated through 50 subjects where frequency of transition has meaning. Here for each word, it's nearly one shot. So we have to categorize words (by using low number of features -> known features best) to get frequencies. From there, you can predict many many things, so better describe.
-
+In the simple case presented here, however, much remains to be explored.
+Since it is clear that observing cognitive biases in such data is now possible, questions addressed in controlled laboratory situations could be opened by further research.
+One question concerns the influence of the context surrounding a quote, be it in terms of other quotes preceding it temporally or of text surrounding it in a post.
+A first step could be the application of results from \citet{zaromb_temporal_2006} who have shown, in the simpler task of recall of random word lists, that the source of prior-list intrusions can be predicted based on the associations those preceding lists have formed:
+in our case, a substitution could be triggered and directed by associations formed by preceding context.
+A further step would be to follow \citet{cornish_systems_2013} have shown about reciprocal influences between context and transformations (in their case, with transmission chains of artificial content).
+Indeed substitutions, and more generally all transformations, also participate in creating the context for later quotes.
+One can ask, therefore, what are the reciprocal effects between, on one side, the corpus-level evolution of quotes through iterated transformations, and on the other side, a gradual change in the properties of transformations operated because of the evolution of surrounding context.
+Such interactions have been shown to underlie the lineage specificity observed in transmission chains~\citep{claidiere_cultural_2014}.
+Exploring how similar loop interactions happen real-life data could indeed be the next step in understanding the evolution of both cultural content and the ways in which it is transformed.
+In our particular case, such insight could shed some light on how the feature attractors explored in this paper actually emerge.
 
 \end{new}
+
+% A few more unredacted ideas:
+% More broadly with Sperber:
+%  - you can have a simplistic interpretation and expect simple convergence, or you can look for attraction on different dimensions, which is a richer (and more useful) interpretation.
+%  - note also that it can apply to long term or short term evolution.
+%  - What we see is not clear w.r.t. convergence: (1) we don't observe it on our data, and (2) if there's lineage specificity there's no reason convergence should appear (on contrary). But, this is only half the story, since in reality there's also selection, i.e. not all chains go on forever, so you lose some diversity, and it changes the dynamics.
+%  - finally, context is addressed with relevance in Sperber, but it's still all representational, as we did here. Others have said that it will never be enough. Ingold, Di Paolo.
+
 
 \section{Concluding remarks}\label{sec:conclusion}
 
-\todo{\#14:
-link to introduction discussion:
-(1) this can be a model system,
-(2) convergence can be looked for in any dimension, but that doesn't make a theory, so Epidemiology of Representations is all nice, but:
-(3a) taken simplistically it predicts obviously simplistic stuff (all quotes CV. to a single quote),
-(3b) taken more realistically (many dimensions in life) it gives some ideas, but it's not clear it's a core principle
-(3c) we need more controlled investigation to fuel the discussion and see how relevant it is.
-}
+\newtext{The theory of Epidemiology of Representations proposes a unifying framework for the study of cultural evolution.
+One of its core claims, the existence of cultural attractors, has been both a challenge to test empirically and a fruitful line to pursue in the study of cultural evolution.}
+We aimed to contribute to \newtext{testing this hypothesis} by studying a simple everyday-life task where individuals are implicitly trying to reproduce quotations.
+To some extent, our work amounts to \newtext{an out-of-laboratory} experiment where we \newtext{examine the influence} of \newtext{well-known word features} on the accuracy of the reproduction of short sentences.
+\newtext{Our analysis of substitutions shows that words are attracted, in each dimension, to a feature-specific value.
+Furthermore, the features' known effects in psycholinguistic experiments are reflected in the biases of these attraction points, meaning that the evolution of such quotations can be partially explained by known low-level cognitive biases.
+We believe that such an approach, combining psycholinguistic knowledge and data mining tools, can be fruitfully developed to improve the study of cultural attractors and explore the reciprocal influences of cognition and culture.}
 
 \begin{new}
 
-
-ADDTHIS:
-On the other side an enactive proposition which anthropologists like Ingold, in line with Mauss' works, are calling for \CN, is being developed by Froese, Di Paolo, and De Jaegher among others \CNs.
-
-The question is also gaining relevance in other fields, as work in evo-devo and non-genetic inheritance is accumulating evidence not accounted for by the modern synthesis \CN;
-these discoveries are creating demand for new or extended approaches to life evolution that unify its different levels, as well as creative empirical methods to test the predictions these approaches make \CN.
+Let us conclude by noting that the question of short- and long-term cultural evolution, and the approaches to study them, are becoming increasingly relevant to other fields.
+In biology in particular, work on evo-devo and non-genetic inheritance has accumulated evidence that is poorly accounted for by the modern synthesis of biological evolution, and is creating a demand for new or extended  approaches to joint cultural and biological evolution~\citep[see][for instance]{gilbert_eco-evo-devo:_2015}.
+Such an approach has long been called upon by anthropologists like~\citet{ingold_beyond_2004,ingold_three_1999}, in line with Mauss' initial works~\citep{mauss_les_1936}, and the debate is not entirely foreign to the enactive-representational discussion in cognitive science.
+As regards our particular case, a most promising line of work on the evolution of language is being developed by \citet{cuffari_participatory_2014}.
+The study of cultural evolution will most likely benefit greatly from the growing interactions between these disciplines.
 
 \end{new}
-
-We aimed to contribute to the empirical understanding of representation transformation processes %\marginnote{fixed after Telmo saying: Is this really about knowledge transformation of more about representation transformations and the insight they provide over underlaying cognitive processes?}
- by studying a simple task where individuals are \emph{implicitly} trying to reproduce textual content. To some extent, our work amounts to a large \emph{in vivo} experiment where we appraise the impact of classically-influent psycholinguistic variables in the accuracy of the reproduction.
-In more detail, we describe the joint properties of the substituted and substituting terms in the reformulation by individuals of a specific type of utterances (quotations). %--- in this sense we also diverge from psycholinguistic experiments that focus on ease of recall.
-
-\todo{\#18: tone down claims about contractile: it's a possible hypothesis if this were the only process, but not observed with the mix of all other processes}
-
-For each of the selected psycholinguistic variables, we demonstrate the existence of attractor values in the underlying variable spaces. More precisely, beyond the interpretation of our results for each variable, we notice that all variables remarkably exhibit a single attractor and are generally contractile --- as such, even though the observed convergence patterns only partially explain quotation evolution, we shed light on a class of phenomena which are susceptible to constitute a key element of a broader empirically-grounded, attractor-based theory of cultural evolution.
-
-%Rather, we exhibit the bias of substitution, and that in this respect it not only provides a  we provide a fine description of the bias but also corresponds to an  ``input-output'' reformulation couple describing the joint properties of (substituted$\rightarrow$substituting) terms.
-
-%We contend that our results provide some of the first bricks of an empirical \emph{fitness landscape} for the epidemiology of representations
-
-%(age of acquisition, number of phonemes, ), it also emphasizes the importance of the semantic network structure (Wordnet: Pagerank, degree, clustering[, distance?]),
-
-
-%\begin{itemize}
-%\item new in the sense that it does not focus
-%From a psycholingustic viewpoint,
