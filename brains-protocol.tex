@@ -62,8 +62,8 @@ Even if we lose some real event-related utterances which are present in clusters
 Furthermore, all but one of the 9 false positives are left with a single non-rejected quote, meaning those clusters are ignored by our substitution analysis; this brings the effective precision of our filter to 0.982.}\footnote{
 \newtext{A similar analysis was made for language detection, which is part of the cluster filtering:
 out of 100 randomly sampled quotes, 17 are rejected because their detected language is not English, with no false positives and 6 false negatives, giving a precision score of 1 and a recall score of 0.933.
-Of the 6 false negatives, 4 had less than 5 tokens and would have been excluded by the cluster filter anyway.
-}}
+Of the 6 false negatives, 4 had less than 5 tokens and would have been excluded by the cluster filter anyway.}
+}
 
 
 \subsection{Word-level measures}
@@ -130,9 +130,10 @@ We used three standard measures on the FA network:
 \subsubsection{Variable correlations}
 
 \newtext{Several of these features are strongly related and can be grouped together.
-To make correlation values as well as future comparisons more reliable, we log-transformed features that have marked exponential distributions (a few words valued orders of magnitude higher than the vast majority of other words).\footnote{
-\newtext{The distributions of original and log-transformed features appears in the Supplementary Information, along with scatter plots for each feature pair, summarized below with correlation values.
-}}}
+To make correlation values as well as future comparisons more reliable, we log-transformed features that have marked exponential distributions (a few words valued orders of magnitude higher than the vast majority of other words).}
+%\footnote{
+%\newtext{The distributions of original and log-transformed features appears in the Supplementary Information, %along with scatter plots for each feature pair, summarized below with correlation values.
+%}}
 
 \begin{figure}[!th]
     \centering
