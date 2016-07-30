@@ -5,7 +5,8 @@
 \label{sec:protocol}
 
 \newtext{We rely on a text corpus made of quotations extracted from online blog posts, and focus on their evolution.}
-\newtext{Indeed} quotations appeared to be a perfect candidate to propose a first measure of \newtext{automatic} cognitive bias in \newtext{cultural transmission}.
+\newtext{\tbn{Indeed}}
+Quotations appeared to be a perfect candidate to propose a first measure of \newtext{automatic} cognitive bias in \newtext{cultural transmission}.
 First, they are usually cleanly delimited by quotation marks which greatly facilitates their detection in text corpora.
 Second, they stem from a unique original version, and are ideally traceable back to that version.
 Third, and most importantly, their duplication should \emph{a priori} be highly faithful, apart from cases of cropping:
@@ -13,7 +14,7 @@ not only should transformations be of moderate magnitude, but when specific word
 
 We could therefore study the individual transformation process at work when authors alter quotations, by examining the modified words in each transformation.
 \newtext{Since our approach is exploratory however, we do not know at the outset which precise effect of cognitive bias we are looking for.
-Indeed the data we use does not come from a controlled experiment in the laboratory, designed to elicit a particular effect: they are recordings of real life interactions, with all the complexity and uncertainty of conditions this entails.
+Indeed, the data we use does not come from a controlled experiment in the laboratory, designed to elicit a particular effect: they are recordings of real life interactions, with all the complexity and uncertainty of conditions this entails.
 %In this study, therefore, we did not try to predict and explain in detail the cognitive processes responsible for transformations
 %\todo{, as this would be akin to a drink from the firehose. \sf [Cam: supprimer? potentiellement un excès d'autoflagellation -- en fait on devrait pouvoir dire simplement: ``The prediction and detailed explanation of the cognitive processes responsible for transformations is outside of the scope of this study'', probablement après la fin de la phrase suivante (``of a larger complexity (the detailed prediction and deconstruction of the cognitive processes etc. outside the scope etc. further research)'' mais même là cette modestie pourrait plutôt être de mise dans la conclusion? ou bien il s'agit d'une critique directe d'un reviewer ?  Un peu pareil pour ``our approach is exploratory'' (que j'ai laissé au nom de l'ambiguïté d'exploratoire qui veut aussi bien dire ``premier brouillon'' que ``data mining'') et ``this first study'' (où j'ai enlevé le `first' car trop ``bon c'est à moitié fini mais on soumet quand même'' ;) ]}
 Our goal, therefore, is to show that such effects exist and are measurable even if they are part of a larger complexity (the detailed prediction and deconstruction of the cognitive processes responsible for them being left to further research).
@@ -21,9 +22,9 @@ Our goal, therefore, is to show that such effects exist and are measurable even 
 If this is confirmed, we will have successfully applied laboratory analyses to out-of-laboratory data, opening a path to explanations of actual (\hbox{vs.} simulated) cultural evolution with tools from cognitive science.
 Aiming to exhibit such subtle biases in complex data is the main reason we chose to use aggregate measures that have a chance of smoothing out the possible variations of experimental conditions in the data set.}
 
-To keep the analysis \newtext{tractable}, we focused on quotation transformations consisting in the \emph{substitution} of a word by another word (and only those cases) in order to unambiguously discuss single word replacements.
+To keep the analysis \newtext{tractable}, we focused on quotation transformations consisting \tb{of} the \emph{substitution} of a word by another word (and only those cases) in order to unambiguously discuss single word replacements.
 \newtext{This restriction also allows us to more reliably infer the information that is missing in our data set, as explained further down (see ``Substitution model'').}
-To quantify those substitutions we decided to associate a number of features to each word, the variation of which we can statistically study.
+To quantify \tb{these} substitutions we decided to associate a number of features to each word, the variation of which we can statistically study.
 
 The next subsections describe the data set and the measures we used to assess this cognitive bias.
 
@@ -44,7 +45,7 @@ We find for example the following variation of the above quote:
 \begin{quote}
 ``these operations are \textbf{intended} to address funding pressures over quarter-end.''
 \end{quote}
-\newtext{Next, they applied a community detection algorithm} to that quotation graph to detect aggregates of tightly connected, that is sufficiently similar, groups of quotations~\citep[see again][for more details]{leskovec_meme-tracking_2009}.
+\newtext{Next, they applied a community detection algorithm} to that quotation graph to detect aggregates of tightly connected, \tb{i.e.} sufficiently similar, groups of quotations~\citep[see again][for more details]{leskovec_meme-tracking_2009}.
 This analysis yielded the final data we had access to, with a total of about \num{70000} sets of quotations; each of these sets ideally contains all variations of a same parent utterance, along with their respective publication URLs and timestamps \newtext{(since the procedure cannot be perfect, sets of quotations contain occasional rogue unrelated variations that should have been discarded or assigned to another set)}.
 
 Manual inspection of this data set revealed that it contains a significant number of everyday language quotations (such as ``it was much better than I expected'', ``did that just happen'', as well as many simple expletive-based sentences).
@@ -55,8 +56,7 @@ If, after this screening, a cluster's occurrences still span more than 80 days (
 \newtext{We eventually keep 50,427 clusters (out of 71,568; \hbox{i.e.} 70.5\%), containing a total of 141,324 unique quotes (out of 310,457; \hbox{i.e.} 45.5\%) making up about 2.60m occurrences (out of 7.67m; \hbox{i.e.} 33.9\%).\footnote{
 The significantly larger loss in occurrences indicates that, on average, the clusters we lose contain more occurrences than those we keep, which is to be expected for everyday language utterances.
 }
-Even if we lose some real event-related utterances which are present in clusters lasting more than 80 days (one such lost quote, for instance, is ``the city is tired of me and the organization and I have run our course together''), we check that our approach fulfills its goals by coding a random sub-sample of 100 clusters:
-35 of them are rejected by the filter, with 15 false negatives (rejected clusters that should have been kept) and 9 false positives (clusters kept when they should have been rejected), giving a precision score of 0.862 and a recall score of 0.789.
+Even if we lose some real event-related utterances which are present in clusters lasting more than 80 days (one such lost quote, for instance, is ``the city is tired of me and the organization and I have run our course together''), we check that our \tb{filtering} approach fulfills its goals by coding a random sub-sample of 100 clusters: 35 of them are rejected by the filter, with 15 false negatives (rejected clusters that should have been kept) and 9 false positives (clusters kept when they should have been rejected), giving a precision score of 0.862 and a recall score of 0.789.
 Furthermore, all but one of the 9 false positives are left with a single non-rejected quote, meaning those clusters are ignored by our substitution analysis; this brings the effective precision of our filter to 0.982.}\footnote{
 \newtext{A similar analysis was made for language detection, which is part of the cluster filtering:
 out of 100 randomly sampled quotes, 17 are rejected because their detected language is not English, with no false positives and 6 false negatives, giving a precision score of 1 and a recall score of 0.933.
@@ -94,7 +94,7 @@ We first introduce some lexical measures on words.
 \newtext{Aside from these raw features, the systemic dimension of vocabulary~\citep{cornish_systems_2013} has led authors to develop measures based on the full topology of networks built from free association data or phonological similarity.
 Several such measures have been shown to be involved in recall, recognition, and naming tasks~\citep{nelson_how_2013,chan_network_2010,griffiths_google_2007}.}
 
-\newtext{To compute those features} we relied on the free association (FA) norms collected by \citet{nelson_university_2004}, which record the words that come to mind when someone is presented with a given cue.
+\newtext{To compute \tb{these} features} we relied on the free association (FA) norms collected by \citet{nelson_university_2004}, which record the words that come to mind when someone is presented with a given cue.
 As \citet{nelson_university_2004} explain, ``free association response probabilities index the likelihood that one word can cue another word to come to mind with minimal contextual constraints in effect.''
 \newtext{Similar to what \citet{griffiths_google_2007} did, we first considered the directed \newtext{weighted} network formed by association norms, where nodes are words and edges are directed from cue to target word, with a weight equal to the association strength (that is the probability of that target word being produced when this particular cue is presented).
 This network is of particular interest since it lets us define features that reflect the associations driving false memories in word lists~\citep{deese_prediction_1959}, a phenomenon which may be involved in the transformation of quotations.}
@@ -188,9 +188,9 @@ We therefore model the underlying quotation selection process by making a few ad
 Let us give an example:
 \newtext{say the quotation ``These accusations are false and \textbf{absurd}'' ($q$) appears in two different blogs on January 19, and the slightly different quotation ``These accusations are false and \textbf{incoherent}'' ($q'$) appears in another blog on the 20th of January.
 The second occurrence of $q$ can safely be assumed to be a faithful copy of the first one the same day.
-And since $q$ is fairly prominent when $q'$ first appears, we could assume that the author of $q'$ on the 20th based herself on $q$ as is shown with a dashed line in Fig.~\ref{fig:substitution-unmodelled}.
+And since $q$ is fairly prominent when $q'$ first appears, we could assume that the author of $q'$ on the 20th based herself on $q$, as is shown with a dashed line in Fig.~\ref{fig:substitution-unmodelled}.
 Now say a third version, ``These \textbf{allegations} are false and \textbf{incoherent}'' ($q''$) also appears once on January 19 and once on January 20 after $q'$.
-$q$ and $q''$ differ by two substitutions, so we discard the possibility that one was written based on the other (this below for further details).
+\tb{Here,} $q$ and $q''$ differ by two substitutions, so we discard the possibility that one was written based on the other (\tb{see} below for further details).
 $q''$ is only one substitution away from $q'$ however, so we could also consider the first occurrence of $q''$ as a potential source for $q'$ on the 20th.
 Conversely, the occurrence of $q''$ on the 20th could be considered as a substitution from $q'$, or as a faithful copy from its initial occurrence on January 19.}
 (Options shown in Fig.~\ref{fig:substitution-unmodelled}.)
@@ -222,8 +222,9 @@ The assumptions it embeds, however, are a subset of a much wider set of possibil
 We identified four binary parameters that differentiate potential models, such that the resulting 16 combinations cover most of the reasonable answers to inference uncertainties.
 The first two parameters define the preceding time bin from which authors could have drawn a source when producing a new occurrence:
 (1) \textbf{bin positions}, which can be aligned to midnight (as in the model presented above) or kept sliding (for each occurrence, use a bin that ends precisely at that occurrence);
-(2) \textbf{bin span}, which can be 24 hours (as in the model above) or can be extended to start at the very first occurrence in the quotation family.
-The other two parameters define rules on the selection of source and destination quotes of a substitution:
+(2) \textbf{bin span}, which can be \tb{$\Delta t=1$ day} %24 hours 
+(as in the model above) or can be extended to start at the very first occurrence in the quotation family.
+The other two parameters \tb{configure} rules on the selection of source and destination quotes of a substitution:
 (3) \textbf{candidate sources} can be restricted to the most frequent quotations in the preceding time bin (as in the model above), or not (in which case all quotations in the preceding bin are candidate sources);
 (4) \textbf{candidate destinations} can be restricted to quotations that do not appear in the preceding bin, or without restriction (as in the model above).
 A substitution model, then, is the given of a value for each of those parameters;
@@ -283,7 +284,8 @@ If a destination has substitutions from multiple sources we count a single effec
 \begin{new}
 
 Put shortly a model defines how many times, and under what source and destination conditions, quote occurrences can be counted as substitutions.
-Fig.~\ref{fig:substitution-modelled} shows the inferences made by the four models that use discretely positioned bins spanning 1 day:
+Fig.~\ref{fig:substitution-modelled} shows the inferences made by the four models that use \tb{discrete} %ly positioned 
+bins spanning 1 day:
 later occurrences of $q'$ and $q''$ are counted as substitutions in Fig.~\ref{fig:substitution-modelled-majority-all} and Fig.~\ref{fig:substitution-modelled-all-all}, whereas in Fig.~\ref{fig:substitution-modelled-majority-exclude_past} and Fig.~\ref{fig:substitution-modelled-all-exclude_past} they are not.
 
 The results reported and discussed in the following sections are valid for all 16 models, and the graphics we present were produced by the model first introduced above.
@@ -299,13 +301,13 @@ The results and graphics for the 16 additional models involved are available in 
 
 \medskip
 
-In practice \newtext{for the model first introduced above}, from the \newtext{2.60m} initial occurrences spread into 50,427 quotation families, with significant redundancy (many quotes are indeed simple duplicates), we mine \newtext{40,868} substitutions.
+In practice \newtext{for the model first introduced above}, from the \newtext{2.60m} initial occurrences spread \tb{over} 50,427 quotation families, with significant redundancy (many quotes are indeed simple duplicates), we mine \newtext{40,868} substitutions.
 From these substitutions we remove those featuring stop words, minor spelling changes (\hbox{e.g.} center/centre, November/Nov, Senator/Sen), abbreviations, spelled out numbers, \newtext{words unknown to WordNet, and deletions in substrings (which can appear as substitutions of non-deleted words)};
 this eventually yields \newtext{6,318} valid substitutions \newtext{(before merging substitutions that share the same destination)}.\footnote{
 \newtext{Manually coding a random subset of 100 substitutions to evaluate this last filter showed that 84 were true negatives, 5 were false positives, and 11 true positives, giving a recall score of .688.
 Precision was evaluated over a random subset of 100 \emph{kept} substitutions, showing a score of .87.
 Finally, note that excluding minor spelling changes does not bias our use of orthographic neighborhood density as a feature:
-out of the first 100 substitutions coded for recall, those with levenshtein distance equal to 1 (which is what orthographic neighborhood density codes,~\citealp{marian_clearpond:_2012}) were all typos or UK/US spelling changes, neither of which are relevant for this study.}
+out of the first 100 substitutions coded for recall, those with Levenshtein distance equal to 1 (which is what orthographic neighborhood density codes,~\citealp{marian_clearpond:_2012}) were all typos or UK/US spelling changes, neither of which are relevant for this study.}
 }
 
 \section{Results}\label{sec:results}
