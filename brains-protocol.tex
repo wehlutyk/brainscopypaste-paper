@@ -303,12 +303,11 @@ The results and graphics for the 16 additional models involved are available in 
 
 In practice \newtext{for the model first introduced above}, from the \newtext{2.60m} initial occurrences spread \tb{over} 50,427 quotation families, with significant redundancy (many quotes are indeed simple duplicates), we mine \newtext{40,868} substitutions.
 From these substitutions we remove those featuring stop words, minor spelling changes (\hbox{e.g.} center/centre, November/Nov, Senator/Sen), abbreviations, spelled out numbers, \newtext{words unknown to WordNet, and deletions in substrings (which can appear as substitutions of non-deleted words)};
-this eventually yields \newtext{6,318} valid substitutions \newtext{(before merging substitutions that share the same destination)}.\footnote{
+this eventually yields \newtext{6,318} valid substitutions\footnote{
 \newtext{Manually coding a random subset of 100 substitutions to evaluate this last filter showed that 84 were true negatives, 5 were false positives, and 11 true positives, giving a recall score of .688.
 Precision was evaluated over a random subset of 100 \emph{kept} substitutions, showing a score of .87.
 Finally, note that excluding minor spelling changes does not bias our use of orthographic neighborhood density as a feature:
-out of the first 100 substitutions coded for recall, those with Levenshtein distance equal to 1 (which is what orthographic neighborhood density codes,~\citealp{marian_clearpond:_2012}) were all typos or UK/US spelling changes, neither of which are relevant for this study.}
-}
+out of the first 100 substitutions coded for recall, those with Levenshtein distance equal to 1 (which is what orthographic neighborhood density codes,~\citealp{marian_clearpond:_2012}) were all typos or UK/US spelling changes, neither of which are relevant for this study.}} \newtext{\tbn{(before merging substitutions that share the same destination)}}.
 
 \section{Results}\label{sec:results}
 
@@ -341,15 +340,6 @@ The two situations are different enough to be studied separately, and we focus h
 
 \subsection{Susceptibility}
 
-\begin{figure*}[!th]
-    \centering
-    \includegraphics[width=\textwidth]{images/computed-figures/paper-susceptibilities-quantilebins_global.png}
-    \caption{\textbf{Substitution susceptibility for feature values:}
-    susceptibility to substitution versus feature value of a candidate word for substitution \newtext{(binned by quartiles)}, with 95\% asymptotic confidence intervals \newtext{(Goodman-based multinomial)}.
-    }
-    \label{fig:feature-susceptibilities-global}
-\end{figure*}
-
 \begin{figure}[h]
     \centering
     \includegraphics[width=\linewidth]{images/computed-figures/all-susceptibilities-pos.png}
@@ -360,19 +350,30 @@ The two situations are different enough to be studied separately, and we focus h
     \label{fig:pos-susceptibilities}
 \end{figure}
 
+
+\begin{figure*}[!th]
+    \centering
+    \includegraphics[width=\textwidth]{images/computed-figures/paper-susceptibilities-quantilebins_global.png}
+    \caption{\textbf{Substitution susceptibility for feature values:}
+    susceptibility to substitution versus feature value of a candidate word for substitution \newtext{(binned by quartiles)}, with 95\% asymptotic confidence intervals \newtext{(Goodman-based multinomial)}.
+    }
+    \label{fig:feature-susceptibilities-global}
+\end{figure*}
+
+
 We say that a word is \emph{substitutable} if it appears in a quote which undergoes a substitution, whether the substitution operates on that word or on another one.
 \newtext{For a given group of words $g$, say all nouns, or all words in a particular range of values for a feature (\hbox{e.g.} words 2 to 4 letters long), susceptibility is computed as the ratio of $s_g$, the number of times words of that group are substituted, to $s_g^0$, the number of times words of that group would be substituted if substitutions fell randomly on substitutable words.
 That is:}\footnote{
 \newtext{$s_g^0$ is computed by summing, over all quotes undergoing a substitution, the ratio of the number of words in a quote that are from group $g$ to the number of words in the same quote that could have been the substitution's target.
-If, for instance, half the content words of a given quote are nouns, such a quote contributes .5 to the total $s_{nouns}^0$.}
+If, for instance, half the content words of a given quote are nouns, such a quote contributes .5 to the total $s_{nouns}^0$.} \tb{Further, t}o avoid possible autocorrelation effects due to substitutions belonging to the same cluster (which are likely not statistically independent and may lead to overly optimistic confidence intervals), we scale $s_g$ and $s_g^0$ to count one for each cluster.
+That is, each individual substitution contributes to $s_g$ or $s_g^0$ by only 1 over the number of substitutions in its cluster.}
 }
 $$\sigma_g = \frac{s_g}{s_g^0}$$
 
 In other words, susceptibility measures \newtext{how much more or less a group of words $g$ actually gets substituted compared to picking targets at random in quotes undergoing substitutions}.
-\newtext{By applying this measure to Part-of-Speech (POS) categories and feature bins (\hbox{e.g.} for a feature $\phi$ and a bin $[a, b]$, $g = \{w | \phi(w) \in [a, b]\}$), susceptibility measures the bias in} the selection of start words involved in substitutions, \newtext{that is} the effect of word \newtext{properties} at the moment preceding the substitution when it is not yet known which word in the quotation will be substituted.\footnote{
-\newtext{To avoid possible autocorrelation effects due to substitutions belonging to the same cluster (which are likely not statistically independent and may lead to overly optimistic confidence intervals), we scale $s_g$ and $s_g^0$ to count one for each cluster.
-That is, each individual substitution contributes to $s_g$ or $s_g^0$ by only 1 over the number of substitutions in its cluster.}
-}
+\newtext{By applying this measure to Part-of-Speech (POS) categories and feature bins (\hbox{e.g.} for a feature $\phi$ and a bin $[a, b]$, $g = \{w | \phi(w) \in [a, b]\}$), susceptibility measures the bias in} the selection of start words involved in substitutions, 
+\tb{\hbox{i.e.} it measures the preferential selection of some word properties given a substitution.}
+%\newtext{that is} the effect of word \newtext{properties} at the moment preceding the substitution when it is not yet known which word in the quotation will be substituted.
 
 \medskip
 
