@@ -313,18 +313,26 @@ out of the first 100 substitutions coded for recall, those with Levenshtein dist
 
 \begin{new}
 
-While most of the substitutions we obtain with this procedure replace a word with another semantically related word, the two are rarely direct synonyms:
-only a third of all substitutions travel less than 3 hops on the hyponym-hypernym network defined by WordNet (direct synonyms count as 0~hops on this network), meaning that at least two thirds involve non-synonyms.\footnote{
-\newtext{A similar behavior is observed on the FA network, where about 104 clusters have substitutions traveling only 1 hop, 110 traveling 2 hops, 137 traveling 3, 72 traveling 4, and 13 traveling 5.
-}}
-Compared to the word it replaces, the new word usually achieves a similar meaning in the context of its sentence while still slightly changing the implications or the attitude expressed by the author.
-The following examples illustrate this behavior:
+\tb{Substitutions usually} replace a word with another semantically related word: the new word achieves a similar meaning in the context of its sentence, while still slightly changing the implications or the attitude expressed by the author. The following examples illustrate this \tb{phenomenon}:
 
 \begin{APAitemize}
 	\item ``This is \{socialism~$\rightarrow$~welfare\} for the rich'',
 	\item {[}The{]} ``perverse logic of \{clashes~$\rightarrow$~confrontation\} and violence'',
 	\item ``This \{crisis~$\rightarrow$~problem\} did not develop overnight and it will not be solved overnight''.
 \end{APAitemize}
+
+\tb{However, the substituted and subtituting words are rarely direct synonyms:} only a third of all substitutions travel less than 3 hops on the hyponym-hypernym network defined by WordNet (direct synonyms count as 0~hops on this network), meaning that at least two thirds involve non-synonyms.\footnote{
+\newtext{A similar \tb{phenomenon} is observed on the FA network, where about 104 clusters have substitutions traveling only 1 hop, 110 traveling 2 hops, 137 traveling 3, 72 traveling 4, and 13 traveling 5.
+}}
+
+%Compared to the word it replaces, the new word usually achieves a similar meaning in the context of its sentence while still slightly changing the implications or the attitude expressed by the author.
+%The following examples illustrate this behavior:
+
+%\begin{APAitemize}
+%	\item ``This is \{socialism~$\rightarrow$~welfare\} for the rich'',
+%	\item {[}The{]} ``perverse logic of \{clashes~$\rightarrow$~confrontation\} and violence'',
+%	\item ``This \{crisis~$\rightarrow$~problem\} did not develop overnight and it will not be solved overnight''.
+%\end{APAitemize}
 
 \end{new}
 
@@ -343,8 +351,8 @@ The two situations are different enough to be studied separately, and we focus h
 \begin{figure}[h]
     \centering
     \includegraphics[width=\linewidth]{images/computed-figures/all-susceptibilities-pos.png}
-    \caption{\newtext{\textbf{Substitution susceptibility for POS categories:} categories are simplified from the TreeTagger tag set: \emph{J} means adjective, \emph{N}~noun, \emph{R}~adverb, \emph{V}~verb, and \emph{Stopword-like} gathers together all the categories partially or completely affected by the stopword filter (see main text for details).
-    The top panel shows the actual $s_{POS}$ and $s_{POS}^0$ counts, the bottom panel shows $\sigma_{POS}$, the ratio of the two.
+    \caption{\newtext{\textbf{\tb{POS-related results:}} categories are simplified from the TreeTagger tag set: \emph{J} means adjective, \emph{N}~noun, \emph{R}~adverb, \emph{V}~verb, and \emph{Stopword-like} gathers together all the categories partially or completely affected by the stopword filter (see main text for details).
+    The top panel shows the actual $s_{POS}$ and $s_{POS}^0$ counts. The bottom panel shows \tb{the substitution susceptibility $\sigma_{POS}$, which is the ratio between the two previous counts}.
     Confidence intervals are computed with the Goodman method for multinomial proportions.}
     }
     \label{fig:pos-susceptibilities}
@@ -367,7 +375,7 @@ That is:}\footnote{
 \newtext{$s_g^0$ is computed by summing, over all quotes undergoing a substitution, the ratio of the number of words in a quote that are from group $g$ to the number of words in the same quote that could have been the substitution's target.
 If, for instance, half the content words of a given quote are nouns, such a quote contributes .5 to the total $s_{nouns}^0$.} \tb{Further, t}o avoid possible autocorrelation effects due to substitutions belonging to the same cluster (which are likely not statistically independent and may lead to overly optimistic confidence intervals), we scale $s_g$ and $s_g^0$ to count one for each cluster.
 That is, each individual substitution contributes to $s_g$ or $s_g^0$ by only 1 over the number of substitutions in its cluster.}
-}
+
 $$\sigma_g = \frac{s_g}{s_g^0}$$
 
 In other words, susceptibility measures \newtext{how much more or less a group of words $g$ actually gets substituted compared to picking targets at random in quotes undergoing substitutions}.
@@ -410,19 +418,7 @@ On the whole, the trends observed are consistent with known effects of word freq
 
 \subsection{Variation}
 
-\begin{figure*}[!th]
-    \centering
-    \includegraphics[width=\textwidth]{images/computed-figures/paper-variations-quantilebins_global.png}
-    \caption{\textbf{Feature variation upon substitution:}
-    $\nu_\phi$, average feature value of the appearing word as a function of the feature value of the disappearing word in a substitution \newtext{(binned by quartiles)}, with 95\% asymptotic confidence intervals based on Student's \emph{t}-distribution.
-    The overall position of the curve with respect to the dashed line representing $\mathcal{H}_0$ (constant $\nu_{\phi}^0$) indicates the direction of the cognitive bias \newtext{compared to a purely random variation}.
-    \newtext{The position with respect to the dash-dotted line representing $\mathcal{H}_{00}$ ($\nu_{\phi}^{00}$) indicates the bias compared to a semantically plausible random variation obtained by choosing a random synonym of the disappearing word.}
-    The intersection with $y = x$ marks the attractor value.
-    The fact that all curves have slopes smaller than 1 \newtext{in absolute value} means that the substitution operation is contractile on average:
-    \newtext{it brings} each feature \newtext{closer to} its own specific asymptotic range.
-    }
-    \label{fig:feature-variations-global}
-\end{figure*}
+
 
 We \newtext{now examine} how words are modified \newtext{when} they are substituted, that is how their features change upon substitution.
 Considering a word~$\wstart$ substituted for~$\warrival$, we measure how a feature~\newtext{$\phi$} of~$\wstart$ varies when it is replaced with~$\warrival$, that is we look at~$\phi(\warrival)$ as a function of~$\phi(\wstart)$.
@@ -440,7 +436,7 @@ For instance, when considering the feature ``Clustering coefficient'', the arriv
 }
 In this case, since $\phi(\warrival)$ becomes a constant value in the above averaging (by definition $\warrival$ does not depend on $\wstart$ anymore), the baseline variation under $\mathcal{H}_0$ may be rewritten as:
 $$\nu_{\phi}^0 (f) = \left<\phi\right>$$
-\newtext{$\mathcal{H}_{00}$ models the situation where the arrival word $\warrival$ is chosen \emph{among immediate synonyms of the start word} $\wstart$, that is an arrival word chosen among semantically plausible though still random words.
+\newtext{$\mathcal{H}_{00}$ models the situation where the arrival word $\warrival$ is chosen \emph{among immediate synonyms of the start word} $\wstart$, \hbox{i.e.} an arrival word chosen among semantically plausible though still random words.
 In this case $\nu_{\phi}^{00}$ does depend on $f$:\footnote{
 \newtext{The actual implementation has an additional level of averaging since WordNet, used to get a word's synonyms, defines several meanings for a single given word.
 Therefore:
@@ -454,6 +450,20 @@ This approach yields a fine-grained view of how word features evolve upon substi
 \item a random arrival (\hbox{vs.} $\nu_{\phi}^0$), \newtext{and
 \item an unbiased semantically plausible arrival (\hbox{vs.} $\nu_{\phi}^{00}$)}.
 \end{seriate}
+
+\begin{figure*}[!th]
+    \centering
+    \includegraphics[width=\textwidth]{images/computed-figures/paper-variations-quantilebins_global.png}
+    \caption{\textbf{Feature variation upon substitution:}
+    $\nu_\phi$, average feature value of the appearing word as a function of the feature value of the disappearing word in a substitution \newtext{(binned by quartiles)}, with 95\% asymptotic confidence intervals based on Student's \emph{t}-distribution.
+    The overall position of the curve with respect to the dashed line representing $\mathcal{H}_0$ (constant $\nu_{\phi}^0$) indicates the direction of the cognitive bias \newtext{compared to a purely random variation}.
+    \newtext{The position with respect to the dash-dotted line representing $\mathcal{H}_{00}$ ($\nu_{\phi}^{00}$) indicates the bias compared to a semantically plausible random variation obtained by choosing a random synonym of the disappearing word.}
+    The intersection with $y = x$ marks the attractor value.
+    The fact that all curves have slopes smaller than 1 \newtext{in absolute value} means that the substitution operation is contractile on average:
+    \newtext{it brings} each feature \newtext{closer to} its own specific asymptotic range.
+    }
+    \label{fig:feature-variations-global}
+\end{figure*}
 
 \medskip
 
