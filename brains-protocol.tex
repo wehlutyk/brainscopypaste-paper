@@ -152,7 +152,9 @@ Applying a feature agglomeration algorithm targeted at 6 groups refined this obs
 agglomerating into more than 6 groups separated age of acquisition from group (c), which we excluded given its high correlation values to the rest of group (c). 
 We used scikit-learn's FeatureAgglomeration class for this procedure~\citep{pedregosa_scikit-learn:_2011}.}
 }
+\end{new}
 
+\begin{new}
 Since our data is about written transformations, number of letters and orthographic neighborhood density are the natural representatives of groups (a) and (b) respectively.
 Given the importance of age of acquisition in the lexical feature literature, we chose it to represent group (c).
 Finally we used clustering coefficient to represent group (d) since it has already been used in previous studies.
@@ -162,7 +164,6 @@ Note that feature values stem from different data sets which do not always encod
 Indeed, we have data on frequency for about \newtext{33.5k} words, on age of acquisition for 30.1k words, on clustering coefficient for 5.7k words, number of synonyms 111.2k, and \newtext{orthographic density 17.8k words}.
 Quite often then, not all features are available for all words in our data set;
 however this is not problematic since the analysis is done on a per-feature basis, and not all words need be encoded in all features.}
-
 \end{new}
 
 \begin{figure}[!th]

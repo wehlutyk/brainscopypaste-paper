@@ -96,15 +96,16 @@ Point to:
 2. The conclusions about “contractile” processes seem pretty speculative (as almost all reviewers agreed).   Sure, this might be the theoretical implication of iterating this substitution process, but you do not present any further evidence of this type of contraction towards a fixed point.  I think if you want to make this a major conclusion of the paper there is more work to be done.  Also this idea has been explored, in my view, in a much more sophisticated way in the iterated learning literature (e.g., Kalish, Lewandowsky, Griffiths, Kirby… see my PDF comments for specific references).  You should really check these arguments and papers out because you really have an iterated learning task.
 } 
 
-\answer{We agree the presentation was too much. Point to:
-- the integration of the iterated learning literature in review and general discussion
-- the fact that the constraints of the data don't let us explore chains, so we explained our claims more appropriately
-}
+\answer{We agree the presentation was too much. \unclear{too much?} Point to:
+\itx{
+\x the integration of the iterated learning literature in review and general discussion
+\x the fact that the constraints of the data don't let us explore chains, so we explained our claims more appropriately
+}}
 
 \critique{3. The writing of this paper is of very low quality compared to what is expected at the journal.  I will email separately a very detailed editing of the paper via Adobe Acrobat where I tried to point these problems out.  However, it simply couldn’t be published without a nearly complete re-write or very heavy editing.
 }
 
-\answer{Thank you. We paid a lot of attention to the writing style in this new version, as can be seen in the large rewrites of many paragraphs.}
+\answerok{Thank you for this very constructive and extensive feedback. We paid signification attention to the writing style in this new version, and large portions of the document have been rewritten and expanded --- all updates are marked in dark blue.}
 
 %\critique{
 %The bottom line is that while I think this is a really interesting idea/question, this is not the best execution of this idea that I could imagine being published in the journal.  My gut reaction is that this paper needs a lot of work, additional analysis, and rewriting before it could be published and therefore should be rejected.  However, because the reviewers are unanimously more positive in their evaluation I will invited a revision for this in the hope that you can make it a pretty significant change and can benefit from the excellent and detailed reviewer comments.
@@ -121,11 +122,9 @@ Point to:
 
 \subsection*{Reviewer \#1}
 
-\critique{I think this is an interesting approach and dataset for better understanding how sentences are recalled and how paraphrases are constructed.  However, I think that the experiment design needs to be refined, and the project as a whole needs to be better connected to larger theoretical problems and better grounded within cognitive science.
-} 
+\critique{I think this is an interesting approach and dataset for better understanding how sentences are recalled and how paraphrases are constructed.  However, I think that the experiment design needs to be refined, and the project as a whole needs to be better connected to larger theoretical problems and better grounded within cognitive science.}
 
-\answer{Point to:
-- the revamped introduction, review of related work, and discussion of results which connects our approach to the literature
+\answerok{We have been careful to introduce many more connections to the relevant literature: the introduction has been entirely rewritten and is followed by a more thorough presentation of the related work in cognitive science, while the concluding sections (discussion \& concluding remarks) follow your recommendation of connecting our results with the literature.
 }
 
 \critique{
@@ -138,18 +137,25 @@ Starting with the grounding, the Introduction talks about theories of "knowledge
 - the use of H00 to compare to synonyms, and the small exploration of distances travelled by substitutions on the FA and synonym networks
 }
 
-\critique{ The experiment design also has some substantial flaws. First, some crucial factors were not considered - most notably, part of speech. I suspect, for instance, that pronouns and other closed-class words less often substituted than open-class words.  Phonological neighborhood density could also be important, though probably less so.  Second, no analysis was done that included all of the factors in, e.g., a multi-feature regression model.  While the features being considered are not strongly correlated, they are still likely to interact - especially if part-of-speech is added.  Third, the restriction to single-word substitutions introduces some significant confounds.  I'm not convinced that correctly and incorrectly copying a quote should be viewed as separate behaviors.  But more importantly, the $\sigma_\phi(f)$ calculation can be misleading under the single-substitution restriction:
+\critique{ The experiment design also has some substantial flaws. First, some crucial factors were not considered - most notably, part of speech. I suspect, for instance, that pronouns and other closed-class words less often substituted than open-class words.  Phonological neighborhood density could also be important, though probably less so.  Second, no analysis was done that included all of the factors in, e.g., a multi-feature regression model.  While the features being considered are not strongly correlated, they are still likely to interact - especially if part-of-speech is added.  Third, the restriction to single-word substitutions introduces some significant confounds.  I'm not convinced that correctly and incorrectly copying a quote should be viewed as separate behaviors.
 }
 
-\answer{
-Point to:
-- susceptibility of POS, showing that the effect (closed/open class words being different) expected is very small at best (closed class words would be stopword-likes in our graph)
-- added phonological neighbourhood density as a feature
-- the multi-feature regression of variation upon substitution, showing that variation of a feature is predicted mainly by the same source feature
-- the expansion of substitution models to two-substitutions, giving the same results as single-substitutions. Notebooks for all models can be found at https://github.com/wehlutyk/brainscopypaste/tree/master/data/notebooks , and the graphs produced by those notebooks can be found at https://github.com/wehlutyk/brainscopypaste/tree/master/data/figures/susceptibility.ipynb .
+\answerok{
+We addressed all these points in the revised version:
+\itx{
+\x We checked the susceptibility of part-of-speech (POS), \unclear{je n'ai pas bien compris ton: ``showing that the effect (closed/open class words being different) expected is very small at best (closed class words would be stopword-likes in our graph)''  (et c'est très légèrement lié à mon point {\bf (5)} dans l'email) -- est-ce qu'il s'agit de l'effet des stopwords-like (== closed class words, exactement?) sur nos résultats (auquel cas, oui, ça a l'air de ne pas arriver souvent, en même temps on se focalise sur les substitutions) ou bien de la susceptibilité des stopwords-like par rapport aux autres (auquel cas elle semble effectivement très inférieure)}
+\x Following this suggestion, we added phonological neighborhood density as a word feature. We show that it forms a subgroup of strongly correlated variables, together with orthographic neighborhood density, and choose the latter as a more natural representative of this subgroup given the task under study.
+\x We introduced a multi-feature regression model to estimate variation upon substitution, showing that the magnitude of the variation of a feature is mainly predicted by the value of that very feature, generally with negligible interaction with the other features (see also below and figure 8).
+\x We expanded substitution models to account for \emph{two-substitutions} \unclear{explain here what is a ``two-substitution'', maybe?}, which yield the same results as single substitutions. 
+(Note: %computation notebooks for all models can be found at https://github.com/wehlutyk/brainscopypaste/tree/master/data/notebooks , and the 
+graphs produced for all models may be found at <https://huit.re/aEH77Gc3>, and may be commented further upon request.)
 }
 
-\critique{Consider a toy case where all quotes are two words, and there is a single binary feature $F$. $p(F=1) = 3/4$, and the true substitution probabilities, given the value of F, are $p(S|F=1)=1$, $p(S|F=0)=1/2$.  All the quotes where both words have feature $F=1$ will have two substitutions and be omitted from the dataset, as will half of the quotes with one $F=1$ \& one $F=0$ word.  Half of the quotes with two $F=0$ words will also be omitted for having no substitutions.  Due to these omissions, if you actually generate some test data and calculate the $\sigma_F$ values, the $\sigma_F(1)$ value is correctly estimated as 1, but the $\sigma_F(0)$ value is erroneously estimated as 1/8 (not 1/2), because the $F=0$ words are never substituted in the $F=1/F=0$ pairs, and these are three times more common than the $F=0/F=0$ pairs.  I haven't run more complicated cases, such where the length of the quotes vary, but this leads me to have limited confidence that the estimates in the Figure 4 are appropriate to draw conclusions from. I would want to see either a mathematical analysis with realistic values showing that the error is expected to be small in this data or an expansion to include multiple-substitution examples to avoid this problem.
+%We also examined the effect of part-of-speech (POS): Figure 5 details the results on five POS categories. A Goodman-based multinomial goodness-of-fit shows that POS categories do not capture any significant bias in the selection of substitution targets, which is why we largely keep them outside of our analysis.
+
+}
+
+\critique{But more importantly, the $\sigma_\phi(f)$ calculation can be misleading under the single-substitution restriction: Consider a toy case where all quotes are two words, and there is a single binary feature $F$. $p(F=1) = 3/4$, and the true substitution probabilities, given the value of F, are $p(S|F=1)=1$, $p(S|F=0)=1/2$.  All the quotes where both words have feature $F=1$ will have two substitutions and be omitted from the dataset, as will half of the quotes with one $F=1$ \& one $F=0$ word.  Half of the quotes with two $F=0$ words will also be omitted for having no substitutions.  Due to these omissions, if you actually generate some test data and calculate the $\sigma_F$ values, the $\sigma_F(1)$ value is correctly estimated as 1, but the $\sigma_F(0)$ value is erroneously estimated as 1/8 (not 1/2), because the $F=0$ words are never substituted in the $F=1/F=0$ pairs, and these are three times more common than the $F=0/F=0$ pairs.  I haven't run more complicated cases, such where the length of the quotes vary, but this leads me to have limited confidence that the estimates in the Figure 4 are appropriate to draw conclusions from. I would want to see either a mathematical analysis with realistic values showing that the error is expected to be small in this data or an expansion to include multiple-substitution examples to avoid this problem.
 }
 
 \answer{This case is indeed valid, if there is such a feature (F=1 here) that:
@@ -163,11 +169,16 @@ However we extend our substitution models to two-substitutions, and observe that
 
 \critique{ Some high-level suggestions:
 \itx{
-\x more discussion of what dynamical systems are and especially their interpretation in this task before their appearance in the results
+\x more discussion of what dynamical systems are and especially their interpretation in this task before their appearance in the results}
+}
+
+\answerok{We clarified the notion of dynamical systems when rewriting the introduction and in the ``Variation'' section (including footnote \#22).}
+
+\critique{\itx{
 \x needs a substantive discussion of the results}
 }
 
-\answer{Point to rewrite of introduction and the added discussion of results.}
+\answerok{An entirely new ``Discussion'' section is now devoted to this task.}
 
 \critique{\itx{
 \x show that the phi value is capturing what it purports to capture
@@ -191,8 +202,8 @@ Point to:
 \x show how the quotation test case connects to more general representation transformation?}
 }
 
-\answer{
-Point to improved introduction and added discussion. Especially the connection with iterated learning literature.
+\answerok{
+These points should be addressed by the improved introduction. In particular regarding the last question, the new ``Discussion'' section additionally makes a connection with iterated learning literature.
 }
 
 \critique{\itx{
@@ -229,8 +240,8 @@ We also examined the effect of part-of-speech (POS): Figure 5 details the result
 \critique{\itx{
 \x introducing eight measures and then removing three of them due to collinearity is presentationally confusing}}
 
-\unclear{ah oui que répond-on là? qqch comme ça?:}
-\answer{We agree that introducing (now) twelve measures before eventually keeping six of them could complicate the flow of the section on word-level measures. However, we found it more natural to first propose a comprehensive, literature-based list of candidate features before addressing the quantitative analysis with a reduced yet sufficient set of metrics --- especially now that this section has been significantly expanded. We initially favored this solution over first presenting the final list of candidate features and justifying afterwards that they are anyway correlated with a broader list of traditional variables. (NB: An alternative option could consist in presenting the contents of Figs. 1 and 2 in the same figure, if this could be less confusing.)}
+\unclear{ah oui que répond-on là? qqch comme ça? je te laisse valider:}
+\answerok{We agree that introducing twelve\footnote{In the revised version we have 12 measures, instead of 8 in the initial submission.} measures before eventually keeping six of them could complicate the flow of the section on word-level measures. However, we found it more natural to first propose a comprehensive, literature-based list of candidate features before addressing the quantitative analysis with a reduced yet sufficient set of metrics --- especially now that this section has been significantly expanded. We initially favored this solution over first presenting the final list of candidate features and justifying afterwards that they are anyway correlated with a broader list of traditional variables. (NB: An alternative option could consist in presenting the contents of Figs. 1 and 2 in the same figure, if this could be less confusing.)}
 
 \critique{
 \itx
@@ -243,7 +254,7 @@ We also examined the effect of part-of-speech (POS): Figure 5 details the result
 Yes, because of the similar curve shapes they had.
 We removed number of phonemes now (in favor of number of letters), and number of synonyms doesn't show any effect of susceptibility on the new, improved measure.
 }
-\unclear{ne serait-ce pas plutôt la raison suivante?\\Except for word frequency, we observed that synonyms and phonems were the only two word features to exhibit an effect on susceptibility (and q quite similar effect for that matter). We thus reasoned that they were good candidates to look for and illustrate potential joint effects.\\However, the revised version now features a much braoder framework to statistically assess joint effects (see Fig. 8), we think it favorably replaces the previous variable-to-variable correlation check (NB: we also replaced the number of phonemes with the number of letters, which makes more sense in our context; letters and synonyms do not seem to interact).}
+\unclear{ne serait-ce pas plutôt la raison suivante?\\Except for word frequency, we observed that synonyms and phonems were the only two word features to exhibit an effect on susceptibility (and q quite similar effect for that matter). We thus reasoned that they were good candidates to look for and illustrate potential joint effects.\\However, the revised version now features a much braoder framework to statistically assess joint effects (see Fig. 8), we think it favorably replaces the previous variable-to-variable correlation check (NB: we also replaced the number of phonemes with the number of letters [which makes more sense in our context, see the end of the ``Word-level features'' subsection], number of letters and synonyms do not seem to interact).}
 
 \critique{\itx{
 \x how are you binning the continuous-valued features into categorical features for Fig 4 \& 5?
@@ -261,7 +272,7 @@ No multiple crossovers were ever observed.
 Although I appreciate the brief writeup on intrusions in recall, the article fails to capture the amount of research done on this topic. Going back to Deese (1959; the precursor to modern experimental studies on false memory) and the subjective organization results of Tulving (1962) it has been well known that extra-list intrusions in free recall are often semantic in nature, with the intruding word being very similar in meaning to a studied item. A recent study that reinforces this is one by Zaromb, et al. (2006; JEP:LMC).
 }
 
-\answer{Thank you for these very useful and, indeed, relevant pointers.  We accordingly devoted a significant portion of the literature review to the issue of recall (see the ``Related work'' section).}
+\answerok{Thank you for these very useful and, indeed, relevant pointers.  We accordingly devoted a significant portion of the literature review to the issue of recall (see the ``Related work'' section).}
 
 \critique{ This leads into a larger issue: there is no direct word-word semantic similarity score included in the psycholinguistic variables in the analysis. Global measures such as clustering coefficients based on free association norms are included, but this isn't as appropriate, since as the authors find, the vast majority of words that are being substituted are low frequency words. Low frequency words are not as well represented in the Nelson norms, given that they are less likely to be produced, and are thus less likely to have an appropriate clustering coefficient from this dataset. Variables based on corpus analyses need to be included to provide an appropriate overview of the impacts of semantics on this task. Even so, I would suspect that global semantic network measures are not nearly as important as word-word metrics.
 }
@@ -287,7 +298,7 @@ Point to:
 \critique{Beyond this, I think the authors are missing out on the most interesting aspect of the data that they have collected: how the surrounding context of the quotation used is changing across time. That is, the quote is being propagated, and the prior usage of that quote is likely predictive of how that information is spread. This is likely a dynamical process where multiple news sources are used to construct a new blog post, and being able to analyze this type of information propagation would be a very interesting study. I point to the semantic space models cited (and the work derived from them) as being very useful tools to analyze this type of question.
 }
 
-\answer{That would indeed be interesting, but not our goal in the paper.}
+\answer{That would indeed be interesting, but not our goal in the paper.\unclear{``merci vieux mais c'est hors-sujet'' ;) Pourrait-on lui dire plus diplomatiquement:} \textcolor{red}{``This would indeed be a very interesting project and prospect, but the data we collected do not enable the study of the surrounding context (in particular, we do neither know the prior usage nor the way information sources may be used) so that this goal remains beyond the scope of our paper.''}}
 
 \subsection*{Reviewer \#3}
 \critique{In this paper, the authors analyze a large data set of quotations taken from a variety of news sources to study the form of substitutions in quotes, to determine if the transformations follow expected patterns given psycholinguistic theory.  Specifically, the words that are likely to be substituted are found to be less frequent words, and the pattern of substitution is such that the substituting word is more frequent, acquired earlier, and has lower clustering in the free-association word network.  These patterns are consistent with expected cognitive biases.
@@ -298,8 +309,10 @@ There are a few issues I would want to see addressed.
 Foremost is the method of detecting substitution.  I understand that, given the data set, there is no perfect way to identify what quote is a transformation of what quote, and that it is not feasible to test all possible methods AND that it is simpler to focus on one method for the purposes of the paper.  However, given that this decision of which method to use can directly influence the main conclusions, it behooves the authors to do some sort of robustness check around this method.  For example, one could imagine two distinct groups that only exactly copy from themselves and never copy from each other, where one always publishes earlier than the other.  If the earlier-publishing group tended to select variations of quotes that used lower-frequency words, and the later-publishing group tended to select variations of quotes that used higher-frequency words, this method would infer many more low-frequency to high-frequency substitutions than actually existed.  This may not be a likely scenario, but it demonstrates the benefit of a robustness check. Trying the same analysis with one or two different substitution models would strengthen the authors' claims.
 }
 
-\answer{Point to:
-- the several substitution models implemented, tested, and checked}
+\answerok{There are indeed very many possible models, yet we agree that a robustness check is also very sensible.  Substitution detection relies on a number of assumptions and we identified four binary parameters that differentiate potential models, such that the resulting 16 combinations cover most of the reasonable answers to inference uncertainties. We thus implemented, tested and checked these models, and we can report that our results remain valid for all 16 models (for the sake of clarity, we do not specifically report on these models, though).  \\
+
+This leads to a much more detailed ``Substitution Model'' subsection which discusses these options along with the reference model we used throughout the paper.
+}
 
 \critique{ A second issue is the time spent on feature selection.  It is unclear why the authors do feature selection at all, as "the analysis is done on a per-feature basis."  It would again add to the robustness of their claims if they showed that all of the correlated features show the same pattern of susceptibility and bias in substitution.  In the same vein, it is not clear why the authors claim that age of acquisition, frequency, and number of synonyms have low levels of correlation "excluding the network properties".  Why would one ignore the correlations with the network features?
 }
@@ -313,17 +326,17 @@ Foremost is the method of detecting substitution.  I understand that, given the 
 One smaller issue has to do with the filtering of the quotations.  The authors manually inspected the filtered quotes to see how many real event-related utterances are incorrectly filtered, but I would argue the precision of the filter is more important than the recall; how many of the kept quotes are not real event-related utterances?  Why not do manual coding of those and report that accuracy?
 } 
 
-\answer{Yes thank you, this is done now.}
+\answerok{This is an important empirical point which we did not address systematically in the first submission.  We now have done this manual coding step and are glad to be able to report a (satisfying) accuracy in the relevant cases.}
 
-\critique{ Finally, while I understand the appeal of doing a dynamic systems analysis to find the convergence points of the substitutions, but it is not really valid here.  The analysis in this paper does not provide information on what happens with multiple substitutions, so the authors cannot really make claims about the convergence points given this methodology.
+\critique{Finally, while I understand the appeal of doing a dynamic systems analysis to find the convergence points of the substitutions, but it is not really valid here.  The analysis in this paper does not provide information on what happens with multiple substitutions, so the authors cannot really make claims about the convergence points given this methodology.
 }
 
-\answer{We better explained our claims without overstating our findings.}
+\answerok{In this revised version, we better explained our claims and their limits (see for instance the second paragraph of the ``Discussion'' section, without overstating our findings.}
 
 \critique{Overall, the analysis of the patterns of substitution in a series of quotations to validate psycholinguistic theory is novel and advances the current science.  The results would be more solid with some additional robustness checks, but in general they are quite intuitive.  I hope in the future the authors find a dataset that provides certain information about the transmission of language from one person to another, as this would allow for stronger claims about causality and greater confidence in the pattern of substitutions, as well as a finer-grained analysis of repeated substitutions.
 }
 
-\answer{On a side note, we entirely agree with the relevance of pursuing this research program in these directions, as the \emph{in vitro} observation of information transmission and its evolution is part of an ongoing project (which nonetheless remains beyond the scope of the current paper).}
+\answerok{\textcolor{red}{[C: j'ai ajouté ça, je te laisse confirmer si ce teasing te semble approprié]}\\ On a side note, we entirely agree with the relevance of pursuing this research program in these directions, as the \emph{in vitro} observation of information transmission and its evolution is part of an ongoing project (which nonetheless remains beyond the scope of the current paper).}
 
 {\small
 \bibliographystyle{../../authordate1}
