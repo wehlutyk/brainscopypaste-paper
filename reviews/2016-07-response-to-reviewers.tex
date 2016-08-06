@@ -54,6 +54,7 @@
 \newcommand{\critique}[1]{\begin{quote}#1\end{quote}}
 \newcommand{\answer}[1]{{\setlength{\parindent}{0pt}\par\color{blue} #1}}
 \newcommand{\answerok}[1]{{\setlength{\parindent}{0pt}\par\color{MidnightBlue} #1}}
+\newcommand{\unclear}[1]{\textcolor{red}{\sf [C: #1]}}
 
 \vspace{3cm}
 Dear Todd Gureckis,
@@ -200,18 +201,23 @@ Point to improved introduction and added discussion. Especially the connection w
 \x can you quantify the semantic distance between the original and substituted quote (e.g., get Mechanical Turkers to rate the semantic distance?)}
 }
 
-\answer{
-Point to:
-- the added POS analysis
-- the short discussion of distances travelled upon substitution
+\answerok{We added a discussion on the semantics of substituted quotes. We first aimed at quantifying the semantic distance by estimating the distance ``traveled'' by the substituted word in the WordNet hyperonym-hyperonym network as well as the FA network.  Substituted and substituting words are rarely synonyms, yet substitutions usually replace a word with a semantically-related word which achieves a similar meaning in the given context \unclear{voir ma question sur le manuscrit principal, ceci dit / d'ailleurs il faut faire gaffe car H00 concerne les synonymes, qui finalement ne sont pas si efficaces}. 
+
+We also examined the effect of part-of-speech (POS): Figure 5 details the results on five POS categories. A Goodman-based multinomial goodness-of-fit shows that POS categories do not capture any significant bias in the selection of substitution targets, which is why we largely keep them outside of our analysis.
 }
+%\answer{ Point to: - the added POS analysis - the short discussion of distances travelled upon substitution }
 
 \critique{\itx{
 \x what happens when you run a multi-factor regression model? Do the features interact?
+}}
+
+\answerok{Thank you for this question, we decided to introduce a simple regression model to check feature interaction, see the discussion related to Fig. 8 (in a nutshell: we show that features generally do not interact).}
+
+\critique{\itx{
 \x clarify from the beginning the predictions you are making so that the results will be interpretable 
 }}
 
-\answer{Point to the regression model we introduced.}
+\unclear{Voir le point {\bf (7)} de mon email}
 
 \critique{Some low-level points:\itx{
 \x the in vitro/in vivo distinction is unfamiliar and ought to be defined in the text
@@ -221,21 +227,30 @@ Point to:
 \answerok{In light of this potential unfamiliarity, we preferred to entirely avoid referring explicitly to this dichotomy (for instance, we now speak of ``corpus-based utterances'' instead of ``in vivo'').}
 
 \critique{\itx{
-\x introducing eight measures and then removing three of them due to collinearity is presentationally confusing
+\x introducing eight measures and then removing three of them due to collinearity is presentationally confusing}}
+
+\unclear{ah oui que répond-on là? qqch comme ça?:}
+\answer{We agree that introducing (now) twelve measures before eventually keeping six of them could complicate the flow of the section on word-level measures. However, we found it more natural to first propose a comprehensive, literature-based list of candidate features before addressing the quantitative analysis with a reduced yet sufficient set of metrics --- especially now that this section has been significantly expanded. We initially favored this solution over first presenting the final list of candidate features and justifying afterwards that they are anyway correlated with a broader list of traditional variables. (NB: An alternative option could consist in presenting the contents of Figs. 1 and 2 in the same figure, if this could be less confusing.)}
+
+\critique{
+\itx
+{
 \x was there a reason to expect that \# of synonyms and \# of phonemes would interact (Fig. 4)?]
 }
 }
 
-\answer{Yes, because of the similar curve shapes they had.
+\answer{
+Yes, because of the similar curve shapes they had.
 We removed number of phonemes now (in favor of number of letters), and number of synonyms doesn't show any effect of susceptibility on the new, improved measure.
 }
+\unclear{ne serait-ce pas plutôt la raison suivante?\\Except for word frequency, we observed that synonyms and phonems were the only two word features to exhibit an effect on susceptibility (and q quite similar effect for that matter). We thus reasoned that they were good candidates to look for and illustrate potential joint effects.\\However, the revised version now features a much braoder framework to statistically assess joint effects (see Fig. 8), we think it favorably replaces the previous variable-to-variable correlation check (NB: we also replaced the number of phonemes with the number of letters, which makes more sense in our context; letters and synonyms do not seem to interact).}
 
 \critique{\itx{
 \x how are you binning the continuous-valued features into categorical features for Fig 4 \& 5?
 \x are there multiple y=x crossovers in Fig 5 if more bins are used?}
 }
 
-\answer{
+\answer{\unclear{comment était fait le binning avant, d'ailleurs? j'aurais eu envie de dire "integer-based" mais à la vue de l'ancien PDF ça ne colle pas avec les graphiques, et j'ai l'impression qu'on n'en parlait pas non plus -- auquel cas la réponse devrait aussi faire mention de l'avant, qui était probablement l'objectif de la question du reviewer} 
 Binning is now by quantiles (makes more sense for the confidence intervals), but the extended notebooks (https://github.com/wehlutyk/brainscopypaste/tree/master/data/notebooks and https://github.com/wehlutyk/brainscopypaste/tree/master/data/figures/susceptibility.ipynb) also include graphs with the fixed-width bins we presented in the first version.
 No multiple crossovers were ever observed.
 }
