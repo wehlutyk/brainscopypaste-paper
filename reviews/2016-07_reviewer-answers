@@ -11,7 +11,7 @@
 Point to:
 - work on the substitution models showing that the results are robust
 - the rationalization of feature selection
-- clarifications of choices, such a single-substitution restriction
+- clarifications of choices, such as single-substitution restriction
 - precision/recall analyses for all filters
 
 > 2. The conclusions about “contractile” processes seem pretty speculative (as almost all reviewers agreed).   Sure, this might be the theoretical implication of iterating this substitution process, but you do not present any further evidence of this type of contraction towards a fixed point.  I think if you want to make this a major conclusion of the paper there is more work to be done.  Also this idea has been explored, in my view, in a much more sophisticated way in the iterated learning literature (e.g., Kalish, Lewandowsky, Griffiths, Kirby… see my PDF comments for specific references).  You should really check these arguments and papers out because you really have an iterated learning task.
