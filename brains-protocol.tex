@@ -296,7 +296,7 @@ looking for more complex transformations would
 (a) exponentially increase the number of candidate sources for a destination occurrence, which correspondingly reduces the confidence in inferences made,
 and (b) greatly increase the complexity of the transformation models used to make these inferences.\footnote{
 \newtext{We checked that this restriction does not bias the results discussed below by extending our protocol to two-substitution transformations.
-The results and graphics for the 16 additional models involved are available in the code repository for this paper: \url{https://github.com/wehlutyk/brainscopypaste}.}
+\tbn{The results and graphics for the 16 additional models involved are available in the code repository for this paper: \url{https://github.com/wehlutyk/brainscopypaste}.}}
 }
 
 \end{new}
@@ -316,7 +316,7 @@ out of the first 100 substitutions coded for recall, those with Levenshtein dist
 \begin{new}
 
 Substitutions usually replace a word with another semantically related word:
-\tb{manual observation of a random subset of 100 substitutions shows that, compared to the word it replaces,} the new word often achieves a similar meaning in the context of its sentence while still slightly changing the implications or the attitude expressed by the author.
+manual observation of a random subset of 100 substitutions shows that, compared to the word it replaces, the new word often achieves a similar meaning in the context of its sentence while still slightly changing the implications or the attitude expressed by the author.
 The following examples illustrate this phenomenon:\footnote{
 \newtext{However, the substituted and substituting words are not so often direct synonyms:
 only a third of all substitutions travel less than 3 hops on the hyponym-hypernym network defined by WordNet (direct synonyms count as 0~hops on this network), meaning that at least two thirds involve non-synonyms.
@@ -355,7 +355,8 @@ The two situations are different enough to be studied separately, and we focus h
     \centering
     \includegraphics[width=\linewidth]{images/computed-figures/all-susceptibilities-pos.png}
     \caption{\newtext{\textbf{POS-related results:}
-    categories are simplified from the TreeTagger tag set: \emph{J} means adjective, \emph{N}~noun, \emph{R}~adverb, \emph{V}~verb, and \emph{Stopword-like} gathers together all the categories \tb{essentially made of stopwords} (see main text for details).
+    categories are simplified from the TreeTagger tag set: \emph{J} means adjective, \emph{N}~noun, \emph{R}~adverb, \emph{V}~verb, and \tb{\emph{S} means \emph{Stopword-like}} %together all the categories \tb{essentially made of stopwords} 
+    (see main text for details).
     The top panel shows the actual $s_{POS}$ and $s_{POS}^0$ counts. The bottom panel shows the substitution susceptibility $\sigma_{POS}$, which is the ratio between the two previous counts.
     Confidence intervals are computed with the Goodman method for multinomial proportions.}
     }
@@ -379,14 +380,14 @@ That is:}\footnote{
 \newtext{$s_g^0$ is computed by summing, over all quotes undergoing a substitution, the ratio of the number of words in a quote that are from group $g$ to the number of words in the same quote that could have been the substitution's target.
 If, for instance, half the content words of a given quote are nouns, such a quote contributes .5 to the total $s_{nouns}^0$.
 Further, to avoid possible autocorrelation effects due to substitutions belonging to the same cluster (which are likely not statistically independent and may lead to overly optimistic confidence intervals), we scale $s_g$ and $s_g^0$ to count one for each cluster.
-\tb{That is, each quote cluster has a maximum contribution of 1, computed as the average contribution of all substitutions in that cluster.}
+That is, each quote cluster has a maximum contribution of 1, computed as the average contribution of all substitutions in that cluster.
 }}
 
 $$\sigma_g = \frac{s_g}{s_g^0}$$
 
 In other words, susceptibility measures \newtext{how much more or less a group of words $g$ actually gets substituted compared to picking targets at random in quotes undergoing substitutions}.
 \newtext{By applying this measure to Part-of-Speech (POS) categories and feature bins (\hbox{e.g.} for a feature $\phi$ and a bin $[a, b]$, $g = \{w | \phi(w) \in [a, b]\}$), susceptibility measures the bias in} the selection of start words involved in substitutions, 
-\hbox{i.e.} \newtext{it measures the preferential selection of some word properties \tb{for} substitution.}
+\hbox{i.e.} \newtext{it measures the preferential selection of some word properties for substitution.}
 %\newtext{that is} the effect of word \newtext{properties} at the moment preceding the substitution when it is not yet known which word in the quotation will be substituted.
 
 \medskip
@@ -575,7 +576,7 @@ in other words it gives us the numerator $s_{q_i}$ for the computation of suscep
 since the random situation would equally distribute a fourth of all substitutions to each quartile, we divide by the number of substitutions divided by 4.
 Taking for instance word frequency, this measure tells us if words that have high- or low-frequency \emph{compared to the quote they appear in} are more or less substituted than at random.
 
-Surprisingly the results for this measure are no different from the context-free measure, as can be seen in Fig.~\ref{fig:feature-susceptibilities-in_sentence} of the Appendix:
+Surprisingly the results for this measure are no different from the context-free measure (as can be seen in Fig.~\ref{fig:feature-susceptibilities-in_sentence} of the Appendix):
 low-frequency words compared to the sentence are substituted much more than higher-frequency words, words learned earlier than the rest of the sentence are substituted less than words learned later, shorter words less than longer words, and words with scarce neighborhoods slightly more than words with denser neighborhoods.
 Clustering coefficient and Number of synonyms are, here again and across all substitution models, not significantly different from $\mathcal{H}_0$:
 with or without context, they do not seem relevant to the selection of substitution targets.
