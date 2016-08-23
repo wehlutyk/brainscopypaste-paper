@@ -88,7 +88,7 @@ We first introduce some lexical measures on words.
 
 \end{APAitemize}
 
-\newtext{We also consider grammatical types within quotations by detecting \emph{Part-of-Speech} (POS) categories with TreeTagger~\citep{schmid_probabilistic_1994}; we distinguish between verbs, nouns, adjectives, adverbs, and stopword-like words.}
+\newtext{We also consider grammatical types within quotations by detecting \emph{Part-of-Speech} (POS) categories with TreeTagger~\citep{schmid_probabilistic_1994}; we distinguish between verbs, nouns, adjectives, adverbs, and closed class-like words.}
 
 \medskip
 
@@ -159,7 +159,7 @@ We used scikit-learn's FeatureAgglomeration class for this procedure~\citep{pedr
 Since our data is about written transformations, number of letters and orthographic neighborhood density are the natural representatives of groups (a) and (b) respectively.
 Given the importance of age of acquisition in the lexical feature literature, we chose it to represent group (c).
 Finally we used clustering coefficient to represent group (d) since it has already been used in previous studies.
-The final set of features we will discuss in the rest of the paper, as well as their cross-correlations, can be seen in Fig.~\ref{fig:feature-corrs-filtered}.% (the analysis on the complete set of features can be found in the appendix).
+The final set of features we will discuss in the rest of the paper, as well as their cross-correlations, can be seen in Fig.~\ref{fig:feature-corrs-filtered}.
 \footnote{
 Note that feature values stem from different data sets which do not always encode the same words.
 Indeed, we have data on frequency for about \newtext{33.5k} words, on age of acquisition for 30.1k words, on clustering coefficient for 5.7k words, number of synonyms 111.2k, and \newtext{orthographic density 17.8k words}.
@@ -234,6 +234,7 @@ it considers valid all the substitutions (and only those) where the source and d
 If a destination has substitutions from multiple sources we count a single effective substitution where, for each feature, the value for the effective source word is the average of the values of the candidate source words.
 
 \end{new}
+
 \begin{figure*}[h]
 	\centering
 	\begin{subfigure}{.49\textwidth}
@@ -295,8 +296,8 @@ Finally, note that this inference procedure is one of the reasons we restricted 
 looking for more complex transformations would
 (a) exponentially increase the number of candidate sources for a destination occurrence, which correspondingly reduces the confidence in inferences made,
 and (b) greatly increase the complexity of the transformation models used to make these inferences.\footnote{
-\newtext{We checked that this restriction does not bias the results discussed below by extending our protocol to two-substitution transformations.
-\tbn{The results and graphics for the 16 additional models involved are available in the code repository for this paper: \url{https://github.com/wehlutyk/brainscopypaste}.}}
+\newtext{We checked that this restriction does not bias the results discussed below by extending our protocol to two-substitution transformations;
+the results were unchanged.}
 }
 
 \end{new}
@@ -355,7 +356,7 @@ The two situations are different enough to be studied separately, and we focus h
     \centering
     \includegraphics[width=\linewidth]{images/computed-figures/all-susceptibilities-pos.png}
     \caption{\newtext{\textbf{POS-related results:}
-    categories are simplified from the TreeTagger tag set: \emph{J} means adjective, \emph{N}~noun, \emph{R}~adverb, \emph{V}~verb, and \tb{\emph{S} means \emph{Stopword-like}} %together all the categories \tb{essentially made of stopwords} 
+    categories are simplified from the TreeTagger tag set: \emph{J} means adjective, \emph{N}~noun, \emph{R}~adverb, \emph{V}~verb, and \tb{\emph{C} means \emph{Closed class-like}}
     (see main text for details).
     The top panel shows the actual $s_{POS}$ and $s_{POS}^0$ counts. The bottom panel shows the substitution susceptibility $\sigma_{POS}$, which is the ratio between the two previous counts.
     Confidence intervals are computed with the Goodman method for multinomial proportions.}
@@ -395,15 +396,18 @@ In other words, susceptibility measures \newtext{how much more or less a group o
 \begin{new}
 
 Fig.~\ref{fig:pos-susceptibilities} gathers the results for POS groups.
-A Goodman-based multinomial goodness-of-fit test~\citep{goodman_simultaneous_1965} shows that these categories have a significant effect on susceptibility ($p < .05$ in all substitution models), but this seems mostly due to the \emph{Stopword-like}\footnote{
-\newtext{The \emph{Stopword-like} category gathers all the POS groups \tb{essentially made of stopwords (coordinating conjunctions, foreign words, prepositions, subordinating conjunctions, modals, possessive endings, punctuation symbols and interjections), which are affected by our decision to exclude stopwords from the analysis.
-Indeed substitutions falling on stopwords are filtered out (affecting $s$), and stopwords are never counted as substitutable in the computation of $s^0$.
-Both numbers are subsequently very small for these categories (which led us to group them together) but the reported susceptibility is left unbiased.}}
+A Goodman-based multinomial goodness-of-fit test~\citep{goodman_simultaneous_1965} shows that these categories have a significant effect on susceptibility ($p < .05$ in all substitution models), but this seems mostly due to the \emph{Closed class-like}\footnote{
+\newtext{The \emph{Closed class-like} category gathers all the POS groups \tb{representing closed class words (coordinating conjunctions, prepositions, subordinating conjunctions, modals and possessive endings).
+These groups, essentially made of stopwords, feature very low counts for both $s$ (substitutions falling on stopwords are filtered out) and $s^0$ (stopwords are never counted as substitutable).
+While the susceptibility reported for the remaining words is left unbiased (as $s$ and $s^0$ are equally affected), they represent a very small portion of all substitutions, which led us to group them together.
+Finally, we added to this meta-category the few POS groups that cover words entirely excluded from the analysis (foreign words, punctuation symbols and interjections), only sporadically present because of tagging fluctuations;
+hence the name \emph{Closed class-like}.
+}}
 }
 and \emph{Adverb} categories.
-Indeed, detailing which categories are out of their confidence region under $\mathcal{H}_0$ shows that susceptibility for stopword-likes is significantly below 1 (confirmed in all substitution models), as is that for adverbs in 13 of the 16 substitution models;
+Indeed, detailing which categories are out of their confidence region under $\mathcal{H}_0$ shows that susceptibility for closed class-likes is significantly below 1 (confirmed in all substitution models), as is that for adverbs in 13 of the 16 substitution models;
 none of the other categories are significantly different from $\mathcal{H}_0$ (except nouns which appear significantly above 1 in a single substitution model).
-While we acknowledge the low susceptibilities of adverbs and stopword-likes, these categories concern less than 7\% of all substitutions under $\mathcal{H}_0$ (and even less in the actual data);
+While we acknowledge the low susceptibilities of adverbs and closed class-likes, these categories concern less than 7\% of all substitutions under $\mathcal{H}_0$ (and even less in the actual data);
 it seems, then, that POS categories do not capture any strong bias in the selection of substitution targets.
 
 \end{new}
@@ -425,8 +429,6 @@ On the whole, the trends observed are consistent with known effects of word freq
 \end{new}
 
 \subsection{Variation}
-
-
 
 We \newtext{now examine} how words are modified \newtext{when} they are substituted, that is how their features change upon substitution.
 Considering a word~$\wstart$ substituted for~$\warrival$, we measure how a feature~\newtext{$\phi$} of~$\wstart$ varies when it is replaced with~$\warrival$, that is we look at~$\phi(\warrival)$ as a function of~$\phi(\wstart)$.
@@ -547,6 +549,39 @@ Such a change, though minor in appearance, is a typical example of alteration al
 
 \subsection{Sentence context}
 
+%\begin{figure*}[!th]
+%	\centering
+%	\begin{subfigure}{.49\textwidth}
+%	    \includegraphics[width=\textwidth]{images/computed-figures/paper-variations-quantilebins_sentencerel.png}
+%	    \caption{\newtext{\textbf{Sentence-relative feature variation:}
+%	    $\nu_{\phi_r}$, average sentence-relative feature value of the appearing word as a function of the sentence-relative value of the disappearing word (binned by quartiles), with 95\% asymptotic confidence intervals based on Student's \emph{t}-distribution.
+%	    $\nu_{\phi_r}^0$ and $\nu_{\phi_r}^{00}$ are similarly converted to be sentence-relative.
+%	    Attraction, magnitude and direction of bias with respect to null hypotheses are similar to Fig.~\ref{fig:feature-variations-global}.
+%	    However, attractors are always positioned between sentence median ($y=0$) on one side and $\nu_{\phi_r}^0$ and $\nu_{\phi_r}^{00}$ on the other side.
+%	    Clustering coefficient, Number of synonyms and Orthographic neighborhood density are limit cases, with triple intersections with one of the null hypothesis curves.}
+%	    }
+%	    \label{fig:feature-variations-sentencerel}
+%	\end{subfigure}
+%	~
+%	\begin{subfigure}{.49\textwidth}
+%	    \includegraphics[width=\textwidth]{images/computed-figures/paper-susceptibilities-sentencequantiles.png}
+%	    \caption{\newtext{\textbf{Substitution susceptibility for in-quote feature quartiles:}
+%	    susceptibility to substitution versus quartile of the feature distribution in the originating quote, with 95\% asymptotic confidence intervals (Goodman-based multinomial)}.
+%	    }
+%	    \label{fig:feature-susceptibilities-in_sentence}
+%	\end{subfigure}
+%\end{figure*}
+
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=\linewidth]{images/computed-figures/paper-susceptibilities-sentencequantiles.png}
+    \caption{\newtext{\textbf{Substitution susceptibility for in-quote feature quartiles:}
+    susceptibility to substitution versus quartile of the feature distribution in the originating quote, with 95\% asymptotic confidence intervals (Goodman-based multinomial)}.
+    }
+    \label{fig:feature-susceptibilities-in_sentence}
+\end{figure}
+	
 \begin{figure*}[!th]
     \centering
     \includegraphics[width=\textwidth]{images/computed-figures/paper-variations-quantilebins_sentencerel.png}
@@ -559,6 +594,8 @@ Such a change, though minor in appearance, is a typical example of alteration al
     }
     \label{fig:feature-variations-sentencerel}
 \end{figure*}
+
+
 
 \begin{new}
 
@@ -576,7 +613,7 @@ in other words it gives us the numerator $s_{q_i}$ for the computation of suscep
 since the random situation would equally distribute a fourth of all substitutions to each quartile, we divide by the number of substitutions divided by 4.
 Taking for instance word frequency, this measure tells us if words that have high- or low-frequency \emph{compared to the quote they appear in} are more or less substituted than at random.
 
-Surprisingly the results for this measure are no different from the context-free measure (as can be seen in Fig.~\ref{fig:feature-susceptibilities-in_sentence} of the Appendix):
+Surprisingly the results for this measure are no different from the context-free measure, as can be seen in Fig.~\ref{fig:feature-susceptibilities-in_sentence}:
 low-frequency words compared to the sentence are substituted much more than higher-frequency words, words learned earlier than the rest of the sentence are substituted less than words learned later, shorter words less than longer words, and words with scarce neighborhoods slightly more than words with denser neighborhoods.
 Clustering coefficient and Number of synonyms are, here again and across all substitution models, not significantly different from $\mathcal{H}_0$:
 with or without context, they do not seem relevant to the selection of substitution targets.
