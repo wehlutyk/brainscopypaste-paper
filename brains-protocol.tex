@@ -370,7 +370,7 @@ In other words, susceptibility measures \newtext{how much more or less a group o
     \centering
     \includegraphics[width=\linewidth]{images/computed-figures/all-susceptibilities-pos.png}
     \caption{\newtext{\textbf{POS-related results:}
-    categories are simplified from the TreeTagger tag set: \tb{\emph{C} means \emph{Closed class-like}} (see main text for details), \emph{J} means adjective, \emph{N}~noun, \emph{R}~adverb, and \emph{V} means verb.
+    categories are simplified from the TreeTagger tag set: \emph{C} means \emph{Closed class-like} (see main text for details), \emph{J} means adjective, \emph{N}~noun, \emph{R}~adverb, and \emph{V} means verb.
     The top panel shows the actual $s_{POS}$ and $s_{POS}^0$ counts. The bottom panel shows the substitution susceptibility $\sigma_{POS}$, which is the ratio between the two previous counts.
     Confidence intervals are computed with the \citet{goodman_simultaneous_1965} method for multinomial proportions.}
     }
@@ -381,12 +381,12 @@ In other words, susceptibility measures \newtext{how much more or less a group o
 
 Fig.~\ref{fig:pos-susceptibilities} gathers the results for POS groups.
 A Goodman-based multinomial goodness-of-fit test~\citep{goodman_simultaneous_1965} shows that these categories have a significant effect on susceptibility ($p < .05$ in all substitution models), but this seems mostly due to the \emph{Closed class-like}\footnote{
-\newtext{The \emph{Closed class-like} category gathers all the POS groups \tb{representing closed class words (coordinating conjunctions, prepositions, subordinating conjunctions, modals and possessive endings).
+\newtext{The \emph{Closed class-like} category gathers all the POS groups representing closed class words (coordinating conjunctions, prepositions, subordinating conjunctions, modals and possessive endings).
 These groups, essentially made of stopwords, feature very low counts for both $s$ (substitutions falling on stopwords are filtered out) and $s^0$ (stopwords are never counted as substitutable).
 While the susceptibility reported for the remaining words is left unbiased (as $s$ and $s^0$ are equally affected), they represent a very small portion of all substitutions, which led us to group them together.
 Finally, we added to this meta-category the few POS groups that cover words entirely excluded from the analysis (foreign words, punctuation symbols and interjections), only sporadically present because of tagging fluctuations;
 hence the name \emph{Closed class-like}.
-}}
+}
 }
 and \emph{Adverb} categories.
 Indeed, detailing which categories are out of their confidence region under $\mathcal{H}_0$ shows that susceptibility for closed class-likes is significantly below 1 (confirmed in all substitution models), as is that for adverbs in 13 of the 16 substitution models;
