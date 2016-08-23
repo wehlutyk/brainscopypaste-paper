@@ -6,7 +6,7 @@
 
 \newtext{We rely on a text corpus made of quotations extracted from online blog posts, and focus on their evolution.}
 Quotations appeared to be a perfect candidate to propose a first measure of \newtext{automatic} cognitive bias in \newtext{cultural transmission}.
-First, they are usually cleanly delimited by quotation marks which greatly facilitates their detection in text corpora.
+First, they are usually cleanly delimited by quotation marks, which greatly facilitates their detection in text corpora.
 Second, they stem from a unique original version, and are ideally traceable back to that version.
 Third, and most importantly, their duplication should \emph{a priori} be highly faithful, apart from cases of cropping:
 not only should transformations be of moderate magnitude, but when specific words are not perfectly duplicated, it is safe to assume that the variation is due to involuntary cognitive bias --- as writers may expect any casual reader to easily verify, and thus criticize, the fidelity to the original quotation.
@@ -16,7 +16,7 @@ We could therefore study the individual transformation process at work when auth
 Indeed, the data we use does not come from a controlled experiment in the laboratory, designed to elicit a particular effect: they are recordings of real life interactions, with all the complexity and uncertainty of conditions this entails.
 %In this study, therefore, we did not try to predict and explain in detail the cognitive processes responsible for transformations
 %\todo{, as this would be akin to a drink from the firehose. \sf [Cam: supprimer? potentiellement un excès d'autoflagellation -- en fait on devrait pouvoir dire simplement: ``The prediction and detailed explanation of the cognitive processes responsible for transformations is outside of the scope of this study'', probablement après la fin de la phrase suivante (``of a larger complexity (the detailed prediction and deconstruction of the cognitive processes etc. outside the scope etc. further research)'' mais même là cette modestie pourrait plutôt être de mise dans la conclusion? ou bien il s'agit d'une critique directe d'un reviewer ?  Un peu pareil pour ``our approach is exploratory'' (que j'ai laissé au nom de l'ambiguïté d'exploratoire qui veut aussi bien dire ``premier brouillon'' que ``data mining'') et ``this first study'' (où j'ai enlevé le `first' car trop ``bon c'est à moitié fini mais on soumet quand même'' ;) ]}
-Our goal, therefore, is to show that such effects exist and are measurable even if they are part of a larger complexity (the detailed prediction and deconstruction of the cognitive processes responsible for them being left to further research).
+Our goal, therefore, is to show that cognitive biases have measurable effects in this setting even if they are part of a larger complexity (the detailed prediction and deconstruction of the cognitive processes responsible for them being left to further research).
 %\todo{That is, we aim to prove first a relatively weak hypothesis before trying stronger ones. [Cam: idem, je supprimerais celle-là]}
 If this is confirmed, we will have successfully applied laboratory analyses to out-of-laboratory data, opening a path to explanations of actual (\hbox{vs.} simulated) cultural evolution with tools from cognitive science.
 Aiming to exhibit such subtle biases in complex data is the main reason we chose to use aggregate measures that have a chance of smoothing out the possible variations of experimental conditions in the data set.}
@@ -96,7 +96,7 @@ We first introduce some lexical measures on words.
 Several such measures have been shown to be involved in recall, recognition, and naming tasks~\citep{nelson_how_2013,chan_network_2010,griffiths_google_2007}.}
 
 \newtext{To compute these features} we relied on the free association (FA) norms collected by \citet{nelson_university_2004}, which record the words that come to mind when someone is presented with a given cue.
-As \citet{nelson_university_2004} explain, ``free association response probabilities index the likelihood that one word can cue another word to come to mind with minimal contextual constraints in effect.''
+As \citeauthor{nelson_university_2004} explain, ``free association response probabilities index the likelihood that one word can cue another word to come to mind with minimal contextual constraints in effect.''
 \newtext{Similar to what \citet{griffiths_google_2007} did, we first considered the directed \newtext{weighted} network formed by association norms, where nodes are words and edges are directed from cue to target word, with a weight equal to the association strength (that is the probability of that target word being produced when this particular cue is presented).
 This network is of particular interest since it lets us define features that reflect the associations driving false memories in word lists~\citep{deese_prediction_1959}, a phenomenon which may be involved in the transformation of quotations.}
 
@@ -122,14 +122,14 @@ We used three standard measures on the FA network:
     \item \textbf{Clustering coefficient}, which measures the extent to which a node belongs to a local aggregate of tightly connected nodes~\citep{watts_collective_1998}, computed on the undirected \newtext{weighted} version of the FA network.\footnote{The Clustering coefficient is formally defined as the ratio between the number of actual versus possible edges between a node's neighbors;
     \newtext{this is poorly defined in the case of directed networks, which led us to ignore the direction of links in the network for this measure (if two words are connected in both directions, the weights of both links are added to make the final undirected link's weight).}
     }
-    This tells us if a word belongs more or less to a local aggregate of equivalent words (from a free association point of view).
+    This tells us if a word belongs more or less to a group of equivalent words (from a free association point of view).
 
 \end{APAitemize}
 
 \subsubsection{Variable correlations}
 
 \newtext{Several of these features are strongly related and can be grouped together.
-To make correlation values as well as future comparisons more reliable, we log-transformed features that have marked exponential distributions (a few words valued orders of magnitude higher than the vast majority of other words).}
+To make correlation values as well as future comparisons more reliable, we log-transformed features that have marked exponential distributions (\hbox{i.e.} a few words valued orders of magnitude higher than the vast majority of other words).}
 %\footnote{
 %\newtext{The distributions of original and log-transformed features appears in the Supplementary Information, %along with scatter plots for each feature pair, summarized below with correlation values.
 %}}
@@ -147,7 +147,7 @@ The pairwise correlations in the initial set of features appears in Fig.~\ref{fi
 By looking at absolute values, three subsets of highly correlated features can be easily identified:
 (a) number of letters, phonemes, and syllables with pairwise correlations greater than .75;
 (b) orthographic and phonological neighborhood densities, with a correlation of .8;
-(c) age of acquisition, betweenness, degree, and pagerank centralities, with absolute pairwise correlations at .41, .6, .59, .63, .61 and .85.
+(c) age of acquisition, betweenness, degree, and pagerank centralities, with absolute pairwise correlations at .41, .59, .6, .61, .63 and .85.
 Applying a feature agglomeration algorithm targeted at 6 groups refined this observation by producing identical (a) and (b) groups, a (c) group without betweenness centrality which was instead assigned to a group (d) with clustering coefficient, and the remaining features (frequency and number of synonyms) as singletons.\footnote{
 \newtext{Agglomerating into less than 6 groups merged groups (a) and (b), which we excluded to keep neighborhood densities in their own group;
 agglomerating into more than 6 groups separated age of acquisition from group (c), which we excluded given its high correlation values to the rest of group (c). 
@@ -163,7 +163,7 @@ The final set of features we will discuss in the rest of the paper, as well as t
 \footnote{
 Note that feature values stem from different data sets which do not always encode the same words.
 Indeed, we have data on frequency for about \newtext{33.5k} words, on age of acquisition for 30.1k words, on clustering coefficient for 5.7k words, number of synonyms 111.2k, and \newtext{orthographic density 17.8k words}.
-Quite often then, not all features are available for all words in our data set;
+Quite often then, not all features are available for a given word in our data set;
 however this is not problematic since the analysis is done on a per-feature basis, and not all words need be encoded in all features.}
 \end{new}
 
@@ -184,7 +184,7 @@ More precisely, each set of quotations bears no explicit information about eithe
 \newtext{In other words} we face an inference problem where, given all quotations and their occurrence timestamps, we must estimate which was the originating quotation for each instance of each quotation.
 
 We therefore model the underlying quotation selection process by making a few additional assumptions.
-\newtext{Given a particular occurrence of a quotation, the first issue is deciding whether} that occurrence is a strict copy of an earlier occurrence, or a substitution of another \newtext{quotation}, or maybe a substitution or copy from quotes appearing outside the data set, that is from a source external to the data collection perimeter.
+\newtext{Given a particular occurrence of a quotation, the first issue is deciding whether} that occurrence is a strict copy of an earlier occurrence, or a substitution from another \newtext{quotation}, or maybe a substitution or copy from quotes appearing outside the data set, that is from a source external to the data collection perimeter.
 \newtext{The second issue is deciding which source originated such a substitution when several candidate sources are available.}
 
 Let us give an example:
@@ -223,12 +223,12 @@ The assumptions it embeds, however, are a subset of a much wider set of possibil
 
 We identified four binary parameters that differentiate potential models, such that the resulting 16 combinations cover most of the reasonable answers to inference uncertainties.
 The first two parameters define the preceding time bin from which authors could have drawn a source when producing a new occurrence:
-(1) \textbf{bin positions}, which can be aligned to midnight (as in the model presented above) or kept sliding (for each occurrence, use a bin that ends precisely at that occurrence);
-(2) \textbf{bin span}, which can be $\Delta t=1$ day %24 hours 
+(1)~\textbf{bin positions}, which can be aligned to midnight (as in the model presented above) or kept sliding (for each occurrence, use a bin that ends precisely at that occurrence);
+(2)~\textbf{bin span}, which can be $\Delta t=1$ day %24 hours 
 (as in the model above) or can be extended to start at the very first occurrence in the quotation family.
 The other two parameters configure rules on the selection of source and destination quotes of a substitution:
-(3) \textbf{candidate sources} can be restricted to the most frequent quotations in the preceding time bin (as in the model above), or not (in which case all quotations in the preceding bin are candidate sources);
-(4) \textbf{candidate destinations} can be restricted to quotations that do not appear in the preceding bin, or without restriction (as in the model above).
+(3)~\textbf{candidate sources} can be restricted to the most frequent quotations in the preceding time bin (as in the model above), or not (in which case all quotations in the preceding bin are candidate sources);
+(4)~\textbf{candidate destinations} can be restricted to quotations that do not appear in the preceding bin, or without restriction (as in the model above).
 A substitution model, then, is the given of a value for each of those parameters;
 it considers valid all the substitutions (and only those) where the source and destination follow the rules set out by the parameters.
 If a destination has substitutions from multiple sources we count a single effective substitution where, for each feature, the value for the effective source word is the average of the values of the candidate source words.
@@ -271,12 +271,12 @@ If a destination has substitutions from multiple sources we count a single effec
 	\caption{\newtext{
 	{\bf Substitution models.}
 	Substitutions inferred by four models in the situation introduced by Fig.~\ref{fig:substitution-unmodelled}.
-	Each of these models uses discretely positioned bins spanning 1 day (see the main text for a complete description of parameters).
+	Each of these models uses bins spanning 1 day aligned to midnight (see the main text for a complete description of parameters).
 	In the top left panel~(a), $q$ holds the majority in the first bin and is considered the unique basis for $q'$ in bin~2.
 	$q'$ and $q''$ have equal maximum frequency in bin~2 however, so both are sources of substitutions towards bin~3.
 	In the top right panel~(b), quotes that appear in the preceding bin cannot be the target of a substitution; this removes two substitutions compared to panel~(a).
 	In the bottom left panel~(c), the majority constraint is lifted compared to panel~(a), making $q''$ in bin~1 a candidate source for $q'$ in bin~2.
-	In the bottom right panel~(d), the majority constraint is also lifted compared to panel~(a) (adding the same $q'' \rightarrow q'$ substitution as in panel~(c)), and the excluded-past constraint is added as in panel~(b) (removing two same substitutions from bin~2 to bin~3 as in panel~(b)).
+	In the bottom right panel~(d), the majority constraint is also lifted compared to panel~(a) (adding the same $q'' \rightarrow q'$ substitution as in panel~(c)), and the excluded-past constraint is added as in panel~(b) (removing the two same substitutions from bin~2 to bin~3 as in panel~(b)).
 	If the bins were extended to the beginning of the quotation family, the excluded-past constraint would also remove the $q' \rightarrow q$ substitution from bin~2 to bin~3.
 	In all four panels, a background rectangle or square indicates the quotation is the source of a substitution.
 	A thick border on that rectangle or square indicates the quotation was selected because it has maximum frequency.}
@@ -287,8 +287,7 @@ If a destination has substitutions from multiple sources we count a single effec
 \begin{new}
 
 Put shortly a model defines how many times, and under what source and destination conditions, quote occurrences can be counted as substitutions.
-Fig.~\ref{fig:substitution-modelled} shows the inferences made by the four models that use discrete %ly positioned 
-bins spanning 1 day:
+Fig.~\ref{fig:substitution-modelled} shows the inferences made by the four models that use bins spanning 1 day aligned to midnight:
 later occurrences of $q'$ and $q''$ are counted as substitutions in Fig.~\ref{fig:substitution-modelled-majority-all} and Fig.~\ref{fig:substitution-modelled-all-all}, whereas in Fig.~\ref{fig:substitution-modelled-majority-exclude_past} and Fig.~\ref{fig:substitution-modelled-all-exclude_past} they are not.
 
 The results reported and discussed in the following sections are valid for all 16 models, and the graphics we present were produced by the model first introduced above.
@@ -305,7 +304,7 @@ the results were unchanged.}
 \medskip
 
 In practice \newtext{for the model first introduced above}, from the \newtext{2.60m} initial occurrences spread over 50,427 quotation families, with significant redundancy (many quotes are indeed simple duplicates), we mine \newtext{40,868} substitutions.
-From these substitutions we remove those featuring stop words, minor spelling changes (\hbox{e.g.} center/centre, November/Nov, Senator/Sen), abbreviations, spelled out numbers, \newtext{words unknown to WordNet, and deletions in substrings (which can appear as substitutions of non-deleted words)};
+From these substitutions we remove those featuring stopwords, minor spelling changes (\hbox{e.g.} center/centre), abbreviations (\hbox{e.g.} November/Nov or Senator/Sen), spelled out numbers, \newtext{words unknown to WordNet, and deletions in substrings (which can appear as substitutions of non-deleted words)};
 this eventually yields \newtext{6,177} valid substitutions.\footnote{
 \newtext{Manually coding a random subset of 100 substitutions to evaluate this last filter showed that 84 were true negatives, 5 were false positives, and 11 true positives, giving a recall score of .688.
 Precision was evaluated over a random subset of 100 \emph{kept} substitutions, showing a score of .87.
@@ -317,12 +316,13 @@ out of the first 100 substitutions coded for recall, those with Levenshtein dist
 \begin{new}
 
 Substitutions usually replace a word with another semantically related word:
-manual observation of a random subset of 100 substitutions shows that, compared to the word it replaces, the new word often achieves a similar meaning in the context of its sentence while still slightly changing the implications or the attitude expressed by the author.
-The following examples illustrate this phenomenon:\footnote{
+manual observation of a random subset of 100 substitutions shows that, compared to the word it replaces, the new word often achieves a similar meaning in the context of its sentence while still slightly changing the implications or the attitude expressed by the author.\footnote{
 \newtext{However, the substituted and substituting words are not so often direct synonyms:
 only a third of all substitutions travel less than 3 hops on the hyponym-hypernym network defined by WordNet (direct synonyms count as 0~hops on this network), meaning that at least two thirds involve non-synonyms.
 A similar phenomenon is observed on the FA network, where about 104 clusters have substitutions traveling only 1 hop, 110 traveling 2 hops, 137 traveling 3, 72 traveling 4, and 13 traveling 5.
 }}
+The following examples illustrate this phenomenon:
+
 \begin{APAitemize}
 	\item ``This is \{socialism~$\rightarrow$~welfare\} for the rich'',
 	\item {[}The{]} ``perverse logic of \{clashes~$\rightarrow$~confrontation\} and violence'',
@@ -340,13 +340,13 @@ A similar phenomenon is observed on the FA network, where about 104 clusters hav
 
 \end{new}
 
-\newtext{Our question concerns the low-level properties of these substitutions: we ask (i) which words are targets of the substitutions and (ii) what change they are subjected to. To this end,} we build the following two observables for each word feature.
+\newtext{Our question concerns the low-level properties of these substitutions: we ask (a) which words are targets of the substitutions and (b) what change these words are subjected to. To this end,} we build the following two observables for each word feature.
 First, we measure \newtext{which word features are more or less substituted compared to how often they would be if the process were random, in order to capture} the susceptibility for words to be the target of a substitution in a quote.
 Second, we measure the change in word feature upon substitution, looking at the variation of a given feature between start and arrival words.
-\newtext{Since sentence context is also central to this process, we extend these two observables by applying them to feature values relative to the distribution of feature values of the sentence in which a word appears.}
+\newtext{Since sentence context is also central to this process, we extend these two observables by applying them to feature values relative to the distribution of feature values in the sentence in which a word appears.}
 
 Note that since we only consider substitutions and not faithful copies, we measure the features of an alteration \emph{knowing that there has been an alteration}, \newtext{that is} we do not take invariant quotations into account.
-Indeed, in the former case we know there has been a human reformulation, whereas in the latter case it \newtext{we cannot} know whether there has been perfect human reformulation or simply digital copy-pasting of a source~(``{\sc Ctrl-C}/{\sc Ctrl-V}'').
+Indeed, in the former case we know there has been a human reformulation, whereas in the latter case \newtext{we cannot} know whether there has been perfect human reformulation or simply digital copy-pasting of a source~(``{\sc Ctrl-C}/{\sc Ctrl-V}'').
 \newtext{Moreover}, perfect human reformulation possibly involves different practices than those involved in alteration ---~for instance drafting before publishing, double-checking sources, proof-reading~--- and may not be representative of the cognitive processes at work during alteration.
 The two situations are different enough to be studied separately, and we focus here on the latter.
 
@@ -356,10 +356,9 @@ The two situations are different enough to be studied separately, and we focus h
     \centering
     \includegraphics[width=\linewidth]{images/computed-figures/all-susceptibilities-pos.png}
     \caption{\newtext{\textbf{POS-related results:}
-    categories are simplified from the TreeTagger tag set: \emph{J} means adjective, \emph{N}~noun, \emph{R}~adverb, \emph{V}~verb, and \tb{\emph{C} means \emph{Closed class-like}}
-    (see main text for details).
+    categories are simplified from the TreeTagger tag set: \tb{\emph{C} means \emph{Closed class-like}} (see main text for details), \emph{J} means adjective, \emph{N}~noun, \emph{R}~adverb, and \emph{V} means verb.
     The top panel shows the actual $s_{POS}$ and $s_{POS}^0$ counts. The bottom panel shows the substitution susceptibility $\sigma_{POS}$, which is the ratio between the two previous counts.
-    Confidence intervals are computed with the Goodman method for multinomial proportions.}
+    Confidence intervals are computed with the \citet{goodman_simultaneous_1965} method for multinomial proportions.}
     }
     \label{fig:pos-susceptibilities}
 \end{figure}
@@ -376,18 +375,18 @@ The two situations are different enough to be studied separately, and we focus h
 
 
 We say that a word is \emph{substitutable} if it appears in a quote which undergoes a substitution, whether the substitution operates on that word or on another one.
-\newtext{For a given group of words $g$, say all nouns, or all words in a particular range of values for a feature (\hbox{e.g.} words 2 to 4 letters long), susceptibility is computed as the ratio of $s_g$, the number of times words of that group are substituted, to $s_g^0$, the number of times words of that group would be substituted if substitutions fell randomly on substitutable words.
-That is:}\footnote{
+\newtext{For a given group of words $g$, say all nouns, or all words in a particular range of values for a feature (\hbox{e.g.} words 2 to 4 letters long), susceptibility is computed as the ratio of $s_g$, the number of times words of that group are substituted, to $s_g^0$, the number of times words of that group would be substituted if substitutions fell randomly on substitutable words.\footnote{
 \newtext{$s_g^0$ is computed by summing, over all quotes undergoing a substitution, the ratio of the number of words in a quote that are from group $g$ to the number of words in the same quote that could have been the substitution's target.
 If, for instance, half the content words of a given quote are nouns, such a quote contributes .5 to the total $s_{nouns}^0$.
 Further, to avoid possible autocorrelation effects due to substitutions belonging to the same cluster (which are likely not statistically independent and may lead to overly optimistic confidence intervals), we scale $s_g$ and $s_g^0$ to count one for each cluster.
 That is, each quote cluster has a maximum contribution of 1, computed as the average contribution of all substitutions in that cluster.
 }}
+That is:}
 
 $$\sigma_g = \frac{s_g}{s_g^0}$$
 
 In other words, susceptibility measures \newtext{how much more or less a group of words $g$ actually gets substituted compared to picking targets at random in quotes undergoing substitutions}.
-\newtext{By applying this measure to Part-of-Speech (POS) categories and feature bins (\hbox{e.g.} for a feature $\phi$ and a bin $[a, b]$, $g = \{w | \phi(w) \in [a, b]\}$), susceptibility measures the bias in} the selection of start words involved in substitutions, 
+\newtext{By applying this measure to Part-of-Speech (POS) categories and feature bins (\hbox{e.g.} for a feature $\phi$ and a bin $[a; b]$, $g = \{w | \phi(w) \in [a; b]\}$), susceptibility measures the bias in} the selection of start words involved in substitutions, 
 \hbox{i.e.} \newtext{it measures the preferential selection of some word properties for substitution.}
 %\newtext{that is} the effect of word \newtext{properties} at the moment preceding the substitution when it is not yet known which word in the quotation will be substituted.
 
@@ -420,7 +419,7 @@ High-frequency words, much easier to recall, are substituted about half as much 
 Age of acquisition and Number of letters show the opposite pattern, consistent with their negative correlation to word frequency ($-.4$ and $-.19$):
 words learned before 5 or 6 years old, or made of less than 5 letters, are substituted less than random, whereas words learned after 10 years old, or made of more than 8 letters, are substituted far more than random.
 Orthographic neighborhood density also shows a slight effect (significant at $p < .05$ in 15 of the 16 substitution models):
-words with very sparse neighborhoods are more substituted than random (which may seem counter-intuitive, but is likely because over 70\% of those words have 7 letters or more).
+words with very sparse neighborhoods are more substituted than random (which may seem counter-intuitive, but is probably because over 70\% of those words have 7 letters or more).
 Clustering coefficient shows no effect on susceptibility, and neither does Number of synonyms:
 in particular, words with many synonyms do not attract substitutions more than random (in fact, half the substitution models show they have a slight tendency to be substituted less than random).
 
@@ -479,7 +478,7 @@ This approach yields a fine-grained view of how word features evolve upon substi
 
 Results are gathered in Fig.~\ref{fig:feature-variations-global}.
 A first observation is that all graphs show the existence of a unique intersection of $\nu_{\phi}$ with $y=x$, and the slope of $\nu_{\phi}$ is smaller than 1 in absolute value, independently of the feature considered.
-\newtext{This means that for each feature $\phi$, whichever the value $\phi(\wstart)$ of the disappearing word, the appearing word's feature value $\phi(\warrival)$ will, on average, be closer to that feature's intersection between $\nu_{\phi}$ and $y=x$.\footnote{
+\newtext{This means that for each feature $\phi$, whichever the value $\phi(\wstart)$ of the disappearing word, the appearing word's feature value $\phi(\warrival)$ will, on average, be closer to that feature's intersection of $\nu_{\phi}$ with $y=x$.\footnote{
 \newtext{This reasoning is standard in the analysis of dynamical systems (where the same transformation is applied to the whole system over and over), and becomes obvious when one manually simulates a substitution on the graph by picking a start value, using the $\nu_{\phi}$ curve to obtain the corresponding arrival value, and comparing it to the start value:
 the arrival value is always closer to the intersection with $y=x$, meaning that that intersection is an attractor point for the substitution process.
 If the slope of $\nu_{\phi}$ were greater than one (in absolute value), the arrival value would always be \emph{farther} from the intersection than the start value was, making the intersection with $y=x$ a \emph{repulsor} point.
@@ -514,7 +513,7 @@ This, in turn, is consistent with the hypothesis that substitution is a recall p
 Age of acquisition, Clustering coefficient \newtext{and Number of letters}, on the other hand, exhibit a clear negative bias for the substitution process (except for high clustering values or very high number of letters).
 \newtext{The three} curves are significantly below their respective $\nu_{\phi}^0$ \newtext{and $\nu_{\phi}^{00}$ curves for most start values}, which is consistent with the literature on recall:
 words learned earlier, with lower clustering coefficient \newtext{or with fewer letters} are easier to produce than average~\citep{nelson_how_2013,zevin_age_2002,baddeley_word_1975}.
-\newtext{All these effects are significant at $p < .05$ (and more often $p < .001$) and were verified across the 16 substitution models.}
+\newtext{All these effects are significant with two-tailed \emph{t}-tests at $p < .05$ (and more often $p < .001$) and were verified across the 16 substitution models.}
 
 \begin{new}
 
@@ -604,10 +603,10 @@ We wish to ask, therefore, if taking that context into account can provide more 
 To do so we adapt the two observables presented above to capture some of the relationships between a word and the sentence it appears in.
 
 Let us start with the first one:
-given a feature $\phi$, we define the context-relative susceptibility to substitution in the following three steps.
+given a feature $\phi$, we define the context-relative susceptibility to substitution with the following three steps.
 (1) For each quote in which a substitution appears, compute the distribution of $\phi$ values in that quote (excluding stopwords) and divide it into quartiles.
 (2) Count how many times each quartile (first, second, third or fourth) contains a word that is substituted.
-This procedure tells us, for $i \in \{1, 2, 3, 4\}$, how many times substitutions fall in the $i$-th quartile of each in-quote distribution of $\phi$;
+This procedure tells us, for $i \in \{1; 2; 3; 4\}$, how many times substitutions fall in the $i$-th quartile of each in-quote distribution of $\phi$;
 in other words it gives us the numerator $s_{q_i}$ for the computation of susceptibility, where $q_i$ represents the $i$-th quartile of the distributions of $\phi$ in the quotes.
 (3) Finally divide each quartile count by its corresponding $s_{q_i}^0$, that is the number of times the $i$-th quartile would receive substitutions if targets were picked at random;
 since the random situation would equally distribute a fourth of all substitutions to each quartile, we divide by the number of substitutions divided by 4.
@@ -620,7 +619,7 @@ with or without context, they do not seem relevant to the selection of substitut
 
 Feature variation is more easily extended to the context-relative case.
 To do so we consider all feature values relative to the median word feature in the sentence.
-That is, in all the equations of the previous section we replace $\phi(w)$ with:
+That is, in all the equations of the previous subsection we replace $\phi(w)$ with:
 $$\phi_r(w) = \phi(w) - \operatorname{median}\left\lbrace \phi(w) | w \in \text{sentence} \right\rbrace$$
 $\nu_{\phi}$, $\nu_{\phi}^0$ and $\nu_{\phi}^{00}$ each transpose to $\nu_{\phi_r}$, $\nu_{\phi_r}^0$ and $\nu_{\phi_r}^{00}$ (note that $\nu_{\phi_r}^0$ now depends on $w$ since it is sentence-relative, whereas $\nu_{\phi}^0$ did not).
 
