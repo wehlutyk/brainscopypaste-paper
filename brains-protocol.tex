@@ -212,29 +212,6 @@ Conversely, the occurrence of $q''$ on the 20th could be considered as a substit
 	\label{fig:substitution-unmodelled}
 \end{figure}
 
-\newtext{One way to settle these questions is the following:}
-group quote occurrences into fixed bins spanning $\Delta t$ days (1 day in the implementation), each one representing a unit of time evolution;
-when a quotation $q'$ appears in bin $t+1$, it is counted as a substitution if it differs from the most frequent quote of the preceding bin $t$ (or a substring thereof) by only one word;
-if not, $q'$ is not considered to be an instance of substitution.
-\newtext{Fig.~\ref{fig:substitution-modelled-majority-all} shows the inferences made by such a model.
-The assumptions it embeds, however, are a subset of a much wider set of possibilities, each leading to alternative inferences.}
-
-\begin{new}
-
-We identified four binary parameters that differentiate potential models, such that the resulting 16 combinations cover most of the reasonable answers to inference uncertainties.
-The first two parameters define the preceding time bin from which authors could have drawn a source when producing a new occurrence:
-(1)~\textbf{bin positions}, which can be aligned to midnight (as in the model presented above) or kept sliding (for each occurrence, use a bin that ends precisely at that occurrence);
-(2)~\textbf{bin span}, which can be $\Delta t=1$ day %24 hours 
-(as in the model above) or can be extended to start at the very first occurrence in the quotation family.
-The other two parameters configure rules on the selection of source and destination quotes of a substitution:
-(3)~\textbf{candidate sources} can be restricted to the most frequent quotations in the preceding time bin (as in the model above), or not (in which case all quotations in the preceding bin are candidate sources);
-(4)~\textbf{candidate destinations} can be restricted to quotations that do not appear in the preceding bin, or without restriction (as in the model above).
-A substitution model, then, is the given of a value for each of those parameters;
-it considers valid all the substitutions (and only those) where the source and destination follow the rules set out by the parameters.
-If a destination has substitutions from multiple sources we count a single effective substitution where, for each feature, the value for the effective source word is the average of the values of the candidate source words.
-
-\end{new}
-
 \begin{figure*}[h]
 	\centering
 	\begin{subfigure}{.49\textwidth}
@@ -284,7 +261,26 @@ If a destination has substitutions from multiple sources we count a single effec
     \label{fig:substitution-modelled}
 \end{figure*}
 
+\newtext{One way to settle these questions is the following:}
+group quote occurrences into fixed bins spanning $\Delta t$ days (1 day in the implementation), each one representing a unit of time evolution;
+when a quotation $q'$ appears in bin $t+1$, it is counted as a substitution if it differs from the most frequent quote of the preceding bin $t$ (or a substring thereof) by only one word;
+if not, $q'$ is not considered to be an instance of substitution.
+\newtext{Fig.~\ref{fig:substitution-modelled-majority-all} shows the inferences made by such a model.
+The assumptions it embeds, however, are a subset of a much wider set of possibilities, each leading to alternative inferences.}
+
 \begin{new}
+
+We identified four binary parameters that differentiate potential models, such that the resulting 16 combinations cover most of the reasonable answers to inference uncertainties.
+The first two parameters define the preceding time bin from which authors could have drawn a source when producing a new occurrence:
+(1)~\textbf{bin positions}, which can be aligned to midnight (as in the model presented above) or kept sliding (for each occurrence, use a bin that ends precisely at that occurrence);
+(2)~\textbf{bin span}, which can be $\Delta t=1$ day %24 hours 
+(as in the model above) or can be extended to start at the very first occurrence in the quotation family.
+The other two parameters configure rules on the selection of source and destination quotes of a substitution:
+(3)~\textbf{candidate sources} can be restricted to the most frequent quotations in the preceding time bin (as in the model above), or not (in which case all quotations in the preceding bin are candidate sources);
+(4)~\textbf{candidate destinations} can be restricted to quotations that do not appear in the preceding bin, or without restriction (as in the model above).
+A substitution model, then, is the given of a value for each of those parameters;
+it considers valid all the substitutions (and only those) where the source and destination follow the rules set out by the parameters.
+If a destination has substitutions from multiple sources we count a single effective substitution where, for each feature, the value for the effective source word is the average of the values of the candidate source words.
 
 Put shortly a model defines how many times, and under what source and destination conditions, quote occurrences can be counted as substitutions.
 Fig.~\ref{fig:substitution-modelled} shows the inferences made by the four models that use bins spanning 1 day aligned to midnight:
@@ -352,28 +348,6 @@ The two situations are different enough to be studied separately, and we focus h
 
 \subsection{Susceptibility}
 
-\begin{figure}[h]
-    \centering
-    \includegraphics[width=\linewidth]{images/computed-figures/all-susceptibilities-pos.png}
-    \caption{\newtext{\textbf{POS-related results:}
-    categories are simplified from the TreeTagger tag set: \tb{\emph{C} means \emph{Closed class-like}} (see main text for details), \emph{J} means adjective, \emph{N}~noun, \emph{R}~adverb, and \emph{V} means verb.
-    The top panel shows the actual $s_{POS}$ and $s_{POS}^0$ counts. The bottom panel shows the substitution susceptibility $\sigma_{POS}$, which is the ratio between the two previous counts.
-    Confidence intervals are computed with the \citet{goodman_simultaneous_1965} method for multinomial proportions.}
-    }
-    \label{fig:pos-susceptibilities}
-\end{figure}
-
-
-\begin{figure*}[!th]
-    \centering
-    \includegraphics[width=\textwidth]{images/computed-figures/paper-susceptibilities-quantilebins_global.png}
-    \caption{\textbf{Substitution susceptibility for feature values:}
-    susceptibility to substitution versus feature value of a candidate word for substitution \newtext{(binned by quartiles)}, with 95\% asymptotic confidence intervals \newtext{(Goodman-based multinomial)}.
-    }
-    \label{fig:feature-susceptibilities-global}
-\end{figure*}
-
-
 We say that a word is \emph{substitutable} if it appears in a quote which undergoes a substitution, whether the substitution operates on that word or on another one.
 \newtext{For a given group of words $g$, say all nouns, or all words in a particular range of values for a feature (\hbox{e.g.} words 2 to 4 letters long), susceptibility is computed as the ratio of $s_g$, the number of times words of that group are substituted, to $s_g^0$, the number of times words of that group would be substituted if substitutions fell randomly on substitutable words.\footnote{
 \newtext{$s_g^0$ is computed by summing, over all quotes undergoing a substitution, the ratio of the number of words in a quote that are from group $g$ to the number of words in the same quote that could have been the substitution's target.
@@ -391,6 +365,17 @@ In other words, susceptibility measures \newtext{how much more or less a group o
 %\newtext{that is} the effect of word \newtext{properties} at the moment preceding the substitution when it is not yet known which word in the quotation will be substituted.
 
 \medskip
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=\linewidth]{images/computed-figures/all-susceptibilities-pos.png}
+    \caption{\newtext{\textbf{POS-related results:}
+    categories are simplified from the TreeTagger tag set: \tb{\emph{C} means \emph{Closed class-like}} (see main text for details), \emph{J} means adjective, \emph{N}~noun, \emph{R}~adverb, and \emph{V} means verb.
+    The top panel shows the actual $s_{POS}$ and $s_{POS}^0$ counts. The bottom panel shows the substitution susceptibility $\sigma_{POS}$, which is the ratio between the two previous counts.
+    Confidence intervals are computed with the \citet{goodman_simultaneous_1965} method for multinomial proportions.}
+    }
+    \label{fig:pos-susceptibilities}
+\end{figure}
 
 \begin{new}
 
@@ -410,6 +395,15 @@ While we acknowledge the low susceptibilities of adverbs and closed class-likes,
 it seems, then, that POS categories do not capture any strong bias in the selection of substitution targets.
 
 \end{new}
+
+\begin{figure*}[!th]
+    \centering
+    \includegraphics[width=\textwidth]{images/computed-figures/paper-susceptibilities-quantilebins_global.png}
+    \caption{\textbf{Substitution susceptibility for feature values:}
+    susceptibility to substitution versus feature value of a candidate word for substitution \newtext{(binned by quartiles)}, with 95\% asymptotic confidence intervals \newtext{(Goodman-based multinomial)}.
+    }
+    \label{fig:feature-susceptibilities-global}
+\end{figure*}
 
 \begin{new}
 
