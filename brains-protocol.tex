@@ -18,11 +18,11 @@ Indeed, the data we use does not come from a controlled experiment in the labora
 %\todo{, as this would be akin to a drink from the firehose. \sf [Cam: supprimer? potentiellement un excès d'autoflagellation -- en fait on devrait pouvoir dire simplement: ``The prediction and detailed explanation of the cognitive processes responsible for transformations is outside of the scope of this study'', probablement après la fin de la phrase suivante (``of a larger complexity (the detailed prediction and deconstruction of the cognitive processes etc. outside the scope etc. further research)'' mais même là cette modestie pourrait plutôt être de mise dans la conclusion? ou bien il s'agit d'une critique directe d'un reviewer ?  Un peu pareil pour ``our approach is exploratory'' (que j'ai laissé au nom de l'ambiguïté d'exploratoire qui veut aussi bien dire ``premier brouillon'' que ``data mining'') et ``this first study'' (où j'ai enlevé le `first' car trop ``bon c'est à moitié fini mais on soumet quand même'' ;) ]}
 Our goal, therefore, is to show that cognitive biases have measurable effects in this setting even if they are part of a larger complexity (the detailed prediction and deconstruction of the cognitive processes responsible for them being left to further research).
 %\todo{That is, we aim to prove first a relatively weak hypothesis before trying stronger ones. [Cam: idem, je supprimerais celle-là]}
-If this is confirmed, we will have successfully applied laboratory analyses to out-of-laboratory data, opening a path to explanations of actual (\hbox{vs.} simulated) cultural evolution with tools from cognitive science.
+If this is confirmed, we will have successfully tested fundamental cognitive biases with out-of-laboratory data, opening a path to explanations of actual (\hbox{vs.} simulated) cultural evolution with tools from cognitive science.
 Aiming to exhibit such subtle biases in complex data is the main reason we chose to use aggregate measures that have a chance of smoothing out the possible variations of experimental conditions in the data set.}
 
 To keep the analysis \newtext{tractable}, we focused on quotation transformations consisting of the \emph{substitution} of a word by another word (and only those cases) in order to unambiguously discuss single word replacements.
-\newtext{This restriction also allows us to more reliably infer the information that is missing in our data set, as explained further down (see ``Substitution model'').}
+\newtext{This restriction also allows us to more reliably infer the information that is missing in our data set, as explained in the ``Substitution model'' section.}
 To quantify these substitutions we decided to associate a number of features to each word, the variation of which we can statistically study.
 
 The next subsections describe the data set and the measures we used to assess this cognitive bias.
@@ -272,7 +272,7 @@ We identified four binary parameters that differentiate potential models, such t
 The first two parameters define the preceding time bin from which authors could have drawn a source when producing a new occurrence:
 (1)~\textbf{bin positions}, which can be aligned to midnight (as in the model presented above) or kept sliding (for each occurrence, use a bin that ends precisely at that occurrence);
 (2)~\textbf{bin span}, which can be $\Delta t=1$ day %24 hours 
-(as in the model above) or can be extended to start at the very first occurrence in the quotation family.
+(as in the model above) or can be extended up to the very first occurrence in the quotation family.
 The other two parameters configure rules on the selection of source and destination quotes of a substitution:
 (3)~\textbf{candidate sources} can be restricted to the most frequent quotations in the preceding time bin (as in the model above), or not (in which case all quotations in the preceding bin are candidate sources);
 (4)~\textbf{candidate destinations} can be restricted to quotations that do not appear in the preceding bin, or without restriction (as in the model above).
@@ -439,7 +439,7 @@ In this case, since $\phi(\warrival)$ becomes a constant value in the above aver
 $$\nu_{\phi}^0 (f) = \left<\phi\right>$$
 \newtext{$\mathcal{H}_{00}$ models the situation where the arrival word $\warrival$ is chosen \emph{among immediate synonyms of the start word} $\wstart$, \hbox{i.e.} an arrival word chosen among semantically plausible though still random words.
 In this case $\nu_{\phi}^{00}$ does depend on $f$:\footnote{
-\newtext{The actual implementation has an additional level of averaging since WordNet, used to get a word's synonyms, defines several meanings for a single given word.
+\newtext{The actual implementation has an additional level of averaging since WordNet, used to get a word's synonyms, defines several meanings for a single given word, which we have no means of disambiguating.
 Therefore:
 $$\nu_{\phi}^{00} (f) = \left< \left< \left< \phi(\warrival) \right>_{\warrival \in syn(m)} \right>_{m \in meanings(\wstart)} \right>_{\left\lbrace \wstart | \phi(\wstart) = f \right\rbrace}$$}
 }
