@@ -1,0 +1,83 @@
+Dr. Lerique,
+
+Thanks for your revision to CS15-80.  I sent the paper back to two of the original reviewers.  As you can see they are both impressed with the changes you have made and the quality of the work reported.  Reviewer 3 was particularly impressed with the attempt you made to verify your results across many different modeling assumptions (which was one of the concerns raised in my previous letter).  I have read the revised paper myself and I agree that the quality of the contribution is much improved and that the writing has improved as well.  This is a paper which received high marks on initial review.  The reviewers are all experts in Cognitive Science and the data science type approaches you use.  They are strongly convinced this makes a nice contribution to the journal.  So am I, so congratulations.
+
+Reviewer 3 has a small number of minor suggestions you might want to fix before the final submission.
+
+Sincerely,
+Todd Gureckis
+Associate Editor
+
+
+
+=================================================================
+Reviewer #2
+
+The authors obviously put a lot of effort into their revision, and the paper now reads much better and I find that it is much more interesting and easy to understand. I have still have questions about the approach that they took, but these are likely more reflective of my personal approach to these problems than the actual work. I think this paper provides a unique perspective on an interesting and evolving problem, and should be accepted for publication.
+
+
+=================================================================
+Reviewer #3
+
+Overall, I think the manuscript is greatly improved over the first submission.
+
+In particular I want to highlight one sentence on page 19: "The results reported and discussed in the following sections are valid for all 16 models."  This single sentence likely represents lots and lots of hard work, and I want to acknowledge that work.  Despite the small amount of text it contributed to the manuscript, I feel like it increased my confidence in the results 100%.
+
+The manuscript is also much clearer in the presentation of the data and the model.  I felt like I understood more clearly why the authors made the choices they made in filtering the data, and why they made the choices they did for the model, such as feature selection.  The authors no longer overstate their claims, and I particularly appreciate them backing away from the "contractile" claims.
+
+To summarize, in my opinion, the paper went from questionable data cleaning and model selection with overstated claims, to robust and justifiable data cleaning and model selection with believable and interesting claims.  Kudos!
+
+Only a few very minor comments:
+
+1. p 11: "If this is confirmed, we will have successfully applied laboratory analyses to out-of-laboratory data" could perhaps be better phrased as "If this is confirmed, we will have successfully tested fundamental cognitive biases with out-of-laboratory data"
+2. p. 11: rather than saying 'as explained further down (see "Substitution model")', you could say, 'as explained in the "Substitution model" section.'
+3. p. 18: " or can be extended to start at the very first occurrence" -> " or can be extended up to the very first occurrence"
+4. p. 21, footnote 16:  By scaling the number of substitutions to the size of the cluster you are effectively down-weighting the more popular quotes.  _While I think this is the right thing to do_, you're probably as a result underestimating your effect.  Might be worth mentioning somewhere.
+5. p. 24, footnote 20: This is done, presumably, because it can't automatically know which meaning the word has?  So if you were able to somehow grab the correct definition for which to get synonyms in WordNet, presumably the resulting average would actually be even more precise.  Again, not something you can do anything about, but possibly worth mentioning.
+
+(For points 4 & 5, make changes at your own discretion)
+
+
+
+-- 
+COGNITIVE SCIENCE SOCIETY
+http://www.cognitivesciencesociety.org
+
+EDITORIAL MANAGER FOR COGNITIVE SCIENCE
+http://cogsci.edmgr.com
+
+COGNITIVE SCIENCE JOURNAL
+
+Executive Editor
+     Richard P. Cooper
+     Birkbeck, University of London
+     Department of Psychological Sciences
+     email: R.Cooper@bbk.ac.uk
+
+Managing Editor
+     Caroline Verdier
+     Cognitive Science Program
+     Indiana University
+     Eigenmann 819
+     1900 E. 10th St.
+     Bloomington, IN 47406-7512
+     phone: 812-855-4883
+     email: cogscij@indiana.edu
+     fax: 812-855-1086
+
+Associate Editors
+    Cristina Cacciari, University of Modena and Reggio Emilia
+     Cleotilde Gonzalez, Carnegie Mellon University
+     Todd Gureckis, New York University
+     James A. Hampton, City University London
+     Andrew Howes, University of Birmingham
+     Markus Knauff, University of Giessen
+     Tamar Kushnir, Cornell University
+     David Landy, Indiana University
+     Cristine H. Legare, University of Texas at Austin
+     Max M. Louwerse, Tilburg University
+     Maryellen C. MacDonald, University of Wisconsin-Madison
+     Padraic Monaghan, Lancaster University
+     Amy Perfors, The University of Adelaide
+     Michael J. Spivey, University of California, Merced
+     John Turri, University of Waterloo
