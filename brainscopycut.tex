@@ -88,6 +88,9 @@
 \newcommand{\CNs}{\textsuperscript{\tb{[Multiple citations needed]}}}
 \newcommand{\RN}{\textsuperscript{\tb{[Internal reference needed]}}}
 
+% Fix subsubsection to look as requested for submission
+\renewcommand{\typesectitle}[1]{#1\hfill\\\hskip-1em}
+
 % Start with the real content -------------------------------------------------------------
 
 \title{The semantic drift of quotations in blogspace: a case study in short-term cultural evolution}
@@ -109,6 +112,9 @@ Our results support the hypothesis that cultural attractors can result from the 
 
 \begin{document}
 \maketitle
+
+% Force section numbering
+\setcounter{secnumdepth}{3}
 
 \input{brains-introduction}
 
@@ -132,6 +138,9 @@ The software and analyses written for the paper are documented and published und
 They can be found at \url{https://github.com/wehlutyk/brainscopypaste}.
 
 \end{new}
+
+% Remove section numbering for references
+\setcounter{secnumdepth}{0}
 
 \bibliographystyle{apacite}
 \bibliography{brainscopycut.bib}
