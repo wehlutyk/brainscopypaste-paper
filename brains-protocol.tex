@@ -14,10 +14,7 @@ not only should transformations be of moderate magnitude, but when specific word
 We could therefore study the individual transformation process at work when authors alter quotations, by examining the modified words in each transformation.
 \newtext{Since our approach is exploratory however, we do not know at the outset which precise effect of cognitive bias we are looking for.
 Indeed, the data we use does not come from a controlled experiment in the laboratory, designed to elicit a particular effect: they are recordings of real life interactions, with all the complexity and uncertainty of conditions this entails.
-%In this study, therefore, we did not try to predict and explain in detail the cognitive processes responsible for transformations
-%\todo{, as this would be akin to a drink from the firehose. \sf [Cam: supprimer? potentiellement un excès d'autoflagellation -- en fait on devrait pouvoir dire simplement: ``The prediction and detailed explanation of the cognitive processes responsible for transformations is outside of the scope of this study'', probablement après la fin de la phrase suivante (``of a larger complexity (the detailed prediction and deconstruction of the cognitive processes etc. outside the scope etc. further research)'' mais même là cette modestie pourrait plutôt être de mise dans la conclusion? ou bien il s'agit d'une critique directe d'un reviewer ?  Un peu pareil pour ``our approach is exploratory'' (que j'ai laissé au nom de l'ambiguïté d'exploratoire qui veut aussi bien dire ``premier brouillon'' que ``data mining'') et ``this first study'' (où j'ai enlevé le `first' car trop ``bon c'est à moitié fini mais on soumet quand même'' ;) ]}
 Our goal, therefore, is to show that cognitive biases have measurable effects in this setting even if they are part of a larger complexity (the detailed prediction and deconstruction of the cognitive processes responsible for them being left to further research).
-%\todo{That is, we aim to prove first a relatively weak hypothesis before trying stronger ones. [Cam: idem, je supprimerais celle-là]}
 If this is confirmed, we will have successfully tested fundamental cognitive biases with out-of-laboratory data, opening a path to explanations of actual (\hbox{vs.} simulated) cultural evolution with tools from cognitive science.
 Aiming to exhibit such subtle biases in complex data is the main reason we chose to use aggregate measures that have a chance of smoothing out the possible variations of experimental conditions in the data set.}
 
@@ -44,9 +41,7 @@ We find for example the following variation of the above quote:
 \begin{quote}
 ``these operations are \textbf{intended} to address funding pressures over quarter-end.''
 \end{quote}
-\newtext{Next, they applied a community detection algorithm} to that quotation graph to detect aggregates of tightly connected, that is
-% Le APA style guide force "that is" au lieu de "i.e." hors de parenthèses
-sufficiently similar, groups of quotations~\citep[see again][for more details]{leskovec_meme-tracking_2009}.
+\newtext{Next, they applied a community detection algorithm} to that quotation graph to detect aggregates of tightly connected, that is sufficiently similar, groups of quotations~\citep[see again][for more details]{leskovec_meme-tracking_2009}.
 This analysis yielded the final data we had access to, with a total of about \num{70000} sets of quotations; each of these sets ideally contains all variations of a same parent utterance, along with their respective publication URLs and timestamps \newtext{(since the procedure cannot be perfect, sets of quotations contain occasional rogue unrelated variations that should have been discarded or assigned to another set)}.
 
 Manual inspection of this data set revealed that it contains a significant number of everyday language quotations (such as ``it was much better than I expected'', ``did that just happen'', as well as many simple expletive-based sentences).
@@ -109,8 +104,6 @@ We used three standard measures on the FA network:
     \newtext{Note that in-degree does not take the weights of links into account, as it counts 1 for each incoming link.
     Pagerank on the other hand, does take the weights into account.}
     }
-    %, and measure polysemy by taking into account the structure of the entire network.
-    %However in the present case there is a quasi-perfect correlation between node incoming degree and node \emph{pagerank}~\citep{Page99}, which will lead us to favour the latter later on. Word pagerank on the FA network had already been used by~\citet{Griffiths07}; it may be interpreted as a generalized and recursive measure of word polysemy: central nodes in the pagerank sense are words often selected as targets when presented with cues themselves often selected as targets, and so on recursively.
 
     \item \textbf{Betweenness centrality}, another measure of node centrality describing the extent to which a node connects otherwise remote areas of the network~\citep{freeman_set_1977}.
     This quantity tells us if some words behave as unavoidable waypoints on association chains connecting one word to another.\footnote{
@@ -130,9 +123,6 @@ We used three standard measures on the FA network:
 
 \newtext{Several of these features are strongly related and can be grouped together.
 To make correlation values as well as future comparisons more reliable, we log-transformed features that have marked exponential distributions (\hbox{i.e.} a few words valued orders of magnitude higher than the vast majority of other words).}
-%\footnote{
-%\newtext{The distributions of original and log-transformed features appears in the Supplementary Information, %along with scatter plots for each feature pair, summarized below with correlation values.
-%}}
 
 \indicatemanfigure{fig:feature-corrs-initial}
 \begin{figure}[!th]
@@ -274,8 +264,7 @@ The assumptions it embeds, however, are a subset of a much wider set of possibil
 We identified four binary parameters that differentiate potential models, such that the resulting 16 combinations cover most of the reasonable answers to inference uncertainties.
 The first two parameters define the preceding time bin from which authors could have drawn a source when producing a new occurrence:
 (1)~\textbf{bin positions}, which can be aligned to midnight (as in the model presented above) or kept sliding (for each occurrence, use a bin that ends precisely at that occurrence);
-(2)~\textbf{bin span}, which can be $\Delta t=1$ day %24 hours 
-(as in the model above) or can be extended up to the very first occurrence in the quotation family.
+(2)~\textbf{bin span}, which can be $\Delta t=1$ day (as in the model above) or can be extended up to the very first occurrence in the quotation family.
 The other two parameters configure rules on the selection of source and destination quotes of a substitution:
 (3)~\textbf{candidate sources} can be restricted to the most frequent quotations in the preceding time bin (as in the model above), or not (in which case all quotations in the preceding bin are candidate sources);
 (4)~\textbf{candidate destinations} can be restricted to quotations that do not appear in the preceding bin, or without restriction (as in the model above).
@@ -328,15 +317,6 @@ The following examples illustrate this phenomenon:
 	\item ``This \{crisis~$\rightarrow$~problem\} did not develop overnight and it will not be solved overnight''.
 \end{APAitemize}
 
-%Compared to the word it replaces, the new word usually achieves a similar meaning in the context of its sentence while still slightly changing the implications or the attitude expressed by the author.
-%The following examples illustrate this behavior:
-
-%\begin{APAitemize}
-%	\item ``This is \{socialism~$\rightarrow$~welfare\} for the rich'',
-%	\item {[}The{]} ``perverse logic of \{clashes~$\rightarrow$~confrontation\} and violence'',
-%	\item ``This \{crisis~$\rightarrow$~problem\} did not develop overnight and it will not be solved overnight''.
-%\end{APAitemize}
-
 \end{new}
 
 \newtext{Our question concerns the low-level properties of these substitutions: we ask (a) which words are targets of the substitutions and (b) what change these words are subjected to. To this end,} we build the following two observables for each word feature.
@@ -365,7 +345,6 @@ $$\sigma_g = \frac{s_g}{s_g^0}$$
 In other words, susceptibility measures \newtext{how much more or less a group of words $g$ actually gets substituted compared to picking targets at random in quotes undergoing substitutions}.
 \newtext{By applying this measure to Part-of-Speech (POS) categories and feature bins (\hbox{e.g.} for a feature $\phi$ and a bin $[a; b]$, $g = \{w | \phi(w) \in [a; b]\}$), susceptibility measures the bias in} the selection of start words involved in substitutions, 
 \hbox{i.e.} \newtext{it measures the preferential selection of some word properties for substitution.}
-%\newtext{that is} the effect of word \newtext{properties} at the moment preceding the substitution when it is not yet known which word in the quotation will be substituted.
 
 \medskip
 
@@ -550,30 +529,6 @@ Such a change, though minor in appearance, is a typical example of alteration al
 
 \subsection{Sentence context}
 
-%\begin{figure*}[!th]
-%	\centering
-%	\begin{subfigure}{.49\textwidth}
-%	    \includegraphics[width=\textwidth]{images/computed-figures/paper-variations-quantilebins_sentencerel.png}
-%	    \caption{\newtext{\textbf{Sentence-relative feature variation:}
-%	    $\nu_{\phi_r}$, average sentence-relative feature value of the appearing word as a function of the sentence-relative value of the disappearing word (binned by quartiles), with 95\% asymptotic confidence intervals based on Student's \emph{t}-distribution.
-%	    $\nu_{\phi_r}^0$ and $\nu_{\phi_r}^{00}$ are similarly converted to be sentence-relative.
-%	    Attraction, magnitude and direction of bias with respect to null hypotheses are similar to Fig.~\ref{fig:feature-variations-global}.
-%	    However, attractors are always positioned between sentence median ($y=0$) on one side and $\nu_{\phi_r}^0$ and $\nu_{\phi_r}^{00}$ on the other side.
-%	    Clustering coefficient, Number of synonyms and Orthographic neighborhood density are limit cases, with triple intersections with one of the null hypothesis curves.}
-%	    }
-%	    \label{fig:feature-variations-sentencerel}
-%	\end{subfigure}
-%	~
-%	\begin{subfigure}{.49\textwidth}
-%	    \includegraphics[width=\textwidth]{images/computed-figures/paper-susceptibilities-sentencequantiles.png}
-%	    \caption{\newtext{\textbf{Substitution susceptibility for in-quote feature quartiles:}
-%	    susceptibility to substitution versus quartile of the feature distribution in the originating quote, with 95\% asymptotic confidence intervals (Goodman-based multinomial)}.
-%	    }
-%	    \label{fig:feature-susceptibilities-in_sentence}
-%	\end{subfigure}
-%\end{figure*}
-
-
 \begin{figure}[h]
     \centering
     \includegraphics[width=\linewidth]{images/computed-figures/paper-susceptibilities-sentencequantiles.png}
@@ -595,8 +550,6 @@ Such a change, though minor in appearance, is a typical example of alteration al
     }
     \label{fig:feature-variations-sentencerel}
 \end{figure*}
-
-
 
 \begin{new}
 
