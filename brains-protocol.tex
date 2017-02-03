@@ -134,6 +134,7 @@ To make correlation values as well as future comparisons more reliable, we log-t
 %\newtext{The distributions of original and log-transformed features appears in the Supplementary Information, %along with scatter plots for each feature pair, summarized below with correlation values.
 %}}
 
+\indicatemanfigure{fig:feature-corrs-initial}
 \begin{figure}[!th]
     \centering
     \includegraphics[width=\linewidth]{images/computed-figures/all-feature_correlations.png}
@@ -167,6 +168,7 @@ Quite often then, not all features are available for a given word in our data se
 however this is not problematic since the analysis is done on a per-feature basis, and not all words need be encoded in all features.}
 \end{new}
 
+\indicatemanfigure{fig:feature-corrs-filtered}
 \begin{figure}[!th]
     \centering
     \includegraphics[width=0.6412\linewidth]{images/computed-figures/paper-feature_correlations-v2.png}
@@ -197,6 +199,7 @@ $q''$ is only one substitution away from $q'$ however, so we could also consider
 Conversely, the occurrence of $q''$ on the 20th could be considered as a substitution from $q'$, or as a faithful copy from its initial occurrence on January 19.}
 (Options shown in Fig.~\ref{fig:substitution-unmodelled}.)
 
+\indicatemanfigure{fig:substitution-unmodelled}
 \begin{figure}[h]
     \centering
 	\def\svgwidth{\linewidth}
@@ -233,7 +236,7 @@ Conversely, the occurrence of $q''$ on the 20th could be considered as a substit
 	    \def\svgwidth{\textwidth}
 	    \small
 	    \input{images/substitution-Time=discrete-Source=all-Past=last_bin-Durl=all.pdf_tex}
-	    \caption{Source can be anything, destination can be anything\\\hfill} % \\\hfill to add a line, aligning with the other panels which have two-line captions
+	    \caption{Source can be anything, destination can be anything\ifapamode{}{\\\hfill}{}} % apamode man/jou/doc. \\\hfill to add a line, aligning with the other panels which have two-line captions
 	    \label{fig:substitution-modelled-all-all}
 	\end{subfigure}
 	\begin{subfigure}{.49\textwidth}
@@ -279,6 +282,8 @@ The other two parameters configure rules on the selection of source and destinat
 A substitution model, then, is the given of a value for each of those parameters;
 it considers valid all the substitutions (and only those) where the source and destination follow the rules set out by the parameters.
 If a destination has substitutions from multiple sources we count a single effective substitution where, for each feature, the value for the effective source word is the average of the values of the candidate source words.
+
+\indicatemanfigure{fig:substitution-modelled}
 
 Put shortly a model defines how many times, and under what source and destination conditions, quote occurrences can be counted as substitutions.
 Fig.~\ref{fig:substitution-modelled} shows the inferences made by the four models that use bins spanning 1 day aligned to midnight:
@@ -364,6 +369,7 @@ In other words, susceptibility measures \newtext{how much more or less a group o
 
 \medskip
 
+\indicatemanfigure{fig:pos-susceptibilities}
 \begin{figure}[h]
     \centering
     \includegraphics[width=\linewidth]{images/computed-figures/all-susceptibilities-pos.png}
@@ -394,6 +400,7 @@ it seems, then, that POS categories do not capture any strong bias in the select
 
 \end{new}
 
+\indicatemanfigure{fig:feature-susceptibilities-global}
 \begin{figure*}[!th]
     \centering
     \includegraphics[width=\textwidth]{images/computed-figures/paper-susceptibilities-quantilebins_global.png}
@@ -452,6 +459,7 @@ This approach yields a fine-grained view of how word features evolve upon substi
 \item an unbiased semantically plausible arrival (\hbox{vs.} $\nu_{\phi}^{00}$)}.
 \end{seriate}
 
+\indicatemanfigure{fig:feature-variations-global}
 \begin{figure*}[!th]
     \centering
     \includegraphics[width=\textwidth]{images/computed-figures/paper-variations-quantilebins_global.png}
@@ -519,6 +527,8 @@ In other words there is little to no interaction between a disappearing word's f
 
 \end{new}
 
+\indicatemanfigure{fig:feature-variations_regression-global}
+
 To make things concrete, here is an example substitution taking place in the data set.
 \newtext{Around mid-November 2008 several media websites reported the following quote from Burmese poet Saw Wai (arrested for one of his poems),
 \begin{quote}
@@ -572,7 +582,7 @@ Such a change, though minor in appearance, is a typical example of alteration al
     }
     \label{fig:feature-susceptibilities-in_sentence}
 \end{figure}
-	
+
 \begin{figure*}[!th]
     \centering
     \includegraphics[width=\textwidth]{images/computed-figures/paper-variations-quantilebins_sentencerel.png}
@@ -604,6 +614,8 @@ in other words it gives us the numerator $s_{q_i}$ for the computation of suscep
 since the random situation would equally distribute a fourth of all substitutions to each quartile, we divide by the number of substitutions divided by 4.
 Taking for instance word frequency, this measure tells us if words that have high- or low-frequency \emph{compared to the quote they appear in} are more or less substituted than at random.
 
+\indicatemanfigure{fig:feature-susceptibilities-in_sentence}
+
 Surprisingly the results for this measure are no different from the context-free measure, as can be seen in Fig.~\ref{fig:feature-susceptibilities-in_sentence}:
 low-frequency words compared to the sentence are substituted much more than higher-frequency words, words learned earlier than the rest of the sentence are substituted less than words learned later, shorter words less than longer words, and words with scarce neighborhoods slightly more than words with denser neighborhoods.
 Clustering coefficient and Number of synonyms are, here again and across all substitution models, not significantly different from $\mathcal{H}_0$:
@@ -614,6 +626,8 @@ To do so we consider all feature values relative to the median word feature in t
 That is, in all the equations of the previous subsection we replace $\phi(w)$ with:
 $$\phi_r(w) = \phi(w) - \operatorname{median}\left\lbrace \phi(w) | w \in \text{sentence} \right\rbrace$$
 $\nu_{\phi}$, $\nu_{\phi}^0$ and $\nu_{\phi}^{00}$ each transpose to $\nu_{\phi_r}$, $\nu_{\phi_r}^0$ and $\nu_{\phi_r}^{00}$ (note that $\nu_{\phi_r}^0$ now depends on $w$ since it is sentence-relative, whereas $\nu_{\phi}^0$ did not).
+
+\indicatemanfigure{fig:feature-variations-sentencerel}
 
 The results for sentence-relative feature variations are gathered in Fig.~\ref{fig:feature-variations-sentencerel}.
 Here too, the behavior is strikingly similar to the context-free measure:

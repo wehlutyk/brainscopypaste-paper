@@ -91,6 +91,17 @@
 % Fix subsubsection to look as requested for submission
 \renewcommand{\typesectitle}[1]{#1\hfill\\ \vskip0.2\baselineskip \hskip-1em}
 
+% Add figure placement indications in apamode "man"
+\newcommand{\indicatemanfigure}[1]{
+\ifapamode{%man
+  \begin{center}
+    -------------------------- Insert Figure \ref{#1} about here --------------------------
+  \end{center}
+}{%jou
+}{%doc
+}}
+
+
 % Start with the real content -------------------------------------------------------------
 
 \title{The semantic drift of quotations in blogspace: a case study in short-term cultural evolution}
