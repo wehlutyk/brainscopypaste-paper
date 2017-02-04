@@ -1,0 +1,75 @@
+\documentclass[a4paper,10pt]{article}
+\usepackage[top=1in,bottom=1in,left=1in,right=1in]{geometry}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage{multirow}
+\usepackage{utopia}
+\usepackage{amssymb}
+\usepackage{epstopdf}
+\usepackage[authoryear,round,compress]{natbib}
+\usepackage{multicol}
+\usepackage[usenames,dvipsnames]{color}
+\usepackage{url}
+\usepackage{eurosym}
+\usepackage{array}
+\usepackage{tabularx}
+\usepackage[table]{xcolor}
+\usepackage{booktabs}
+\usepackage{wrapfig}
+
+\usepackage{float}
+\usepackage{enumerate}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+%\usepackage[frenchb]{babel}
+\usepackage{setspace}
+\setstretch{1.05}
+
+\newcommand{\itx}[1]{\begin{itemize}#1\end{itemize}}
+\newcommand{\enx}[1]{\begin{enumerate}#1\end{enumerate}}
+\newcommand{\x}{\item}
+
+
+\usepackage[bookmarks, colorlinks, breaklinks, pdftitle={Research project},pdfauthor={Camille Roth}]{hyperref}  
+\hypersetup{linkcolor= MidnightBlue,citecolor= MidnightBlue,filecolor=black,urlcolor= MidnightBlue} 
+
+\title{Manuscript CS15-80\medskip\\
+{\Large\em``The semantic drift of quotations in blogspace: a case study in short-term cultural evolution''}
+\bigskip\\Response to Reviewers
+}
+\author{Sébastien Lerique and Camille Roth}
+%\date{}							% Activate to display a given date or no date
+
+\begin{document}
+\maketitle
+%\section{}
+%\subsection{}
+
+\makeatletter
+\renewcommand{\subsection}{\clearpage\@startsection{section}{1}{0mm}
+{\baselineskip}{\baselineskip\medskip\hrule\medskip}{\raggedright\Large\bf~\textcolor{MidnightBlue}}}
+\makeatother
+
+
+\newcommand{\critique}[1]{\begin{quote}#1\end{quote}}
+\newcommand{\answer}[1]{{\setlength{\parindent}{0pt}\par\color{blue} #1}}
+\newcommand{\tb}[1]{\textcolor{blue}{#1}}
+\newcommand{\answerok}[1]{{\setlength{\parindent}{0pt}\par\color{MidnightBlue} #1}}
+\newcommand{\unclear}[1]{\textcolor{red}{\sf [C: #1]}}
+
+\vspace{3cm}
+Dear Todd Gureckis,
+
+\bigskip
+Thank you for the vivifying report and reviewer comments you sent us for our revision to CS15-80.
+
+\medskip
+Attached is the final version of the manuscript, updated with the suggestions from reviewer \#3 as well as a few minor stylistic and bibliographic fixes for production.
+
+\bigskip
+Best wishes,
+
+\bigskip
+Sébastien Lerique and Camille Roth
+
+\end{document}
