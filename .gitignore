@@ -17,3 +17,6 @@
 # Latexmk and TexMaker files
 *.fdb_latexmk
 *.bak
+
+# Wiley stuff
+publication/
